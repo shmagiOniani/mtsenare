@@ -1,5 +1,6 @@
 import {
     Home,
+    Product,
     ProductList
   } from "../pages";
   
@@ -13,6 +14,11 @@ import {
       path: "/product-list",
       component: ProductList,
       layout: "",
+    },
+    {
+      path: "/product",
+      component: Product,
+      layout: "/:id",
     },
   ];
   

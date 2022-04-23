@@ -1,4 +1,5 @@
 @import "../../style/color.scss";
+@import "../../style/buttons.scss";
 
 .navbar-wrapper {
   .logo-container {
@@ -43,6 +44,22 @@
       padding: 0;
     }
   }
+  .small-logo {
+    &:hover {
+      cursor: pointer;
+    }
+    .logo {
+      height: 25px;
+      width: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+  } 
   .navigation-container {
     // width: 70vw;
     ul {
@@ -80,6 +97,33 @@
       }
     }
   }
+  .cartside-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .search-container {
+      position: relative;
+      span {
+        font-size: 22px;
+        margin-right: 17px;
+        margin-top: 10px;
+      }
+      .search-form {
+        position: absolute;
+        z-index: 222;
+        top: 75px;
+        right: 0;
+        width: 200px;
+        // border: 1px solid $light-gray-border;
+        height: 0px;
+        overflow: hidden;
+        transition: all .3s ease-in-out;
+      }
+      .active-form {
+        height: 100%!important;
+      }
+    }
+  }
   .cart-wrapper {
     position: relative;
     display: flex;
@@ -89,7 +133,7 @@
     &:hover {
       cursor: pointer;
       .cart-container {
-        height: 300px !important;
+        height: fit-content !important;
       }
     }
     .ant-badge {
@@ -103,19 +147,20 @@
       position: absolute;
       z-index: 20;
       top: 115px;
-      left: -46px;
+      right: 0;
       width: 250px;
       background-color: rgb(255, 255, 255);
       transition: all 1s ease-in-out;
       overflow: hidden;
       &:hover {
-        height: 300px !important;
+        height: fit-content !important;
       }
       & > div {
         padding: 20px;
         .cart-item {
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
+          margin-bottom: 15px;
           .cart-img {
             margin-right: 15px;
             position: relative;
@@ -129,20 +174,85 @@
             }
           }
           .cart-name-price {
+            div:first-child {
+              font-size: 12px;
+              font-weight: 700;
+              letter-spacing: .05em;
+              display: table-cell;
+              vertical-align: top;
+              color: #2b2b2b;
+              line-height: 20px;
+            }
+            div:last-child {
+              display: inline-block;
+              margin: 3px 0 0;
+              font-size: 12px;
+              letter-spacing: .05em;
+              color: #afafaf;
+            }
+          }
+          .close-icon {
+            font-size: 10px;
+            color: $base;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            color: #1b1b1b;
-            font-family: Montserrat;
-            font-size: 12px;
-            line-height: 2em;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            justify-content: center;
+            align-items: center;
+            span {
+              border-radius: 50%;
+              padding: 5px;
+              &:hover {
+                  background-color: rgba(128, 128, 128, 0.072);
+              }
+
+            }
           }
         }
         .cart-footer {
+          // display: none;
+          position: relative;
+          width: 100%;
+          margin: 0 0 13px;
+          .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            span:first-child {
+              vertical-align: top;
+              color: #2b2b2b;
+              line-height: 20px;
+              font-size: 12px;
+              font-weight: 700;
+              letter-spacing: .05em;
+            }
+            span:last-child {
+              text-align: right;
+              font-size: 12px;
+              font-weight: 500;
+              color: #2b2b2b;
+              line-height: 20px;
+            }
+          }
+          .cart-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            div {
+              @include filledButton;
+              padding: 0 18px;
+              height: 40px;
+              font-size: 9px;
+              font-weight: 500;
+            }
+            div:first-child {
+              background-color: $base!important;
+            }
+            div:last-child {
+            }
+          }
         }
+
       }
     }
   }

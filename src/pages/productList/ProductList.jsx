@@ -1,9 +1,9 @@
-import React, { createRef } from 'react'
+import React, { createRef, useState } from 'react'
+import { useHistory, Link } from 'react-router-dom'
 import { Col, Row, Select, Form, Slider, Pagination } from 'antd'
 import useTranslation from "../../components/translation/useTranslation";
 import Navbar from '../../components/navbar/Navbar'
 import "./ProductList.scss"
-import { Link } from 'react-router-dom';
 import Footer from '../home/Footer';
 
 const imgs = [
@@ -23,80 +23,106 @@ function ProductList() {
   const [form] = Form.useForm();
   const formRef = createRef();
 
+  let history = useHistory();
+
+  const [maxPrice, setMaxPrice] = useState(0)
+  const [minPrice, setMinPrice] = useState(0)
+
+  const onPriceChange = (val) => {
+    setMaxPrice(val[0])
+    setMinPrice(val[1])
+  }
+
+  const handleProductClick = (id) => {
+    history.push(`/product/${id}`);
+  }
 
   return (
-    <Row className='product-list-wrapper'>
-      <Col xs={24}>
-        <Navbar />
-      </Col>
-      <Col xs={24} className={"page-header"}>
-        <h1>Product List</h1>
-        <p>Where flowers are our inspiration</p>
-      </Col>
-      <Col className="product-list-sidebar" xs={5}>
-        <div className="product-sidebar-wrapper">
-          <ul className="product-sidebar-category ">
-            <h6 className="category-header">CATEGORIES</h6>
-            {category.map((item, ind) => {
-              return (
-                <li key={ind}>
-                  <Link to={item}>
-                    {item}
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
-          <ul className="product-sidebar-category ">
-            <h6 className="category-header">CATEGORIES</h6>
-            <li className='range-input' >       <Slider range defaultValue={[150, 350]}  max={350} min={150} handleStyle={{backgroundColor: "black", border:"none"}} trackStyle={{backgroundColor: "black"}} />   </li>
-            <li>
-              Price: $150 - $350
-            </li>
-          </ul>
-        </div>
-      </Col>
-      <Col xs={19}>
-        <Row gutter={[30, 30]} className="product-list">
-          <Col className='product-list-sort' xs={24}>
-            <div>Showing 1–9 of 14 results</div>
-            <Select
-              placeholder={"Sort by popularity"}
-            // dropdownClassName="new-user-select"
-            >
-              <Option value={"option"}>
-                {"Sort by populariTy"}
-              </Option>
-            </Select>
+    <div className='page-wrapper'>
+      <div className=' page-container'>
+        <Row >
+          <Col xs={24}>
+            <Navbar />
           </Col>
-          {imgs.map((category, ind) => {
-            return (
-              <Col
-                xs={24}
-                sm={8}
-                md={8}
-                key={ind}
-                className="product-item item"
-              >
-                <div className="img-container">
-                  <img src={category} alt="sasas" />
-                </div>
-                <div className="product-desc">
-                  <h6>WINTER</h6>
-                  <span>{ind}00$</span>
+
+          <Col xs={24} className={"page-header"}>
+            <h1>Product List</h1>
+            <p>Where flowers are our inspiration</p>
+          </Col>
+          <Col xs={24}>
+
+            <Row gutter={[20, 20]} className="list">
+
+              <Col className="product-list-sidebar" xs={5}>
+                <div className="product-sidebar-wrapper">
+                  <ul className="product-sidebar-category ">
+                    <h6 className="category-header">CATEGORIES</h6>
+                    {category.map((item, ind) => {
+                      return (
+                        <li key={ind}>
+                          <Link to={item}>
+                            {item}
+                          </Link>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                  <ul className="product-sidebar-category ">
+                    <h6 className="category-header">CATEGORIES</h6>
+                    <li className='range-input' >       <Slider range onChange={onPriceChange} defaultValue={[150, 350]} max={350} min={150} handleStyle={{ backgroundColor: "black", border: "none" }} trackStyle={{ backgroundColor: "black" }} />   </li>
+                    <li>
+                      Price: ${minPrice} - ${maxPrice}
+                    </li>
+                  </ul>
                 </div>
               </Col>
-            );
-          })}
-          <Col xs={24} className={"pagination-wrapper"}>
-          <Pagination size="small" total={50} />
+              <Col xs={19}>
+                <Row gutter={[30, 30]} className="product-list">
+                  <Col className='product-list-sort' xs={24}>
+                    <div>Showing 1–9 of 14 results</div>
+                    <Select
+                      placeholder={"Sort by popularity"}
+                    // dropdownClassName="new-user-select"
+                    >
+                      <Option value={"option"}>
+                        {"Sort by populariTy"}
+                      </Option>
+                    </Select>
+                  </Col>
+                  {imgs.map((category, ind) => {
+                    return (
+                      <Col
+                        xs={24}
+                        sm={8}
+                        md={8}
+                        key={ind}
+                        className="product-item item"
+
+                      >
+                        <div className="img-container" onClick={() => handleProductClick(ind)}>
+                          <img src={category} alt="sasas" />
+                        </div>
+                        <div className="product-desc">
+                          <h6>WINTER</h6>
+                          <span>{ind}00$</span>
+                        </div>
+                      </Col>
+                    );
+                  })}
+                  <Col xs={24} className={"pagination-wrapper"}>
+                    <Pagination size="small" total={50} />
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Col>
+
+          <Col xs={24}>
+            <Footer />
           </Col>
         </Row>
-      </Col>
-      <Col xs={24}>
-        <Footer />
-      </Col>
-    </Row>
+      </div>
+    </div>
   )
 }
 

@@ -1,28 +1,25 @@
 @import "../../style/color.scss";
 @import "../../style/fonts.scss";
+@import "../../style/mixins.scss";
 
 
 $container-padding: 0 100px;
-.product-list-wrapper {
+
+.page-wrapper {
   background-color: white;
-  & > .ant-col {
-    max-width: 100%;
-    padding: $container-padding;
+
+  .page-container {
+    max-width: 80vw;
+    .ant-row {
+
+      // & > .ant-col {
+      //   max-width: 100%;
+      //   padding: $container-padding;
+      // }
+    }
   }
   .page-header {
-    width: 100%;
-    background-color: #fafaf9;
-    height: 225px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:flex-start;
-    h1 {
-      @include h1;
-    }
-    p {
-      @include p;
-    }
+   @include pageHeader;
   }
   .product-list {
     padding: 61px 0 40px 0;

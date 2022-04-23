@@ -1,6 +1,6 @@
 import React from "react";
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 // React Router
 import {
   BrowserRouter as Router,
@@ -10,23 +10,21 @@ import {
 } from "react-router-dom";
 // Routes
 import { PUBLIC_ROUTES } from "./utils/routes";
-import 'antd/dist/antd.min.css'
-import "./App.scss"
+import "antd/dist/antd.min.css";
+import "./App.scss";
 
 function App() {
-
   return (
     <Router>
-      <div className="app">
-        {/* <Header /> */}
+      <div className={`app`}>
         <div className="app-container">
           <Switch>
-            {PUBLIC_ROUTES.map((index) => {
+            {PUBLIC_ROUTES.map((route, index) => {
               return (
                 <Route
-                  path={index.layout + index.path}
-                  component={index.component}
-                  key={index.path}
+                  path={route.path + route.layout}
+                  component={route.component}
+                  key={route.path}
                 />
               );
             })}
@@ -35,7 +33,6 @@ function App() {
             </Route>
           </Switch>
         </div>
-        {/* <Footer /> */}
       </div>
     </Router>
   );
