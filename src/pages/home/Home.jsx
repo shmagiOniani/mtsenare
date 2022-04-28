@@ -1,13 +1,15 @@
 import React from "react";
 import { Col, Row, Carousel } from "antd";
-import OwlCarousel from 'react-owl-carousel';
+import OwlCarousel from "react-owl-carousel";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import useTranslation from "../../components/translation/useTranslation";
 import Navbar from "../../components/navbar/Navbar";
 import wappPaper from "../../assets/img/wall-paper.jpg";
 import avatar from "../../assets/img/avatar.png";
 import aboutImg from "../../assets/img/home-about.jpg";
-import Footer from "./Footer";
+import Footer from "../footer/Footer";
 import "./Home.scss";
+import ProductItem from "./ProductItem";
 
 const imgs = [
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
@@ -20,31 +22,38 @@ const imgs = [
 
 function Home() {
   const { trans } = useTranslation();
+  const location = useLocation();
+
+  let history = useHistory();
 
   const onChange = (a, b, c) => {
     console.log(a, b, c);
   };
 
+  const toShop = () => {
+    history.push(`/product-list`);
+  };
+
   function SampleNextArrow(props) {
-    const { className, style, onClick } = props
+    const { className, style, onClick } = props;
     return (
       <div
         className={className}
         style={{ ...style, display: "block", background: "red" }}
         onClick={onClick}
       />
-    )
+    );
   }
 
   function SamplePrevArrow(props) {
-    const { className, style, onClick } = props
+    const { className, style, onClick } = props;
     return (
       <div
         className={className}
         style={{ ...style, display: "block", background: "green" }}
         onClick={onClick}
       />
-    )
+    );
   }
 
   const settings = {
@@ -53,8 +62,8 @@ function Home() {
   };
 
   return (
-    <div className='page-wrapper home-page'>
-      <div className=' page-container'>
+    <div className="page-wrapper home-page">
+      <div className=" page-container">
         <Row className="home-wrapper">
           <Col xs={24}>
             <Navbar />
@@ -65,7 +74,9 @@ function Home() {
                 <img src={wappPaper} alt={"wall paper"} />
               </div>
               <div className="headline">
-                <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+                <h1>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </h1>
                 <a href="#">Start Shopping</a>
               </div>
             </div>
@@ -74,13 +85,19 @@ function Home() {
             <Row gutter={[30, 30]} className="category-list">
               {imgs.map((category, ind) => {
                 return (
-                  <Col xs={24} sm={6} md={4} key={ind} className="category-item">
-                    <div className="img-container">
+                  <Col
+                    xs={24}
+                    sm={6}
+                    md={4}
+                    key={ind}
+                    className="category-item"
+                  >
+                    <div className="img-container" onClick={toShop}>
                       <img src={category} alt="sasas" />
                     </div>
                     <div className="category-desc">
-                      <h6>WINTER</h6>
-                      <span>{ind}00$</span>
+                      <h6>CATEGORY</h6>
+                      <span>10$ - {ind}00$</span>
                     </div>
                   </Col>
                 );
@@ -116,29 +133,16 @@ function Home() {
             <div className="featured-container">
               <div className="featured-header"></div>
               <div className="featured-slider">
-                <OwlCarousel className='owl-theme' dots={false} items={"4"} loop margin={10} nav>
+                <OwlCarousel
+                  className="owl-theme"
+                  dots={false}
+                  items={"4"}
+                  loop
+                  margin={10}
+                  nav
+                >
                   {imgs.map((category, ind) => {
-                    return (
-                      <Col
-                        // xs={24}
-                        // sm={6}
-                        // md={6}
-                        key={ind}
-                        className="category-item item"
-                      >
-                        <div className="img-container">
-                          <img src={category} alt="sasas" />
-                        </div>
-                        <div className="category-desc">
-                          <h6>WINTER</h6>
-                          <div>
-                            <span>{ind}00$</span>
-                            <span>Add to cart</span>
-
-                          </div>
-                        </div>
-                      </Col>
-                    );
+                    return <ProductItem key={ind} id={ind} imgSrc={category} />;
                   })}
                 </OwlCarousel>
               </div>
@@ -148,8 +152,15 @@ function Home() {
             <div className="home-about-section">
               <Row>
                 <Col xs={24} sm={12}>
-                  <h1>We take flowers personally <br />& we bring you happiness</h1>
-                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec.</p>
+                  <h1>
+                    We take flowers personally <br />& we bring you happiness
+                  </h1>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                    Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
+                    natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus mus. Donec quam felis, ultricies nec.
+                  </p>
                 </Col>
                 <Col xs={24} sm={12}>
                   <div className="img-container">

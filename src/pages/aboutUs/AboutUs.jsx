@@ -5,7 +5,7 @@ import useTranslation from "../../components/translation/useTranslation";
 import Navbar from '../../components/navbar/Navbar'
 import aboutImg from "../../assets/img/home-about.jpg";
 import avatar from "../../assets/img/avatar.png";
-import Footer from '../home/Footer';
+import Footer from '../footer/Footer';
 import "./AboutUs.scss"
 
 const imgs = [

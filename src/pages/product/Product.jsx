@@ -1,13 +1,16 @@
 import React, { createRef, useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import OwlCarousel from "react-owl-carousel";
+
 import { useHistory, Link, useLocation } from 'react-router-dom';
 import { Col, Row, Select, Form, Slider, Tabs, InputNumber, Button } from 'antd';
 import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
 import useTranslation from "../../components/translation/useTranslation";
 import Navbar from '../../components/navbar/Navbar'
-import Footer from '../home/Footer';
+import Footer from '../footer/Footer';
 import "./Product.scss";
+import ProductItem from '../home/ProductItem';
 
 const imgs = [
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
@@ -144,28 +147,22 @@ function Product() {
         <Col xs={24}>
           <div className="related-product">
             <h5>RELATED PRODUCTS</h5>
-            <Row gutter={[20, 20]}>
+            <div className="featured-slider">
+                <OwlCarousel
+                  className="owl-theme"
+                  dots={false}
+                  items={"4"}
+                  loop
+                  margin={10}
+                  nav
+                >
               {related.map((category, ind) => {
                 return (
-                  <Col
-                    xs={24}
-                    sm={6}
-                    md={6}
-                    key={ind}
-                    className="product-item item"
-
-                  >
-                    <div className="img-container" onClick={() => handleProductClick(ind)}>
-                      <img src={category} alt="sasas" />
-                    </div>
-                    <div className="product-desc">
-                      <h6>WINTER</h6>
-                      <span>{ind}00$</span>
-                    </div>
-                  </Col>
+                  <ProductItem  key={ind} id={ind} imgSrc={category} />
                 );
               })}
-            </Row>
+              </OwlCarousel>
+              </div>
           </div>
         </Col>
         <Col xs={24}>

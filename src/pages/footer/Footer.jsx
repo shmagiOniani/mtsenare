@@ -1,6 +1,7 @@
 import { Row, Col } from 'antd'
 import React from 'react'
 import payment from "../../assets/img/footer-bottom-1.png";
+import "./Footer.scss"
 
 
 function Footer() {

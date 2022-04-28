@@ -4,7 +4,7 @@ import { Col, Row, Select, Form, Slider, Pagination } from 'antd'
 import useTranslation from "../../components/translation/useTranslation";
 import Navbar from '../../components/navbar/Navbar'
 import "./ProductList.scss"
-import Footer from '../home/Footer';
+import Footer from '../footer/Footer';
 
 const imgs = [
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",

@@ -256,48 +256,99 @@ $container-padding: 0 100px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
-    .product-item {
-      width: 100%;
-      .img-container {
+    .featured-slider {
+      .category-item {
         width: 100%;
-        overflow: hidden;
-        margin-bottom: 15px;
-        height: 390px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        &:hover {
-          cursor: pointer;
+        .img-container {
+          width: 100%;
+          overflow: hidden;
+          margin-bottom: 15px;
+          &:hover {
+            cursor: pointer;
+            img {
+              transform: scale(1.2) !important;
+            }
+          }
           img {
-            transform: scale(1.2) !important;
+            transform: scale(1);
+            transition: all 0.3s ease-in-out;
+            width: 100%;
+            height: auto;
           }
         }
-        img {
-          transform: scale(1);
-          transition: all 0.3s ease-in-out;
-          width: auto;
-          height: 100%;
+        .category-desc {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          h6 {
+            color: #1b1b1b;
+            font-family: Montserrat;
+            font-size: 12px;
+            line-height: 2em;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+          }
+          div {
+            transition: all .5s ease-in-out;
+            transform: translateX(26px);
+            span:first-child {
+              opacity: 1;
+            }
+            span:last-child {
+              transition: all .2s ease-in-out;
+              opacity: 0;
+              &:hover {
+                color: $base;
+                cursor: pointer;
+              }
+            }
+            span {
+              transition: all .3s ease-in-out;
+              // text-transform: lowercase;
+              font-size: 12px;
+              font-weight: 400;
+              color: #afafaf;
+            }
+          }
         }
       }
-      .product-desc {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        h6 {
-          color: #1b1b1b;
-          font-family: Montserrat;
-          font-size: 12px;
-          line-height: 2em;
-          font-weight: 500;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
+      .category-item:hover {
+        .category-desc {
+          div {
+            transform: translateX(-15px);
+            span:first-child {
+              opacity: 0!important;
+
+            }
+            span:last-child {
+              opacity: 1!important;
+            }
+          }
         }
-        span {
-          text-transform: lowercase;
-          font-size: 12px;
-          font-weight: 400;
-          color: #afafaf;
+      }
+      .owl-carousel {
+        position: relative;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column-reverse;
+        .owl-nav {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          button {
+            transition: all 0.2s ease-in-out;
+            color: gray;
+            &:hover {
+              background-color: transparent;
+              color: rgb(0, 0, 0);
+            }
+            span {
+              font-size: 41px;
+              font-weight: 900;
+            }
+          }
         }
       }
     }

@@ -8,7 +8,7 @@ import { CaretLeftOutlined, UploadOutlined } from "@ant-design/icons";
 import ImgCrop from 'antd-img-crop';
 import useTranslation from "../../components/translation/useTranslation";
 import Navbar from '../../components/navbar/Navbar'
-import Footer from '../home/Footer';
+import Footer from '../footer/Footer';
 import "./AddProduct.scss";
 import TextArea from 'antd/lib/input/TextArea';
 import API from '../../utils/API';
