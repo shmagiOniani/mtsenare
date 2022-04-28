@@ -1,5 +1,8 @@
+@import "../../style/buttons.scss";
 @import "../../style/color.scss";
 @import "../../style/fonts.scss";
+@import "../../style/globals.scss";
+@import "../../style/mixins.scss";
 
 
 
@@ -12,7 +15,7 @@ $container-padding: 0 100px;
   align-items: center;
   flex-direction: column;
   .page-container {
-    width: 80vw;
+    width: 70vw;
     & > .ant-col {
       max-width: 100%;
       padding: $container-padding;

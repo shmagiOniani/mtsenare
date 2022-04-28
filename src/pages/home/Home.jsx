@@ -131,7 +131,11 @@ function Home() {
                         </div>
                         <div className="category-desc">
                           <h6>WINTER</h6>
-                          <span>{ind}00$</span>
+                          <div>
+                            <span>{ind}00$</span>
+                            <span>Add to cart</span>
+
+                          </div>
                         </div>
                       </Col>
                     );

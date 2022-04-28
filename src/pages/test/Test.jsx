@@ -19,14 +19,21 @@ function Test() {
   // location.pathname
 
   return (
-    <Row className='page-wrapper'>
+    <div className='page-wrapper'>
+
+    <Row className='page-container'>
       <Col xs={24}>
         <Navbar />
       </Col>
+      <Col xs={24} className={"page-header"}>
+          <h1>Page Header</h1>
+          <p>Page Description</p>
+        </Col>
       <Col xs={24}>
         <Footer />
       </Col>
     </Row>
+    </div>
   )
 }
 

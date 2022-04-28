@@ -1,0 +1,68 @@
+@import "../../style/color.scss";
+@import "../../style/fonts.scss";
+@import "../../style/mixins.scss";
+
+
+
+$container-padding: 0 100px;
+
+.faq-wrapper {
+  background-image: url("../../assets//img/page-background.jpg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .page-container {
+    background-color: white;
+    
+    width: 70vw;
+    & > .ant-col {
+      padding: $container-padding;
+      max-width: 100%;
+    }
+  }
+  .page-header {
+    @include pageHeader;
+    &::before {
+      display: none;
+    }
+    &::after {
+      display: none;
+    }
+   }
+   .product-sidebar-wrapper {
+    .product-sidebar-category {
+      list-style: none;
+      margin-bottom: 30px;
+      .category-header {
+        margin-bottom: 20px;
+        font-family: Montserrat;
+        font-size: 12px;
+        line-height: 2em;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .range-input {
+        .ant-slider-handle {
+          &:focus {
+            box-shadow: none;
+          }
+        }
+      }
+      &>li {
+        line-height: 24px;
+        font-size: 12px;
+          color: #8b8b8b;
+        a {
+          font-size: 12px;
+          color: #8b8b8b;
+          &:hover {
+
+            color: $base;
+          }
+        }
+      }
+    }
+  }
+}

@@ -47,25 +47,26 @@ $container-padding: 0 100px;
       align-items: center;
       flex-direction: column;
       h1 {
-        font-family: "Playfair Display";
-        color: rgb(0, 0, 0);
-        text-decoration: none;
-        white-space: normal;
+        @include h1;
+        // font-family: "Playfair Display";
+        // color: rgb(0, 0, 0);
+        // text-decoration: none;
+        // white-space: normal;
         width: 498px;
-        height: auto;
-        min-height: 0px;
-        min-width: 0px;
-        max-height: none;
-        max-width: none;
-        text-align: center;
-        line-height: 57px;
-        letter-spacing: 0px;
-        font-weight: 400;
-        font-size: 42px;
-        transform-origin: 50% 50%;
-        opacity: 1;
-        transform: translate(0px, 0px);
-        visibility: visible;
+        // height: auto;
+        // min-height: 0px;
+        // min-width: 0px;
+        // max-height: none;
+        // max-width: none;
+        // text-align: center;
+        // line-height: 57px;
+        // letter-spacing: 0px;
+        // font-weight: 400;
+        // font-size: 42px;
+        // transform-origin: 50% 50%;
+        // opacity: 1;
+        // transform: translate(0px, 0px);
+        // visibility: visible;
       }
       a {
         font-family: Montserrat;
@@ -251,11 +252,41 @@ $container-padding: 0 100px;
             letter-spacing: 0.1em;
             text-transform: uppercase;
           }
-          span {
-            text-transform: lowercase;
-            font-size: 12px;
-            font-weight: 400;
-            color: #afafaf;
+          div {
+            transition: all .5s ease-in-out;
+            transform: translateX(26px);
+            span:first-child {
+              opacity: 1;
+            }
+            span:last-child {
+              transition: all .2s ease-in-out;
+              opacity: 0;
+              &:hover {
+                color: $base;
+                cursor: pointer;
+              }
+            }
+            span {
+              transition: all .3s ease-in-out;
+              // text-transform: lowercase;
+              font-size: 12px;
+              font-weight: 400;
+              color: #afafaf;
+            }
+          }
+        }
+      }
+      .category-item:hover {
+        .category-desc {
+          div {
+            transform: translateX(-15px);
+            span:first-child {
+              opacity: 0!important;
+
+            }
+            span:last-child {
+              opacity: 1!important;
+            }
           }
         }
       }

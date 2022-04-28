@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Input, Form, Badge, Button } from "antd";
 import { SearchOutlined, ShoppingOutlined, CloseOutlined } from "@ant-design/icons";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import logo from "../../assets/img/logo.png";
 import "./Navbar.scss"
 
@@ -12,10 +12,15 @@ function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false)
   const location = useLocation();
 
+  let history = useHistory();
 
   const onSearch = (data) => {
     console.log(data);
   };
+
+  const toHome =() => {
+    history.push("/home")
+  }
 
   const shopDropdown = <div>shop</div>;
   const navArr = [
@@ -32,7 +37,7 @@ function Navbar() {
     },
     {
       name: "About Us",
-      link: "/about",
+      link: "/about-us",
       multy: false,
     },
     {
@@ -42,7 +47,7 @@ function Navbar() {
     },
     {
       name: "FAQ",
-      link: "/faq ",
+      link: "/faq",
       multy: false,
     },
   ];
@@ -84,7 +89,7 @@ function Navbar() {
                 </Form>
               </div>
               :
-              <div className="small-logo">
+              <div className="small-logo" onClick={toHome}>
                 <div className="logo">
                   <img src={logo} alt={"logo"} />
                 </div>
@@ -107,13 +112,13 @@ function Navbar() {
           </Col>
           <Col xs={5}>
             <Row justify={"end"}>
-              <Col  className={"cartside-search"}>
+              <Col className={"cartside-search"}>
                 {location.pathname !== "/home" ?
                   <div className="search-container">
-                    <SearchOutlined onClick={()=> setSearchOpen(!searchOpen)} />
-                    
+                    <SearchOutlined onClick={() => setSearchOpen(!searchOpen)} />
+
                     <Form
-                    className={`search-form ${searchOpen ? "active-form" : ""}`}
+                      className={`search-form ${searchOpen ? "active-form" : ""}`}
                       layout={"horizontal"}
                       form={form}
                       initialValues={{

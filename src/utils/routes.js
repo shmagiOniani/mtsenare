@@ -1,13 +1,26 @@
 import {
     Home,
     Product,
-    ProductList
+    ProductList,
+    AddProduct,
+    AboutUs,
+    Faq
   } from "../pages";
   
   export const PUBLIC_ROUTES = [
     {
+      path: "/about-us",
+      component: AboutUs,
+      layout: "",
+    },
+    {
       path: "/home",
       component: Home,
+      layout: "",
+    },
+    {
+      path: "/faq",
+      component: Faq,
       layout: "",
     },
     {
@@ -19,6 +32,11 @@ import {
       path: "/product",
       component: Product,
       layout: "/:id",
+    },
+    {
+      path: "/add-product",
+      component: AddProduct,
+      layout: "",
     },
   ];
   
