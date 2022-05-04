@@ -116,7 +116,7 @@ function Home() {
                         </div>
                         <p>
                           Nullam dictum felis eu pede mollis pretium. Integer
-                          tincidunt. Cras dapibus lingua.{" "}
+                          tincidunt. Cras dapibus lingua.
                         </p>
                         <span>
                           <span>Anna Barnes</span>

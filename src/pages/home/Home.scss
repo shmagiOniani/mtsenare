@@ -1,6 +1,7 @@
 @import "../../style/color.scss";
 @import "../../style/fonts.scss";
 @import "../../style/buttons.scss";
+@import "../../style/mixins.scss";
 
 $container-padding: 0 100px;
 .home-page {
@@ -179,77 +180,79 @@ $container-padding: 0 100px;
     .featured-header {
     }
     .featured-slider {
-      .category-item {
-        width: 100%;
-        .img-container {
-          width: 100%;
-          overflow: hidden;
-          margin-bottom: 15px;
-          &:hover {
-            cursor: pointer;
-            img {
-              transform: scale(1.2) !important;
-            }
-          }
-          img {
-            transform: scale(1);
-            transition: all 0.3s ease-in-out;
-            width: 100%;
-            height: auto;
-          }
-        }
-        .category-desc {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          h6 {
-            color: #1b1b1b;
-            font-family: Montserrat;
-            font-size: 12px;
-            line-height: 2em;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-          }
-          div {
-            transition: all .5s ease-in-out;
-            transform: translateX(26px);
-            span:first-child {
-              opacity: 1;
-            }
-            span:last-child {
-              transition: all .2s ease-in-out;
-              opacity: 0;
-              &:hover {
-                color: $base;
-                cursor: pointer;
-              }
-            }
-            span {
-              transition: all .3s ease-in-out;
-              // text-transform: lowercase;
-              font-size: 12px;
-              font-weight: 400;
-              color: #afafaf;
-            }
-          }
-        }
-      }
-      .category-item:hover {
-        .category-desc {
-          div {
-            transform: translateX(-15px);
-            span:first-child {
-              opacity: 0!important;
+    @include productItem;
 
-            }
-            span:last-child {
-              opacity: 1!important;
-            }
-          }
-        }
-      }
+      // .category-item {
+      //   width: 100%;
+      //   .img-container {
+      //     width: 100%;
+      //     overflow: hidden;
+      //     margin-bottom: 15px;
+      //     &:hover {
+      //       cursor: pointer;
+      //       img {
+      //         transform: scale(1.2) !important;
+      //       }
+      //     }
+      //     img {
+      //       transform: scale(1);
+      //       transition: all 0.3s ease-in-out;
+      //       width: 100%;
+      //       height: auto;
+      //     }
+      //   }
+      //   .category-desc {
+      //     display: flex;
+      //     flex-direction: column;
+      //     align-items: center;
+      //     justify-content: center;
+      //     h6 {
+      //       color: #1b1b1b;
+      //       font-family: Montserrat;
+      //       font-size: 12px;
+      //       line-height: 2em;
+      //       font-weight: 500;
+      //       letter-spacing: 0.1em;
+      //       text-transform: uppercase;
+      //     }
+      //     div {
+      //       transition: all .5s ease-in-out;
+      //       transform: translateX(26px);
+      //       span:first-child {
+      //         opacity: 1;
+      //       }
+      //       span:last-child {
+      //         transition: all .2s ease-in-out;
+      //         opacity: 0;
+      //         &:hover {
+      //           color: $base;
+      //           cursor: pointer;
+      //         }
+      //       }
+      //       span {
+      //         transition: all .3s ease-in-out;
+      //         // text-transform: lowercase;
+      //         font-size: 12px;
+      //         font-weight: 400;
+      //         color: #afafaf;
+      //       }
+      //     }
+      //   }
+      // }
+      // .category-item:hover {
+      //   .category-desc {
+      //     div {
+      //       transform: translateX(-15px);
+      //       span:first-child {
+      //         opacity: 0!important;
+
+      //       }
+      //       span:last-child {
+      //         opacity: 1!important;
+      //       }
+      //     }
+      //   }
+      // }
       .owl-carousel {
         position: relative;
         margin-top: 20px;

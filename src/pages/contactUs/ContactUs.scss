@@ -1,0 +1,80 @@
+@import "../../style/color.scss";
+@import "../../style/fonts.scss";
+@import "../../style/mixins.scss";
+
+$container-padding: 0 100px;
+
+.contact-us-wrapper {
+  background-image: url("../../assets//img/page-background.jpg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .page-container {
+    background-color: white;
+
+    width: 70vw;
+    & > .ant-col {
+      padding: $container-padding;
+      max-width: 100%;
+    }
+  }
+  .page-header {
+    @include pageHeader;
+    background-image: url("https://prositeweb.ca/wp-content/uploads/2021/07/mapapi-1024x735-1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    &::before {
+      display: none;
+    }
+    &::after {
+      display: none;
+    }
+  }
+  .form-container {
+    margin-top: 50px;
+
+    padding: 0 50px!important;
+
+    .contact-welcome-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      // background-color: $gray-bg;
+      height: 100%;
+      padding: 20px;
+      .avatar-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      h1 {
+        @include h3;
+        text-align: center;
+        span {
+          color: $base;
+        }
+        // color: #4b4747;
+        // font-family: Lora, serif;
+        // font-style: italic;
+        // font-size: 24px;
+        // line-height: 1.5em;
+      }
+      &>p {
+        @include p;
+        text-align: center;
+
+      }
+    }
+    .contact-form-wrapper {
+      h1 {
+        @include h1;
+      }
+      p {
+        @include p;
+      }
+    }
+  }
+}

@@ -6,11 +6,17 @@ import {
     AboutUs,
     Faq
   } from "../pages";
+import ContactUs from "../pages/contactUs/ContactUs";
   
   export const PUBLIC_ROUTES = [
     {
       path: "/about-us",
       component: AboutUs,
+      layout: "",
+    },
+    {
+      path: "/contact",
+      component: ContactUs,
       layout: "",
     },
     {

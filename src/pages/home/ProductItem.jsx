@@ -4,7 +4,7 @@ import { Link, useLocation, useHistory } from "react-router-dom";
 
 import "./ProductItem.scss"
 
-function ProductItem({id, imgSrc}) {
+function ProductItem({id, imgSrc, xsSize, smSize, mdSize, lgSize}) {
     const location = useLocation();
     let history = useHistory();
   
@@ -13,7 +13,7 @@ function ProductItem({id, imgSrc}) {
     };
 
   return (
-    <Col className="category-item item" >
+    <Col xs={xsSize} sm={smSize} md={mdSize} lgSize={lgSize} className="category-item item" >
       <div className="img-container" onClick={() => toProduct(id)}>
         <img src={imgSrc} alt="sasas" />
       </div>

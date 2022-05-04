@@ -5,6 +5,7 @@ import useTranslation from "../../components/translation/useTranslation";
 import Navbar from '../../components/navbar/Navbar'
 import "./ProductList.scss"
 import Footer from '../footer/Footer';
+import ProductItem from '../home/ProductItem';
 
 const imgs = [
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
@@ -90,24 +91,25 @@ function ProductList() {
                     </Select>
                   </Col>
                   {imgs.map((category, ind) => {
-                    return (
-                      <Col
-                        xs={24}
-                        sm={8}
-                        md={8}
-                        key={ind}
-                        className="product-item item"
+                    return <ProductItem  xsSize={24} smSize={8} mdSize={8} key={ind} id={ind} imgSrc={category} />;
+                    // return (
+                    //   <Col
+                    //     xs={24}
+                    //     sm={8}
+                    //     md={8}
+                    //     key={ind}
+                    //     className="product-item item"
 
-                      >
-                        <div className="img-container" onClick={() => handleProductClick(ind)}>
-                          <img src={category} alt="sasas" />
-                        </div>
-                        <div className="product-desc">
-                          <h6>WINTER</h6>
-                          <span>{ind}00$</span>
-                        </div>
-                      </Col>
-                    );
+                    //   >
+                    //     <div className="img-container" onClick={() => handleProductClick(ind)}>
+                    //       <img src={category} alt="sasas" />
+                    //     </div>
+                    //     <div className="product-desc">
+                    //       <h6>WINTER</h6>
+                    //       <span>{ind}00$</span>
+                    //     </div>
+                    //   </Col>
+                    // );
                   })}
                   <Col xs={24} className={"pagination-wrapper"}>
                     <Pagination size="small" total={50} />
