@@ -22,6 +22,7 @@ function App() {
             {PUBLIC_ROUTES.map((route, index) => {
               return (
                 <Route
+                  // exact
                   path={route.path + route.layout}
                   component={route.component}
                   key={route.path}

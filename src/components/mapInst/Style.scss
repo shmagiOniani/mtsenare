@@ -1,0 +1,17 @@
+
+
+.leaflet-container {
+  height: 700px;
+}
+
+.avatar {
+  margin-left: -35px!important;
+  /* margin-left: -50px;
+  margin-top: -130px; */
+  border-radius: 50%;
+  position: relative;
+  padding-bottom: 30px !important;
+  background-color: white;
+  z-index: 230;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 50% 100%, 0% 50%);
+}

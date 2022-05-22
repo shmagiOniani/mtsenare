@@ -30,10 +30,15 @@ function Navbar() {
       multy: false,
     },
     {
-      name: "Shop",
+      name: "Product List",
       link: "/product-list",
       multy: true,
       options: shopDropdown,
+    },
+    {
+      name: "მაღაზიები",
+      link: "/shop-list",
+      multy: false,
     },
     {
       name: "About Us",
@@ -43,11 +48,6 @@ function Navbar() {
     {
       name: "Contact",
       link: "/contact",
-      multy: false,
-    },
-    {
-      name: "FAQ",
-      link: "/faq",
       multy: false,
     },
   ];

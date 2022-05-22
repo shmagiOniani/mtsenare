@@ -92,24 +92,6 @@ function ProductList() {
                   </Col>
                   {imgs.map((category, ind) => {
                     return <ProductItem  xsSize={24} smSize={8} mdSize={8} key={ind} id={ind} imgSrc={category} />;
-                    // return (
-                    //   <Col
-                    //     xs={24}
-                    //     sm={8}
-                    //     md={8}
-                    //     key={ind}
-                    //     className="product-item item"
-
-                    //   >
-                    //     <div className="img-container" onClick={() => handleProductClick(ind)}>
-                    //       <img src={category} alt="sasas" />
-                    //     </div>
-                    //     <div className="product-desc">
-                    //       <h6>WINTER</h6>
-                    //       <span>{ind}00$</span>
-                    //     </div>
-                    //   </Col>
-                    // );
                   })}
                   <Col xs={24} className={"pagination-wrapper"}>
                     <Pagination size="small" total={50} />

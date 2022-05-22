@@ -4,7 +4,9 @@ import {
     ProductList,
     AddProduct,
     AboutUs,
-    Faq
+    Faq,
+    ShopList,
+    Shop
   } from "../pages";
 import ContactUs from "../pages/contactUs/ContactUs";
   
@@ -23,6 +25,16 @@ import ContactUs from "../pages/contactUs/ContactUs";
       path: "/home",
       component: Home,
       layout: "",
+    },
+    {
+      path: "/shop-list",
+      component: ShopList,
+      layout: "",
+    },
+    {
+      path: "/shop",
+      component: Shop,
+      layout: "/:id",
     },
     {
       path: "/faq",

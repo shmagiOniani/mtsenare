@@ -1,3 +1,5 @@
+@import "./color.scss";
+
 @mixin filledButton {
   font-weight: 500;
   padding-top: 0;
@@ -30,5 +32,21 @@
   cursor: pointer;
   &:hover {
     background-color: rgba(35, 35, 35, 1);
+  }
+}
+
+@mixin outlined {
+
+  &:hover {
+    color: $base;
+    border-color: $base;
+  }
+  &:active {
+    color: $base;
+    border-color: $base;
+  }
+  &:focus {
+    color: $base;
+    border-color: $base;
   }
 }
