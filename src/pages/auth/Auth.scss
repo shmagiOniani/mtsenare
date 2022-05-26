@@ -41,17 +41,31 @@ $serif: 'Lora', serif;
   height: 500px;
   border-radius: 5px;
   box-shadow: 2px 0 10px rgba(0,0,0,.1);
-  transition: all 1s ease-in-out;
+  transition: all 1s ease;
   z-index: 2;
+  padding: 70px 0;
 }
 .swipe-right {
   left: 47%!important;
-
+}
+.signin {
+  opacity: 1;
+  transition: all 1s  ease-in-out;
+}
+.signin {
+  opacity: 1;
+  transition: all 1s  ease-in-out;
 }
 
 .nodisplay {
-  display:none;
-  transition: all .5s ease;
+  opacity: 0;
+  // display:none;
+  position: absolute;
+  z-index: -90;
+  top: 70px;
+  left: 19%;
+  transition: all 1s ease;
+
 }
 
 .leftbox, .rightbox {
@@ -135,9 +149,10 @@ button {
   outline: none;
   display: block;
   &:hover {
+    cursor: pointer;
     background: $pale;
     color: $white;
-    transition: background-color 1s ease-out;
+    transition: background-color .3s ease-out;
   }
 }
 
