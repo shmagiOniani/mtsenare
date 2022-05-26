@@ -4,6 +4,8 @@ import { Col, Row, Select, Form, Slider, Pagination } from 'antd'
 import useTranslation from "../../components/translation/useTranslation";
 import Navbar from '../../components/navbar/Navbar'
 import ProductItem from '../home/ProductItem';
+import avatar from "../../assets/img/avatar.png";
+
 import Footer from '../footer/Footer';
 import "./Shop.scss"
 
@@ -48,7 +50,7 @@ function Shop() {
         <Col xs={24} className='shop-wrapper'>
           <Row justify={"center"} align="middle" className="shop-header">
             <Col>
-              <div className='img-wrapper'><img src='https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580' /></div>
+              <div className='img-wrapper'><img src={avatar} /></div>
               <div className='shop-name'> მაღაზიის დასახელება</div>
             </Col>
           </Row>

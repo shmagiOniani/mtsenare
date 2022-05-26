@@ -5,114 +5,98 @@ import { GlobalOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import Navbar from '../../components/navbar/Navbar'
 import MapInst from '../../components/mapInst/MapInst'
 import Footer from '../footer/Footer';
+import avatar from "../../assets/img/avatar.png";
+
 import "./ShopList.scss"
 
 const shops = [
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },
   {
-    avatar:
-      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+    avatar: avatar,
     name: "some name",
     description: "Lorem ipsum dolor sit amet "
   },

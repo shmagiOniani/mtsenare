@@ -3,11 +3,12 @@ import React, { useState, useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 import { Map as LeafletMap, Popup, TileLayer, Marker } from "react-leaflet";
 import L from "leaflet";
+import avatar from "../../assets/img/avatar.png";
+
 import "./Style.scss";
 
 var myIcon = L.icon({
-  iconUrl:
-    "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580",
+  iconUrl: avatar,
   iconSize: [70, 94],
   iconAnchor: [22, 94],
   popupAnchor: [-3, -76],
