@@ -1,9 +1,19 @@
 @import "./style/color.scss";
+@import "./style/fonts.scss";
+
+@font-face {
+  font-family: "dejavu";
+  src: url("./assets//fonts/BPG\ 2017\ DejaVuSans-ExtraLight.ttf");
+}
+@font-face {
+  font-family: "mrgvlovani";
+  src: url("./assets/fonts/bpg_mrgvlovani_caps_2010.ttf");
+}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "dejavu";
 }
 .app {
   overflow: hidden;
@@ -26,4 +36,23 @@ body {
     color: white;
     background: $base;
   }
+}
+
+h1 {
+  @include h1;
+}
+h2 {
+  @include h2;
+}
+h3 {
+  @include h3;
+}
+h4 {
+  @include h4;
+}
+h5 {
+  @include h5;
+}
+p {
+  @include p;
 }

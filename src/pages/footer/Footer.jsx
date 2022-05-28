@@ -1,5 +1,6 @@
 import { Row, Col } from 'antd'
 import React from 'react'
+import { Link } from 'react-router-dom';
 import payment from "../../assets/img/footer-bottom-1.png";
 import "./Footer.scss"
 
@@ -11,37 +12,37 @@ function Footer() {
         <Col xs={12} sm={6}>
           <ul className="footer-col">
             <li className="col-title"><h6>CUSTOMER SERVICE</h6></li>
-            <li className="col-item"><a>Help & Contact Us</a></li>
-            <li className="col-item"><a>Returns & Refunds</a></li>
-            <li className="col-item"><a>Online Stores</a></li>
-            <li className="col-item"><a>Terms & Conditions</a></li>
+            <li className="col-item"><Link to="/home">Help & Contact Us</Link></li>
+            <li className="col-item"><Link to="/home">Returns & Refunds</Link></li>
+            <li className="col-item"><Link to="/home">Online Stores</Link></li>
+            <li className="col-item"><Link to="/home">Terms & Conditions</Link></li>
           </ul>
         </Col>
         <Col xs={12} sm={6}>
           <ul className="footer-col">
             <li className="col-title"><h6>CUSTOMER SERVICE</h6></li>
-            <li className="col-item"><a>Help & Contact Us</a></li>
-            <li className="col-item"><a>Returns & Refunds</a></li>
-            <li className="col-item"><a>Online Stores</a></li>
-            <li className="col-item"><a>Terms & Conditions</a></li>
+            <li className="col-item"><Link to="/home">Help & Contact Us</Link></li>
+            <li className="col-item"><Link to="/home">Returns & Refunds</Link></li>
+            <li className="col-item"><Link to="/home">Online Stores</Link></li>
+            <li className="col-item"><Link to="/home">Terms & Conditions</Link></li>
           </ul>
         </Col>
         <Col xs={12} sm={6}>
           <ul className="footer-col">
             <li className="col-title"><h6>CUSTOMER SERVICE</h6></li>
-            <li className="col-item"><a>Help & Contact Us</a></li>
-            <li className="col-item"><a>Returns & Refunds</a></li>
-            <li className="col-item"><a>Online Stores</a></li>
-            <li className="col-item"><a>Terms & Conditions</a></li>
+            <li className="col-item"><Link to="/home">Help & Contact Us</Link></li>
+            <li className="col-item"><Link to="/home">Returns & Refunds</Link></li>
+            <li className="col-item"><Link to="/home">Online Stores</Link></li>
+            <li className="col-item"><Link to="/home">Terms & Conditions</Link></li>
           </ul>
         </Col>
         <Col xs={12} sm={6}>
           <ul className="footer-col">
             <li className="col-title"><h6>CUSTOMER SERVICE</h6></li>
-            <li className="col-item"><a>Help & Contact Us</a></li>
-            <li className="col-item"><a>Returns & Refunds</a></li>
-            <li className="col-item"><a>Online Stores</a></li>
-            <li className="col-item"><a>Terms & Conditions</a></li>
+            <li className="col-item"><Link to="/home">Help & Contact Us</Link></li>
+            <li className="col-item"><Link to="/home">Returns & Refunds</Link></li>
+            <li className="col-item"><Link to="/home">Online Stores</Link></li>
+            <li className="col-item"><Link to="/home">Terms & Conditions</Link></li>
           </ul>
         </Col>
 
@@ -59,8 +60,8 @@ function Footer() {
               {/* Payment Methods */}
             </Col>
             <Col sm={8}>
-              <a href="#">INSTAGRAM</a>
-              <a href="#">FACEBOOK</a>
+              <Link to="/home">INSTAGRAM</Link>
+              <Link to="/home">FACEBOOK</Link>
             </Col>
           </Row>
         </Col>

@@ -126,10 +126,13 @@ function ShopList() {
         </Col>
         <Col xs={24}>
           <Row gutter={[30, 30]} className='map-section'>
-            <Col xs={24}>
+            <Col xs={24} >
               <div className="list-style">
+                <div className="buttons">
+
                 <Button onClick={() => setListStyle("map")} icon={<GlobalOutlined />} >რუკა</Button>
                 <Button onClick={() => setListStyle("list")} icon={<UnorderedListOutlined />}>სია</Button>
+                </div>
                 <div className="input-wrapper">
                 <Select
                   placeholder={"მაღაზიის ტიპი"}
@@ -159,7 +162,7 @@ function ShopList() {
                         <Row gutter={[10, 10]} justify={"start"} align={"middle"}>
                           <Col xs="4">
                             <div className="img-container">
-                              <img src={item.avatar} />
+                              <img src={item.avatar} alt="bla" />
                             </div>
                           </Col>
                           <Col xs="20" className='text-wrapper'>

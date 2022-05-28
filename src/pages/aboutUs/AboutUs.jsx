@@ -1,7 +1,5 @@
-import React, { createRef, useState } from 'react'
-import { useHistory, Link, useLocation } from 'react-router-dom'
-import { Col, Row, Select, Carousel, Slider, Pagination } from 'antd'
-import useTranslation from "../../components/translation/useTranslation";
+import React from 'react'
+import { Col, Row, Carousel } from 'antd'
 import Navbar from '../../components/navbar/Navbar'
 import aboutImg from "../../assets/img/home-about.jpg";
 import avatar from "../../assets/img/avatar.png";
@@ -18,14 +16,6 @@ const imgs = [
 ];
 
 function AboutUs() {
-  const { trans } = useTranslation();
-  const { Option } = Select;
-
-  let history = useHistory();
-  const location = useLocation();
-
-  // history.push('/home');
-  // location.pathname
 
   const onChange = (a, b, c) => {
     console.log(a, b, c);
@@ -50,7 +40,7 @@ function AboutUs() {
             </Col>
             <Col xs={24} sm={12}>
               <div className="img-container">
-                <img src={aboutImg} />
+                <img src={aboutImg} alt={"bla"}/>
               </div>
             </Col>
           </Row>

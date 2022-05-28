@@ -1,7 +1,6 @@
-import React, { createRef, useState, useEffect } from 'react'
-import { useHistory, Link, useLocation } from 'react-router-dom'
-import { Col, Row, Select, Form, Slider, Pagination } from 'antd'
-import useTranslation from "../../components/translation/useTranslation";
+import React, {  useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { Col, Row } from 'antd'
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../footer/Footer';
 import "./Faq.scss"
@@ -9,14 +8,6 @@ import "./Faq.scss"
 const category = ["Cactus", "Exotic", "Greens", "Popular", "Various", "Winter"]
 
 function Faq() {
-  const { trans } = useTranslation();
-  const { Option } = Select;
-
-  let history = useHistory();
-  const location = useLocation();
-
-  // history.push('/home');
-  // location.pathname
 
   useEffect(() => {
     console.log("here");

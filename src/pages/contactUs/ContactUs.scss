@@ -63,18 +63,13 @@ $container-padding: 0 100px;
         // line-height: 1.5em;
       }
       &>p {
-        @include p;
         text-align: center;
 
       }
     }
     .contact-form-wrapper {
-      h1 {
-        @include h1;
-      }
-      p {
-        @include p;
-      }
+ 
+   
     }
   }
 }

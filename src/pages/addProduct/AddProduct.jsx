@@ -1,17 +1,14 @@
-import React, { createRef, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { useHistory, Link, useLocation } from 'react-router-dom';
 import { Editor } from '@tinymce/tinymce-react';
-import { Col, Row, Select, Form, Upload, Tabs, InputNumber, Button, Input } from 'antd';
-import { CaretLeftOutlined, UploadOutlined } from "@ant-design/icons";
+import { Col, Row,  Form, Upload, Tabs, InputNumber, Input } from 'antd';
+import { UploadOutlined } from "@ant-design/icons";
 import ImgCrop from 'antd-img-crop';
-import useTranslation from "../../components/translation/useTranslation";
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../footer/Footer';
 import "./AddProduct.scss";
 import TextArea from 'antd/lib/input/TextArea';
-import API from '../../utils/API';
 
 const imgs = [
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
@@ -24,8 +21,6 @@ const imgs = [
 
 
 function AddProduct() {
-  const { trans } = useTranslation();
-  const { Option } = Select;
   const { TabPane } = Tabs;
 
 
@@ -69,7 +64,7 @@ function AddProduct() {
     }
   };
   return (
-    <div className='page-wrapper'>
+    <div className='product-page-wrapper add-product-page'>
       <div className="submit-section">
         <UploadOutlined />
       </div>
@@ -80,8 +75,7 @@ function AddProduct() {
           <Navbar />
         </Col>
         <Col xs={24} className={"page-header"}>
-          <h1>Add Product</h1>
-          <p>Where flowers are our inspiration</p>
+          <h2>პროდუქტის დამატება</h2>
         </Col>
         <Col xs={24}>
           <Row justify={"space-between"}>
@@ -120,25 +114,25 @@ function AddProduct() {
             </Col>
             <Col xs={24} sm={12}>
               <Form className="product-details">
-                <h1>Product Name</h1>
+                {/* <h1>დასახელება</h1> */}
                 <div className="product-name">
-                  <Form.Item name={"name"}>
-                    <Input placeholder='Name' />
+                  <Form.Item name={"name"} >
+                    <Input placeholder='დასახელება' />
                   </Form.Item>
                 </div>
                 <div className="price">
-                  <span>Price</span>
+                  {/* <span>ფასი</span> */}
                   <Form.Item name={"price"}>
-                    <Input placeholder='Price' />
+                    <Input placeholder='ფასი' />
                   </Form.Item>
                 </div>
-                <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
-                <Form.Item name={"description"}>
-                  <TextArea placeholder='Description' rows={6} />
+
+                <Form.Item className='product-description' name={"description"}>
+                  <TextArea placeholder='აღწერეთ პროდუქტის შემადგენლობა და სხვა დეტალები!' rows={6} />
                 </Form.Item>
-                <div className="add-product-cart">
+                <div className="total-amount">
                   <Form.Item name={"total"}>
-                    <InputNumber placeholder='Total amount' />
+                    <InputNumber placeholder='მაქს' />
                   </Form.Item>
                 </div>
 
@@ -149,7 +143,7 @@ function AddProduct() {
         <Col className="details-wrapper" xs={24}>
           <div className="details-container">
             <Tabs defaultActiveKey="1" style={{ marginBottom: 32 }}>
-              <TabPane tab="DESCRIPTION" key="1">
+              <TabPane tab="აღწერა" key="1">
                 <div className="desc-tab-container">
                   <Editor
                     apiKey='3jj25gmpb6zfipiawbqt3h8msc7mas3ivlstqz84e53f6s0v'
@@ -172,7 +166,7 @@ function AddProduct() {
                   />
                 </div>
               </TabPane>
-              <TabPane tab="ADDITIONAL INFORMATION" key="2">
+              <TabPane tab="დამატებითი ინფორმაცია" key="2">
                 <div className="info-tab-container">
                   <Editor
                     apiKey='3jj25gmpb6zfipiawbqt3h8msc7mas3ivlstqz84e53f6s0v'

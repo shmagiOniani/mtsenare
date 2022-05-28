@@ -1,15 +1,11 @@
-import React, { createRef, useState } from 'react';
+import React, {  useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import OwlCarousel from "react-owl-carousel";
-
-import { useHistory, Link, useLocation } from 'react-router-dom';
-import { Col, Row, Select, Form, Slider, Tabs, InputNumber, Button } from 'antd';
+import { Col, Row, Tabs, InputNumber, Button } from 'antd';
 import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
-import useTranslation from "../../components/translation/useTranslation";
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../footer/Footer';
-import "./Product.scss";
 import ProductItem from '../home/ProductItem';
 
 const imgs = [
@@ -29,19 +25,8 @@ const related = [
 ];
 
 function Product() {
-  const { trans } = useTranslation();
-  const { Option } = Select;
   const { TabPane } = Tabs;
-
   const [quantity, setQuantity] = useState(1)
-
-
-  let history = useHistory();
-  const location = useLocation();
-
-  const handleProductClick = (id) => {
-    history.push(`/product/${id}`);
-  }
 
   const handlePlus = () => {
     setQuantity((prev) => prev + 1)
@@ -61,21 +46,17 @@ function Product() {
     }
   }
 
-  // history.push('/home');
-  // location.pathname
-
-
   return (
-    <div className='page-wrapper'>
+    <div className='product-page-wrapper'>
       <Row className="page-container">
 
         <Col xs={24}>
           <Navbar />
         </Col>
-        <Col xs={24} className={"page-header"}>
+        {/* <Col xs={24} className={"page-header"}>
           <h1>Product Description</h1>
           <p>Where flowers are our inspiration</p>
-        </Col>
+        </Col> */}
         <Col xs={24}>
           <Row justify={"space-between"}>
             <Col xs={24} sm={12}>
@@ -102,7 +83,7 @@ function Product() {
               <div className="product-details">
                 <h1>Orange Amaryllis</h1>
                 <div className="price">$259</div>
-                <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
+                <p className='product-description'>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
                 <div className="add-product-cart">
 
 

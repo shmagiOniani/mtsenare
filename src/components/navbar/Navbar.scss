@@ -136,8 +136,12 @@
         height: fit-content !important;
       }
     }
+    a {
+      color: inherit;
+    }
     .ant-badge {
       margin-right: 10px;
+      font-family: "mrgvlovani";
       font-size: 20px;
     }
     .car-count {
@@ -211,7 +215,6 @@
           // display: none;
           position: relative;
           width: 100%;
-          margin: 0 0 13px;
           .total {
             display: flex;
             justify-content: space-between;
@@ -239,14 +242,14 @@
             align-items: center;
             width: 100%;
             div {
-              @include filledButton;
-              padding: 0 18px;
-              height: 40px;
-              font-size: 9px;
-              font-weight: 500;
+              @include outlined;
+              // padding: 0 18px;
+              // height: 40px;
+              // font-size: 9px;
+              // font-weight: 500;
             }
             div:first-child {
-              background-color: $base!important;
+              // border: 1px solid $base!important;
             }
             div:last-child {
             }
@@ -256,4 +259,200 @@
       }
     }
   }
+}
+
+
+
+
+
+
+#menu-toggle {
+	&:checked {
+		+ {
+			#trigger {
+				+ {
+					#burger {
+						top: 35px;
+						transform: rotate(180deg);
+						transition: transform .2s ease;
+						&:before {
+							width: 20px;
+							top: -2px;
+							left: 18px;
+							transform: rotate(45deg) translateX(-5px);
+							transition: transform .2s ease;
+						}
+						&:after {
+							width: 20px;
+							top: 2px;
+							left: 18px;
+							transform: rotate(-45deg) translateX(-5px);
+							transition: transform .2s ease;
+						}
+						+ {
+							#menu {
+								animation: checked-anim 1s ease both;
+							}
+						}
+					}
+				}
+				~ {
+					#menu {
+						>li {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+#trigger {
+	position: fixed;
+	top: 25px;
+	left: 25px;
+	background: $base-dark;
+	width: 30px;
+	height: 5px;
+	transition: .2s ease;
+	cursor: pointer;
+	z-index: 99999;
+	height: 25px;
+	background: none;
+}
+#burger {
+	position: fixed;
+  z-index: 999;
+	top: 25px;
+	left: 25px;
+	background: $base-dark;
+	width: 30px;
+	height: 5px;
+	transition: .2s ease;
+	cursor: pointer;
+	&:before {
+		position: absolute;
+		top: 25px;
+		left: 25px;
+		background: $base-dark;
+		width: 30px;
+		height: 5px;
+		transition: .2s ease;
+		cursor: pointer;
+		z-index: 1;
+		content: " ";
+		top: 10px;
+		left: 0;
+	}
+	&:after {
+		position: absolute;
+		top: 25px;
+		left: 25px;
+		background: $base-dark;
+		width: 30px;
+		height: 5px;
+		transition: .2s ease;
+		cursor: pointer;
+		z-index: 1;
+		content: " ";
+		top: 20px;
+		left: 0;
+	}
+}
+#menu {
+	position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+	margin: 0;
+	padding: 0;
+	width: 110px;
+	height: 110px;
+	background-color: #fff;
+	border-bottom-right-radius: 100%;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+	animation: not-checked-anim .2s both;
+	transition: .2s;
+  li {
+	margin: 75px 0 -55px 0;
+	color: $base-dark;
+	font-weight: 700;
+	line-height: 1.8;
+	text-decoration: none;
+	text-transform: none;
+	list-style: none;
+	outline: 0;
+	display: none;
+	width: 230px;
+	text-indent: 56px;
+  a {
+    margin: 75px 0 -55px 0;
+    color: $base-dark;
+    font-weight: 700;
+    line-height: 1.8;
+    text-decoration: none;
+    text-transform: none;
+    list-style: none;
+    outline: 0;
+    display: none;
+    display: block;
+    &:focus {
+      display: block;
+      color: #333;
+      background-color: #eee;
+      transition: all .5s;
+      }
+    }
+  }
+}
+
+
+@media screen and(min-width: 1200px) {
+  #menu-toggle {
+    display: none!important;
+  }
+  #trigger {
+    display: none!important;
+  }
+  #burger {
+    display: none!important;
+  }
+  #menu {
+    display: none!important;
+  }
+}
+
+@media screen and(max-width: 1200px) {
+  .navbar-wrapper {
+    display: none!important;
+  }
+
+}
+
+
+[type="checkbox"] {
+	&:not(:checked) {
+		display: none;
+	}
+	&:checked {
+		display: none;
+	}
+}
+
+@keyframes checked-anim {
+	50% {
+		width: 3000px;
+		height: 3000px;
+	}
+	100% {
+		width: 100%;
+		height: 100%;
+		border-radius: 0;
+	}
+}
+@keyframes not-checked-anim {
+	0% {
+		width: 3000px;
+		height: 3000px;
+	}
 }

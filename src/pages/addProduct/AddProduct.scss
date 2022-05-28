@@ -5,7 +5,7 @@
 
 $container-padding: 0 100px;
 
-.page-wrapper {
+.product-page-wrapper {
   position: relative;
   display: flex;
   justify-content: center;
@@ -48,6 +48,7 @@ $container-padding: 0 100px;
       // flex-direction: row-reverse;
       // justify-content: center;
       .carousel-slider {
+        overflow: inherit;
         .axis-horizontal {
           max-width: 450px;
           .slider {
@@ -61,25 +62,26 @@ $container-padding: 0 100px;
         .control-arrow {
           height: 50px;
           width: 50px;
-          border: 1px solid #cfcfcf;
+          border: 1px solid #cfcfcf00;
           border-radius: 50%;
           top: 50%;
+          &:hover {
+            border: 1px solid gray;
+            background-color: transparent;
+          }
         }
         .control-prev {
-          left: 20px;
-          background-color: #a5a5a5;
+          left: -3%;
           &::before {
             margin: 0 5px 3px;
-            border-right: 8px solid white;
+            border-right: 8px solid $base-dark;
           }
         }
         .control-next {
-          right: 20px;
-
-          background-color: #a5a5a5;
+          right: 3%;
           &::before {
             margin: 0 5px 3px;
-            border-left: 8px solid white;
+            border-left: 8px solid $base-dark;
           }
         }
       }
@@ -111,7 +113,6 @@ $container-padding: 0 100px;
     margin-top: 100px;
 
     h1 {
-      @include h1;
       margin-bottom: 0;
       line-height: 50px;
     }
@@ -123,12 +124,12 @@ $container-padding: 0 100px;
       color: #afafaf;
       font-family: Montserrat, sans-serif;
     }
-    p {
-      @include p;
+    .product-description {
       display: inline-block;
       width: 100%;
       vertical-align: middle;
       margin: 23px 0 32px;
+      min-height: 150px;
     }
     .price {
     }
@@ -136,6 +137,10 @@ $container-padding: 0 100px;
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      .ant-input-number {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
       .ant-input-number,
       .ant-input-number-focused {
         border-right: 1px solid #d9d9d9;
@@ -160,9 +165,11 @@ $container-padding: 0 100px;
         justify-content: center;
         align-items: center;
         height: 50px;
-        border-top: 1px solid #d9d9d9;
-        border-bottom: 1px solid #d9d9d9;
+        border: 1px solid #d9d9d9;
+        border-left: none;
         color: #999;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
         .up,
         .down {
           margin: 0 10px;
@@ -174,9 +181,7 @@ $container-padding: 0 100px;
         }
       }
       .add-button {
-        @include filledButton;
-        height: 50px;
-        padding: 13px 45px;
+        @include outlined;
       }
     }
   }
@@ -242,16 +247,13 @@ $container-padding: 0 100px;
         .desc-tab-container {
           padding: 73px 0px 80px;
           h2 {
-            @include h2;
             color: #2b2b2b;
             font-family: "Playfair Display",serif;
             font-weight: 400;
             display: block;
             margin: 0 0 19px;
           }
-          p {
-            @include p;
-          }
+   
         }
         .info-tab-container {
           padding: 73px 0px 80px;
@@ -266,7 +268,7 @@ $container-padding: 0 100px;
   }
   .related-product {
     h5 {
-      margin: 87px 0 24px;
+      margin: 87px 0 -70px;
       color: #1b1b1b;
       font-family: Montserrat;
       font-size: 12px;
@@ -320,5 +322,31 @@ $container-padding: 0 100px;
         }
       }
     }
+  }
+}
+
+.add-product-page {
+  .product-details {
+    input, textarea, .ant-input-number, .ant-input-number-focused {
+      padding: 0;
+      border: none;
+      box-shadow: none;
+
+      &:focus {
+        border: none;
+        box-shadow: none;
+      }
+      &:focus-visible {
+        border: none;
+      }
+    }
+    .product-name {
+      input {
+        font-size: 38px;
+      }
+    }
+    .price {}
+    .product-description {}
+    .total-amount {}
   }
 }

@@ -1,11 +1,10 @@
 import React from "react";
 import { Col } from "antd";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 
 import "./ProductItem.scss"
 
 function ProductItem({id, imgSrc, xsSize, smSize, mdSize, lgSize}) {
-    const location = useLocation();
     let history = useHistory();
   
     const toProduct = (id) => {
@@ -13,15 +12,15 @@ function ProductItem({id, imgSrc, xsSize, smSize, mdSize, lgSize}) {
     };
 
   return (
-    <Col xs={xsSize} sm={smSize} md={mdSize} lgSize={lgSize} className="category-item item" >
+    <Col xs={xsSize} sm={smSize} md={mdSize} lgsize={lgSize} className="category-item item" >
       <div className="img-container" onClick={() => toProduct(id)}>
         <img src={imgSrc} alt="sasas" />
       </div>
       <div className="category-desc">
-        <h6>Item</h6>
+        <h6>სახელი</h6>
         <div>
           <span>{id}00$</span>
-          <span>Add to cart</span>
+          <span>კალათაში</span>
         </div>
       </div>
     </Col>

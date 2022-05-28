@@ -7,7 +7,6 @@ import "./ContactUs.scss"
 import TextArea from 'antd/lib/input/TextArea';
 import avatar from "../../assets/img/avatar.png";
 
-const category = ["Cactus", "Exotic", "Greens", "Popular", "Various", "Winter"];
 
 
 function ContactUs() {
@@ -63,7 +62,7 @@ function ContactUs() {
                     <Input placeholder="Your Ful Name ..." />
                   </Form.Item>
                   <Form.Item name={"email"}>
-                    <Input placeholder="Email ..." />
+                    <Input placeholder={`${trans("email")}`} />
                   </Form.Item>
                   <Form.Item name={"phone"}>
                     <Input placeholder="Phone ..." />

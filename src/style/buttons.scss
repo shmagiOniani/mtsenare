@@ -1,44 +1,74 @@
 @import "./color.scss";
 
+// @mixin filledButton {
+//   font-weight: 500;
+//   padding-top: 0;
+//   padding-bottom: 0;
+//   height: 60px;
+//   line-height: 60px;
+//   background-color: rgba(0, 0, 0, 1);
+//   border-radius: 0px;
+//   position: relative;
+//   display: inline-block;
+//   vertical-align: middle;
+//   width: auto;
+//   outline: 0;
+//   font-size: 12px;
+//   font-family: Montserrat, sans-serif;
+//   line-height: 1.833em;
+//   letter-spacing: 0.1em;
+//   font-weight: 500;
+//   text-transform: uppercase;
+//   box-sizing: border-box;
+//   color: white;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   transition: color 0.3s ease, background-color 0.3s ease,
+//   border-color 0.3s ease;
+//   padding: 13px 42px;
+//   color: #fff;
+//   border: 1px solid transparent;
+//   cursor: pointer;
+//   &:hover {
+//     background-color: rgba(35, 35, 35, 1);
+//   }
+// }
+
 @mixin filledButton {
-  font-weight: 500;
-  padding-top: 0;
-  padding-bottom: 0;
-  height: 60px;
-  line-height: 60px;
-  background-color: rgba(0, 0, 0, 1);
-  border-radius: 0px;
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  width: auto;
-  outline: 0;
-  font-size: 12px;
-  font-family: Montserrat, sans-serif;
-  line-height: 1.833em;
-  letter-spacing: 0.1em;
-  font-weight: 500;
+  padding: 12px;
   text-transform: uppercase;
-  box-sizing: border-box;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: color 0.3s ease, background-color 0.3s ease,
-  border-color 0.3s ease;
-  padding: 13px 42px;
-  color: #fff;
-  border: 1px solid transparent;
-  cursor: pointer;
+  letter-spacing: 3px;
+  font-size: 11px;
+  border-radius: 10px;
+  margin: auto;
+  outline: none;
+  display: block;
   &:hover {
-    background-color: rgba(35, 35, 35, 1);
+    cursor: pointer;
+    background: $base;
+    color: white;
+    transition: background-color .3s ease-out;
+    border-color: transparent;
   }
 }
 
 @mixin outlined {
-
+  padding: 16px 20px;
+  height:auto;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
+  border-radius: 10px;
+  margin: auto;
+  outline: none;
+  display: block;
+  border: 1px solid #d9d9d9;
+  color: rgb(87, 87, 87);
+  transition: all .1s ease-in;
   &:hover {
-    color: $base;
+    color: white;
+    background-color: $base;
     border-color: $base;
   }
   &:active {
@@ -46,7 +76,7 @@
     border-color: $base;
   }
   &:focus {
-    color: $base;
+    // color: $base;
     border-color: $base;
   }
 }

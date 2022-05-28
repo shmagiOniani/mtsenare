@@ -1,7 +1,6 @@
-import React, { createRef, useState } from 'react'
-import { useHistory, Link } from 'react-router-dom'
-import { Col, Row, Select, Form, Slider, Pagination } from 'antd'
-import useTranslation from "../../components/translation/useTranslation";
+import React, {  useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Col, Row, Select, Slider, Pagination } from 'antd'
 import Navbar from '../../components/navbar/Navbar'
 import "./ProductList.scss"
 import Footer from '../footer/Footer';
@@ -19,23 +18,13 @@ const imgs = [
 const category = ["Cactus", "Exotic", "Greens", "Popular", "Various", "Winter"]
 
 function ProductList() {
-  const { trans } = useTranslation();
   const { Option } = Select;
-  const [form] = Form.useForm();
-  const formRef = createRef();
-
-  let history = useHistory();
-
   const [maxPrice, setMaxPrice] = useState(0)
   const [minPrice, setMinPrice] = useState(0)
 
   const onPriceChange = (val) => {
     setMaxPrice(val[0])
     setMinPrice(val[1])
-  }
-
-  const handleProductClick = (id) => {
-    history.push(`/product/${id}`);
   }
 
   return (
@@ -47,14 +36,14 @@ function ProductList() {
           </Col>
 
           <Col xs={24} className={"page-header"}>
-            <h1>Product List</h1>
+            <h2>პროდუქტის გვერდი</h2>
             <p>Where flowers are our inspiration</p>
           </Col>
           <Col xs={24}>
 
             <Row gutter={[20, 20]} className="list">
 
-              <Col className="product-list-sidebar" xs={5}>
+              <Col className="product-list-sidebar" sm={5}>
                 <div className="product-sidebar-wrapper">
                   <ul className="product-sidebar-category ">
                     <h6 className="category-header">CATEGORIES</h6>
@@ -77,10 +66,10 @@ function ProductList() {
                   </ul>
                 </div>
               </Col>
-              <Col xs={19}>
-                <Row gutter={[30, 30]} className="product-list">
+              <Col xs={24} sm={19}>
+                <Row gutter={[30, 30]} justify={'center'} align={'middle'} className="product-list">
                   <Col className='product-list-sort' xs={24}>
-                    <div>Showing 1–9 of 14 results</div>
+                    <div>ნაჩვენებია 1–9;  სულ: 14;</div>
                     <Select
                       placeholder={"Sort by popularity"}
                     // dropdownClassName="new-user-select"
@@ -91,7 +80,7 @@ function ProductList() {
                     </Select>
                   </Col>
                   {imgs.map((category, ind) => {
-                    return <ProductItem  xsSize={24} smSize={8} mdSize={8} key={ind} id={ind} imgSrc={category} />;
+                    return <ProductItem  xsSize={12} smSize={8} mdSize={8} key={ind} id={ind} imgSrc={category} />;
                   })}
                   <Col xs={24} className={"pagination-wrapper"}>
                     <Pagination size="small" total={50} />

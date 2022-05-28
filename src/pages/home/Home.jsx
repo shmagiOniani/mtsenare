@@ -1,8 +1,7 @@
 import React from "react";
 import { Col, Row, Carousel } from "antd";
 import OwlCarousel from "react-owl-carousel";
-import { Link, useLocation, useHistory } from "react-router-dom";
-import useTranslation from "../../components/translation/useTranslation";
+import {  useHistory } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
 import wappPaper from "../../assets/img/wall-paper.jpg";
 import avatar from "../../assets/img/avatar.png";
@@ -21,8 +20,6 @@ const imgs = [
 ];
 
 function Home() {
-  const { trans } = useTranslation();
-  const location = useLocation();
 
   let history = useHistory();
 

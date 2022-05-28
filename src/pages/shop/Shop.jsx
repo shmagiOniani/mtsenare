@@ -1,7 +1,5 @@
-import React, { createRef, useState } from 'react'
-import { useHistory, Link, useLocation } from 'react-router-dom'
-import { Col, Row, Select, Form, Slider, Pagination } from 'antd'
-import useTranslation from "../../components/translation/useTranslation";
+import React from 'react'
+import { Col, Row } from 'antd'
 import Navbar from '../../components/navbar/Navbar'
 import ProductItem from '../home/ProductItem';
 import avatar from "../../assets/img/avatar.png";
@@ -31,14 +29,6 @@ const imgs = [
 ];
 
 function Shop() {
-  const { trans } = useTranslation();
-  const { Option } = Select;
-
-  let history = useHistory();
-  const location = useLocation();
-
-  // history.push('/home');
-  // location.pathname
 
   return (
     <div className='page-wrapper'>
@@ -50,7 +40,7 @@ function Shop() {
         <Col xs={24} className='shop-wrapper'>
           <Row justify={"center"} align="middle" className="shop-header">
             <Col>
-              <div className='img-wrapper'><img src={avatar} /></div>
+              <div className='img-wrapper'><img src={avatar} alt="bla"/></div>
               <div className='shop-name'> მაღაზიის დასახელება</div>
             </Col>
           </Row>

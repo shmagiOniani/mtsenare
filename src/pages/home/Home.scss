@@ -48,26 +48,7 @@ $container-padding: 0 100px;
       align-items: center;
       flex-direction: column;
       h1 {
-        @include h1;
-        // font-family: "Playfair Display";
-        // color: rgb(0, 0, 0);
-        // text-decoration: none;
-        // white-space: normal;
         width: 498px;
-        // height: auto;
-        // min-height: 0px;
-        // min-width: 0px;
-        // max-height: none;
-        // max-width: none;
-        // text-align: center;
-        // line-height: 57px;
-        // letter-spacing: 0px;
-        // font-weight: 400;
-        // font-size: 42px;
-        // transform-origin: 50% 50%;
-        // opacity: 1;
-        // transform: translate(0px, 0px);
-        // visibility: visible;
       }
       a {
         font-family: Montserrat;
@@ -264,10 +245,10 @@ $container-padding: 0 100px;
           justify-content: flex-end;
           button {
             transition: all 0.2s ease-in-out;
-            color: gray;
+            color: #EAC7CC;
             &:hover {
               background-color: transparent;
-              color: rgb(0, 0, 0);
+              color: #eac7ccb6;
             }
             span {
               font-size: 41px;
@@ -287,11 +268,8 @@ $container-padding: 0 100px;
       }
       & > .ant-col {
         max-width: 640px;
-        h1 {
-          @include h1;
-        }
+      
         p {
-          @include p;
           line-height: 29px;
           margin-top: 27px;
         }
@@ -320,9 +298,7 @@ $container-padding: 0 100px;
     .ant-col-sm-24 {
       width: 100%;
     }
-    h2 {
-      @include h2;
-    }
+  
     .sub-input {
       width: 100%;
       display: flex;

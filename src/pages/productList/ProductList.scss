@@ -127,7 +127,7 @@ $container-padding: 0 100px;
     }
   }
   .product-list-sidebar {
-    padding: 61px  0;
+    padding: 61px 30px 0 0!important;
 
     .product-sidebar-wrapper {
       .product-sidebar-category {
@@ -143,6 +143,7 @@ $container-padding: 0 100px;
           text-transform: uppercase;
         }
         .range-input {
+          max-width: 130px;
           .ant-slider-handle {
             &:focus {
               box-shadow: none;
