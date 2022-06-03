@@ -37,10 +37,12 @@ $container-padding: 0 100px;
       }
     }
     .headline {
+      @include h3;
       position: absolute;
       top: 0%;
       left: 0;
-      width: 100%;
+      // width: 100%;
+      max-width: 50%;
       height: 100%;
       text-align: center;
       display: flex;

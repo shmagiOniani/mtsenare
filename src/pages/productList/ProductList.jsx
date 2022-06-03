@@ -1,6 +1,7 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Col, Row, Select, Slider, Pagination } from 'antd'
+import { Col, Row, Form,Input, Select, Slider, Pagination } from 'antd'
+import { SearchOutlined } from "@ant-design/icons";
 import Navbar from '../../components/navbar/Navbar'
 import "./ProductList.scss"
 import Footer from '../footer/Footer';
@@ -21,7 +22,11 @@ function ProductList() {
   const { Option } = Select;
   const [maxPrice, setMaxPrice] = useState(0)
   const [minPrice, setMinPrice] = useState(0)
-
+  const [form] = Form.useForm();
+  
+  const onSearch = (data) => {
+    console.log(data);
+  };
   const onPriceChange = (val) => {
     setMaxPrice(val[0])
     setMinPrice(val[1])
@@ -46,7 +51,7 @@ function ProductList() {
               <Col className="product-list-sidebar" sm={5}>
                 <div className="product-sidebar-wrapper">
                   <ul className="product-sidebar-category ">
-                    <h6 className="category-header">CATEGORIES</h6>
+                    <h6 className="category-header">კატეგორიები</h6>
                     {category.map((item, ind) => {
                       return (
                         <li key={ind}>
@@ -58,15 +63,33 @@ function ProductList() {
                     })}
                   </ul>
                   <ul className="product-sidebar-category ">
-                    <h6 className="category-header">CATEGORIES</h6>
+                    <h6 className="category-header">ფასის შუალედი</h6>
                     <li className='range-input' >       <Slider range onChange={onPriceChange} defaultValue={[150, 350]} max={350} min={150} handleStyle={{ backgroundColor: "black", border: "none" }} trackStyle={{ backgroundColor: "black" }} />   </li>
                     <li>
-                      Price: ${minPrice} - ${maxPrice}
+                      ფასი: ${minPrice} - ${maxPrice}
                     </li>
                   </ul>
                 </div>
               </Col>
               <Col xs={24} sm={19}>
+                <Row>
+                  <Col xs={24}>
+                    <Form
+                      layout={"horizontal"}
+                      form={form}
+                      initialValues={{
+                        layout: "horizontal",
+                      }}
+                      onFinish={onSearch}
+                    >
+                      <SearchOutlined />
+                      <Form.Item name={"search"}>
+                        <Input placeholder="ძებნა" />
+                      </Form.Item>
+
+                    </Form>
+                  </Col>
+                </Row>
                 <Row gutter={[30, 30]} justify={'center'} align={'middle'} className="product-list">
                   <Col className='product-list-sort' xs={24}>
                     <div>ნაჩვენებია 1–9;  სულ: 14;</div>
@@ -80,7 +103,7 @@ function ProductList() {
                     </Select>
                   </Col>
                   {imgs.map((category, ind) => {
-                    return <ProductItem  xsSize={12} smSize={8} mdSize={8} key={ind} id={ind} imgSrc={category} />;
+                    return <ProductItem xsSize={12} smSize={8} mdSize={8} key={ind} id={ind} imgSrc={category} />;
                   })}
                   <Col xs={24} className={"pagination-wrapper"}>
                     <Pagination size="small" total={50} />

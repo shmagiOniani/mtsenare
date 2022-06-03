@@ -72,7 +72,7 @@ function Home() {
               </div>
               <div className="headline">
                 <h1>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  იპოვნე შენი მცენარე.
                 </h1>
                 <a href="#">Start Shopping</a>
               </div>

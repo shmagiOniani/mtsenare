@@ -70,7 +70,7 @@ function Navbar() {
             <Col xs={5} >
               {location.pathname === "/home" ?
                 <div className="search-container">
-                  <Form
+                  {/* <Form
                     layout={"horizontal"}
                     form={form}
                     initialValues={{
@@ -83,12 +83,7 @@ function Navbar() {
                       <Input placeholder="Search" />
                     </Form.Item>
 
-                    {/* <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                  <Button type="primary" htmlType="submit">
-                    Submit
-                  </Button>
-                </Form.Item> */}
-                  </Form>
+                  </Form> */}
                 </div>
                 :
                 <div className="small-logo" onClick={toHome}>
@@ -117,7 +112,7 @@ function Navbar() {
                 <Col className={"cartside-search"}>
                   {location.pathname !== "/home" ?
                     <div className="search-container">
-                      <SearchOutlined onClick={() => setSearchOpen(!searchOpen)} />
+                      {/* <SearchOutlined onClick={() => setSearchOpen(!searchOpen)} /> */}
 
                       <Form
                         className={`search-form ${searchOpen ? "active-form" : ""}`}

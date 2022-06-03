@@ -6,6 +6,7 @@ import L from "leaflet";
 import avatar from "../../assets/img/avatar.png";
 
 import "./Style.scss";
+import { Link } from "react-router-dom";
 
 var myIcon = L.icon({
   iconUrl: avatar,
@@ -82,7 +83,7 @@ function MapInst() {
         ondrag={handleMarkerDrag}
         icon={myIcon}
       >
-        <Popup>popup</Popup>
+        <Popup className="pop-up">ეწვიეთ მაღაზიას <Link to={"/shop/2"}>სახელი</Link></Popup>
       </Marker>
       {/* {markers.map((position, i) => (
         <Marker
