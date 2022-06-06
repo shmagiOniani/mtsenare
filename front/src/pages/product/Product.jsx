@@ -81,7 +81,7 @@ function Product() {
             </Col>
             <Col xs={24} sm={12}>
               <div className="product-details">
-                <h1>Orange Amaryllis</h1>
+                <h1></h1>
                 <div className="price">$259</div>
                 <p className='product-description'>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
                 <div className="add-product-cart">
@@ -93,7 +93,7 @@ function Product() {
                     <div className="amount" onClick={() => console.log(quantity)}>{quantity}</div>
                     <div className="down" onClick={handlePlus}><CaretRightOutlined /></div>
                   </div>
-                  <Button className='add-button' htmlType='submit'>ADD TO CART</Button>
+                  <Button className='add-button' htmlType='submit'>კალათაში დამატება</Button>
 
                 </div>
 
@@ -104,19 +104,19 @@ function Product() {
         <Col className="details-wrapper" xs={24}>
           <div className="details-container">
             <Tabs defaultActiveKey="1" style={{ marginBottom: 32 }}>
-              <TabPane tab="DESCRIPTION" key="1">
+              <TabPane tab="აღწერა" key="1">
                 <div className="desc-tab-container">
                   <h2>The power of flowers</h2>
                   <p>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante</p>
                 </div>
               </TabPane>
-              <TabPane tab="ADDITIONAL INFORMATION" key="2">
+              <TabPane tab="დამატებითი მახასიათებლები" key="2">
                 <div className="info-tab-container">
                   <div className="key"></div>
                   <div className="value"></div>
                 </div>
               </TabPane>
-              <TabPane tab="REVIEWS (22)" key="3">
+              <TabPane tab="შეფასებები და კომენტარები (22)" key="3">
                 <div className="reviews-tab-container">
                   <h3>The power of flowers</h3>
                   <p>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante</p>

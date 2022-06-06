@@ -50,6 +50,12 @@ $container-padding: 0 100px;
     @include pageHeader;
    }
    .product-list {
-     @include productItem;
+    .category-item {
+      .category-item {
+        @include productItem;
+
+      }
+
+    }
    }
 }

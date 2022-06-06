@@ -24,7 +24,10 @@ $container-padding: 0 100px;
   .product-list {
     padding: 61px 0 40px 0;
     margin-bottom: 30px;
-    @include productItem;
+    .category-item {
+      @include productItem;
+
+    }
     .product-list-sort {
       display: flex;
       justify-content: space-between;

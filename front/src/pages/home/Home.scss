@@ -40,8 +40,8 @@ $container-padding: 0 100px;
       @include h3;
       position: absolute;
       top: 0%;
-      left: 0;
-      // width: 100%;
+      left: 50%;
+      transform: translateX(-50%);
       max-width: 50%;
       height: 100%;
       text-align: center;
@@ -325,39 +325,39 @@ $container-padding: 0 100px;
         border-color: rgba(232, 232, 232, 1);
       }
       div {
-        @include filledButton;
-        // font-weight: 500;
-        // padding-top: 0;
-        // padding-bottom: 0;
-        // height: 60px;
-        // line-height: 60px;
-        // background-color: rgba(0, 0, 0, 1);
-        // border-radius: 0px;
-        // position: relative;
-        // display: inline-block;
-        // vertical-align: middle;
-        // width: auto;
-        // outline: 0;
-        // font-size: 12px;
-        // font-family: Montserrat, sans-serif;
-        // line-height: 1.833em;
-        // letter-spacing: 0.1em;
-        // font-weight: 500;
-        // text-transform: uppercase;
-        // box-sizing: border-box;
-        // color: white;
-        // display: flex;
-        // justify-content: center;
-        // align-items: center;
-        // transition: color 0.3s ease, background-color 0.3s ease,
-        // border-color 0.3s ease;
-        // padding: 13px 42px;
-        // color: #fff;
-        // border: 1px solid transparent;
-        // cursor: pointer;
-        // &:hover {
-        //   background-color: rgba(35, 35, 35, 1);
-        // }
+        // @include filledButton;
+        font-weight: 500;
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 60px;
+        line-height: 60px;
+        background-color: rgba(0, 0, 0, 1);
+        border-radius: 0px;
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        width: auto;
+        outline: 0;
+        font-size: 12px;
+        font-family: Montserrat, sans-serif;
+        line-height: 1.833em;
+        letter-spacing: 0.1em;
+        font-weight: 500;
+        text-transform: uppercase;
+        box-sizing: border-box;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: color 0.3s ease, background-color 0.3s ease,
+        border-color 0.3s ease;
+        padding: 13px 42px;
+        color: #fff;
+        border: 1px solid transparent;
+        cursor: pointer;
+        &:hover {
+          background-color: rgba(35, 35, 35, 1);
+        }
       }
     }
   }

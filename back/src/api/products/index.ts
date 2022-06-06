@@ -7,9 +7,13 @@ import * as auth from '../../auth';
 const productRouter = Router();
 
 productRouter.get('/', productParser.parseGetByQuery, getByQuery);
-productRouter.post('/', auth.isAdmin, productParser.parseCreate, create);
-productRouter.put('/:id', auth.isAdmin, productParser.parseUpdate, update);
-productRouter.delete('/:id', auth.isAdmin, destroy);
+productRouter.post('/',  productParser.parseCreate, create);
+productRouter.put('/:id',  productParser.parseUpdate, update);
+productRouter.delete('/:id',  destroy);
+// productRouter.get('/', productParser.parseGetByQuery, getByQuery);
+// productRouter.post('/', auth.isAdmin, productParser.parseCreate, create);
+// productRouter.put('/:id', auth.isAdmin, productParser.parseUpdate, update);
+// productRouter.delete('/:id', auth.isAdmin, destroy);
 
 export default productRouter;
 
@@ -32,7 +36,7 @@ async function create(req: Request, res: Response, next: NextFunction) {
     const payload = req.body;
     await productDao.create({
       ...payload,
-      author: req.user._id,
+      // author: req.user._id,
       createdAt: new Date(),
     });
     res.sendStatus(201);

@@ -14,6 +14,20 @@ const imgs = [
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-4.jpg",
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-5.jpg",
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-6.jpg",
+  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
+  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-2.jpg",
+  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-3.jpg",
+  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-4.jpg",
+  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-5.jpg",
+  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-6.jpg",
+  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
+  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-2.jpg",
+  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-3.jpg",
+  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-4.jpg",
+  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-5.jpg",
+  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-6.jpg",
+  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
+  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-2.jpg",
 ];
 
 const category = ["Cactus", "Exotic", "Greens", "Popular", "Various", "Winter"]
@@ -94,16 +108,16 @@ function ProductList() {
                   <Col className='product-list-sort' xs={24}>
                     <div>ნაჩვენებია 1–9;  სულ: 14;</div>
                     <Select
-                      placeholder={"Sort by popularity"}
+                      placeholder={"პოპულარობის მიხედვთ"}
                     // dropdownClassName="new-user-select"
                     >
                       <Option value={"option"}>
-                        {"Sort by populariTy"}
+                        {"პოპულარობის მიხედვთ"}
                       </Option>
                     </Select>
                   </Col>
                   {imgs.map((category, ind) => {
-                    return <ProductItem xsSize={12} smSize={8} mdSize={8} key={ind} id={ind} imgSrc={category} />;
+                    return <ProductItem xsSize={12} smSize={8} mdSize={6} key={ind} id={ind} imgSrc={category} />;
                   })}
                   <Col xs={24} className={"pagination-wrapper"}>
                     <Pagination size="small" total={50} />
