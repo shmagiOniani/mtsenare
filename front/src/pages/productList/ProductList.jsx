@@ -6,7 +6,7 @@ import Navbar from '../../components/navbar/Navbar'
 import "./ProductList.scss"
 import Footer from '../footer/Footer';
 import ProductItem from '../home/ProductItem';
-
+const { Search } = Input;
 const imgs = [
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-2.jpg",
@@ -96,10 +96,11 @@ function ProductList() {
                       }}
                       onFinish={onSearch}
                     >
-                      <SearchOutlined />
-                      <Form.Item name={"search"}>
+                      <Search className='search-input' placeholder="ძებნა..." onSearch={onSearch} enterButton />
+                      {/* <SearchOutlined />
+                      <Form.Item name={"search"} className>
                         <Input placeholder="ძებნა" />
-                      </Form.Item>
+                      </Form.Item> */}
 
                     </Form>
                   </Col>

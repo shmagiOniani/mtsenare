@@ -159,19 +159,18 @@ function ShopList() {
                       onClick={()=> handleShopClick(ind)}>
                       <div className='item-wrapper'>
 
-                        <Row gutter={[10, 10]} justify={"start"} align={"middle"}>
-                          <Col xs="4">
+                        <div style={{display: "flex", justifyContent:"space-between"}} gutter={[10, 10]} justify={"start"} align={"middle"}>
+                          <div xs="4">
                             <div className="img-container">
                               <img src={item.avatar} alt="bla" />
                             </div>
-                          </Col>
-                          <Col xs="20" className='text-wrapper'>
+                          </div>
+                          <div xs="20" className='text-wrapper'>
                             <div>{item.name}</div>
                             <div>{item.description}</div>
-                          </Col>
-                        </Row>
+                          </div>
+                        </div>
                       </div>
-
                     </Col>
                   ))
                   }
@@ -179,7 +178,6 @@ function ShopList() {
               }
             </Col>
           </Row>
-
         </Col>
         <Col xs={24}>
           <Footer />

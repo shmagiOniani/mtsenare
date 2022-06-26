@@ -1,5 +1,6 @@
 import React from "react";
-import { Col, Row, Carousel } from "antd";
+import { Col, Row, Carousel, Button } from "antd";
+import {DownloadOutlined} from "@ant-design/icons";
 import OwlCarousel from "react-owl-carousel";
 import {  useHistory } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
@@ -60,7 +61,7 @@ function Home() {
 
   return (
     <div className="page-wrapper home-page">
-      <div className=" page-container">
+      <div className="page-container">
         <Row className="home-wrapper">
           <Col xs={24}>
             <Navbar />
@@ -83,9 +84,10 @@ function Home() {
               {imgs.map((category, ind) => {
                 return (
                   <Col
-                    xs={24}
-                    sm={6}
-                    md={4}
+                    xs={12}
+                    sm={12}
+                    md={8}
+                    lg={4}
                     key={ind}
                     className="category-item"
                   >
@@ -148,7 +150,7 @@ function Home() {
           <Col xs={24}>
             <div className="home-about-section">
               <Row>
-                <Col xs={24} sm={12}>
+                <Col md={24} xl={12}>
                   <h1>
                     We take flowers personally <br />& we bring you happiness
                   </h1>
@@ -159,7 +161,7 @@ function Home() {
                     ridiculus mus. Donec quam felis, ultricies nec.
                   </p>
                 </Col>
-                <Col xs={24} sm={12}>
+                <Col md={24} xl={12}>
                   <div className="img-container">
                     <img src={aboutImg} />
                   </div>
@@ -172,10 +174,15 @@ function Home() {
               <Col xs={24}>
                 <h2>Join The Colorful Bunch!</h2>
               </Col>
-              <Col xs={24} sm={12}>
+              <Col xs={24}>
                 <div className="sub-input">
                   <input placeholder="Email Address" />
-                  <div>SUBSCRIBE</div>
+                  <div>
+
+                <Button className="sub-input" type="primary" icon={<DownloadOutlined />} >
+                  subscribe
+                </Button>
+                  </div>
                 </div>
               </Col>
             </Row>

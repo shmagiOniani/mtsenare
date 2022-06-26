@@ -162,21 +162,22 @@ $serif: "Lora", serif;
   }
 
   button {
-    padding: 12px;
-    font-family: $sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 11px;
-    border-radius: 10px;
-    margin: auto;
-    outline: none;
-    display: block;
-    &:hover {
-      cursor: pointer;
-      background: $pale;
-      color: $white;
-      transition: background-color 0.3s ease-out;
-    }
+    @include outlined;
+    // padding: 12px;
+    // font-family: $sans-serif;
+    // text-transform: uppercase;
+    // letter-spacing: 3px;
+    // font-size: 11px;
+    // border-radius: 10px;
+    // margin: auto;
+    // outline: none;
+    // display: block;
+    // &:hover {
+    //   cursor: pointer;
+    //   background: $pale;
+    //   color: $white;
+    //   transition: background-color 0.3s ease-out;
+    // }
   }
 
   .button {

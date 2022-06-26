@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 // React Router
@@ -14,9 +14,43 @@ import "antd/dist/antd.min.css";
 import "./App.scss";
 
 function App() {
+  const [bgColor, setBgColor] = useState("");
+  const [fontColor, setFontColor] = useState("");
+
+  useEffect(() => {
+    if (fontColor && fontColor.length > 0) {
+      document.documentElement.style.setProperty(
+        "--app-primaryFontColor",
+        localStorage.getItem("fontcolor")
+      );
+      localStorage.setItem("fontcolor", fontColor);
+    }
+  }, [fontColor]);
+
+  useEffect(() => {
+    setBgColor(localStorage.getItem("bgcolor"));
+    setFontColor(localStorage.getItem("fontcolor"));
+  }, []);
+
   return (
     <Router>
       <div className={`app`}>
+        {/* <div className="">
+          <input
+            id="font-color"
+            type="color"
+            value={fontColor || ""}
+            onChange={(e) => setFontColor(e.target.value)}
+          />
+          <label htmlFor="font-color">font color</label>
+          <input
+            id="bg-color"
+            type="color"
+            value={bgColor || ""}
+            onChange={(e) => setBgColor(e.target.value)}
+          />
+          <label htmlFor="bg-color">bg color</label>
+        </div> */}
         <div className="app-container">
           <Switch>
             {PUBLIC_ROUTES.map((route, index) => {

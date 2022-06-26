@@ -67,16 +67,16 @@
   color: rgb(87, 87, 87);
   transition: all .1s ease-in;
   &:hover {
+    cursor: pointer;
     color: white;
     background-color: $base;
-    border-color: $base;
+    border-color: white;
   }
   &:active {
-    color: $base;
-    border-color: $base;
+    border-color: white;
   }
   &:focus {
-    // color: $base;
-    border-color: $base;
+    // color: white;
+    border-color: white;
   }
 }

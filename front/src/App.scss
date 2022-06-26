@@ -10,6 +10,12 @@
   src: url("./assets/fonts/bpg_mrgvlovani_caps_2010.ttf");
 }
 
+
+body {
+  background-color: var(--app-primaryBGColor);
+  color: var(--app-primaryFontColor);
+}
+
 body {
   margin: 0;
   padding: 0;

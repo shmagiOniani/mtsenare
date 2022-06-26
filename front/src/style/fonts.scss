@@ -1,11 +1,11 @@
 @import "./color";
 
 @mixin h1 {
-  font-size: clamp(24px, 4vw, 38px) !important;
+  font-size: clamp(18px, 4vw, 38px) !important;
   color: $header;
   font-family: "dejavu";
   &:lang(ka) {
-    font-size: clamp(24px, 4vw, 29px) !important;
+    font-size: clamp(20px, 4vw, 29px) !important;
   }
 }
 @mixin h2 {
@@ -41,11 +41,11 @@
   }
 }
 @mixin p {
-  font-size: clamp(12px, 4vw, 17px) !important;
+  font-size: clamp(7px, 2.5vw, 17px) !important;
   font-family: "dejavu";
   color: $paragraph;
   &:lang(ka) {
-    font-size: clamp(10px, 4vw, 13px) !important;
+    font-size: clamp(10px, 2.5vw, 13px) !important;
   }
 }
 
