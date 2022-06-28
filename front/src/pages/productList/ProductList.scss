@@ -28,9 +28,7 @@ $container-padding: 0 100px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      div:first-child {
-        @include p;
-      }
+      @include selectInput;
     }
    
     .pagination-wrapper {

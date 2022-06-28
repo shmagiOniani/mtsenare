@@ -1,24 +1,58 @@
 @import "./color.scss";
 
 @mixin searchInput {
+  input {
+    border-radius: 5px;
+    height: 40px;
+    &:hover {
+      border-color: $base-dark;
+    }
+    &:active {
+    }
+    &:focus {
+      box-shadow: none !important;
+      border-color: $base;
+    }
+  }
+  button {
+    height: 40px;
+    border: none;
+    background-color: $base;
+    border-color: $base-dark;
+    background: $base;
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
+  }
+}
 
-    input {
-        border-radius: 5px;
-        height: 40px;
-        &:hover {
-            border-color: $base-dark;
-        }
-        &:active {
-        }
-        &:focus {
-            box-shadow: 0 0 0 2px $base
-        }
+@mixin selectInput {
+    .ant-select-focused {
+        .ant-select-selector {
+            border-color: $base !important;
+          }
+      }
+  .ant-select-selector {
+    box-shadow: none !important;
+  }
+  .ant-select-selector {
+    border-radius: 5px;
+  }
+  &:hover {
+    .ant-select-selector {
+      border-color: $base;
     }
-    button {
-        height: 40px;
-        border: none;
-        background-color: $base;
-        border-color: $base-dark;
-        background: $base;
+  }
+  input {
+    border-radius: 5px;
+    // height: 40px;
+    &:hover {
+      border-color: $base-dark;
     }
+    &:active {
+    }
+    &:focus {
+      box-shadow: none !important;
+      border-color: $base;
+    }
+  }
 }

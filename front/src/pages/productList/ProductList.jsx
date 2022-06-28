@@ -36,11 +36,16 @@ function ProductList() {
   const { Option } = Select;
   const [maxPrice, setMaxPrice] = useState(0)
   const [minPrice, setMinPrice] = useState(0)
-  const [form] = Form.useForm();
+  const [searchVal, setSearchVal] = useState("")
   
   const onSearch = (data) => {
     console.log(data);
   };
+
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    setSearchVal(e.target.value)
+  } 
   const onPriceChange = (val) => {
     setMaxPrice(val[0])
     setMinPrice(val[1])
@@ -88,29 +93,17 @@ function ProductList() {
               <Col xs={24} sm={19}>
                 <Row>
                   <Col xs={24}>
-                    <Form
-                      layout={"horizontal"}
-                      form={form}
-                      initialValues={{
-                        layout: "horizontal",
-                      }}
-                      onFinish={onSearch}
-                    >
-                      <Search className='search-input' placeholder="ძებნა..." onSearch={onSearch} enterButton />
-                      {/* <SearchOutlined />
-                      <Form.Item name={"search"} className>
-                        <Input placeholder="ძებნა" />
-                      </Form.Item> */}
-
-                    </Form>
+                   
+                      <Search className='search-input' placeholder="ძებნა..." onSearch={onSearch} onChange={handleChange} enterButton />
                   </Col>
                 </Row>
                 <Row gutter={[30, 30]} justify={'center'} align={'middle'} className="product-list">
                   <Col className='product-list-sort' xs={24}>
                     <div>ნაჩვენებია 1–9;  სულ: 14;</div>
                     <Select
+
                       placeholder={"პოპულარობის მიხედვთ"}
-                    // dropdownClassName="new-user-select"
+                      className="select-input"
                     >
                       <Option value={"option"}>
                         {"პოპულარობის მიხედვთ"}

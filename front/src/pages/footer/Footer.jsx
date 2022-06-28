@@ -8,7 +8,7 @@ import "./Footer.scss"
 function Footer() {
   return (
     <>
-      <Row className='footer-container'>
+      {/* <Row className='footer-container'>
         <Col xs={12} sm={6}>
           <ul className="footer-col">
             <li className="col-title"><h6>CUSTOMER SERVICE</h6></li>
@@ -46,7 +46,7 @@ function Footer() {
           </ul>
         </Col>
 
-      </Row>
+      </Row> */}
       <Row className='footer-container'>
         <Col xs={24}>
           <Row className="footer-bottom">
