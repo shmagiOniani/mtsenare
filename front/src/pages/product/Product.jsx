@@ -81,7 +81,7 @@ function Product() {
             </Col>
             <Col xs={24} sm={12}>
               <div className="product-details">
-                <h1></h1>
+                <h2>სატესტო დასახელება</h2>
                 <div className="price">$259</div>
                 <p className='product-description'>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc.</p>
                 <div className="add-product-cart">

@@ -2,12 +2,41 @@ import React, { useState } from "react";
 import { useHistory} from 'react-router-dom'
 import { Button} from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
+import { useGoogleLogin } from 'react-google-login';
+
 import "./Auth.scss";
 
 function Auth() {
   const [signIn, setSignIn] = useState(true)
   let history = useHistory();
+  const clientId =
+  '65604429422-o84198pr7i6v18d6fgmui3j88k7gvqtq.apps.googleusercontent.com';
 
+  
+  
+  const onSuccess = (res) => {
+    console.log('Login Success: currentUser:', res.profileObj);
+    alert(
+      `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
+    );
+    // refreshTokenSetup(res);
+  };
+
+  const onFailure = (res) => {
+    console.log('Login failed: res:', res);
+    alert(
+      `Failed to login. 😢 Please ping this to repo owner twitter.com/sivanesh_fiz`
+      );
+    };
+    const { gooSignIn } = useGoogleLogin({
+      onSuccess,
+      onFailure,
+      clientId,
+      isSignedIn: true,
+      accessType: 'offline',
+      // responseType: 'code',
+      // prompt: 'consent',
+    });
 
   const clickEvent1 = () => {
     setSignIn(false)
@@ -27,6 +56,9 @@ const goBack = () => {
   <div className="go-back">
 
     <Button onClick={goBack} icon={<ArrowLeftOutlined />} />
+    <button onClick={gooSignIn} className="button">
+      <span className="buttonText">Sign in with Google</span>
+    </button>
   </div>
   <div className="welcome">
     <div className={`${!signIn ? "swipe-right" : ""} pinkbox`}>
@@ -50,6 +82,7 @@ const goBack = () => {
           </div>
 
           <button className="button ">შესვლა</button>
+
         </form>
       </div>
     </div>

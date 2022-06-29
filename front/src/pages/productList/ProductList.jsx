@@ -108,6 +108,9 @@ function ProductList() {
                       <Option value={"option"}>
                         {"პოპულარობის მიხედვთ"}
                       </Option>
+                      <Option value={"b"}>
+                        {"შეფასების მიხედვით"}
+                      </Option>
                     </Select>
                   </Col>
                   {imgs.map((category, ind) => {
