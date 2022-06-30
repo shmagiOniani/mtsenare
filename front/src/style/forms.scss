@@ -43,7 +43,7 @@
     }
   }
   input {
-    border-radius: 5px;
+    border-radius: 10px;
     // height: 40px;
     &:hover {
       border-color: $base-dark;
@@ -56,3 +56,33 @@
     }
   }
 }
+.ant-select-dropdown {
+  border: 1px solid $base;
+  padding: 10px 5px!important;
+  border-radius: 10px!important;
+}
+
+.ant-select-item-option {
+  margin-bottom: 5px;
+  background-color: transparent!important;
+}
+.ant-select-item-option-active:hover {
+  background-color: #eac7cc5d!important;
+  opacity: .9;
+  color: rgb(102, 101, 101)!important;
+  border-radius: 5px;  
+}
+.ant-select-item-option-selected {
+  background-color: $base-light!important;
+  color: rgb(102, 101, 101)!important;
+  border-radius: 5px;  
+}
+.ant-select-item-option-selected:hover {
+  background-color: $base-light!important;
+  color: rgb(102, 101, 101)!important;
+  border-radius: 5px;  
+}
+
+
+
+
