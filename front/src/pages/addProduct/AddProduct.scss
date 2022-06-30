@@ -13,6 +13,17 @@ $container-padding: 0 100px;
   flex-direction: column;
   background-color: white;
   .submit-section {
+    &.ant-btn {
+      height: inherit;
+      &:active {
+        color: inherit!important;
+        border-color: $base!important;
+      }
+      &:focus {
+        color: inherit!important;
+        border-color: $base!important;
+      }
+    }
     position: fixed;
     z-index: 200;
     right: 0;
@@ -20,8 +31,9 @@ $container-padding: 0 100px;
     padding: 30px;
     margin: 30px;
     border-radius: 50%;
-    background-color: $base;
+    background-color: $base!important;
     &:hover {
+      border: 1px solid $base!important;
       cursor: pointer;
       opacity: 0.9;
     }
