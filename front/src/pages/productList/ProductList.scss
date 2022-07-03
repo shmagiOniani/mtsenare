@@ -26,7 +26,7 @@ $container-padding: 0 100px;
     }
     .product-list-sort {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       @include selectInput;
     }

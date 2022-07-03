@@ -317,8 +317,8 @@
 #burger {
   position: fixed;
   z-index: 999;
-  top: 25px;
-  left: 25px;
+  top: 15px;
+  left: 15px;
   background: $base-dark;
   width: 30px;
   height: 5px;
@@ -360,8 +360,8 @@
   z-index: 20;
   margin: 0;
   padding: 0;
-  width: 110px;
-  height: 110px;
+  width: 80px;
+  height: 80px;
   background-color: #fff;
   border-bottom-right-radius: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
@@ -400,17 +400,20 @@
   }
 }
 
+#fixed-bar {
+  display: flex;
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+  border-top: 1px solid $base-light;
+}
+
 @media screen and(min-width: 1200px) {
-  #menu-toggle {
-    display: none !important;
-  }
-  #trigger {
-    display: none !important;
-  }
-  #burger {
-    display: none !important;
-  }
-  #menu {
+  #menu-toggle, #fixed-bar, #trigger, #burger, #menu {
     display: none !important;
   }
 }

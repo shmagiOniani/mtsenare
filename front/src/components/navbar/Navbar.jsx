@@ -187,11 +187,16 @@ function Navbar() {
       <label id="trigger" htmlFor="menu-toggle"></label>
       <label id="burger" htmlFor="menu-toggle"></label>
       <ul id="menu">
+        <li><Link  to="/auth">ავტორიზაცია</Link></li>
         <li><Link  to="/home">მთავარი</Link></li>
         <li><Link  to="/product-list">პროდუქტის გვერდი</Link></li>
         <li><Link  to="/shop-list">მაღაზიები</Link></li>
         <li><Link  to="/contact">კონტაქტი</Link></li>
       </ul>
+
+      <div id="fixed-bar">
+
+      </div>
     </>
 
   );
