@@ -57,15 +57,12 @@ function ProductList() {
           <Col xs={24}>
             <Navbar />
           </Col>
-
-          <Col xs={24} className={"page-header"}>
+          {/* <Col xs={24} className={"page-header"}>
             <h2>პროდუქტის გვერდი</h2>
             <p>Where flowers are our inspiration</p>
-          </Col>
-          <Col xs={24}>
-
+          </Col>*/}
+          <Col xs={24}> 
             <Row gutter={[20, 20]} className="list">
-
               <Col className="product-list-sidebar" sm={5}>
                 <div className="product-sidebar-wrapper">
                   <ul className="product-sidebar-category ">
@@ -89,7 +86,7 @@ function ProductList() {
                   </ul>
                 </div>
               </Col>
-              <Col xs={24} sm={19}>
+              <Col xs={24} sm={19} style={{paddingLeft:"25px", paddingRight:"25px"}}>
                 <Row>
                   <Col xs={24} className="search-wrapper">
                       <Search className='search-input' placeholder="ძებნა..." onSearch={onSearch} onChange={handleChange} enterButton />
@@ -114,9 +111,7 @@ function ProductList() {
                 </Row>
                 <Row gutter={[30, 30]} justify={'center'} align={'middle'} className="product-list">
                   <Col className='product-list-sort' xs={24}>
-                    <div>ნაჩვენებია 1–9;  სულ: 14;</div>
                     <Select
-
                       placeholder={"პოპულარობის მიხედვთ"}
                       className="select-input"
                     >

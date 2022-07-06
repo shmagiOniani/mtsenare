@@ -1,8 +1,18 @@
 {
   "en": {
+    "add_poduct": "Add Poduct",
+    "naming": "Naming",
+    "price": "Price",
+    "product_desc": "Describe product...",
+    "total": "Total",
     "yes": "Yes"
   },
   "ka": {
+    "add_poduct": "პროდუქტის დამატება",
+    "naming": "დასახელება",
+    "price": "ფასი",
+    "product_desc": "აღწერეთ პროდუქტი...",
+    "total": "სულ",
     "yes": "დიახ"
   }
 }

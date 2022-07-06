@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory} from 'react-router-dom'
 import { Button} from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { useGoogleLogin } from 'react-google-login';
+// import { useGoogleLogin } from 'react-google-login';
 
 import "./Auth.scss";
 
@@ -28,15 +28,15 @@ function Auth() {
       `Failed to login. 😢 Please ping this to repo owner twitter.com/sivanesh_fiz`
       );
     };
-    const { gooSignIn } = useGoogleLogin({
-      onSuccess,
-      onFailure,
-      clientId,
-      isSignedIn: true,
-      accessType: 'offline',
-      // responseType: 'code',
-      // prompt: 'consent',
-    });
+    // const { gooSignIn } = useGoogleLogin({
+    //   onSuccess,
+    //   onFailure,
+    //   clientId,
+    //   isSignedIn: true,
+    //   accessType: 'offline',
+    //   // responseType: 'code',
+    //   // prompt: 'consent',
+    // });
 
   const clickEvent1 = () => {
     setSignIn(false)
@@ -56,9 +56,9 @@ const goBack = () => {
   <div className="go-back">
 
     <Button onClick={goBack} icon={<ArrowLeftOutlined />} />
-    <button onClick={gooSignIn} className="button">
+    {/* <button  className="button">
       <span className="buttonText">Sign in with Google</span>
-    </button>
+    </button> */}
   </div>
   <div className="welcome">
     <div className={`${!signIn ? "swipe-right" : ""} pinkbox`}>

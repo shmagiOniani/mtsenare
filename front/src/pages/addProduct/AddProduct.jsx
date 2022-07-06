@@ -2,13 +2,14 @@ import React, { useState, useRef } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { Editor } from '@tinymce/tinymce-react';
-import { Col, Row,  Form, Upload, Tabs, InputNumber, Input } from 'antd';
+import { Col, Row,  Form, Upload, Tabs, InputNumber, Input , Button } from 'antd';
 import { UploadOutlined } from "@ant-design/icons";
 import ImgCrop from 'antd-img-crop';
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../footer/Footer';
 import "./AddProduct.scss";
 import TextArea from 'antd/lib/input/TextArea';
+import useTranslation from '../../components/translation/useTranslation';
 
 const imgs = [
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
@@ -22,7 +23,8 @@ const imgs = [
 
 function AddProduct() {
   const { TabPane } = Tabs;
-
+  const { trans } = useTranslation();
+  const [form] = Form.useForm();
 
   const [fileList, setFileList] = useState([
     {
@@ -35,9 +37,11 @@ function AddProduct() {
 
   const onUploadChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
+    console.log("newFileList",newFileList);
   };
 
   const onPreview = async file => {
+    console.log("file",file);
     let src = file.url;
     if (!src) {
       src = await new Promise(resolve => {
@@ -63,26 +67,28 @@ function AddProduct() {
       console.log(descRef.current.getContent());
     }
   };
+
+  const handleSubmit = () => {
+    console.log();
+  }
+
   return (
     <div className='product-page-wrapper add-product-page'>
-      <div className="submit-section">
+      <div  onClick={()=> handleSubmit()} className="submit-section">
         <UploadOutlined />
       </div>
 
       <Row className="page-container">
-
         <Col xs={24}>
           <Navbar />
         </Col>
         <Col xs={24} className={"page-header"}>
-          <h2>პროდუქტის დამატება</h2>
+          <h2>{trans("add_poduct")}</h2>
         </Col>
         <Col xs={24}>
           <Row justify={"space-between"}>
             <Col xs={24} sm={12}>
               <div className="product-imgs">
-
-
                 <Carousel
                   autoPlay={false}
                   interval={2000}
@@ -113,30 +119,30 @@ function AddProduct() {
               </div>
             </Col>
             <Col xs={24} sm={12}>
-              <Form className="product-details">
+              <div className="product-details">
                 {/* <h1>დასახელება</h1> */}
                 <div className="product-name">
                   <Form.Item name={"name"} >
-                    <Input placeholder='დასახელება' />
+                    <Input placeholder={trans("naming")} />
                   </Form.Item>
                 </div>
                 <div className="price">
                   {/* <span>ფასი</span> */}
                   <Form.Item name={"price"}>
-                    <Input placeholder='ფასი' />
+                    <Input placeholder={trans("price")} />
                   </Form.Item>
                 </div>
 
                 <Form.Item className='product-description' name={"description"}>
-                  <TextArea placeholder='აღწერეთ პროდუქტის შემადგენლობა და სხვა დეტალები!' rows={6} />
+                  <TextArea placeholder={trans("product_desc")} rows={6} />
                 </Form.Item>
                 <div className="total-amount">
                   <Form.Item name={"total"}>
-                    <InputNumber placeholder='მაქს' />
+                    <InputNumber placeholder={trans("total")} />
                   </Form.Item>
                 </div>
 
-              </Form>
+              </div>
             </Col>
           </Row>
         </Col>

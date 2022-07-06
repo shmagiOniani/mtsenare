@@ -13,6 +13,17 @@ $container-padding: 0 100px;
   flex-direction: column;
   background-color: white;
   .submit-section {
+    &.ant-btn {
+      height: inherit;
+      &:active {
+        color: inherit!important;
+        border-color: $base!important;
+      }
+      &:focus {
+        color: inherit!important;
+        border-color: $base!important;
+      }
+    }
     position: fixed;
     z-index: 200;
     right: 0;
@@ -20,8 +31,9 @@ $container-padding: 0 100px;
     padding: 30px;
     margin: 30px;
     border-radius: 50%;
-    background-color: $base;
+    background-color: $base!important;
     &:hover {
+      border: 1px solid $base!important;
       cursor: pointer;
       opacity: 0.9;
     }
@@ -111,7 +123,7 @@ $container-padding: 0 100px;
   }
   .product-details {
     margin-top: 100px;
-
+    padding-left: 15px;
     h1 {
       margin-bottom: 0;
       line-height: 50px;
@@ -136,10 +148,13 @@ $container-padding: 0 100px;
     .add-product-cart {
       display: flex;
       justify-content: flex-start;
+      flex-wrap: wrap;
       align-items: center;
       .ant-input-number {
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
+        margin-left: 15px;
+        margin-top: 15px;
       }
       .ant-input-number,
       .ant-input-number-focused {
@@ -161,6 +176,8 @@ $container-padding: 0 100px;
         }
       }
       .up-down {
+        margin-top: 15px;
+
         display: flex;
         justify-content: center;
         align-items: center;
@@ -182,6 +199,9 @@ $container-padding: 0 100px;
       }
       .add-button {
         @include outlined;
+        margin-left: 15px;
+        margin-top: 15px;
+
       }
     }
   }

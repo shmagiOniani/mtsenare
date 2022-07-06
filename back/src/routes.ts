@@ -23,7 +23,7 @@ export function initRoutes(app: Express) {
   app.use(express.static(path.join(config.paths.uploads)));
 
   // app.get('/admin', renderAdminHtml);
-  // app.get('/', renderClientHtml);
+  app.get('/', renderClientHtml);
 
   app.use(auth.setUser);
   app.use(locator.setLocation);
@@ -39,14 +39,14 @@ export function initRoutes(app: Express) {
   app.use('/api/categories', categoryRouter);
 
   // app.get('/admin/*', renderAdminHtml);
-  // app.get('/*', renderClientHtml);
-
+  app.get('/*', renderClientHtml);
+  
   app.use(handleError);
 }
 
-// function renderClientHtml(req: Request, res: Response) {
-//   res.render(path.join(config.root, '../client/dist/index.html'));
-// }
+function renderClientHtml(req: Request, res: Response) {
+  res.render(path.join(config.root, '../front/public/index.html'));
+}
 
 // function renderAdminHtml(req: Request, res: Response) {
 //   res.render(path.join(config.root, '../admin/dist/index.html'));
