@@ -14,8 +14,43 @@ $container-padding: 0 100px;
   .page-header {
    @include pageHeader;
   }
-  .search-input {
-    @include searchInput;
+  .search-wrapper {
+    position: relative;
+    .search-input {
+      @include searchInput;
+    }
+    .search-container {
+      position: absolute;
+      z-index: 200;
+      top: 45px;
+      left: 0px;
+      width: 100%;
+      padding: 20px 10px;
+      background-color: white;
+      border: 1px solid $base;
+      border-radius: 10px;
+      .search-list {
+        width: 100%;
+        .search-item {
+          border-radius: 5px;
+          width: 100%;
+          border: 1px solid rgba(128, 128, 128, 0.315);
+          padding: 15px;
+          .img-wrapper {
+            
+          }
+          .item-body {
+            
+            h4 {
+              @include h4;
+            }
+            p {
+              @include p;
+            }
+          }
+        }
+      }
+    }
   }
   .product-list {
     padding: 61px 0 40px 0;

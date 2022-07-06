@@ -43,7 +43,6 @@ function ProductList() {
   };
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     setSearchVal(e.target.value)
   } 
   const onPriceChange = (val) => {
@@ -92,9 +91,25 @@ function ProductList() {
               </Col>
               <Col xs={24} sm={19}>
                 <Row>
-                  <Col xs={24}>
-                   
+                  <Col xs={24} className="search-wrapper">
                       <Search className='search-input' placeholder="ძებნა..." onSearch={onSearch} onChange={handleChange} enterButton />
+                      <div className="search-container">
+                          <div className="search-list">
+
+                          {imgs.map((category, ind) => {
+                            return <ProductItem xsSize={12} smSize={8} mdSize={6} key={ind} id={ind} imgSrc={category} />;
+                          })}
+                            <div className="search-item">
+                              <div className="img-wrapper">
+                                <img src='' alt=''/>
+                              </div>
+                              <div className="item-body">
+                                <h4>სატესტო დასახელება</h4>
+                                <p>შემთხვევითად გენერირებული ტექსტი ეხმარება დიზაინერებს და ტიპოგრაფიული ნაწარმის შემქმნელებს</p>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
                   </Col>
                 </Row>
                 <Row gutter={[30, 30]} justify={'center'} align={'middle'} className="product-list">
