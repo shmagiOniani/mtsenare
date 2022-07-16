@@ -176,11 +176,11 @@ function Home() {
               </Col>
               <Col xs={24}>
                 <div className="sub-input">
-                  <input placeholder="Email Address" />
+                  <input placeholder="ელ. ფოსტა..." />
                   <div>
 
                 <Button className="sub-input" type="primary" icon={<DownloadOutlined />} >
-                  subscribe
+                  გამოწერა
                 </Button>
                   </div>
                 </div>
