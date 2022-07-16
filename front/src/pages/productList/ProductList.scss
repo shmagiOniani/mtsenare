@@ -19,7 +19,24 @@ $container-padding: 0 100px;
     .search-input {
       @include searchInput;
     }
+    .start-show {
+      animation: show 1s;
+    }
+    .start-hide {
+      animation: hide 1s;
+    }
+    .hide {
+      display: none;
+    }
+    .show {
+      display: flex;
+    }
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
     .search-container {
+      transition: all 1s ease-out;
+      overflow: scroll;
       position: absolute;
       z-index: 200;
       top: 45px;
@@ -29,18 +46,34 @@ $container-padding: 0 100px;
       background-color: white;
       border: 1px solid $base;
       border-radius: 10px;
+      height: 1500%;
+    
       .search-list {
         width: 100%;
+        height: fit-content;
         .search-item {
           border-radius: 5px;
           width: 100%;
           border: 1px solid rgba(128, 128, 128, 0.315);
           padding: 15px;
+          margin-bottom: 15px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           .img-wrapper {
-            
+            width: 130px;
+            margin: auto;
+            height: 130px;
+            border-radius: 50%;
+            border: 2px solid $base;
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: auto;
+            }
           }
           .item-body {
-            
+            max-width: 70%;
             h4 {
               @include h4;
             }
@@ -126,5 +159,26 @@ $container-padding: 0 100px;
         }
       }
     }
+  }
+}
+
+@keyframes hide {
+  from {
+    height: 1500%;
+    opacity: 1;
+  }
+  to {
+    height: 1%;
+    opacity: 0;
+  }
+}
+@keyframes show {
+  from {
+    height: 1%;
+    opacity: 0;
+  }
+  to {
+    height: 1500%;
+    opacity: 1;
   }
 }

@@ -22,7 +22,7 @@ import reviewRouter from './api/reviews';
 export function initRoutes(app: Express) {
   app.use(express.static(path.join(config.paths.uploads)));
 
-  // app.get('/admin', renderAdminHtml);
+  app.get('/admin', renderAdminHtml);
   app.get('/', renderClientHtml);
 
   app.use(auth.setUser);
@@ -38,7 +38,7 @@ export function initRoutes(app: Express) {
   app.use('/api/delivery', deliveryRouter);
   app.use('/api/categories', categoryRouter);
 
-  // app.get('/admin/*', renderAdminHtml);
+  app.get('/admin/*', renderAdminHtml);
   app.get('/*', renderClientHtml);
   
   app.use(handleError);
@@ -48,9 +48,11 @@ function renderClientHtml(req: Request, res: Response) {
   res.render(path.join(config.root, '../front/public/index.html'));
 }
 
-// function renderAdminHtml(req: Request, res: Response) {
-//   res.render(path.join(config.root, '../admin/dist/index.html'));
-// }
+function renderAdminHtml(req: Request, res: Response) {
+  console.log("admin");
+  
+  res.render(path.join(config.root, '../admin/public/index.html'));
+}
 
 async function setMetaTags(req: any, res: Response, next: NextFunction) {
   try {
