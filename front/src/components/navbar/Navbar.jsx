@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Row, Col, Input, Form, Badge} from "antd";
 import { SearchOutlined, ShoppingOutlined, CloseOutlined, UserOutlined } from "@ant-design/icons";
 import { Link, useLocation, useHistory } from "react-router-dom";
+
 import logo from "../../assets/img/logo.png";
 import "./Navbar.scss"
 
@@ -21,9 +22,25 @@ function Navbar() {
     history.push("/home")
   }
 
-
+  const handleNavigate =(id)=>{
+    history.push("/home")
+    history.push(`product/${id}`)
+  }
 
   const shopDropdown = <div>shop</div>;
+  const cartItem =  <div className="cart-item" onClick={()=> handleNavigate(2)}>
+  <div className="cart-img">
+    <img alt="cart icon" src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-12-img-300x400.jpg" />
+  </div>
+  <div className="cart-name-price">
+    <div>SCARLET SAGE</div>
+    <div>1 X $ 159</div>
+  </div>
+  <div className="close-icon">
+    <CloseOutlined />
+  </div>
+</div>;
+
   const navArr = [
     {
       name: "მთავარი",
@@ -141,32 +158,30 @@ function Navbar() {
                     </div> */}
                     <div className={`cart-container `}>
                       <div>
-                        <div className="cart-item">
-                          <div className="cart-img">
-                            <img alt="cart icon" src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-12-img-300x400.jpg" />
-                          </div>
-                          <div className="cart-name-price">
-                            <div>SCARLET SAGE</div>
-                            <div>1 X $ 159</div>
-                          </div>
-                          <div className="close-icon">
-                            <CloseOutlined />
-                          </div>
+                        <div className="item-container">
+
+                        {cartItem}
+                        {cartItem}
+                        {cartItem}
+                        {cartItem}
                         </div>
                         <div className="cart-footer">
                           <div className="total">
-                            <span>TOTAL:</span>
-                            <span>150$</span>
+                            <span></span>
+                            <b>სულ: <b >150$</b></b>
                           </div>
                           <div className="cart-buttons">
-                            <div>View Cart</div>
+                            <div  onClick={()=> history.push("/shopping-cart")}>
+
+                            <Link to={"/shopping-cart"}>შეკვეთა</Link>
+                            </div>
                             {/* <div>Checkout</div> */}
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="cart-wrapper">
+                  <div className="profile-wrapper">
                   <Badge  size={"small"}>
                       {/* <Avatar shape="square" size="large" /> */}
                      <Link to="/auth">

@@ -12,10 +12,13 @@ import {
 import { PUBLIC_ROUTES } from "./utils/routes";
 import "antd/dist/antd.min.css";
 import "./App.scss";
+import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
   const [bgColor, setBgColor] = useState("");
   const [fontColor, setFontColor] = useState("");
+
+
 
   useEffect(() => {
     if (fontColor && fontColor.length > 0) {
@@ -34,6 +37,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className={`app`}>
         {/* <div className="">
           <input

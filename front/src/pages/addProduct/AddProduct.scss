@@ -90,7 +90,7 @@ $container-padding: 0 100px;
           }
         }
         .control-next {
-          right: 3%;
+          right: -3%;
           &::before {
             margin: 0 5px 3px;
             border-left: 8px solid $base-dark;
@@ -286,9 +286,12 @@ $container-padding: 0 100px;
       }
     }
   }
+  .featured-slider {
+    padding-bottom: 40px;
+  }
   .related-product {
     h5 {
-      margin: 87px 0 -70px;
+      margin: 50px 0 20px;
       color: #1b1b1b;
       font-family: Montserrat;
       font-size: 12px;

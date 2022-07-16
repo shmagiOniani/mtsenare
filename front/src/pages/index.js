@@ -6,4 +6,5 @@ export { default as Product } from "./product/Product";
 export { default as AddProduct } from "./addProduct/AddProduct";
 export { default as ShopList } from "./shopList/ShopList";
 export { default as Shop } from "./shop/Shop";
-export { default as ShAuthop } from "./auth/Auth";
+export { default as Auth } from "./auth/Auth";
+export { default as ShoppingCart } from "./shoppingCart/ShoppingCart";

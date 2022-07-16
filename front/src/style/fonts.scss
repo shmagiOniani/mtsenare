@@ -41,7 +41,7 @@
   }
 }
 @mixin p {
-  font-size: clamp(7px, 2.5vw, 17px) !important;
+  font-size: clamp(7px, 2.5vw, 12px) !important;
   font-family: "dejavu";
   color: $paragraph;
   &:lang(ka) {

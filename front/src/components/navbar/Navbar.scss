@@ -131,8 +131,11 @@
     justify-content: center;
     align-items: center;
     height: 115px;
+    padding-left: 20px;
     &:hover {
-      cursor: pointer;
+      .ant-badge {
+        cursor: pointer;
+      }
       .cart-container {
         height: fit-content !important;
       }
@@ -151,21 +154,40 @@
       height: 0px;
       position: absolute;
       z-index: 20;
-      top: 115px;
+      top: 90px;
       right: 0;
-      width: 250px;
+      width: 290px;
       background-color: rgb(255, 255, 255);
       transition: all 1s ease-in-out;
       overflow: hidden;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      
       &:hover {
         height: fit-content !important;
       }
+      .item-container {
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 0 5px;
+      }
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
       & > div {
-        padding: 20px;
+        padding: 15px;
         .cart-item {
           display: flex;
           justify-content: space-between;
           margin-bottom: 15px;
+          padding: 10px;
+          border-radius: 10px;
+          transition: all .3s ease-in;
+          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+          &:hover {
+            cursor: pointer;
+            background-color: $base-light-bg;
+          }
           .cart-img {
             margin-right: 15px;
             position: relative;
@@ -256,6 +278,28 @@
           }
         }
       }
+    }
+  }
+  .profile-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 115px;
+    padding-left: 20px;
+    &:hover {
+      cursor: pointer;
+      .dropdown-container {
+        height: fit-content !important;
+      }
+    }
+    a {
+      color: inherit;
+    }
+    .ant-badge {
+      margin-right: 10px;
+      font-family: "mrgvlovani";
+      font-size: 20px;
     }
   }
 }

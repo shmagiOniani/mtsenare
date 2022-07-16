@@ -95,8 +95,8 @@ function Home() {
                       <img src={category} alt="sasas" />
                     </div>
                     <div className="category-desc">
-                      <h6>CATEGORY</h6>
-                      <span>10$ - {ind}00$</span>
+                      <b>კატეგორია</b>
+                      <p>10$ - {ind}00$</p>
                     </div>
                   </Col>
                 );

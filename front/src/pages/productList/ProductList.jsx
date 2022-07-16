@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Col, Row, Form,Input, Select, Slider, Pagination } from 'antd'
 import { SearchOutlined } from "@ant-design/icons";
@@ -34,8 +34,8 @@ const category = ["Cactus", "Exotic", "Greens", "Popular", "Various", "Winter"]
 
 function ProductList() {
   const { Option } = Select;
-  const [maxPrice, setMaxPrice] = useState(0)
-  const [minPrice, setMinPrice] = useState(0)
+  const [maxPrice, setMaxPrice] = useState(350)
+  const [minPrice, setMinPrice] = useState(150)
   const [searchVal, setSearchVal] = useState("")
   
   const onSearch = (data) => {
@@ -47,9 +47,11 @@ function ProductList() {
     setSearchVal(e.target.value)
   } 
   const onPriceChange = (val) => {
-    setMaxPrice(val[0])
-    setMinPrice(val[1])
+    setMaxPrice(val[1])
+    setMinPrice(val[0])
   }
+
+
 
   return (
     <div className='page-wrapper'>

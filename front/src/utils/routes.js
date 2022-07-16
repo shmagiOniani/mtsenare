@@ -6,7 +6,8 @@ import {
     AboutUs,
     Faq,
     ShopList,
-    Shop
+    Shop,
+    ShoppingCart
   } from "../pages";
 import Auth from "../pages/auth/Auth";
 import ContactUs from "../pages/contactUs/ContactUs";
@@ -60,6 +61,11 @@ import ContactUs from "../pages/contactUs/ContactUs";
     {
       path: "/add-product",
       component: AddProduct,
+      layout: "",
+    },
+    {
+      path: "/shopping-cart",
+      component: ShoppingCart,
       layout: "",
     },
   ];

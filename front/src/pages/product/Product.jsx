@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, {  useState, useEffect } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import OwlCarousel from "react-owl-carousel";
@@ -45,6 +45,10 @@ function Product() {
 
     }
   }
+
+  useEffect(()=> {
+    window.scrollTo(0, 0)
+  },[])
 
   return (
     <div className='product-page-wrapper'>
@@ -127,7 +131,7 @@ function Product() {
         </Col>
         <Col xs={24}>
           <div className="related-product">
-            <h5>RELATED PRODUCTS</h5>
+            <h5>მსგავსი პროდუქტი</h5>
             <div className="featured-slider">
                 <OwlCarousel
                   className="owl-theme"

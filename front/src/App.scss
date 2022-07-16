@@ -12,8 +12,8 @@
 
 
 body {
-  background-color: var(--app-primaryBGColor);
-  color: var(--app-primaryFontColor);
+  // background-color: var(--app-primaryBGColor);
+  // color: var(--app-primaryFontColor);
 }
 
 body {
@@ -61,4 +61,26 @@ h5 {
 }
 p {
   @include p;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $base-light; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $base-light; 
 }
