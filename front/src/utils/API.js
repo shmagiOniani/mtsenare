@@ -8,13 +8,13 @@ const API = axios.create({
 
 API.defaults.timeout = 5000;
 
-// API.withCredentials = true;
+API.withCredentials = true;
 
-// API.interceptors.request.use(function (config) {
-//   config.headers.token = token;
-//   config.headers.user = user;
-//   return config;
-// }, null, {});
+API.interceptors.request.use(function (config) {
+  config.headers.token = "token";
+  config.headers.user = "user";
+  return config;
+}, null, {});
 
 API.interceptors.response.use(
   (response) => {

@@ -19,6 +19,8 @@ export function getById(id: any): any {
 // =============== Setters ===============
 
 export function create(data: any) {
+  console.log("product data : ", data );
+  
   return Model.create(data);
 }
 

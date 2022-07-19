@@ -34,6 +34,8 @@ async function getByQuery(req: Request, res: Response, next: NextFunction) {
 async function create(req: Request, res: Response, next: NextFunction) {
   try {
     const payload = req.body;
+    console.log(req.body);
+    
     await productDao.create({
       ...payload,
       // author: req.user._id,

@@ -76,6 +76,8 @@ function signIn(req: Request, res: Response, next: NextFunction) {
 async function signUp(req: Request, res: Response, next: NextFunction) {
   try {
     const payload = req.body;
+    console.log("signUp", req.body);
+    
     await User.create({
       ...payload,
       role: payload.role || roles.USER,

@@ -3,8 +3,8 @@ import imageSchema from '../../schemas/image.schema';
 import multilingualSchema from '../../schemas/multilingual.schema';
 
 const ProductSchema = new Schema({
-  name: multilingualSchema,
-  description: multilingualSchema,
+  name: String,
+  description: String,
   price: Number,
   deliveryTime: Number,
   deliveryType: String,

@@ -59,12 +59,12 @@ $serif: "Lora", serif;
     left: 5%;
     background: $pale;
     width: 320px;
-    height: 500px;
+    height: 550px;
     border-radius: 5px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     transition: all 1s ease;
     z-index: 2;
-    padding: 70px 0;
+    padding: 40px 0px;
   }
   .swipe-right {
     left: 47% !important;
@@ -85,7 +85,7 @@ $serif: "Lora", serif;
     opacity: 0;
     position: absolute;
     z-index: -90;
-    top: 70px;
+    top: 40px;
     width: 100%;
     transition: all 1s ease;
   }
@@ -180,12 +180,24 @@ $serif: "Lora", serif;
     // }
   }
 
-  .button {
+  .button, button {
     margin: auto;
     margin-top: 3%;
     background: $white;
     color: $pink;
     border: solid 1px $pale;
+    &:hover {
+      span {
+        color: white;
+      }
+    }
+  }
+  .ant-btn-primary:active,  .ant-btn-primary:focus {
+    background-color: inherit;
+    background: inherit;
+    span {
+      color: white;
+    }
   }
   /* form styling */
   form {
@@ -212,11 +224,15 @@ $serif: "Lora", serif;
       border-color: darken($lavender, 5%);
     }
   }
-
+  .ant-form-item {
+    margin: 0 0 10px;
+  }
+  .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input, .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover {
+    background: inherit;
+  }
   input {
     background: $pale;
-    width: 65%;
-    color: $pink;
+    color: white;
     border: none;
     border-bottom: 1px solid rgba($white, 0.5);
     padding: 9px;
@@ -228,7 +244,7 @@ $serif: "Lora", serif;
       font-weight: 100;
     }
     &:focus {
-      color: $pink;
+      color: white;
       outline: none;
       border-bottom: 1.2px solid rgba($pink, 0.7);
       font-size: 1em;
