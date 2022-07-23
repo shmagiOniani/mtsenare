@@ -44,7 +44,9 @@ $container-padding: 0 100px;
   }
   .page-container {
     max-width: 70vw;
-
+    @media only screen and (max-width: 400px) {
+      max-width: 90vw;
+    }
     & > .ant-col {
       max-width: 100%;
       padding: 0 !important;
@@ -55,6 +57,9 @@ $container-padding: 0 100px;
   }
   .product-imgs {
     margin-top: 100px;
+    @media only screen and (max-width: 400px) {
+      margin-top: 10px;
+    }
     .carousel-root {
       // display: flex;
       // flex-direction: row-reverse;
@@ -124,6 +129,10 @@ $container-padding: 0 100px;
   .product-details {
     margin-top: 100px;
     padding-left: 15px;
+    @media only screen and (max-width: 400px) {
+      padding-left: 0px;
+      margin-top: 10px;
+    }
     h1 {
       margin-bottom: 0;
       line-height: 50px;
@@ -142,6 +151,9 @@ $container-padding: 0 100px;
       vertical-align: middle;
       margin: 23px 0 32px;
       min-height: 150px;
+      @media only screen and (max-width: 400px) {
+        min-height: 50px;
+      }
     }
     .price {
     }
@@ -150,6 +162,7 @@ $container-padding: 0 100px;
       justify-content: flex-start;
       flex-wrap: wrap;
       align-items: center;
+      
       .ant-input-number {
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
@@ -162,6 +175,11 @@ $container-padding: 0 100px;
         width: 110px;
         box-shadow: none;
         border-color: #d9d9d9;
+        @media only screen and (max-width: 400px) {
+          width: 50px;
+          margin-top: 0;
+          border-radius: 10px;
+        }
         &:focus {
           box-shadow: none;
           border-color: #d9d9d9;
@@ -177,7 +195,6 @@ $container-padding: 0 100px;
       }
       .up-down {
         margin-top: 15px;
-
         display: flex;
         justify-content: center;
         align-items: center;
@@ -187,6 +204,9 @@ $container-padding: 0 100px;
         color: #999;
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
+        @media only screen and (max-width: 400px) {
+          display: none;
+        }
         .up,
         .down {
           margin: 0 10px;
@@ -203,11 +223,24 @@ $container-padding: 0 100px;
         margin-top: 15px;
 
       }
+      @media only screen and (max-width: 400px) {
+        justify-content: flex-end;
+        .add-button {
+          margin: 0px 0 0 10px;
+        }
+        .ant-input-number {
+          margin-left: 0;
+        }
+      }
     }
   }
   .details-wrapper {
     border-bottom: 1px solid $light-gray-border;
     margin-top: 100px;
+    @media only screen and (max-width: 400px) {
+      margin-top: 30px;
+
+    }
     &::after {
       content: "";
       position: absolute;
@@ -265,7 +298,11 @@ $container-padding: 0 100px;
       }
       .ant-tabs {
         .desc-tab-container {
-          padding: 73px 0px 80px;
+          padding: 20px 0px 80px;
+          @media only screen and (max-width: 400px) {
+            padding: 20px 0px;
+            
+          }
           h2 {
             color: #2b2b2b;
             font-family: "Playfair Display",serif;
@@ -276,12 +313,14 @@ $container-padding: 0 100px;
    
         }
         .info-tab-container {
-          padding: 73px 0px 80px;
+          padding: 20px 0px 80px;
 
         }
         .reviews-tab-container {
-          padding: 73px 0px 80px;
-
+          padding: 20px 0px 80px;
+          @media only screen and (max-width: 400px) {
+            padding: 20px 0px;
+          }
         }
       }
     }
@@ -299,6 +338,9 @@ $container-padding: 0 100px;
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+      @media only screen and (max-width: 400px) {
+        margin-top: 0;
+      }
     }
     .product-item {
       width: 100%;

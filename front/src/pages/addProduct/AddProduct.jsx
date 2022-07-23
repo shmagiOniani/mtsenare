@@ -4,12 +4,12 @@ import { Carousel } from "react-responsive-carousel";
 import { Editor } from '@tinymce/tinymce-react';
 import { Col, Row,  Form, Upload, Tabs, InputNumber, Input , Button } from 'antd';
 import { UploadOutlined } from "@ant-design/icons";
+import TextArea from 'antd/lib/input/TextArea';
 import ImgCrop from 'antd-img-crop';
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../footer/Footer';
+import useTranslation from '../../hooks/useTranslation';
 import "./AddProduct.scss";
-import TextArea from 'antd/lib/input/TextArea';
-import useTranslation from '../../components/translation/useTranslation';
 
 const imgs = [
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",

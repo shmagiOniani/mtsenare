@@ -1,15 +1,20 @@
 import React, { useState } from "react";
-import { Row, Col, Input, Form, Badge} from "antd";
-import { SearchOutlined, ShoppingOutlined, CloseOutlined, UserOutlined } from "@ant-design/icons";
+import { Row, Col, Input, Form, Badge } from "antd";
+import {
+  SearchOutlined,
+  ShoppingOutlined,
+  CloseOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { Link, useLocation, useHistory } from "react-router-dom";
 
 import logo from "../../assets/img/logo.png";
-import "./Navbar.scss"
+import "./Navbar.scss";
 
 function Navbar() {
   const [form] = Form.useForm();
 
-  const [searchOpen, setSearchOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
 
   let history = useHistory();
@@ -19,27 +24,38 @@ function Navbar() {
   };
 
   const toHome = () => {
-    history.push("/home")
-  }
+    history.push("/home");
+  };
 
-  const handleNavigate =(id)=>{
-    history.push("/home")
-    history.push(`product/${id}`)
-  }
-
+  const handleNavigate = (e, target) => {
+    if(target === "remove") {
+      console.log("remove");
+      return true
+    }else if(target === "relocate") {
+      console.log("relocate");
+      // history.push("/home");
+      // history.push(`product/${id}`);
+    }
+  };
+  
   const shopDropdown = <div>shop</div>;
-  const cartItem =  <div className="cart-item" onClick={()=> handleNavigate(2)}>
-  <div className="cart-img">
-    <img alt="cart icon" src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-12-img-300x400.jpg" />
-  </div>
-  <div className="cart-name-price">
-    <div>SCARLET SAGE</div>
-    <div>1 X $ 159</div>
-  </div>
-  <div className="close-icon">
-    <CloseOutlined />
-  </div>
-</div>;
+  const cartItem = (
+    <div className="cart-item" >
+      <div onClick={(e) => handleNavigate(e, "relocate")} className="cart-img">
+        <img
+          alt="cart icon"
+          src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-12-img-300x400.jpg"
+        />
+      </div>
+      <div onClick={(e) => handleNavigate(e, "relocate")} className="cart-name-price">
+        <div>SCARLET SAGE</div>
+        <div>1 X $ 159</div>
+      </div>
+      <div className="close-icon" >
+        <CloseOutlined  onClick={(e) => handleNavigate(e, "remove")} />
+      </div>
+    </div>
+  );
 
   const navArr = [
     {
@@ -72,7 +88,7 @@ function Navbar() {
   return (
     <>
       <Row className="navbar-wrapper" justify={"center"}>
-        {location.pathname === "/home" ?
+        {location.pathname === "/home" ? (
           <Col sm={24}>
             <div className="logo-container">
               <div className="logo">
@@ -80,12 +96,13 @@ function Navbar() {
               </div>
             </div>
           </Col>
-
-          : ""}
+        ) : (
+          ""
+        )}
         <Col sm={24}>
           <Row justify={"space-around"} align={"middle"} gutter={[30, 30]}>
-            <Col xs={5} >
-              {location.pathname === "/home" ?
+            <Col xs={5}>
+              {location.pathname === "/home" ? (
                 <div className="search-container">
                   {/* <Form
                     layout={"horizontal"}
@@ -102,14 +119,13 @@ function Navbar() {
 
                   </Form> */}
                 </div>
-                :
+              ) : (
                 <div className="small-logo" onClick={toHome}>
                   <div className="logo">
                     <img src={logo} alt={"logo"} />
                   </div>
                 </div>
-              }
-
+              )}
             </Col>
             <Col xs={14}>
               <div className="navigation-container">
@@ -127,12 +143,14 @@ function Navbar() {
             <Col xs={5}>
               <Row justify={"end"}>
                 <Col className={"cartside-search"}>
-                  {location.pathname !== "/home" ?
+                  {location.pathname !== "/home" ? (
                     <div className="search-container">
                       {/* <SearchOutlined onClick={() => setSearchOpen(!searchOpen)} /> */}
 
                       <Form
-                        className={`search-form ${searchOpen ? "active-form" : ""}`}
+                        className={`search-form ${
+                          searchOpen ? "active-form" : ""
+                        }`}
                         layout={"horizontal"}
                         form={form}
                         initialValues={{
@@ -144,9 +162,12 @@ function Navbar() {
                           <Input placeholder="Search" />
                         </Form.Item>
                       </Form>
-                    </div> : ""}
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </Col>
-                <Col xs={12} style={{display: "flex"}}>
+                <Col xs={12} style={{ display: "flex" }}>
                   <div className="cart-wrapper">
                     <Badge count={5} size={"small"}>
                       {/* <Avatar shape="square" size="large" /> */}
@@ -159,21 +180,21 @@ function Navbar() {
                     <div className={`cart-container `}>
                       <div>
                         <div className="item-container">
-
-                        {cartItem}
-                        {cartItem}
-                        {cartItem}
-                        {cartItem}
+                          {cartItem}
+                          {cartItem}
+                          {cartItem}
+                          {cartItem}
                         </div>
                         <div className="cart-footer">
                           <div className="total">
                             <span></span>
-                            <b>სულ: <b >150$</b></b>
+                            <b>
+                              სულ: <b>150$</b>
+                            </b>
                           </div>
                           <div className="cart-buttons">
-                            <div  onClick={()=> history.push("/shopping-cart")}>
-
-                            <Link to={"/shopping-cart"}>შეკვეთა</Link>
+                            <div onClick={() => history.push("/shopping-cart")}>
+                              <Link to={"/shopping-cart"}>შეკვეთა</Link>
                             </div>
                             {/* <div>Checkout</div> */}
                           </div>
@@ -182,38 +203,43 @@ function Navbar() {
                     </div>
                   </div>
                   <div className="profile-wrapper">
-                  <Badge  size={"small"}>
+                    <Badge size={"small"}>
                       {/* <Avatar shape="square" size="large" /> */}
-                     <Link to="/auth">
+                      <Link to="/auth">
                         <UserOutlined />
-                     </Link>
+                      </Link>
                     </Badge>
                   </div>
                 </Col>
-
               </Row>
             </Col>
           </Row>
         </Col>
       </Row>
- 
 
       <input type="checkbox" id="menu-toggle" />
       <label id="trigger" htmlFor="menu-toggle"></label>
       <label id="burger" htmlFor="menu-toggle"></label>
       <ul id="menu">
-        <li><Link  to="/auth">ავტორიზაცია</Link></li>
-        <li><Link  to="/home">მთავარი</Link></li>
-        <li><Link  to="/product-list">პროდუქტის გვერდი</Link></li>
-        <li><Link  to="/shop-list">მაღაზიები</Link></li>
-        <li><Link  to="/contact">კონტაქტი</Link></li>
+        <li>
+          <Link to="/auth">ავტორიზაცია</Link>
+        </li>
+        <li>
+          <Link to="/home">მთავარი</Link>
+        </li>
+        <li>
+          <Link to="/product-list">პროდუქტის გვერდი</Link>
+        </li>
+        <li>
+          <Link to="/shop-list">მაღაზიები</Link>
+        </li>
+        <li>
+          <Link to="/contact">კონტაქტი</Link>
+        </li>
       </ul>
 
-      <div id="fixed-bar">
-
-      </div>
+      <div id="fixed-bar"></div>
     </>
-
   );
 }
 

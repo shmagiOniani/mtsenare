@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { Col, Row, Form, Input } from 'antd'
-import useTranslation from "../../components/translation/useTranslation";
+import TextArea from 'antd/lib/input/TextArea';
+import useTranslation from '../../hooks/useTranslation';
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../footer/Footer';
-import "./ContactUs.scss"
-import TextArea from 'antd/lib/input/TextArea';
 import avatar from "../../assets/img/avatar.png";
+import "./ContactUs.scss"
 
 
 

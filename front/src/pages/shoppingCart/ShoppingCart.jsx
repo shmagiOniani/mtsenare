@@ -2,7 +2,8 @@ import React, { createRef, useState } from "react";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import { Col, Row, Select, Form, Slider, Pagination } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
-import useTranslation from "../../components/translation/useTranslation";
+import useTranslation from "../../hooks/useTranslation";
+
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../footer/Footer";
 import "./ShoppingCart.scss";
@@ -69,12 +70,12 @@ function ShoppingCart() {
               </div>
               <div className="cart-footer">
                 <div className="total">
-                  <span>TOTAL:</span>
+                  <span>{trans("total")}:</span>
                   <span>150$</span>
                 </div>
                 <div className="cart-buttons">
                   <div>
-                    <Link to={"/shopping-cart"}>Order Now</Link>
+                    <Link to={"/shopping-cart"}>{trans("order_now")}</Link>
                   </div>
                 </div>
               </div>

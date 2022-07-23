@@ -2,11 +2,18 @@ import React, {  useState, useEffect } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import OwlCarousel from "react-owl-carousel";
-import { Col, Row, Tabs, InputNumber, Button } from 'antd';
+import { Col, Row, Tabs, InputNumber, Button, Form } from 'antd';
 import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
+import FormItem from 'antd/lib/form/FormItem';
+import TextArea from 'antd/lib/input/TextArea';
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../footer/Footer';
 import ProductItem from '../home/ProductItem';
+import useTranslation from '../../hooks/useTranslation';
+import useCurrentWidth from '../../hooks/useCurrentWidth';
+import "./Product.scss";
+
+
 
 const imgs = [
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
@@ -25,6 +32,8 @@ const related = [
 ];
 
 function Product() {
+  const { trans } = useTranslation();
+  const { width } = useCurrentWidth();
   const { TabPane } = Tabs;
   const [quantity, setQuantity] = useState(1)
 
@@ -122,21 +131,36 @@ function Product() {
               </TabPane>
               <TabPane tab="შეფასებები და კომენტარები (22)" key="3">
                 <div className="reviews-tab-container">
-                  <h3>The power of flowers</h3>
-                  <p>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante</p>
+                  <div className="review-container">
+                    <div className="review-item">
+                      <div className="icon">R</div>
+                      <div className="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro minus saepe explicabo ullam maxime nisi corrupti ratione quidem temporibus dolores.</div>
+                    </div>
+                    <div className="review-item">
+                      <div className="icon">R</div>
+                      <div className="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro minus saepe explicabo ullam maxime nisi corrupti ratione quidem temporibus dolores.</div>
+                    </div>
+                  </div>
+                  <Row>
+                    <Col xs={24}>
+                      <TextArea className='comment-iinput' placeholder={trans("product_desc")} rows={5} />
+                      <div className='comment-button'>კომენტარის დამატება</div>
+                    </Col>
+                  </Row>
                 </div>
               </TabPane>
             </Tabs>
           </div>
         </Col>
+        {/* relative products */}
         <Col xs={24}>
           <div className="related-product">
             <h5>მსგავსი პროდუქტი</h5>
             <div className="featured-slider">
                 <OwlCarousel
                   className="owl-theme"
-                  dots={false}
-                  items={"4"}
+                  dots={true}
+                  items={width > 1000 ? "6" : "4"}
                   loop
                   margin={10}
                   nav

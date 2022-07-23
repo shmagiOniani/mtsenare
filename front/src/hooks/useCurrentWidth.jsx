@@ -29,6 +29,6 @@ function useCurrentWidth() {
     }
   }, [])
 
-  return width;
+  return {width};
 }
-export {useCurrentWidth}
+export default useCurrentWidth

@@ -1,5 +1,6 @@
 {
   "en": {
+    "order_now": "Order Now",
     "add_poduct": "Add Poduct",
     "naming": "Naming",
     "price": "Price",
@@ -8,6 +9,7 @@
     "yes": "Yes"
   },
   "ka": {
+    "order_now": "შეუკვეთეთ ახლა",
     "add_poduct": "პროდუქტის დამატება",
     "naming": "დასახელება",
     "price": "ფასი",

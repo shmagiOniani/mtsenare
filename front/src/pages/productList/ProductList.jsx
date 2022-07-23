@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Col, Row, Form, Input, Select, Slider, Pagination } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Navbar from "../../components/navbar/Navbar";
@@ -31,6 +31,8 @@ const imgs = [
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-2.jpg",
 ];
 
+
+
 const category = ["Cactus", "Exotic", "Greens", "Popular", "Various", "Winter"];
 
 function ProductList() {
@@ -60,6 +62,18 @@ function ProductList() {
     setMinPrice(val[0]);
   };
 
+  let history = useHistory();
+  
+  const toProduct = (e, id) => {
+    console.log("sds");
+    history.push(`/product/${id}`);
+  };
+
+  const handleClose =(e) => {
+    setHideSearch(false);
+  }
+
+
   return (
     <div className="page-wrapper">
       <div className=" page-container">
@@ -88,7 +102,6 @@ function ProductList() {
                   <ul className="product-sidebar-category ">
                     <h6 className="category-header">ფასის შუალედი</h6>
                     <li className="range-input">
-                      {" "}
                       <Slider
                         range
                         onChange={onPriceChange}
@@ -100,7 +113,7 @@ function ProductList() {
                           border: "none",
                         }}
                         trackStyle={{ backgroundColor: "black" }}
-                      />{" "}
+                      />
                     </li>
                     <li>
                       ფასი: ${minPrice} - ${maxPrice}
@@ -121,17 +134,17 @@ function ProductList() {
                       onSearch={onSearch}
                       onChange={handleChange}
                       enterButton
-                      onBlur={() => {setHideSearch(false)}}
+                      
                     />
                     <div
                       className={`${
                         searchVal.length ? "start-show" : "start-hide"
                       } ${hideSearch ? "show" : "hide"} search-container`}
                     >
-                      <div className="search-list">
+                      <div onBlur={(e) => handleClose(e)} className="search-list">
                         {imgs.map((category, ind) => {
                           return (
-                            <div className="search-item">
+                            <div onClick={(e)=> toProduct(e, ind)} key={ind} className="search-item">
                               <div className="img-wrapper">
                                 <img src={category} alt="" />
                               </div>

@@ -5,6 +5,9 @@
 
    .category-item {
     width: 100%;
+    &:hover {
+      cursor: context-menu;
+    }
     .img-container {
       width: 100%;
       overflow: hidden;

@@ -1,7 +1,7 @@
 import React, { createRef, useState } from 'react'
 import { useHistory, Link, useLocation } from 'react-router-dom'
 import { Col, Row, Select, Form, Slider, Pagination } from 'antd'
-import useTranslation from "../../components/translation/useTranslation";
+import useTranslation from "../../hooks/useTranslation";
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../footer/Footer';
 import "./Test.scss"

@@ -60,10 +60,16 @@ $container-padding: 0 100px;
           display: flex;
           justify-content: center;
           align-items: center;
+          transition: all .2s ease-in-out;
+          &:hover {
+            cursor: pointer;
+            background-color: #8080800f;
+            border-color: $base;
+          }
           .img-wrapper {
-            width: 130px;
+            width: 80px;
             margin: auto;
-            height: 130px;
+            height: 80px;
             border-radius: 50%;
             border: 2px solid $base;
             overflow: hidden;
@@ -73,7 +79,7 @@ $container-padding: 0 100px;
             }
           }
           .item-body {
-            max-width: 70%;
+            max-width: 80%;
             h4 {
               @include h4;
             }

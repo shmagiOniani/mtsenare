@@ -1,0 +1,50 @@
+@import "../../style/color.scss";
+@import "../../style/fonts.scss";
+@import "../../style/mixins.scss";
+@import "../../style/buttons.scss";
+@import "../../style/forms.scss";
+
+.product-page-wrapper {
+    .comment-iinput {
+        @include textArea;
+        margin: 15px 0;
+    }
+    .comment-button {
+        @include outlined;
+    }
+    .reviews-tab-container {
+        .review-container {
+            border: 1px solid $light-gray-border;
+            border-top: none;
+            border-bottom: none;
+            padding: 25px;
+            margin-bottom: 20px;
+            .review-item {
+                display: flex;
+                margin-bottom: 30px;
+                &:hover {
+                    cursor: context-menu;
+                }
+                .icon {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                    border: 1px solid $light-gray-border;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 23px;
+                    font-weight: 900;
+                    margin-right: 20px;
+                    
+                }
+                .content {
+                    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+                    width: 100%;
+                    padding: 15px;
+                    border-radius: 15px;
+                }
+            }
+        }
+    }
+}

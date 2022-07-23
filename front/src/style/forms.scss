@@ -56,6 +56,18 @@
     }
   }
 }
+
+@mixin textArea {
+  border-radius: 10px;
+  &:hover {
+    border-color: $base;
+  }
+  &:focus {
+    border-color: $base;
+    box-shadow: none;
+  }
+}
+
 .ant-select-dropdown {
   border: 1px solid $base;
   padding: 10px 5px!important;
@@ -82,6 +94,8 @@
   color: rgb(102, 101, 101)!important;
   border-radius: 5px;  
 }
+
+
 
 
 
