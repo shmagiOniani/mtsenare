@@ -26,11 +26,11 @@
 }
 
 @mixin selectInput {
-    .ant-select-focused {
-        .ant-select-selector {
-            border-color: $base !important;
-          }
-      }
+  .ant-select-focused {
+    .ant-select-selector {
+      border-color: $base !important;
+    }
+  }
   .ant-select-selector {
     box-shadow: none !important;
   }
@@ -68,35 +68,65 @@
   }
 }
 
+@mixin checkbox {
+  display: flex;
+  white-space: nowrap;
+  position: relative;
+  left: -62px;
+  top: 5px;
+  &:hover {
+    .ant-checkbox-checked:after {
+      border: 1px solid $base;
+    }
+  }
+  span:last-child {
+    color: $paragraph;
+  }
+  input[type="checkbox"] {
+    width: 7px;
+    background: $pink;
+  }
+
+  input[type="checkbox"]:checked + .ant-checkbox-inner {
+    background-color: white;
+    border: 1px solid #c3c3c3;
+    transition: 0.5s all ease;
+    &::after {
+      border: 2px solid $base;
+      border-top: 0;
+      border-left: 0;
+    }
+    // display: none;
+  }
+  [type="checkbox"]:not(:checked) + .ant-checkbox-inner {
+    display: block !important;
+    border: 1px solid #c3c3c3;
+  }
+}
+
 .ant-select-dropdown {
   border: 1px solid $base;
-  padding: 10px 5px!important;
-  border-radius: 10px!important;
+  padding: 10px 5px !important;
+  border-radius: 10px !important;
 }
 
 .ant-select-item-option {
   margin-bottom: 5px;
-  background-color: transparent!important;
+  background-color: transparent !important;
 }
 .ant-select-item-option-active:hover {
-  background-color: #eac7cc5d!important;
-  opacity: .9;
-  color: rgb(102, 101, 101)!important;
-  border-radius: 5px;  
+  background-color: #eac7cc5d !important;
+  opacity: 0.9;
+  color: rgb(102, 101, 101) !important;
+  border-radius: 5px;
 }
 .ant-select-item-option-selected {
-  background-color: $base-light!important;
-  color: rgb(102, 101, 101)!important;
-  border-radius: 5px;  
+  background-color: $base-light !important;
+  color: rgb(102, 101, 101) !important;
+  border-radius: 5px;
 }
 .ant-select-item-option-selected:hover {
-  background-color: $base-light!important;
-  color: rgb(102, 101, 101)!important;
-  border-radius: 5px;  
+  background-color: $base-light !important;
+  color: rgb(102, 101, 101) !important;
+  border-radius: 5px;
 }
-
-
-
-
-
-

@@ -6,7 +6,8 @@
     "price": "Price",
     "product_desc": "Describe product...",
     "total": "Total",
-    "yes": "Yes"
+    "yes": "Yes",
+    "password": "Password"
   },
   "ka": {
     "order_now": "შეუკვეთეთ ახლა",
@@ -15,6 +16,7 @@
     "price": "ფასი",
     "product_desc": "აღწერეთ პროდუქტი...",
     "total": "სულ",
-    "yes": "დიახ"
+    "yes": "დიახ",
+    "password": "პაროლი"
   }
 }
