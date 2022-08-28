@@ -58,8 +58,8 @@ $container-padding: 0 100px;
           padding: 15px;
           margin-bottom: 15px;
           display: flex;
-          justify-content: center;
-          align-items: center;
+          justify-content: flex-start;
+          align-items: flex-start;
           transition: all .2s ease-in-out;
           &:hover {
             cursor: pointer;
@@ -68,7 +68,7 @@ $container-padding: 0 100px;
           }
           .img-wrapper {
             width: 80px;
-            margin: auto;
+            margin-right: 20px;
             height: 80px;
             border-radius: 50%;
             border: 2px solid $base;
@@ -96,7 +96,12 @@ $container-padding: 0 100px;
     margin-bottom: 30px;
     .category-item {
       @include productItem;
-
+      .img-container {
+        max-height: 230px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
     .product-list-sort {
       display: flex;
