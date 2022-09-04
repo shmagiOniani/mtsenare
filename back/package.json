@@ -27,9 +27,11 @@
   "dependencies": {
     "@types/sharp": "^0.26.0",
     "async": "^2.6.0",
+    "axios": "^0.27.2",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.3",
     "body-parser": "1.18.3",
+    "cheerio": "^1.0.0-rc.12",
     "co": "^4.6.0",
     "compression": "1.7.3",
     "cookie": "^0.3.1",

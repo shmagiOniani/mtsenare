@@ -7,6 +7,7 @@ import Iconify from '../components/Iconify';
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../sections/@dashboard/blog';
 // mock
 import POSTS from '../_mock/blog';
+import { useEffect } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -19,6 +20,13 @@ const SORT_OPTIONS = [
 // ----------------------------------------------------------------------
 
 export default function Blog() {
+  const getBlogs= ()=> {
+    
+  }
+
+  useEffect(()=> {
+    getBlogs()
+  },[])
   return (
     <Page title="Dashboard: Blog">
       <Container>

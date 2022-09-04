@@ -9,6 +9,7 @@ import { AppError } from './errors';
 
 import fileRouter from './api/files';
 import userRouter from './api/users';
+import blogsRouter from './api/blogs';
 import metaRouter from './api/metas';
 import appLogsRouter from './api/appLogs';
 
@@ -28,13 +29,14 @@ export function initRoutes(app: Express) {
   app.use(auth.setUser);
   app.use(locator.setLocation);
 
+  app.use('/api/blogs', blogsRouter);
   app.use('/api/users', userRouter);
   app.use('/api/files', fileRouter);
   app.use('/api/metas', metaRouter);
   app.use('/api/appLogs', appLogsRouter);
   app.use('/api/commons', commonsRouter);
   app.use('/api/products', productRouter);
-  app.use('/api/reviewa', reviewRouter);
+  app.use('/api/reviews', reviewRouter);
   app.use('/api/delivery', deliveryRouter);
   app.use('/api/categories', categoryRouter);
 
