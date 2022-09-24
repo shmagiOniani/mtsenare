@@ -16,6 +16,10 @@ export async function initServer() {
   await connectDB();
   await seedDB();
   const app = Express();
+  var cors = require('cors');
+  app.use(cors({
+    origin: "http://localhost:8000"
+  }));
   const server = app.listen(config.port);
   initExpress(app);
   initRoutes(app);
@@ -24,5 +28,6 @@ export async function initServer() {
   initMailer();
   logger.info(`Express server listening on ${config.port}, in ${config.env} mode`);
 }
+
 
 initServer();

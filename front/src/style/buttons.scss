@@ -1,42 +1,8 @@
 @import "./color.scss";
 
-// @mixin filledButton {
-//   font-weight: 500;
-//   padding-top: 0;
-//   padding-bottom: 0;
-//   height: 60px;
-//   line-height: 60px;
-//   background-color: rgba(0, 0, 0, 1);
-//   border-radius: 0px;
-//   position: relative;
-//   display: inline-block;
-//   vertical-align: middle;
-//   width: auto;
-//   outline: 0;
-//   font-size: 12px;
-//   font-family: Montserrat, sans-serif;
-//   line-height: 1.833em;
-//   letter-spacing: 0.1em;
-//   font-weight: 500;
-//   text-transform: uppercase;
-//   box-sizing: border-box;
-//   color: white;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   transition: color 0.3s ease, background-color 0.3s ease,
-//   border-color 0.3s ease;
-//   padding: 13px 42px;
-//   color: #fff;
-//   border: 1px solid transparent;
-//   cursor: pointer;
-//   &:hover {
-//     background-color: rgba(35, 35, 35, 1);
-//   }
-// }
-
 @mixin filledButton {
-  padding: 12px;
+  padding: 16px 20px;
+  height:auto;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 11px;
@@ -45,10 +11,12 @@
   margin: auto;
   outline: none;
   display: block;
+  color: white;
+  background: $base;
   &:hover {
-    cursor: pointer;
-    background: $base;
+    background-color: $base-light;
     color: white;
+    cursor: pointer;
     transition: background-color .3s ease-out;
     border-color: transparent;
   }
@@ -73,6 +41,65 @@
     color: white;
     background-color: $base;
     border-color: white;
+  }
+  &:active {
+    border-color: white;
+  }
+  &:focus {
+    // color: white;
+    border-color: white;
+  }
+}
+
+@mixin cancelOutlined {
+  padding: 16px 20px;
+  height:auto;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
+  text-align: center;
+  border-radius: 10px;
+  margin: auto;
+  outline: none;
+  display: block;
+  border: 1px solid #d9d9d9;
+  color: rgb(87, 87, 87);
+  transition: all .1s ease-in;
+  &:hover {
+    cursor: pointer;
+    color: rgb(211, 65, 65);
+    background-color: white;
+    border-color: rgb(211, 65, 65);
+  }
+  &:active {
+    border-color: white;
+  }
+  &:focus {
+    // color: white;
+    border-color: white;
+  }
+}
+
+@mixin ghostOutlined {
+  padding: 16px 20px;
+  height:auto;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
+  text-align: center;
+  border-radius: 10px;
+  margin: auto;
+  outline: none;
+  display: block;
+  border: 1px solid #d9d9d9;
+  color: rgb(87, 87, 87);
+  transition: all .1s ease-in;
+  &:hover {
+    cursor: pointer;
+    color: rgb(67, 66, 66);
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   }
   &:active {
     border-color: white;

@@ -102,7 +102,7 @@ function Navbar() {
         <Col sm={24}>
           <Row justify={"space-around"} align={"middle"} gutter={[30, 30]}>
             <Col xs={5}>
-              {location.pathname === "/home" ? (
+              {location.pathname !== "/home" ? (
                 <div className="search-container">
                   {/* <Form
                     layout={"horizontal"}
@@ -196,7 +196,6 @@ function Navbar() {
                             <div onClick={() => history.push("/shopping-cart")}>
                               <Link to={"/shopping-cart"}>შეკვეთა</Link>
                             </div>
-                            {/* <div>Checkout</div> */}
                           </div>
                         </div>
                       </div>

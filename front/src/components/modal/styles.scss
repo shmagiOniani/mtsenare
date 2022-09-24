@@ -1,0 +1,19 @@
+@import "../../style/color.scss";
+@import "../../style/fonts.scss";
+@import "../../style/buttons.scss";
+@import "../../style/mixins.scss";
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    button {
+        margin: 0 5px!important;
+    }
+    button:first-child {
+        @include ghostOutlined;
+    }
+    button:last-child {
+        @include filledButton;
+    }
+}

@@ -1,6 +1,7 @@
 @import "../../style/color.scss";
 @import "../../style/fonts.scss";
 @import "../../style/mixins.scss";
+@import "../../style/buttons.scss";
 @import "../../style/forms.scss";
 
 
@@ -8,6 +9,17 @@ $container-padding: 0 100px;
 
 .page-wrapper {
   background-color: white;
+  .add-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    button {
+      @include filledButton;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+    }
+  }
   .page-container {
     max-width: 80vw;
   }

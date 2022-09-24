@@ -20,5 +20,6 @@ export function initExpress(app: Express) {
 
   app.use(cookieParser());
   app.use(cors);
+
   app.use(passport.initialize());
 }

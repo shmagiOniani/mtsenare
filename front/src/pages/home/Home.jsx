@@ -1,10 +1,11 @@
 import React from "react";
-import { Col, Row, Carousel, Button } from "antd";
+import { Col, Row, Tooltip, Button } from "antd";
+import {RightOutlined} from "@ant-design/icons";
 import {DownloadOutlined} from "@ant-design/icons";
 import OwlCarousel from "react-owl-carousel";
 import {  useHistory } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
-import wappPaper from "../../assets/img/wall-paper.jpg";
+import wappPaper from "../../assets/img/wall-paperF.jpg";
 import avatar from "../../assets/img/avatar.png";
 import aboutImg from "../../assets/img/home-about.jpg";
 import Footer from "../footer/Footer";
@@ -63,23 +64,28 @@ function Home() {
     <div className="page-wrapper home-page">
       <div className="page-container">
         <Row className="home-wrapper">
-          <Col xs={24}>
+          {/* <Col xs={24}>
             <Navbar />
-          </Col>
+          </Col> */}
           <Col xs={24}>
             <div className="wall-paper">
               <div className="img-container">
                 <img src={wappPaper} alt={"wall paper"} />
               </div>
-              <div className="headline">
+              {/* <div className="headline">
                 <h1>
                   იპოვნე შენი მცენარე.
                 </h1>
                 <a href="#">Start Shopping</a>
+              </div> */}
+              <div className="absolute-btn">
+                <Tooltip title="search">
+                  <Button href="/product-list" shape="circle" size="large" icon={<RightOutlined />} />
+                </Tooltip>
               </div>
             </div>
           </Col>
-          <Col xs={24}>
+          {/* <Col xs={24}>
             <Row gutter={[30, 30]} className="category-list">
               {imgs.map((category, ind) => {
                 return (
@@ -189,7 +195,7 @@ function Home() {
           </Col>
           <Col xs={24}>
             <Footer />
-          </Col>
+          </Col> */}
         </Row>
       </div>
     </div>
