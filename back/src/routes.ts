@@ -28,7 +28,8 @@ export function initRoutes(app: Express) {
 
   app.use(auth.setUser);
   app.use(locator.setLocation);
-
+  
+  console.log("in route");
   app.use('/api/blogs', blogsRouter);
   app.use('/api/users', userRouter);
   app.use('/api/files', fileRouter);

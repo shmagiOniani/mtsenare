@@ -3,23 +3,21 @@ import { Button, Modal, Divider, Form, Input, Radio, Select, Cascader, DatePicke
 import { PlusOutlined } from '@ant-design/icons';
 import "antd/dist/antd.css";
 import "./styles.scss";
+import API from "../../utils/services/API";
 
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
-function AddProduct({ open, setOpen }) {
+function AddProduct({ open, setOpen, refresh }) {
+  const [form] = Form.useForm();
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [modalText, setModalText] = useState("Content of the modal");
 
 
-  const handleOk = () => {
-    setModalText("The modal will be closed after two seconds");
-    setConfirmLoading(true);
-    setTimeout(() => {
-      setOpen(false);
-      setConfirmLoading(false);
-    }, 2000);
-  };
+  // const handleOk = () => {
+  //   setModalText("The modal will be closed after two seconds");
+   
+  // };
 
   const handleCancel = () => {
     console.log("Clicked cancel button");
@@ -27,7 +25,18 @@ function AddProduct({ open, setOpen }) {
   };
 
   const onFinish = (values) => {
-    console.log('Success:', values);
+    setConfirmLoading(true);
+    API.post(`/api/products`, values)
+      .then(res => {
+        setConfirmLoading(false);
+        refresh()
+        setOpen(false);
+        form.resetFields()
+      })
+      .catch(err =>{
+        setConfirmLoading(false);
+      })
+   
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -47,7 +56,7 @@ function AddProduct({ open, setOpen }) {
     },
     {
       name: "price",
-      type: "text",
+      type: "number",
       label: "ფასი",
     },
     {
@@ -75,7 +84,7 @@ function AddProduct({ open, setOpen }) {
       title="პროდუქტის დამატება"
       visible={open}
       open={open}
-      onOk={handleOk}
+      // onOk={handleOk}
       confirmLoading={confirmLoading}
       onCancel={handleCancel}
       okText="შენახვა"
@@ -83,6 +92,7 @@ function AddProduct({ open, setOpen }) {
       footer={null}
     >
        <Form
+       form={form}
         name="basic"
         wrapperCol={{ span: 24 }}
         initialValues={{ remember: true }}
@@ -94,19 +104,23 @@ function AddProduct({ open, setOpen }) {
         {inputArr.map((item, ind)=> {
           return (
             <Form.Item
-            wrapperCol={ {span: 10}}
-            key={ind}
-            name={item.name}
-            rules={[{ required: true, message: 'Please input your username!' }]}
+              wrapperCol={ {span: 24}}
+              key={ind}
+              name={item.name}
+              rules={[{ required: true, message: 'Please input your username!' }]}
             >
-              <Input placeholder={item.label} />
+              {item.type === "number" ? 
+                <InputNumber min={1}  placeholder={item.label} />
+              :
+                <Input placeholder={item.label} />
+              }
             </Form.Item>
           )
         })}
       <Divider />
       <div className="modal-footer">
         <Button>გაუქმება</Button>
-        <Button htmlType="submit" onClick={() => handleOk()} loading={confirmLoading}>
+        <Button htmlType="submit" loading={confirmLoading}>
           შენახვა
         </Button>
       </div>

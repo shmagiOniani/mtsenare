@@ -2,9 +2,10 @@ import { Express } from 'express';
 import compression from 'compression';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import cors from '../config/cors';
+// import cors from '../config/cors';
 import ejs from 'ejs';
 import passport from 'passport';
+const cors = require('cors');
 
 export function initExpress(app: Express) {
   app.disable('x-powered-by');
@@ -19,7 +20,7 @@ export function initExpress(app: Express) {
   // app.use(bodyParser.json());
 
   app.use(cookieParser());
-  app.use(cors);
+  app.use(cors({ credentials: true }));
 
   app.use(passport.initialize());
 }

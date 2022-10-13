@@ -45,7 +45,7 @@ $serif: "Lora", serif;
     }
   }
   .welcome {
-    background: $white;
+    background: #fdfdfd;
     width: 650px;
     height: 415px;
     position: absolute;
@@ -58,7 +58,8 @@ $serif: "Lora", serif;
     position: absolute;
     top: -10%;
     left: 5%;
-    background: $pale;
+    background: #92ba92;
+    opacity: 1;
     width: 320px;
     height: 550px;
     border-radius: 5px;
@@ -236,7 +237,7 @@ $serif: "Lora", serif;
     background: inherit;
   }
   input {
-    background: $pale;
+    background: transparent;
     color: white;
     border: none;
     border-bottom: 1px solid rgba($white, 0.5);
@@ -291,6 +292,9 @@ $serif: "Lora", serif;
     // color: $pink;
     font-size: 0.8em;
     letter-spacing: 1px;
+    span:last-child {
+      color: white!important;
+    }
   }
   .checkbox {
     @include checkbox

@@ -28,6 +28,7 @@ function ProductList() {
   const [minPrice, setMinPrice] = useState(150);
   const [searchVal, setSearchVal] = useState("");
   const [hideSearch, setHideSearch] = useState(false);
+  const [productList, setProductList] = useState([])
 
   const onSearch = (data) => {
     console.log(data);
@@ -65,10 +66,17 @@ function ProductList() {
     console.log("handle form");
   }
 
-  useEffect(()=>{
+  const getProductList =()=>{
     API.get(`/api/products?all=true`)
-    .then(res => console.log(res))
+    .then(res => {
+      setProductList(res.data.items)
+
+    })
     .catch(err => err)
+
+  }
+  useEffect(()=>{
+    getProductList()
   },[])
 
   return (
@@ -181,7 +189,7 @@ function ProductList() {
                         <Option value={"b"}>{"შეფასების მიხედვით"}</Option>
                       </Select>
                     </Col>
-                    {imgs.map((category, ind) => {
+                    {productList.map((category, ind) => {
                       return (
                         <ProductItem
                           xsSize={12}
@@ -189,7 +197,7 @@ function ProductList() {
                           mdSize={6}
                           key={ind}
                           id={ind}
-                          imgSrc={category}
+                          imgSrc={imgs[ind]}
                         />
                       );
                     })}
@@ -207,7 +215,7 @@ function ProductList() {
           </Row>
         </div>
       </div>
-      <AddProduct open={openForm} setOpen={(status)=> setOpenForm(status)}/>
+      <AddProduct open={openForm} setOpen={(status)=> setOpenForm(status)} refresh={()=> getProductList()} />
     </>
   );
 }

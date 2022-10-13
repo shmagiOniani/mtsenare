@@ -137,6 +137,7 @@
       }
       .cart-container {
         height: fit-content !important;
+        display: block!important;
       }
     }
     a {
@@ -150,6 +151,7 @@
     .car-count {
     }
     .cart-container {
+      display: none;
       height: 0px;
       position: absolute;
       z-index: 20;

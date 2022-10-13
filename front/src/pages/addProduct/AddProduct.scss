@@ -390,13 +390,16 @@ $container-padding: 0 100px;
   }
 }
 
+.ant-input-number {
+  width: 100%!important;
+}
+
 .add-product-page {
   .product-details {
     input, textarea, .ant-input-number, .ant-input-number-focused {
       padding: 0;
       border: none;
       box-shadow: none;
-
       &:focus {
         border: none;
         box-shadow: none;

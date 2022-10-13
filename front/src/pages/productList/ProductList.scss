@@ -11,6 +11,7 @@ $container-padding: 0 100px;
   background-color: white;
   .add-button {
     position: fixed;
+    z-index: 9999;
     bottom: 20px;
     right: 20px;
     button {
@@ -109,6 +110,8 @@ $container-padding: 0 100px;
     .category-item {
       @include productItem;
       .img-container {
+        width: 136px;
+        height: 136px;
         max-height: 230px;
         display: flex;
         justify-content: center;

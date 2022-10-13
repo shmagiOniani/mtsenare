@@ -20,6 +20,7 @@ export default productRouter;
 // =============== GET ===============
 
 async function getByQuery(req: Request, res: Response, next: NextFunction) {
+  
   try {
     const query = req.query;
     const productsData = await productDao.getByQuery(query);
@@ -32,6 +33,7 @@ async function getByQuery(req: Request, res: Response, next: NextFunction) {
 // =============== POST ===============
 
 async function create(req: Request, res: Response, next: NextFunction) {
+  console.log("product", req);
   try {
     const payload = req.body;
     console.log(req.body);
