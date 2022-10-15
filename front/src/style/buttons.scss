@@ -1,16 +1,16 @@
 @import "./color.scss";
 
 @mixin filledButton {
-  padding: 16px 20px;
+  padding: 15px 17px;
   height:auto;
   text-transform: uppercase;
   letter-spacing: 3px;
-  font-size: 11px;
+  font-size: 15px;
   text-align: center;
   border-radius: 10px;
-  margin: auto;
+  border-color: transparent;
   outline: none;
-  display: block;
+  display: flex;
   color: white;
   background: $base;
   &:hover {
@@ -20,21 +20,32 @@
     transition: background-color .3s ease-out;
     border-color: transparent;
   }
+  &:active {
+    background-color: $base;
+    // background-color: $base-light!important;
+  }
+  &:focus {
+    background-color: $base-light!important;
+  }
+  svg {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 @mixin outlined {
-  padding: 16px 20px;
+  padding: 15px 17px;
   height:auto;
   text-transform: uppercase;
   letter-spacing: 3px;
-  font-size: 11px;
+  font-size: 15px;
+  font-weight: 800;
   text-align: center;
   border-radius: 10px;
-  margin: auto;
   outline: none;
-  display: block;
+  display: flex;
   border: 1px solid #d9d9d9;
-  color: rgb(87, 87, 87);
+  color: $base;
   transition: all .1s ease-in;
   &:hover {
     cursor: pointer;
@@ -49,10 +60,14 @@
     // color: white;
     border-color: white;
   }
+  svg {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 @mixin cancelOutlined {
-  padding: 16px 20px;
+  padding: 15px 17px;
   height:auto;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -81,7 +96,7 @@
 }
 
 @mixin ghostOutlined {
-  padding: 16px 20px;
+  padding: 15px 17px;
   height:auto;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -107,5 +122,21 @@
   &:focus {
     // color: white;
     border-color: white;
+  }
+}
+
+@mixin rateSmile {
+  color: $base;
+  .ant-rate-star-full, .ant-rate-star-zero {
+    &>div {
+      div {
+        span {
+          svg {
+            width: 60px;
+            height: 60px;
+          }
+        }
+      }
+    }
   }
 }

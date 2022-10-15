@@ -3,6 +3,7 @@
 @import "../../style/fonts.scss";
 @import "../../style/globals.scss";
 @import "../../style/mixins.scss";
+@import "../Product/Product.scss";
 
 
 
@@ -22,7 +23,7 @@ $container-padding: 0 100px;
     }
     .shop-wrapper {
       .shop-header {
-        padding: 50px 0;
+        padding: 50px 0 10px;
         border-bottom: 1px solid #c9c9c9;
         .shop-name {
           color: $base;
@@ -43,9 +44,115 @@ $container-padding: 0 100px;
             height: auto;
           }
         }
+        .action-container {
+          display: flex;
+          padding-top: 80px;
+        }
+        .action-wrapper:last-child {
+          .action-container {
+            justify-content: flex-end;
+            align-items: flex-end;
+            button {
+              @include filledButton;
+            }
+            .notification-bell {
+              width: 60px;
+              height: 60px;
+              padding: 10px;
+              margin: 0 10px ;
+              &:hover {
+                cursor: pointer;
+                span {
+                  transform-origin: top center;
+                  animation: bell-shake 3s ease ;
+                }
+              }
+              span, svg {
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+        .rate-seller {
+          .ant-rate {
+            @include rateSmile;
+          }
+        }
       }
     }
   }
+  .details-wrapper {
+    border-bottom: 1px solid $light-gray-border;
+    @media only screen and (max-width: 400px) {
+      margin-top: 30px;
+
+    }
+    .details-container {
+      .ant-tabs-nav::before {
+        display: none;
+        // border-bottom: 1px solid $light-gray-border;
+      }
+      .ant-tabs-nav-list {
+        .ant-tabs-tab {
+          margin: 0;
+          padding: 15px 47px;
+          border: 1px solid $light-gray-border;
+          background-color: white;
+          &:hover {
+            div {
+              color: #1b1b1b;
+            }
+          }
+          div {
+          }
+        }
+        .ant-tabs-tab-active {
+          background-color: $base !important;
+          &:hover {
+            div {
+              color: #ffffff;
+            }
+          }
+          div {
+            color: white;
+          }
+        }
+        .ant-tabs-ink-bar {
+          display: none;
+        }
+      }
+      .ant-tabs {
+        .desc-tab-container {
+          padding: 20px 0px 80px;
+          @media only screen and (max-width: 400px) {
+            padding: 20px 0px;
+            
+          }
+          h2 {
+            color: #2b2b2b;
+            font-family: "Playfair Display",serif;
+            font-weight: 400;
+            display: block;
+            margin: 0 0 19px;
+          }
+   
+        }
+        .info-tab-container {
+          padding: 20px 0px 80px;
+
+        }
+        .reviews-tab-container {
+          padding: 20px 0px 80px;
+          @media only screen and (max-width: 400px) {
+            padding: 20px 0px;
+          }
+        }
+      }
+      
+    }
+  }
+
   .page-header {
     @include pageHeader;
    }
@@ -58,4 +165,27 @@ $container-padding: 0 100px;
 
     }
    }
+}
+
+@keyframes bell-shake {
+  10% {
+    transform: rotate(30deg);
+  }
+
+  30% {
+    transform: rotate(-30deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+
+  70% {
+    transform: rotate(-30deg);
+  }
+  90% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }

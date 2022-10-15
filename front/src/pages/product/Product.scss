@@ -4,13 +4,19 @@
 @import "../../style/buttons.scss";
 @import "../../style/forms.scss";
 
-.product-page-wrapper {
     .comment-iinput {
-        @include textArea;
-        margin: 15px 0;
+        textarea {
+            @include textArea;
+            margin: 15px 0;
+        }
     }
     .comment-button {
-        @include outlined;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button {
+            @include filledButton;
+        }
     }
     .reviews-tab-container {
         .review-container {
@@ -47,4 +53,3 @@
             }
         }
     }
-}

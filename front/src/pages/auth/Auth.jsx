@@ -78,10 +78,10 @@ function Auth() {
     </button> */}
       </div>
       <div className="welcome">
-        <div className={`${!signIn ? "swipe-right" : ""} pinkbox`}>
+        <div className={`${!signIn ? "swipe-right" : ""} login-wrapper`}>
           <div className={`${signIn ? "nodisplay" : ""}  signup`}>
             <h1>რეგისტრაცია</h1>
-            <Form name="nest-messages" onFinish={onFinish}>
+            <Form name="nest-messages" initialValues={{ remember: false }} onFinish={onFinish}>
               <Form.Item name="userName">
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
@@ -133,6 +133,7 @@ function Auth() {
                 />
               </Form.Item>
               <Form.Item>
+                
                 <Button className="button" type="primary" htmlType="submit">
                   მომხმარებლის შექმნა
                 </Button>
@@ -155,11 +156,10 @@ function Auth() {
           </div>
           <div className={`${!signIn ? "nodisplay" : ""}  signin`}>
             <h1>ავტორიზაცია</h1>
-
             <Form
               name="normal_login"
               className="login-form"
-              initialValues={{ remember: true }}
+              initialValues={{ remember: false }}
               onFinish={onFinish}
             >
               <Form.Item
@@ -170,7 +170,7 @@ function Auth() {
               >
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
-                  placeholder="Username"
+                  placeholder="მომხმარებელი"
                 />
               </Form.Item>
               <Form.Item
@@ -201,51 +201,16 @@ function Auth() {
                 </Button>
               </Form.Item>
             </Form>
-
-            {/* <form className="more-padding" autoComplete="off">
-              <input type="text" placeholder="მომხმარებელი" />
-              <input type="text" placeholder="პაროლი" />
-              <div className="checkbox">
-                <input type="checkbox" id="remember" />
-                <label htmlFor="remember">დამახსოვრება</label>
-              </div>
-
-              <button className="button ">შესვლა</button>
-            </form> */}
           </div>
         </div>
         <div className="leftbox">
-          <h2 className="title">
-            <span className="highlight">BLOOM</span>&<br />
-            BOUQUET
-          </h2>
-          <p className="desc">
-            აირჩიეთ თქვენი ფავორითი <span className="highlight">თაიგული</span>
-          </p>
-          <img
-            className="flower smaller"
-            src="https://image.ibb.co/d5X6pn/1357d638624297b.jpg"
-            alt="1357d638624297b"
-            border="0"
-          />
-          <p className="account">გაქვთ ანგარიში?</p>
+        
           <button className="button" onClick={clickEvent2} id="signin">
             შესვლა
           </button>
         </div>
         <div className="rightbox">
-          <h2 className="title">
-            <span className="highlight">BLOOM</span>&<br />
-            BOUQUET
-          </h2>
-          <p className="desc">
-            აირჩიეთ თქვენი ფავორითი<span className="highlight">თაიგული</span>
-          </p>
-          <img
-            className="flower"
-            src="https://preview.ibb.co/jvu2Un/0057c1c1bab51a0.jpg"
-          />
-          <p className="account">არ გაქვთ ანგარიში?</p>
+      
           <button className="button " onClick={clickEvent1} id="signup">
             განაცხადი
           </button>

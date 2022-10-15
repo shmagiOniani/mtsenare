@@ -35,6 +35,7 @@ function Product() {
   const { trans } = useTranslation();
   const { width } = useCurrentWidth();
   const { TabPane } = Tabs;
+
   const [quantity, setQuantity] = useState(1)
 
   const handlePlus = () => {
@@ -143,8 +144,12 @@ function Product() {
                   </div>
                   <Row>
                     <Col xs={24}>
-                      <TextArea className='comment-iinput' placeholder={trans("product_desc")} rows={5} />
-                      <div className='comment-button'>კომენტარის დამატება</div>
+                      <div className='comment-iinput'>
+                        <TextArea  placeholder={trans("product_desc")} rows={5} />
+                      </div>
+                      <div className='comment-button'>
+                        <Button >კომენტარის დამატება</Button>
+                      </div>
                     </Col>
                   </Row>
                 </div>

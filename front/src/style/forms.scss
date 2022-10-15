@@ -58,7 +58,8 @@
 }
 
 @mixin textArea {
-  border-radius: 10px;
+  border-radius: 5px;
+  height: 40px;
   &:hover {
     border-color: $base;
   }
@@ -71,9 +72,7 @@
 @mixin checkbox {
   display: flex;
   white-space: nowrap;
-  position: relative;
-  left: -62px;
-  top: 5px;
+
   &:hover {
     .ant-checkbox-checked:after {
       border: 1px solid $base;
