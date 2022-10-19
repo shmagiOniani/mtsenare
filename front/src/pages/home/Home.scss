@@ -11,9 +11,9 @@ $container-padding: 0 100px;
   // background-image: url("../../assets//img/page-background.jpg");
   
     .page-container {
-      width: 100vw!important;
-      height: 100vh;
-      max-width: 100vw!important;
+      // width: 100vw!important;
+      // height: 100vh;
+      max-width: 60vw!important;
       @media only screen and (max-width: 600px) {
         max-width: 100vw!important;
         width: 100vw!important;
@@ -116,7 +116,7 @@ $container-padding: 0 100px;
       margin-bottom: 30px;
       min-height: 400px;
       background-color: #f8f8f8;
-      background-image: url("https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/h2-testimonials-background-img.jpg");
+      // background-image: url("https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/h2-testimonials-background-img.jpg");
       display: flex;
       justify-content: center;
       align-items: center;

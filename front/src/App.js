@@ -13,6 +13,7 @@ import { PUBLIC_ROUTES } from "./utils/routes";
 import "antd/dist/antd.min.css";
 import "./App.scss";
 import ScrollToTop from "./utils/ScrollToTop";
+import Spinner from "./components/spinner/Spinner";
 
 function App() {
   const [bgColor, setBgColor] = useState("");
@@ -39,6 +40,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className={`app`}>
+        {/* <Spinner/> */}
         {/* <div className="">
           <input
             id="font-color"

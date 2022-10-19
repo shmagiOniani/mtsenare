@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Tooltip, Button } from "antd";
+import { Col, Row, Tooltip, Button, Carousel } from "antd";
 import {RightOutlined} from "@ant-design/icons";
 import {DownloadOutlined} from "@ant-design/icons";
 import OwlCarousel from "react-owl-carousel";
@@ -72,12 +72,12 @@ function Home() {
               <div className="img-container">
                 <img src={wappPaper} alt={"wall paper"} />
               </div>
-              {/* <div className="headline">
+              <div className="headline">
                 <h1>
                   იპოვნე შენი მცენარე.
                 </h1>
                 <a href="#">Start Shopping</a>
-              </div> */}
+              </div>
               <div className="absolute-btn">
                 <Tooltip title="search">
                   <Button href="/product-list" shape="circle" size="large" icon={<RightOutlined />} />
@@ -85,7 +85,7 @@ function Home() {
               </div>
             </div>
           </Col>
-          {/* <Col xs={24}>
+           <Col xs={24}>
             <Row gutter={[30, 30]} className="category-list">
               {imgs.map((category, ind) => {
                 return (
@@ -195,7 +195,7 @@ function Home() {
           </Col>
           <Col xs={24}>
             <Footer />
-          </Col> */}
+          </Col> 
         </Row>
       </div>
     </div>
