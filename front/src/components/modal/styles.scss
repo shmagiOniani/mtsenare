@@ -1,11 +1,13 @@
 @import "../../style/color.scss";
 @import "../../style/fonts.scss";
+@import "../../style/forms.scss";
 @import "../../style/buttons.scss";
 @import "../../style/mixins.scss";
 
 .modal-footer {
+    width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     button {
         margin: 0 5px!important;
@@ -15,5 +17,18 @@
     }
     button:last-child {
         @include filledButton;
+    }
+
+}
+
+.product-add-modal {
+    .number {
+        @include numberInput;
+    }
+    .text {
+        @include textInput;
+    }
+    .select {
+        @include selectInput;
     }
 }

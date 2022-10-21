@@ -7,74 +7,110 @@
     width: 100%;
     &:hover {
       cursor: context-menu;
+      .category-desc {
+        div {
+          transform: translateX(-20px)!important;
+          span:first-child {
+            opacity: 0!important;
+
+          }
+          span:last-child {
+            opacity: 1!important;
+          }
+        }
+      }
     }
-    .img-container {
-      width: 100%;
+    .item-container {
+      position: relative;
+      border-radius: 20px;
       overflow: hidden;
-      margin-bottom: 15px;
-      
-      &:hover {
-        cursor: pointer;
-        img {
-          transform: scale(1.2) !important;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      .sale-sign {
+        position: absolute;
+        top: 25px;
+        right: 0;
+        background-color: red;
+        z-index: 1;
+        color: wheat;
+        font-weight: 800;
+        div {
+          padding:0  5px;
+          position: relative;
+          &::before {
+            content: "";
+            position: absolute;
+            left: -40%;
+            top: 0;
+            border-right: 16px solid red;
+            border-bottom: 10px solid transparent;
+          }
+          &::after {
+            content: "";
+            position: absolute;
+            left: -40%;
+            bottom: 0;
+            border-right: 16px solid red;
+            border-top: 10px solid transparent;
+          }
         }
       }
-      img {
-        transform: scale(1);
-        transition: all 0.3s ease-in-out;
+      .img-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
-        height: auto;
-      }
-    }
-    .category-desc {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      h6 {
-        color: #1b1b1b;
-        font-family: Montserrat;
-        font-size: 12px;
-        line-height: 2em;
-        font-weight: 500;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-      }
-      div {
-        transition: all .5s ease-in-out;
-        transform: translateX(26px);
-        span:first-child {
-          opacity: 1;
-        }
-        span:last-child {
-          transition: all .2s ease-in-out;
-          opacity: 0;
-          &:hover {
-            color: $base;
-            cursor: pointer;
+        height: 234px;
+        overflow: hidden;
+        margin-bottom: 15px;
+        &:hover {
+          cursor: pointer;
+          img {
+            transform: scale(1.2) !important;
           }
         }
-        span {
-          transition: all .3s ease-in-out;
-          // text-transform: lowercase;
+        img {
+          transform: scale(1);
+          transition: all 0.3s ease-in-out;
+          width: 100%;
+          height: auto;
+        }
+      }
+      .category-desc {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        h6 {
+          color: #1b1b1b;
+          font-family: Montserrat;
           font-size: 12px;
-          font-weight: 400;
-          color: #afafaf;
+          line-height: 2em;
+          font-weight: 500;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
         }
-      }
-    }
-    &:hover {
-        .category-desc {
-          div {
-            transform: translateX(-15px);
-            span:first-child {
-              opacity: 0!important;
-  
+        div {
+          transition: all .5s ease-in-out;
+          transform: translateX(26px);
+          span:first-child {
+            opacity: 1;
+          }
+          span:last-child {
+            transition: all .2s ease-in-out;
+            opacity: 0;
+            &:hover {
+              color: $base;
+              cursor: pointer;
             }
-            span:last-child {
-              opacity: 1!important;
-            }
+          }
+          span {
+            transition: all .3s ease-in-out;
+            // text-transform: lowercase;
+            font-size: 12px;
+            font-weight: 400;
+            color: #afafaf;
           }
         }
       }
+    }
   }

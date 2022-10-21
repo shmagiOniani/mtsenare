@@ -107,17 +107,17 @@ $container-padding: 0 100px;
   .product-list {
     padding: 61px 0 40px 0;
     margin-bottom: 30px;
-    .category-item {
-      @include productItem;
-      .img-container {
-        width: 136px;
-        height: 136px;
-        max-height: 230px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
+    // .category-item {
+    //   @include productItem;
+    //   .img-container {
+    //     width: 136px;
+    //     height: 136px;
+    //     max-height: 230px;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //   }
+    // }
     .product-list-sort {
       display: flex;
       justify-content: flex-end;

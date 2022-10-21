@@ -103,6 +103,68 @@
   }
 }
 
+@mixin textInput {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  .ant-form-item-label {
+    text-align: start;
+    font-size: 16px;
+    font-weight: 800;
+    color: #808080c7;
+    label {
+      font-size: 16px;
+      font-weight: 800;
+      color: #808080c7;
+    }
+  }
+  input {
+    border-radius: 5px;
+    font-size: 15px;
+    height: 50px;
+    &:hover {
+      border-color: $base;
+    }
+    &:focus {
+      border-color: $base;
+      box-shadow: none;
+    }
+  }
+}
+
+@mixin numberInput {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  .ant-form-item-label {
+    text-align: start;
+    label {
+      font-size: 16px;
+      font-weight: 800;
+      color: #808080c7;
+    }
+  }
+  .ant-input-number-focused {
+    box-shadow: none;
+    border-color: $base;
+
+  }
+  .ant-input-number {
+    border-radius: 5px;
+    &:hover {
+      border-color: $base;
+    }
+    &:focus {
+      border-color: $base;
+      box-shadow: none;
+    }
+    input {
+      font-size: 15px;
+      height: 50px;
+    }
+  }
+}
+
 .ant-select-dropdown {
   border: 1px solid $base;
   padding: 10px 5px !important;
