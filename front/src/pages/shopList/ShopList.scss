@@ -41,6 +41,10 @@ $container-padding: 0 100px;
       justify-content: space-between;
       .buttons {
         display: flex;
+        .active-btn {
+          background-color: $base;
+          color: white;
+        }
         button {
           @include outlined;
           margin-right: 10px;

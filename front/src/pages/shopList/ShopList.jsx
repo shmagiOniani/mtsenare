@@ -130,8 +130,8 @@ function ShopList() {
               <div className="list-style">
                 <div className="buttons">
 
-                <Button onClick={() => setListStyle("map")} icon={<GlobalOutlined />} >რუკა</Button>
-                <Button onClick={() => setListStyle("list")} icon={<UnorderedListOutlined />}>სია</Button>
+                <Button className={listStyle === "map" ? "active-btn" : ""} onClick={() => setListStyle("map")} icon={<GlobalOutlined />} >რუკა</Button>
+                <Button className={listStyle === "list" ? "active-btn" : ""} onClick={() => setListStyle("list")} icon={<UnorderedListOutlined />}>სია</Button>
                 </div>
                 <div className="input-wrapper">
                 <Select

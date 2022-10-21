@@ -72,7 +72,7 @@ function ProductList() {
       setProductList(res.data.items)
 
     })
-    .catch(err => err)
+    .catch(err => setProductList(imgs))
 
   }
   useEffect(()=>{
