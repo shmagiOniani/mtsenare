@@ -7,7 +7,7 @@ const dataRoot = path.join(process.env.HOME, '.plant-data');
 const config: any = {
   env: process.env.NODE_ENV || 'development',
 
-  root: path.normalize(path.join(__dirname, '/../../..')),
+  root: path.normalize(path.join(__dirname, '/../')),
 
   paths: {
     root: dataRoot,

@@ -14,11 +14,18 @@ const upload = multer(multerConfig);
 
 const fileRouter = Router();
 
-fileRouter.post('/', upload.array('filesToAdd', 20), fileParser.parseCreateAndDestroy, destroy, resizeAndCompressImage);
+
+fileRouter.post('/',test, upload.array('filesToAdd', 20), fileParser.parseCreateAndDestroy);
 
 fileRouter.post('/editor', upload.single('upload'), returnEditorFile);
 
 export default fileRouter;
+
+function test(req: Request, res: Response, next: NextFunction) {
+console.log("test", req);
+
+    next();
+}
 
 function destroy(req: Request, res: Response, next: NextFunction) {
   try {
@@ -27,8 +34,8 @@ function destroy(req: Request, res: Response, next: NextFunction) {
       const filepath = path.join(config.paths.uploads, filename || '');
       fs.unlink(filepath, () => {});
     }
-
-    next();
+    res.json({})
+    // next();
   } catch (e) {
     next(e);
   }
@@ -48,6 +55,7 @@ function returnEditorFile(req: Request, res: Response, next: NextFunction) {
 
 async function resizeAndCompressImage(req: Request, res: Response, next: NextFunction) {
   try {
+    
     const files: any = req.files;
     const { imageHeight, imageWidth } = req.body;
 

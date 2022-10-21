@@ -15,14 +15,21 @@ function ProductItem({id, imgSrc, xsSize, smSize, mdSize, lgSize}) {
 
   return (
     <Col xs={xsSize} sm={smSize} md={mdSize} lgsize={lgSize} className="category-item item" >
-      <div className="img-container" onClick={() => toProduct(id)}>
-        <img src={imgSrc} alt="sasas" />
-      </div>
-      <div className="category-desc">
-        <h6>სახელი</h6>
-        <div>
-          <span>{id}00$</span>
-          <span onClick={() => addToCart(id)}>კალათაში</span>
+      <div className="item-container">
+        <div className="sale-sign">
+          <div>
+            sale
+          </div>
+        </div>
+        <div className="img-container" onClick={() => toProduct(id)}>
+          <img src={imgSrc} alt="sasas" />
+        </div>
+        <div className="category-desc">
+          <h6>სახელი</h6>
+          <div>
+            <span>{id}00$</span>
+            <span onClick={() => addToCart(id)}>კალათაში</span>
+          </div>
         </div>
       </div>
     </Col>
