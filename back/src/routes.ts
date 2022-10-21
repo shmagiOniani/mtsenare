@@ -19,6 +19,9 @@ import categoryRouter from './api/categories';
 import deliveryRouter from './api/delivery';
 import productRouter from './api/products';
 import reviewRouter from './api/reviews';
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger.json');
+const router = require('express').Router();
 
 export function initRoutes(app: Express) {
   app.use(express.static(path.join(config.paths.uploads)));
@@ -29,6 +32,8 @@ export function initRoutes(app: Express) {
   app.use(auth.setUser);
   app.use(locator.setLocation);
   
+  router.use('/api-docs', swaggerUi.serve);
+  router.get('/api-docs', swaggerUi.setup(swaggerDocument));
   console.log("in route");
   app.use('/api/blogs', blogsRouter);
   app.use('/api/users', userRouter);
