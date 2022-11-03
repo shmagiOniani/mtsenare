@@ -12,12 +12,12 @@ import { Button, Form, Input, Checkbox, InputNumber } from "antd";
 import axios from "axios";
 // import { useGoogleLogin } from 'react-google-login';
 import "./Auth.scss";
-import useTransition  from "../../hooks/useTranslation";
+import useTransition from "../../hooks/useTranslation";
 
 function Auth() {
   const [signIn, setSignIn] = useState(true);
   let history = useHistory();
-  let {trans} = useTransition()
+  let { trans } = useTransition();
   const clientId =
     "65604429422-o84198pr7i6v18d6fgmui3j88k7gvqtq.apps.googleusercontent.com";
 
@@ -31,14 +31,9 @@ function Auth() {
 
   const onFinish = (values) => {
     console.log(values);
-    axios
-      .get(`http://localhost:4002/api/users/sign-up`, { values })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    API.post(`/product`, values)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   // const onFailure = (res) => {
@@ -81,7 +76,11 @@ function Auth() {
         <div className={`${!signIn ? "swipe-right" : ""} login-wrapper`}>
           <div className={`${signIn ? "nodisplay" : ""}  signup`}>
             <h1>რეგისტრაცია</h1>
-            <Form name="nest-messages" initialValues={{ remember: false }} onFinish={onFinish}>
+            <Form
+              name="nest-messages"
+              initialValues={{ remember: false }}
+              onFinish={onFinish}
+            >
               <Form.Item name="userName">
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
@@ -133,7 +132,6 @@ function Auth() {
                 />
               </Form.Item>
               <Form.Item>
-                
                 <Button className="button" type="primary" htmlType="submit">
                   მომხმარებლის შექმნა
                 </Button>
@@ -204,13 +202,11 @@ function Auth() {
           </div>
         </div>
         <div className="leftbox">
-        
           <button className="button" onClick={clickEvent2} id="signin">
             შესვლა
           </button>
         </div>
         <div className="rightbox">
-      
           <button className="button " onClick={clickEvent1} id="signup">
             განაცხადი
           </button>
