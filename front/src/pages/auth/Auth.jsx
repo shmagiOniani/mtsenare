@@ -7,12 +7,11 @@ import {
   MailOutlined,
   MobileOutlined,
 } from "@ant-design/icons";
-
 import { Button, Form, Input, Checkbox, InputNumber } from "antd";
-import axios from "axios";
 // import { useGoogleLogin } from 'react-google-login';
 import "./Auth.scss";
 import useTransition from "../../hooks/useTranslation";
+import API from "../../utils/services/API";
 
 function Auth() {
   const [signIn, setSignIn] = useState(true);
