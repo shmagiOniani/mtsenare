@@ -7,7 +7,8 @@ import {
     Faq,
     ShopList,
     Shop,
-    ShoppingCart
+    ShoppingCart,
+    Login
   } from "../pages";
 import Auth from "../pages/auth/Auth";
 import ContactUs from "../pages/contactUs/ContactUs";
@@ -21,6 +22,11 @@ import ContactUs from "../pages/contactUs/ContactUs";
     {
       path: "/auth",
       component: Auth,
+      layout: "",
+    },
+    {
+      path: "/login",
+      component: Login,
       layout: "",
     },
     {
