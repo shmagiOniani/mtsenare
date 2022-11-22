@@ -1,11 +1,11 @@
 import React from "react";
 import { Col, Row, Tooltip, Button, Carousel } from "antd";
-import {RightOutlined} from "@ant-design/icons";
-import {DownloadOutlined} from "@ant-design/icons";
+import { RightOutlined } from "@ant-design/icons";
+import { DownloadOutlined } from "@ant-design/icons";
 import OwlCarousel from "react-owl-carousel";
-import {  useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
-import wappPaper from "../../assets/img/wall-paperF.jpg";
+import wappPaper from "../../assets/img/product/cut_bg_01.png";
 import avatar from "../../assets/img/avatar.png";
 import aboutImg from "../../assets/img/home-about.jpg";
 import Footer from "../footer/Footer";
@@ -22,7 +22,6 @@ const imgs = [
 ];
 
 function Home() {
-
   let history = useHistory();
 
   const onChange = (a, b, c) => {
@@ -64,50 +63,42 @@ function Home() {
     <div className="page-wrapper home-page">
       <div className="page-container">
         <Row className="home-wrapper">
-          {/* <Col xs={24}>
-            <Navbar />
-          </Col> */}
           <Col xs={24}>
-            <div className="wall-paper">
-              <div className="img-container">
+            <Row className="wall-paper">
+              <Col xs={12}  className="img-container">
+              <div className="img-wrapper">
                 <img src={wappPaper} alt={"wall paper"} />
               </div>
+              </Col>
+              <Col xs={12}>
               <div className="headline">
-                <h1>
-                  იპოვნე შენი მცენარე.
-                </h1>
+                <h1>იპოვნე შენი მცენარე.</h1>
                 <a href="#">Start Shopping</a>
               </div>
-              <div className="absolute-btn">
-                <Tooltip title="search">
-                  <Button href="/product-list" shape="circle" size="large" icon={<RightOutlined />} />
-                </Tooltip>
+              </Col>
+            </Row>
+          </Col>
+          <Col xs={24}>
+            <div className="featured-container">
+              <div className="featured-header"></div>
+              <div className="featured-slider">
+                <OwlCarousel
+                  className="owl-theme"
+                  dots={false}
+                  items={"6"}
+                  loop
+                  margin={10}
+                  nav
+                >
+                  {imgs.map((category, ind) => {
+                    return <ProductItem key={ind} id={ind} imgSrc={category} />;
+                  })}
+                </OwlCarousel>
               </div>
             </div>
           </Col>
-           <Col xs={24}>
-            <Row gutter={[30, 30]} className="category-list">
-              {imgs.map((category, ind) => {
-                return (
-                  <Col
-                    xs={12}
-                    sm={12}
-                    md={8}
-                    lg={4}
-                    key={ind}
-                    className="category-item"
-                  >
-                    <div className="img-container" onClick={toShop}>
-                      <img src={category} alt="sasas" />
-                    </div>
-                    <div className="category-desc">
-                      <b>კატეგორია</b>
-                      <p>10$ - {ind}00$</p>
-                    </div>
-                  </Col>
-                );
-              })}
-            </Row>
+          <Col xs={24}>
+            <Row gutter={[30, 30]} className="category-list"></Row>
           </Col>
           <Col xs={24}>
             <div className="slider-container">
@@ -134,25 +125,7 @@ function Home() {
               </div>
             </div>
           </Col>
-          <Col xs={24}>
-            <div className="featured-container">
-              <div className="featured-header"></div>
-              <div className="featured-slider">
-                <OwlCarousel
-                  className="owl-theme"
-                  dots={false}
-                  items={"4"}
-                  loop
-                  margin={10}
-                  nav
-                >
-                  {imgs.map((category, ind) => {
-                    return <ProductItem key={ind} id={ind} imgSrc={category} />;
-                  })}
-                </OwlCarousel>
-              </div>
-            </div>
-          </Col>
+
           <Col xs={24}>
             <div className="home-about-section">
               <Row>
@@ -184,10 +157,13 @@ function Home() {
                 <div className="sub-input">
                   <input placeholder="ელ. ფოსტა..." />
                   <div>
-
-                <Button className="sub-input" type="primary" icon={<DownloadOutlined />} >
-                  გამოწერა
-                </Button>
+                    <Button
+                      className="sub-input"
+                      type="primary"
+                      icon={<DownloadOutlined />}
+                    >
+                      გამოწერა
+                    </Button>
                   </div>
                 </div>
               </Col>
@@ -195,7 +171,7 @@ function Home() {
           </Col>
           <Col xs={24}>
             <Footer />
-          </Col> 
+          </Col>
         </Row>
       </div>
     </div>
