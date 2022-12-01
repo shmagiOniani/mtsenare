@@ -13,7 +13,7 @@ import { PUBLIC_ROUTES } from "./utils/routes";
 import "antd/dist/antd.min.css";
 import "./App.scss";
 import ScrollToTop from "./utils/ScrollToTop";
-import Spinner from "./components/spinner/Spinner";
+// import Spinner from "./components/spinner/Spinner";
 
 function App() {
   const [bgColor, setBgColor] = useState("");
@@ -30,6 +30,16 @@ function App() {
       localStorage.setItem("fontcolor", fontColor);
     }
   }, [fontColor]);
+
+  useEffect(() => {
+    if (bgColor && bgColor.length > 0) {
+      document.documentElement.style.setProperty(
+        "--app-primaryBGColor",
+        localStorage.getItem("bgColor")
+      );
+      localStorage.setItem("bgColor", bgColor);
+    }
+  }, [bgColor]);
 
   useEffect(() => {
     setBgColor(localStorage.getItem("bgcolor"));

@@ -7,7 +7,7 @@ import {
   MailOutlined,
   MobileOutlined,
 } from "@ant-design/icons";
-import { Button, Form, Input, Checkbox, InputNumber } from "antd";
+import { Button, Form, Input, Checkbox } from "antd";
 // import { useGoogleLogin } from 'react-google-login';
 import "./Auth.scss";
 import useTransition from "../../hooks/useTranslation";
@@ -17,8 +17,8 @@ function Auth() {
   const [signIn, setSignIn] = useState(true);
   let history = useHistory();
   let { trans } = useTransition();
-  const clientId =
-    "65604429422-o84198pr7i6v18d6fgmui3j88k7gvqtq.apps.googleusercontent.com";
+  // const clientId =
+  //   "65604429422-o84198pr7i6v18d6fgmui3j88k7gvqtq.apps.googleusercontent.com";
 
   // const onSuccess = (res) => {
   //   console.log('Login Success: currentUser:', res.profileObj);

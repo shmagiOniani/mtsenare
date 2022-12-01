@@ -2,9 +2,8 @@ import React, {  useState, useEffect } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import OwlCarousel from "react-owl-carousel";
-import { Col, Row, Tabs, InputNumber, Button, Form } from 'antd';
+import { Col, Row, Tabs, InputNumber, Button } from 'antd';
 import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
-import FormItem from 'antd/lib/form/FormItem';
 import TextArea from 'antd/lib/input/TextArea';
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../footer/Footer';
@@ -15,20 +14,52 @@ import "./Product.scss";
 
 
 
+
 const imgs = [
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-2.jpg",
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-3.jpg",
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-4.jpg",
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-5.jpg",
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-6.jpg",
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
+  },
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-2.jpg",
+  },
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-3.jpg",
+  },
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-4.jpg",
+  },
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-5.jpg",
+  },
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-6.jpg",
+  },
 ];
 
+
 const related = [
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-2.jpg",
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-3.jpg",
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-4.jpg",
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
+  },
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-2.jpg",
+  },
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-3.jpg",
+  },
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-4.jpg",
+  },
 ];
 
 function Product() {
@@ -86,7 +117,7 @@ function Product() {
                   {imgs.map((img, ind) => {
                     return (
                       <div key={ind} className="product-slider-item">
-                        <img src={img} />
+                        <img src={img.image} alt="product img" />
                       </div>
                     );
                   })}
@@ -170,9 +201,9 @@ function Product() {
                   margin={10}
                   nav
                 >
-              {related.map((category, ind) => {
+              {related.map((product, ind) => {
                 return (
-                  <ProductItem  key={ind} id={ind} imgSrc={category} />
+                  <ProductItem  product={product} key={ind} id={ind} imgSrc={product.image} />
                 );
               })}
               </OwlCarousel>

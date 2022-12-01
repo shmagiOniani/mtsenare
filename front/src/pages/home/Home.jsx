@@ -1,62 +1,45 @@
 import React from "react";
-import { Col, Row, Tooltip, Button, Carousel } from "antd";
-import { RightOutlined } from "@ant-design/icons";
+import { Col, Row, Button, Carousel } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
 import OwlCarousel from "react-owl-carousel";
-import { useHistory } from "react-router-dom";
-import Navbar from "../../components/navbar/Navbar";
 import wappPaper from "../../assets/img/product/cut_bg_01.png";
 import avatar from "../../assets/img/avatar.png";
 import aboutImg from "../../assets/img/home-about.jpg";
 import Footer from "../footer/Footer";
 import "./Home.scss";
-import ProductItem from "./ProductItem";
+import { Link } from "react-router-dom";
 
 const imgs = [
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-2.jpg",
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-3.jpg",
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-4.jpg",
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-5.jpg",
-  "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-6.jpg",
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
+  },
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-2.jpg",
+  },
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-3.jpg",
+  },
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-4.jpg",
+  },
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-5.jpg",
+  },
+  {
+    name: "DSd",
+    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-6.jpg",
+  },
 ];
 
 function Home() {
-  let history = useHistory();
 
   const onChange = (a, b, c) => {
     console.log(a, b, c);
-  };
-
-  const toShop = () => {
-    history.push(`/product-list`);
-  };
-
-  function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "red" }}
-        onClick={onClick}
-      />
-    );
-  }
-
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "green" }}
-        onClick={onClick}
-      />
-    );
-  }
-
-  const settings = {
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
   };
 
   return (
@@ -73,7 +56,7 @@ function Home() {
               <Col xs={12}>
               <div className="headline">
                 <h1>იპოვნე შენი მცენარე.</h1>
-                <a href="#">Start Shopping</a>
+                <Link to="/product-list">Start Shopping</Link>
               </div>
               </Col>
             </Row>
@@ -90,9 +73,9 @@ function Home() {
                   margin={10}
                   nav
                 >
-                  {imgs.map((category, ind) => {
-                    return <ProductItem key={ind} id={ind} imgSrc={category} />;
-                  })}
+                  {/* {imgs.map((product, ind) => {
+                    return <ProductItem product={product} key={ind} id={ind} imgSrc={product.image} />;
+                  })} */}
                 </OwlCarousel>
               </div>
             </div>
@@ -142,7 +125,7 @@ function Home() {
                 </Col>
                 <Col md={24} xl={12}>
                   <div className="img-container">
-                    <img src={aboutImg} />
+                    <img src={aboutImg} alt="product-img" />
                   </div>
                 </Col>
               </Row>

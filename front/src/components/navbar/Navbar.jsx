@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { Row, Col, Input, Form, Badge } from "antd";
+import React from "react";
+import { Row, Col, Badge } from "antd";
 import {
-  SearchOutlined,
   ShoppingOutlined,
   CloseOutlined,
   UserOutlined,
@@ -12,16 +11,9 @@ import logo from "../../assets/img/logo.png";
 import "./Navbar.scss";
 
 function Navbar() {
-  const [form] = Form.useForm();
-
-  const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
 
   let history = useHistory();
-
-  const onSearch = (data) => {
-    console.log(data);
-  };
 
   const toHome = () => {
     history.push("/home");
@@ -33,8 +25,6 @@ function Navbar() {
       return true
     }else if(target === "relocate") {
       console.log("relocate");
-      // history.push("/home");
-      // history.push(`product/${id}`);
     }
   };
   
@@ -147,7 +137,7 @@ function Navbar() {
                     <div className="search-container">
                       {/* <SearchOutlined onClick={() => setSearchOpen(!searchOpen)} /> */}
 
-                      <Form
+                      {/* <Form
                         className={`search-form ${
                           searchOpen ? "active-form" : ""
                         }`}
@@ -161,7 +151,7 @@ function Navbar() {
                         <Form.Item name={"search"}>
                           <Input placeholder="Search" />
                         </Form.Item>
-                      </Form>
+                      </Form> */}
                     </div>
                   ) : (
                     ""

@@ -1,0 +1,10 @@
+@import "../../../style/buttons.scss";
+
+
+
+.ghost{
+  @include ghostOutlined;
+}
+.success {
+  @include filledButton;
+}

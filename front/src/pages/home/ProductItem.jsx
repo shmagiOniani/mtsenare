@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col } from "antd";
 import {  useHistory } from "react-router-dom";
-import useCart from "../../hooks/useCart"
+// import useCart from "../../hooks/useCart"
 
 import "./ProductItem.scss"
 
-function ProductItem({id, imgSrc, xsSize, smSize, mdSize, lgSize}) {
+function ProductItem({product, imgSrc, xsSize, smSize, mdSize, lgSize}) {
     let history = useHistory();
-    const { addToCart } = useCart(id);
+    const [productData, setProductData] = useState({})
+    // const { addToCart } = useCart(product._id);
+    
     const toProduct = (id) => {
-      history.push(`/product/${id}`);
+      history.push(`/product/{id}`);
     };
 
+    useEffect(()=> {
+      console.log(product);
+      setProductData(product)
+    }, [])
 
   return (
     <Col xs={xsSize} sm={smSize} md={mdSize} lgsize={lgSize} className="category-item item" >
@@ -21,14 +27,14 @@ function ProductItem({id, imgSrc, xsSize, smSize, mdSize, lgSize}) {
             sale
           </div>
         </div>
-        <div className="img-container" onClick={() => toProduct(id)}>
+        <div className="img-container" onClick={() => toProduct('product?.name')}>
           <img src={imgSrc} alt="sasas" />
         </div>
         <div className="category-desc">
-          <h6>სახელი</h6>
+          <h6>{productData.name || "სახელი"}</h6>
           <div>
-            <span>{id}00$</span>
-            <span onClick={() => addToCart(id)}>კალათაში</span>
+            <span>100$</span>
+            <span onClick={() => console.log(productData)}>კალათაში</span>
           </div>
         </div>
       </div>

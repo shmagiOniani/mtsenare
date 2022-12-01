@@ -5,12 +5,9 @@ import { UploadOutlined } from "@ant-design/icons";
 import {one,two,tree,four,five,six,seven,eight,nine,ten,eleven,} from "../../assets/img/product"
 import Navbar from "../../components/navbar/Navbar";
 import "./ProductList.scss";
-import Footer from "../footer/Footer";
 import ProductItem from "../home/ProductItem";
-import AddProduct from "../../components/modal/addProduct";
-
+import AddProduct from "../../components/modal/addProduct/AddProduct";
 import 'antd/dist/antd.css';
-import { ProductService } from "../../utils/services/product-service";
 import API from "../../utils/services/API";
 
 const { Search } = Input;
@@ -189,15 +186,15 @@ function ProductList() {
                         <Option value={"b"}>{"შეფასების მიხედვით"}</Option>
                       </Select>
                     </Col>
-                    {productList.map((category, ind) => {
+                    {productList.length && productList.map((product, ind) => {
                       return (
                         <ProductItem
                           xsSize={12}
                           smSize={8}
                           mdSize={6}
                           key={ind}
-                          id={ind}
                           imgSrc={imgs[ind]}
+                          product={product}
                         />
                       );
                     })}
@@ -208,10 +205,9 @@ function ProductList() {
                 </Col>
               </Row>
             </Col>
-
-            <Col xs={24}>
+            {/* <Col xs={24}>
               <Footer />
-            </Col>
+            </Col> */}
           </Row>
         </div>
       </div>

@@ -55,7 +55,7 @@ function Footer() {
             </Col>
             <Col sm={8}>
               <div className="img-container">
-                <img src={payment}/>
+                <img src={payment} alt="description" />
               </div>
               {/* Payment Methods */}
             </Col>

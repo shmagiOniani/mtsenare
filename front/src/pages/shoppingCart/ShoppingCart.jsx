@@ -1,6 +1,6 @@
-import React, { createRef, useState } from "react";
-import { useHistory, Link, useLocation } from "react-router-dom";
-import { Col, Row, Select, Form, Slider, Pagination } from "antd";
+import React from "react";
+import { useHistory, Link } from "react-router-dom";
+import { Col, Row } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import useTranslation from "../../hooks/useTranslation";
 
@@ -11,17 +11,12 @@ import "./ShoppingCart.scss";
 
 function ShoppingCart() {
   const { trans } = useTranslation();
-  const { Option } = Select;
 
   let history = useHistory();
-  const location = useLocation();
 
   const handleNavigate =(id)=>{
     history.push(`product/${id}`)
   }
-
-  // history.push('/home');
-  // location.pathname
 
   return (
     <div className="page-wrapper">
