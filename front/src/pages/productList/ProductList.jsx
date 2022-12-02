@@ -5,7 +5,7 @@ import { UploadOutlined } from "@ant-design/icons";
 import {one,two,tree,four,five,six,seven,eight,nine,ten,eleven,} from "../../assets/img/product"
 import Navbar from "../../components/navbar/Navbar";
 import "./ProductList.scss";
-import ProductItem from "../home/ProductItem";
+import ProductItem from "../../components/productItem/ProductItem";
 import AddProduct from "../../components/modal/addProduct/AddProduct";
 import 'antd/dist/antd.css';
 import API from "../../utils/services/API";

@@ -4,7 +4,7 @@ import TextArea from 'antd/lib/input/TextArea';
 import { MessageOutlined,  FrownOutlined, MehOutlined, SmileOutlined, BellOutlined } from "@ant-design/icons";
 import Navbar from '../../components/navbar/Navbar'
 import useTranslation from '../../hooks/useTranslation';
-import ProductItem from '../home/ProductItem';
+import ProductItem from '../../components/productItem/ProductItem';
 import avatar from "../../assets/img/avatar.png";
 
 import Footer from '../footer/Footer';

@@ -96,15 +96,15 @@ function AddProduct({ open, setOpen, refresh }) {
       xs: 24
     },
     {
-      name: "deliveryTime",
+      name: "category",
       type: "text",
-      label: "მიტანის თარიღი",
+      label: "კატეგორია",
       xs: 24
     },
     {
-      name: "deliveryType",
+      name: "tags",
       type: "text",
-      label: "მიტანის ტიპი",
+      label: "თაგი",
       xs: 24
     },
     {

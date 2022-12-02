@@ -7,7 +7,7 @@ import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
 import TextArea from 'antd/lib/input/TextArea';
 import Navbar from '../../components/navbar/Navbar'
 import Footer from '../footer/Footer';
-import ProductItem from '../home/ProductItem';
+import ProductItem from '../../components/productItem/ProductItem';
 import useTranslation from '../../hooks/useTranslation';
 import useCurrentWidth from '../../hooks/useCurrentWidth';
 import "./Product.scss";

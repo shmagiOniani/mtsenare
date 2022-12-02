@@ -1,18 +1,18 @@
+import React from 'react'
 import { Button } from 'antd'
 import PropTypes from "prop-types"
-import React from 'react'
 import "./style.scss"
 
 
 function CustomButton({type, size, disabled, loading, icon, children, htmlType, onClick}) {
   return (
     <Button 
-    className={type + " " + size} 
-    htmlType={htmlType} 
-    loading={loading}
-    icon={icon}
-    disabled={disabled}
-    onClick={onClick}
+      className={type + " " + size} 
+      htmlType={htmlType} 
+      loading={loading}
+      icon={icon}
+      disabled={disabled}
+      onClick={onClick}
     >
     {children}
   </Button>
