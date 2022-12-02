@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Button, Col, Modal, Row } from "antd";
 import { Link } from "react-router-dom";
 import OwlCarousel from "react-owl-carousel";
@@ -73,7 +73,7 @@ const imgs = [
 ];
 
 function Home() {
-  const [ modalOpen, setModalOpen ] = useState(true)
+  const [modalOpen, setModalOpen] = useState(true);
 
   return (
     <div className="home-wrapper">
@@ -143,18 +143,108 @@ function Home() {
             </div>
           </Col>
         </Row>
+        <Row className="discover-items">
+          <div className="header-wrapper">
+            <div className="header">
+            Discover Our <span>Favorites</span>
+            </div>
+            <p>Seed some happiness with our top picks for smart grow lights, gardening kits, accessories and more.</p>
+            <Link to={"/product-list"} className="custom-button">
+              <span>shop all</span>
+            </Link>
+          </div>
+        </Row>
+        <Row className="product-type" gutter={[30]}>
+          <Col xs={8}>
+            <div className="item-wrapper">
+              <div className="img-container">
+                <img
+                  src={"https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/banner-4.jpg" }
+                  alt="rame"
+                />
+              </div>
+              <Link to={"/product-list"} className="custom-button">
+                <span>shop best sellers</span>
+              </Link>
+            </div>
+          </Col>
+          <Col xs={8}>
+            <div className="item-wrapper">
+              <div className="img-container">
+                <img
+                  src={"https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/banner-5.jpg" }
+                  alt="rame"
+                />
+              </div>
+              <Link to={"/product-list"} className="custom-button">
+                <span>shop best sellers</span>
+              </Link>
+            </div>
+          </Col>
+          <Col xs={8}>
+            <div className="item-wrapper">
+              <div className="img-container">
+                <img
+                  src={"https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/banner-6.jpg" }
+                  alt="rame"
+                />
+              </div>
+              <Link to={"/product-list"} className="custom-button">
+                <span>shop best sellers</span>
+              </Link>
+            </div>
+          </Col>
+        </Row>
+        <Row className="most-popular">
+          <Col xs={6}>
+            <div className="header-wrapper">
+              <div className="header">
+                Best <span>Sellers</span>
+              </div>
+              <p>Meet our most lovable plants.</p>
+              <Link to={"/product-list"} className="custom-button">
+                <span>shop best sellers</span>
+              </Link>
+            </div>
+          </Col>
+          <Col xs={18}>
+            <div className="featured-slider">
+              <OwlCarousel
+                className="owl-theme"
+                dots={false}
+                items={"4"}
+                loop
+                margin={40}
+                nav
+              >
+                {products.map((product, ind) => {
+                  return (
+                    <ProductItem
+                      product={product}
+                      key={ind}
+                      id={ind}
+                      imgSrc={product.image}
+                    />
+                  );
+                })}
+              </OwlCarousel>
+            </div>
+          </Col>
+        </Row>
       </div>
-      <Modal     
+      <Modal
         className="subscribe-modal"
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
         title={"sds"}
         visible={modalOpen}
         onCancel={() => setModalOpen(false)}
-        width={400}
-      > sadasdsd
-        <CloseButton></CloseButton>
-      
+        width={500}
+      >
+        <div className="modal-header" onClick={() => setModalOpen(false)}>
+          <CloseButton />
+        </div>
+        <div className="modal-body"></div>
       </Modal>
     </div>
 

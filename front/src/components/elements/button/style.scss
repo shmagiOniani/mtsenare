@@ -13,6 +13,7 @@
 $button-size: 40px;
 $close-width: ($button-size / 10);
 .close-button {
+  transform: scale(.5);
   display: block;
   width: $button-size;
   height: $button-size;
