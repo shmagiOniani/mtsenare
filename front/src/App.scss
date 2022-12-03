@@ -3,7 +3,7 @@
 
 @font-face {
   font-family: "dejavu";
-  src: url("./assets//fonts/BPG\ 2017\ DejaVuSans-ExtraLight.ttf");
+  src: url("./assets/fonts/BPG\ 2017\ DejaVuSans-ExtraLight.ttf");
 }
 @font-face {
   font-family: "mrgvlovani";
@@ -35,12 +35,12 @@ body {
   ::-moz-selection {
     /* Code for Firefox */
     color: white;
-    background: $base;
+    background: #224229;
   }
 
   ::selection {
     color: white;
-    background: $base;
+    background: #224229;
   }
 }
 

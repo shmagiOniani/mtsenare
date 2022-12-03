@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import OwlCarousel from "react-owl-carousel";
 import { Col, Row, Input, Select, Slider, Pagination, Tooltip, Button } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import {one,two,tree,four,five,six,seven,eight,nine,ten,eleven,} from "../../assets/img/product"
@@ -13,7 +14,38 @@ import API from "../../utils/services/API";
 const { Search } = Input;
 const imgs = [one,two,tree,four,five,six,seven,eight,nine,ten,eleven,five];
 
-
+const products = [
+  {
+    name: "Ceramic Pots",
+    image:
+      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
+  },
+  {
+    name: "Indoor Plants",
+    image:
+      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-2.jpg",
+  },
+  {
+    name: "Low Maintenance",
+    image:
+      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-3.jpg",
+  },
+  {
+    name: "Plant Bundle",
+    image:
+      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-4.jpg",
+  },
+  {
+    name: "Air Purifying",
+    image:
+      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-5.jpg",
+  },
+  {
+    name: "Ceramic Pots",
+    image:
+      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-6.jpg",
+  },
+];
 
 const category = ["Cactus", "Exotic", "Greens", "Popular", "Various", "Winter"];
 
@@ -84,31 +116,71 @@ function ProductList() {
             <Button onClick={()=> handleOpenForm()} shape="circle" size="large" icon={<UploadOutlined />} />
           </Tooltip>
         </div>
+        <Row justify={"center"} style={{width: "100%"}}>
+          <Col xs={18}>
+            <Navbar />
+          </Col>
+        </Row>
+        <Row className="section-header" justify={"center"} align={"middle"} style={{width: "100%"}}>
+          <Col xs={24} className={"page-header"}>
+            <h2>Shop</h2>
+            <Row justify="center" style={{width: "100%"}}>
+              <Col xs={12}>
+                <div className="featured-slider">
+                  <OwlCarousel
+                    className="owl-theme"
+                    dots={false}
+                    items={"4"}
+                    loop
+                    margin={40}
+                    nav
+                  >
+                    {products.map((product, ind) => {
+                      return (
+                        <div className="slider-item" key={ind}>
+                          <div className="img-wrapper">
+                            <img 
+                              width={50}
+                              height={50}
+                              src={product.image} />
+                          </div>
+                          <div className="title"><span>{product.name}</span></div>
+                        </div>
+                        // <ProductItem
+                        //   product={product}
+                        //   key={ind}
+                        //   id={ind}
+                        //   imgSrc={product.image}
+                        // />
+                      );
+                    })}
+                  </OwlCarousel>
+                </div>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
         <div className=" page-container">
           <Row>
-            <Col xs={24}>
-              <Navbar />
-            </Col>
-            {/* <Col xs={24} className={"page-header"}>
-              <h2>პროდუქტის გვერდი</h2>
-              <p>Where flowers are our inspiration</p>
-            </Col>*/}
             <Col xs={24}>
               <Row gutter={[20, 20]} className="list">
                 <Col className="product-list-sidebar" sm={5}>
                   <div className="product-sidebar-wrapper">
                     <ul className="product-sidebar-category ">
-                      <h6 className="category-header">კატეგორიები</h6>
+                      <h5 className="category-header">კატეგორიები</h5>
                       {category.map((item, ind) => {
                         return (
                           <li key={ind}>
-                            <Link to={item}>{item}</Link>
+                            <Link to={item}>
+                              <span>{item}</span>
+                              <span>{ind}</span>
+                            </Link>
                           </li>
                         );
                       })}
                     </ul>
                     <ul className="product-sidebar-category ">
-                      <h6 className="category-header">ფასის შუალედი</h6>
+                      <h5 className="category-header">ფასის შუალედი</h5>
                       <li className="range-input">
                         <Slider
                           range
@@ -205,9 +277,6 @@ function ProductList() {
                 </Col>
               </Row>
             </Col>
-            {/* <Col xs={24}>
-              <Footer />
-            </Col> */}
           </Row>
         </div>
       </div>

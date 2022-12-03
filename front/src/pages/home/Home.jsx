@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, Col, Modal, Row } from "antd";
+import React, { useRef, useState } from "react";
+import { Button, Col, Modal, Rate, Row } from "antd";
 import { Link } from "react-router-dom";
 import OwlCarousel from "react-owl-carousel";
 import ProductItem from "../../components/productItem/ProductItem";
@@ -9,6 +9,11 @@ import three from "../../assets/img/category-icon/categories-3.jpg";
 import four from "../../assets/img/category-icon/categories-4.jpg";
 import five from "../../assets/img/category-icon/categories-5.jpg";
 import six from "../../assets/img/category-icon/categories-6.jpg";
+import delivery from "../../assets/img/icon/delivery.png";
+import payment from "../../assets/img/icon/payment.png";
+import recall from "../../assets/img/icon/recall.png";
+import support from "../../assets/img/icon/support.png";
+import instagram from "../../assets/img/icon/instagram.svg";
 import wappPaper from "../../assets/img/product/cut_bg_01.png";
 import "./Home.scss";
 import CloseButton from "../../components/elements/button/CloseButton";
@@ -74,6 +79,10 @@ const imgs = [
 
 function Home() {
   const [modalOpen, setModalOpen] = useState(true);
+  const subscribeRef = useRef(null);
+  const handleSubscribe = (data) => {
+    console.log(data);
+  };
 
   return (
     <div className="home-wrapper">
@@ -146,9 +155,12 @@ function Home() {
         <Row className="discover-items">
           <div className="header-wrapper">
             <div className="header">
-            Discover Our <span>Favorites</span>
+              Discover Our <span>Favorites</span>
             </div>
-            <p>Seed some happiness with our top picks for smart grow lights, gardening kits, accessories and more.</p>
+            <p>
+              Seed some happiness with our top picks for smart grow lights,
+              gardening kits, accessories and more.
+            </p>
             <Link to={"/product-list"} className="custom-button">
               <span>shop all</span>
             </Link>
@@ -159,7 +171,9 @@ function Home() {
             <div className="item-wrapper">
               <div className="img-container">
                 <img
-                  src={"https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/banner-4.jpg" }
+                  src={
+                    "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/banner-4.jpg"
+                  }
                   alt="rame"
                 />
               </div>
@@ -172,7 +186,9 @@ function Home() {
             <div className="item-wrapper">
               <div className="img-container">
                 <img
-                  src={"https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/banner-5.jpg" }
+                  src={
+                    "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/banner-5.jpg"
+                  }
                   alt="rame"
                 />
               </div>
@@ -185,7 +201,9 @@ function Home() {
             <div className="item-wrapper">
               <div className="img-container">
                 <img
-                  src={"https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/banner-6.jpg" }
+                  src={
+                    "https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/banner-6.jpg"
+                  }
                   alt="rame"
                 />
               </div>
@@ -231,6 +249,134 @@ function Home() {
             </div>
           </Col>
         </Row>
+        <hr />
+        <Row className="slider-wrapper">
+          <Col xs={12}>
+            <div className="img-wrapper">
+              <img
+                width="615"
+                height="457"
+                alt="some-img"
+                src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/img-2.jpg"
+                className="main-img"
+              />
+              <img
+                width="281"
+                height="268"
+                alt="sub-image"
+                src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/img-3.png"
+                className="elementor-img"
+              />
+              <img
+                width="106"
+                height="106"
+                alt="rolling-image"
+                src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/text-rotate.png"
+                className="rolling-stone"
+              />
+            </div>
+          </Col>
+          <Col xs={12}>
+            <div className="featured-container">
+              <div className="featured-slider">
+                <OwlCarousel
+                  className="owl-theme"
+                  items={"1"}
+                >
+                  {imgs.map((product, ind) => {
+                     return(
+                      <div className="list-item">
+                        <div className="rate">
+                          <span>“</span>
+                          <Rate  value={3} />
+                        </div>
+                        <div className="quot">“ Very happy with flacio; plants arrived in <br/> excellent condition, were healthy... </div>
+                        <div className="author">Ann Smith</div>
+                      </div>
+                      )
+                   })}
+                </OwlCarousel>
+              </div>
+            </div>
+          </Col>
+        </Row>
+        <Row className="services">
+          <Row gutter={[30]} className="service-container">
+            <Col xs={6} className="service-item">
+              <img width={60} height={60} src={delivery} alt="delivery" />
+              <h3>Free delivery</h3>
+            </Col>
+            <Col xs={6} className="service-item">
+              <img width={60} height={60} src={payment} alt="payment" />
+              <h3>Secure payments</h3>
+            </Col>
+            <Col xs={6} className="service-item">
+              <img width={60} height={60} src={support} alt="support" />
+              <h3>Top-notch support</h3>
+            </Col>
+            <Col xs={6} className="service-item">
+              <img width={60} height={60} src={recall} alt="recall" />
+              <h3>180 Days Return</h3>
+            </Col>
+          </Row>
+        </Row>
+        <Row className="instagram-section">
+          <div className="title">
+            <h2>#flaciogreen</h2>
+            <p>Our community has a thing for plant styling. Get inspired.</p>
+          </div>
+          <Row className="container" gutter={[30]}>
+            <Col xs={12}>
+              <div className="img-container">
+                <Link to={"product-list"}>
+                  <img className="main-img" src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/ig-1.jpg" alt="" />
+                  <div className="overflow"/>
+                   <img width={30} heigh={30} src={instagram} alt="instagram" className="instagram"/>
+                </Link>
+              </div>
+            </Col>
+            <Col xs={12} className="quarter">
+              <Row  gutter={[30, 16]}>
+                <Col xs={12}>
+                  <div>
+                   <Link to={"product-list"}>
+                    <img className="main-img" src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/ig-2.jpg" alt="" />
+                   </Link>
+                   <div className="overflow"/>
+                   <img width={30} heigh={30} src={instagram} alt="instagram" className="instagram"/>
+                  </div>
+                </Col>
+                <Col xs={12}>
+                  <div>
+                   <Link to={"product-list"}>
+                    <img className="main-img" src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/ig-2.jpg" alt="" />
+                   </Link>
+                   <div className="overflow"/>
+                   <img width={30} heigh={30} src={instagram} alt="instagram" className="instagram"/>
+                  </div>
+                </Col>
+                <Col xs={12}>
+                  <div>
+                   <Link to={"product-list"}>
+                    <img className="main-img" src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/ig-2.jpg" alt="" />
+                   </Link>
+                   <div className="overflow"/>
+                   <img width={30} heigh={30} src={instagram} alt="instagram" className="instagram"/>
+                  </div>
+                </Col>
+                <Col xs={12}>
+                  <div>
+                   <Link to={"product-list"}>
+                    <img className="main-img" src="https://wpbingosite.com/wordpress/flacio/wp-content/uploads/2021/12/ig-2.jpg" alt="" />
+                   </Link>
+                   <div className="overflow"/>
+                   <img width={30} heigh={30} src={instagram} alt="instagram" className="instagram"/>
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Row>
       </div>
       <Modal
         className="subscribe-modal"
@@ -239,12 +385,42 @@ function Home() {
         title={"sds"}
         visible={modalOpen}
         onCancel={() => setModalOpen(false)}
-        width={500}
+        width={800}
       >
-        <div className="modal-header" onClick={() => setModalOpen(false)}>
-          <CloseButton />
-        </div>
-        <div className="modal-body"></div>
+        <Row>
+          <Col xs={12}>
+            <div className="img-wrapper">
+              <img
+                src="https://wpbingosite.com/wordpress/flacio/wp-content/themes/flacio/images/newsletter-image.jpg"
+                alt="subscribe-img"
+              />
+            </div>
+          </Col>
+          <Col xs={12}>
+            <div className="modal-header" onClick={() => setModalOpen(false)}>
+              <CloseButton />
+            </div>
+            <div className="modal-body">
+              <div className="header">
+                Get <br /> free <span>Shipping</span>
+              </div>
+              <div className="paragraph">
+                on your first order. Offer ends soon.
+              </div>
+              <div className="input-wrapper">
+                <input ref={subscribeRef} placeholder="Enter Your Email ..." />
+                <button
+                  onClick={() => handleSubscribe(subscribeRef.current.value)}
+                >
+                  SUBSCRIBE
+                </button>
+              </div>
+              <div className="no-case" onClick={() => setModalOpen(false)}>
+                <div>no thanks!</div>
+              </div>
+            </div>
+          </Col>
+        </Row>
       </Modal>
     </div>
 

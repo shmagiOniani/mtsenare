@@ -15,7 +15,6 @@ function ProductItem({product, imgSrc, xsSize, smSize, mdSize, lgSize}) {
     };
 
     useEffect(()=> {
-      console.log(product);
       setProductData(product)
     }, [])
 
