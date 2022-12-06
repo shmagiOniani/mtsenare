@@ -13,13 +13,20 @@ import { PUBLIC_ROUTES } from "./utils/routes";
 import "antd/dist/antd.min.css";
 import "./App.scss";
 import ScrollToTop from "./utils/ScrollToTop";
-// import Spinner from "./components/spinner/Spinner";
+import Spinner from "./components/spinner/Spinner";
 
 function App() {
   const [bgColor, setBgColor] = useState("");
   const [fontColor, setFontColor] = useState("");
+  const [loading, setLoading] = useState(false)
 
-
+  useEffect(()=> {
+    console.log("here");
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 300);
+  },[Route])
 
   useEffect(() => {
     if (fontColor && fontColor.length > 0) {
@@ -50,7 +57,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <div className={`app`}>
-        {/* <Spinner/> */}
+        {loading && <Spinner/>}
         {/* <div className="">
           <input
             id="font-color"

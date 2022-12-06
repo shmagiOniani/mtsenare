@@ -1,50 +1,94 @@
 import React, { useState, useEffect } from "react";
-import { Button, Modal, Divider, Form, Input, Row, Col, InputNumber, Upload} from "antd";
-// import ImgCrop from 'antd-img-crop';
-
+import {
+  Modal,
+  Divider,
+  Form,
+  Input,
+  Row,
+  Col,
+  InputNumber,
+  Upload,
+  message,
+} from "antd";
+import ImgCrop from 'antd-img-crop';
+import { PlusOutlined } from '@ant-design/icons';
 import "antd/dist/antd.css";
 import "./styles.scss";
 import API from "../../../utils/services/API";
-// import axios from "axios";
 import CustomButton from "../../elements/button/CustomButton";
+
+const getBase64 = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
+
 
 function AddProduct({ open, setOpen, refresh }) {
   const [form] = Form.useForm();
   const [confirmLoading, setConfirmLoading] = useState(false);
-  // const [fileList, setFileList] = useState([
-  //   {
-  //     uid: '-1',
-  //     name: 'image.png',
-  //     status: 'done',
-  //     url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-  //   },
-  // ]);
-
-  // const onChange = ({ fileList: newFileList }) => {
-  //   // setFileList(newFileList);
-  //   console.log("newFileList", newFileList);
-  //   // API.post(`/api/files`, newFileList)
-  //   //   .then(res => {
-  //   //     console.log("response", res);
-  //   //   })
-  //   //   .catch(err =>console.log("error", err))
-  // };
-  // const onPreview = async (file) => {
-  //   console.log("onPreview", file);
-  //   let src = file.url;
-  //   if (!src) {
-  //     src = await new Promise((resolve) => {
-  //       const reader = new FileReader();
-  //       reader.readAsDataURL(file.originFileObj);
-  //       reader.onload = () => resolve(reader.result);
-  //     });
-  //   }
-  //   const image = new Image();
-  //   image.src = src;
-  //   const imgWindow = window.open(src);
-  //   // imgWindow?.document.write(image.outerHTML);
-  // };
-
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState("");
+  const [previewTitle, setPreviewTitle] = useState("");
+  const [fileList, setFileList] = useState([
+    {
+      uid: "-1",
+      name: "image.png",
+      status: "done",
+      url:
+        "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+    },
+    {
+      uid: "-2",
+      name: "image.png",
+      status: "done",
+      url:
+        "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+    },
+    {
+      uid: "-3",
+      name: "image.png",
+      status: "done",
+      url:
+        "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+    },
+    {
+      uid: "-4",
+      name: "image.png",
+      status: "done",
+      url:
+        "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+    },
+    {
+      uid: "-xxx",
+      percent: 50,
+      name: "image.png",
+      status: "uploading",
+      url:
+        "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+    },
+    {
+      uid: "-5",
+      name: "image.png",
+      status: "error",
+    },
+  ]);
+ 
+  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+  const uploadButton = (
+    <div>
+      <PlusOutlined />
+      <div
+        style={{
+          marginTop: 8,
+        }}
+      >
+        ატვირთვა
+      </div>
+    </div>
+  );
   const handleCancel = () => {
     console.log("Clicked cancel button");
     setOpen(false);
@@ -64,22 +108,17 @@ function AddProduct({ open, setOpen, refresh }) {
     // }).catch(err=> console.log(err))
     setConfirmLoading(true);
     API.post(`/api/products`, values)
-      .then(res => {
+      .then((res) => {
         setConfirmLoading(false);
-        refresh()
+        refresh();
         setOpen(false);
-        form.resetFields()
+        form.resetFields();
       })
-      .catch(err =>setConfirmLoading(false))
-   
+      .catch((err) => setConfirmLoading(false));
   };
 
-  const dummyRequest=()=>{
-
-  }
-
   const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+    console.log("Failed:", errorInfo);
   };
 
   const inputArr = [
@@ -87,39 +126,39 @@ function AddProduct({ open, setOpen, refresh }) {
       name: "name",
       type: "text",
       label: "დასახელება",
-      xs: 24
+      xs: 8,
     },
     {
       name: "description",
       type: "text",
       label: "აღწერა",
-      xs: 24
+      xs: 8,
     },
     {
       name: "category",
       type: "text",
       label: "კატეგორია",
-      xs: 24
+      xs: 8,
     },
     {
       name: "tags",
       type: "text",
       label: "თაგი",
-      xs: 24
+      xs: 8,
     },
     {
       name: "price",
-      type: "number",
+      type: "text",
       label: "ფასი",
-      xs: 12
+      xs: 8,
     },
     {
       name: "quantity",
-      type: "number",
+      type: "text",
       label: "რაოდენობა",
-      xs: 12
+      xs: 8,
     },
-  ]
+  ];
 
   useEffect(() => {
     console.log("addproduct", open);
@@ -129,6 +168,7 @@ function AddProduct({ open, setOpen, refresh }) {
       title="პროდუქტის დამატება"
       visible={open}
       open={open}
+      width={800}
       // onOk={handleOk}
       confirmLoading={confirmLoading}
       onCancel={handleCancel}
@@ -147,48 +187,69 @@ function AddProduct({ open, setOpen, refresh }) {
         autoComplete="off"
         layout="horizontal"
       >
-        <Row >
-          {inputArr.map((item, ind)=> {
+        <Row gutter={[30, 16]}>
+          {inputArr.map((item, ind) => {
             return (
-              <Col
-                key={ind}
-                xs={item.xs}
-              >
+              <Col key={ind} xs={item.xs}>
                 <Form.Item
-                  wrapperCol={ {span: 24}}
+                  wrapperCol={{ span: 24 }}
                   name={item.name}
-                  rules={[{ required: false, message: 'ველის შევსება სავალდებულოა!' }]}
+                  rules={[
+                    { required: false, message: "ველის შევსება სავალდებულოა!" },
+                  ]}
                   label={item.label}
                   className={`${item.type}`}
-                  >
-                  {item.type === "number" ? 
-                    <InputNumber min={1}  placeholder={item.label} />
-                  :
-                    <Input placeholder={item.label} />
-                  }
+                >
+                  {item.type === "number" ? <InputNumber min={1} /> : <Input />}
                 </Form.Item>
               </Col>
-            )
+            );
           })}
 
           <Col xs={24}>
-            <Form.Item name={"imageFile"}>
-                <Upload
-                customRequest={dummyRequest}
-                  // action={`${process.env.REACT_APP_BASE_API}api/files`}
-                  // listType="picture-card"
-                  // fileList={fileList}
-                  // onChange={onChange}
-                  // onPreview={onPreview}
-                >
-                  {'+ Upload'}
-                </Upload>
-            </Form.Item>
+          <ImgCrop>
+            <Upload
+              // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              listType="picture-card"
+              fileList={fileList}
+              onChange={handleChange}
+              previewFile={false}
+              customRequest
+            >
+              {fileList.length >= 8 ? null : uploadButton}
+            </Upload>
+            </ImgCrop>
+            <Modal
+              open={previewOpen}
+              title={previewTitle}
+              footer={null}
+              onCancel={handleCancel}
+            >
+              <img
+                alt="example"
+                style={{
+                  width: "100%",
+                }}
+                src={previewImage}
+              />
+            </Modal>
           </Col>
           <Divider />
           <div className="modal-footer">
-            <CustomButton type={"ghost"} htmlType="button" onClick={handleCancel}>გაუქმება</CustomButton>
-            <CustomButton type={"success"} htmlType="submit" loading={confirmLoading}>შენახვა</CustomButton>
+            <CustomButton
+              type={"ghost"}
+              htmlType="button"
+              onClick={handleCancel}
+            >
+              გაუქმება
+            </CustomButton>
+            <CustomButton
+              type={"success"}
+              htmlType="submit"
+              loading={confirmLoading}
+            >
+              შენახვა
+            </CustomButton>
           </div>
         </Row>
       </Form>

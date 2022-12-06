@@ -283,8 +283,17 @@ $container-padding: 0 100px;
           text-transform: uppercase;
         }
         .range-input {
-          max-width: 130px;
+          // max-width: 130px;
+          .ant-slider-track, .ant-slider-rail {
+            height: 2px;
+          }
           .ant-slider-handle {
+            border: 2px solid black!important;
+            background-color: white!important;
+            border-radius: 0;
+            &:hover {
+              cursor: col-resize;
+            }
             &:focus {
               box-shadow: none;
             }
