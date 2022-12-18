@@ -56,7 +56,6 @@ function parseSearch({ keyword }: { keyword?: string }) {
 // =============== POST ===============
 
 export function parseCreate(req: Request, res: Response, next: NextFunction) {
-  console.log("post staff");
   
   req.body = parseBaseProps(req.body);
     next();

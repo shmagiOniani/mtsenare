@@ -15,26 +15,24 @@ const upload = multer(multerConfig);
 const fileRouter = Router();
 
 
-fileRouter.post('/',test, upload.array('filesToAdd', 20), fileParser.parseCreateAndDestroy);
+fileRouter.post('/', upload.array('file', 20), fileParser.parseCreateAndDestroy, destroy);
 
 fileRouter.post('/editor', upload.single('upload'), returnEditorFile);
 
 export default fileRouter;
 
-function test(req: Request, res: Response, next: NextFunction) {
-console.log("test", req);
-
-    next();
-}
-
 function destroy(req: Request, res: Response, next: NextFunction) {
   try {
     const {fileNamesToDestroy} = req.body;
-    for (const filename of fileNamesToDestroy) {
-      const filepath = path.join(config.paths.uploads, filename || '');
-      fs.unlink(filepath, () => {});
-    }
-    res.json({})
+    console.log('fileNamesToDestroy', req.files[0].filename);
+    
+    // for (const filename of fileNamesToDestroy) {
+    //   const filepath = path.join(config.paths.uploads, filename || '');
+    //   fs.unlink(filepath, () => {});
+    // }
+    res.json({
+      fileName: req.files[0].filename
+    })
     // next();
   } catch (e) {
     next(e);

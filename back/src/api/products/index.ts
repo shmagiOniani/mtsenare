@@ -2,12 +2,14 @@ import { Router, Request, Response, NextFunction } from 'express';
 import * as productDao from './product.dao';
 import * as productParser  from './product.parser';
 import * as auth from '../../auth';
+import { next } from 'cheerio/lib/api/traversing';
 
 
 const productRouter = Router();
 
 productRouter.get('/', productParser.parseGetByQuery, getByQuery);
-productRouter.post('/',  productParser.parseCreate, create);
+productRouter.post('/', productParser.parseCreate, create);
+
 productRouter.put('/:id',  productParser.parseUpdate, update);
 productRouter.delete('/:id',  destroy);
 // productRouter.get('/', productParser.parseGetByQuery, getByQuery);
@@ -33,10 +35,10 @@ async function getByQuery(req: Request, res: Response, next: NextFunction) {
 // =============== POST ===============
 
 async function create(req: Request, res: Response, next: NextFunction) {
-  console.log("product", req);
+  // console.log("product", req.body);
   try {
     const payload = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     
     await productDao.create({
       ...payload,

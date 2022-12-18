@@ -436,6 +436,10 @@ $container-padding: 0 100px;
         .quarter {
           height: 100%;
           .ant-row {
+
+    transform: scale(1.02);
+    margin-top: 7px;
+
             // height: 50%;
             .ant-col {
               height: 100%;

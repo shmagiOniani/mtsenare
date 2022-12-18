@@ -1779,6 +1779,13 @@
     "dicer" "0.2.5"
     "readable-stream" "1.1.x"
 
+"busboy@^1.6.0":
+  "integrity" "sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA=="
+  "resolved" "https://registry.npmjs.org/busboy/-/busboy-1.6.0.tgz"
+  "version" "1.6.0"
+  dependencies:
+    "streamsearch" "^1.1.0"
+
 "bytes@3.0.0":
   "integrity" "sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg="
   "resolved" "https://registry.npmjs.org/bytes/-/bytes-3.0.0.tgz"
@@ -3453,6 +3460,13 @@
     "jest-matcher-utils" "^22.4.3"
     "jest-message-util" "^22.4.3"
     "jest-regex-util" "^22.4.3"
+
+"express-fileupload@^1.4.0":
+  "integrity" "sha512-RjzLCHxkv3umDeZKeFeMg8w7qe0V09w3B7oGZprr/oO2H/ISCgNzuqzn7gV3HRWb37GjRk429CCpSLS2KNTqMQ=="
+  "resolved" "https://registry.npmjs.org/express-fileupload/-/express-fileupload-1.4.0.tgz"
+  "version" "1.4.0"
+  dependencies:
+    "busboy" "^1.6.0"
 
 "express-flash@0.0.2":
   "integrity" "sha1-I9GovPP5DXB5KOSJ+Whp7K0KzaI="
@@ -9353,6 +9367,11 @@
   "integrity" "sha512-AiisoFqQ0vbGcZgQPY1cdP2I76glaVA/RauYR4G4thNFgkTqr90yXTo4LYX60Jl+sIlPNHHdGSwo01AvbKUSVQ=="
   "resolved" "https://registry.npmjs.org/stream-shift/-/stream-shift-1.0.1.tgz"
   "version" "1.0.1"
+
+"streamsearch@^1.1.0":
+  "integrity" "sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg=="
+  "resolved" "https://registry.npmjs.org/streamsearch/-/streamsearch-1.1.0.tgz"
+  "version" "1.1.0"
 
 "streamsearch@0.1.2":
   "integrity" "sha1-gIudDlb8Jz2Am6VzOOkpkZoanxo="

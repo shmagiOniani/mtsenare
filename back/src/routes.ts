@@ -38,6 +38,7 @@ export function initRoutes(app: Express) {
   app.use('/api/blogs', blogsRouter);
   app.use('/api/users', userRouter);
   app.use('/api/files', fileRouter);
+
   app.use('/api/metas', metaRouter);
   app.use('/api/appLogs', appLogsRouter);
   app.use('/api/commons', commonsRouter);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Modal,
   Divider,
@@ -7,114 +7,37 @@ import {
   Row,
   Col,
   InputNumber,
-  Upload,
-  message,
 } from "antd";
-import ImgCrop from 'antd-img-crop';
-import { PlusOutlined } from '@ant-design/icons';
 import "antd/dist/antd.css";
 import "./styles.scss";
 import API from "../../../utils/services/API";
 import CustomButton from "../../elements/button/CustomButton";
-
-const getBase64 = (file) =>
-  new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-  });
+import ImageUpload from "../../imageUpload/ImageUpload";
 
 
 function AddProduct({ open, setOpen, refresh }) {
   const [form] = Form.useForm();
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const [previewOpen, setPreviewOpen] = useState(false);
-  const [previewImage, setPreviewImage] = useState("");
-  const [previewTitle, setPreviewTitle] = useState("");
-  const [fileList, setFileList] = useState([
-    {
-      uid: "-1",
-      name: "image.png",
-      status: "done",
-      url:
-        "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-    },
-    {
-      uid: "-2",
-      name: "image.png",
-      status: "done",
-      url:
-        "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-    },
-    {
-      uid: "-3",
-      name: "image.png",
-      status: "done",
-      url:
-        "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-    },
-    {
-      uid: "-4",
-      name: "image.png",
-      status: "done",
-      url:
-        "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-    },
-    {
-      uid: "-xxx",
-      percent: 50,
-      name: "image.png",
-      status: "uploading",
-      url:
-        "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-    },
-    {
-      uid: "-5",
-      name: "image.png",
-      status: "error",
-    },
-  ]);
+
+  const [fileList, setFileList] = useState([])
  
-  const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
-  const uploadButton = (
-    <div>
-      <PlusOutlined />
-      <div
-        style={{
-          marginTop: 8,
-        }}
-      >
-        ატვირთვა
-      </div>
-    </div>
-  );
   const handleCancel = () => {
     console.log("Clicked cancel button");
     setOpen(false);
   };
 
   const onFinish = (values) => {
-    console.log(values);
-
-    // const data = new FormData();
-    // data.append("image-file", values.imageFile.file.originFileObj);
-    // axios.post(`${process.env.REACT_APP_BASE_API}api/files`, data, {
-    //   headers: {
-    //     "Content-Type": "multipart/form-data"
-    //   }
-    // }).then(res => {
-    //   console.log(res);
-    // }).catch(err=> console.log(err))
+    values.images = fileList.map(item => item.response.fileName);
     setConfirmLoading(true);
+    console.log("onFinish",values);
     API.post(`/api/products`, values)
-      .then((res) => {
-        setConfirmLoading(false);
+      .then(() => {
         refresh();
         setOpen(false);
         form.resetFields();
       })
-      .catch((err) => setConfirmLoading(false));
+      .finally(() => setConfirmLoading(false));
+
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -160,9 +83,17 @@ function AddProduct({ open, setOpen, refresh }) {
     },
   ];
 
-  useEffect(() => {
-    console.log("addproduct", open);
-  }, [open]);
+  const handleFileListChange = (data)=> {
+    console.log("handleFileListChange", data);
+    if(data.length > 0){
+      console.log();
+      // let fileNames = data?.map((file)=> file?.response?.fileNames);
+      setFileList(data)
+      console.log("file", data);
+    }
+  }
+
+
   return (
     <Modal
       title="პროდუქტის დამატება"
@@ -207,33 +138,9 @@ function AddProduct({ open, setOpen, refresh }) {
           })}
 
           <Col xs={24}>
-          <ImgCrop>
-            <Upload
-              // action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-              listType="picture-card"
-              fileList={fileList}
-              onChange={handleChange}
-              previewFile={false}
-              customRequest
-            >
-              {fileList.length >= 8 ? null : uploadButton}
-            </Upload>
-            </ImgCrop>
-            <Modal
-              open={previewOpen}
-              title={previewTitle}
-              footer={null}
-              onCancel={handleCancel}
-            >
-              <img
-                alt="example"
-                style={{
-                  width: "100%",
-                }}
-                src={previewImage}
-              />
-            </Modal>
+            <ImageUpload setList={(data)=> handleFileListChange(data)}/>
           </Col>
+       
           <Divider />
           <div className="modal-footer">
             <CustomButton
@@ -258,3 +165,34 @@ function AddProduct({ open, setOpen, refresh }) {
 }
 
 export default AddProduct;
+
+
+
+  // const [file, setFile] = useState();
+
+  // const saveFile = (e) => {
+  //   setFile(e.target.files[0]);
+  // };
+
+  // const uploadFile = async (e) => {
+  //   const formData = new FormData();
+  //   formData.append("filesToAdd", file);
+
+  //   console.log("formData",formData);
+
+  //   axios.post("http://localhost:4002/api/files",formData, {
+  //     headers:{
+  //       "Content-Type": "multipart/form-data",
+  //     }
+  //   })
+  //     .then((res) => console.log("res",res))
+  //     .catch((err) => console.log(err))
+
+  // };
+
+// -------------
+
+  //  <Col xs={24}>
+  //   <input type={'file'} onChange={saveFile} accept="image/png, image/gif, image/jpeg"  />
+  //   <button onClick={uploadFile}>Upload</button>
+  // </Col> 
