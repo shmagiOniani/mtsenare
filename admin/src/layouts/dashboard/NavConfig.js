@@ -11,6 +11,11 @@ const navConfig = [
     path: '/dashboard/app',
     icon: getIcon('eva:pie-chart-2-fill'),
   },
+    {
+    title: 'library',
+    path: '/dashboard/library',
+    icon: getIcon('ic:baseline-library-books'),
+  },
   {
     title: 'user',
     path: '/dashboard/user',

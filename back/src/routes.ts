@@ -18,6 +18,7 @@ import commonsRouter from './api/commons';
 import categoryRouter from './api/categories';
 import deliveryRouter from './api/delivery';
 import productRouter from './api/products';
+import librariesRouter from './api/libraries';
 import reviewRouter from './api/reviews';
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../swagger.json');
@@ -43,6 +44,7 @@ export function initRoutes(app: Express) {
   app.use('/api/appLogs', appLogsRouter);
   app.use('/api/commons', commonsRouter);
   app.use('/api/products', productRouter);
+  app.use('/api/libraries', librariesRouter);
   app.use('/api/reviews', reviewRouter);
   app.use('/api/delivery', deliveryRouter);
   app.use('/api/categories', categoryRouter);

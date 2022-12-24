@@ -1,18 +1,53 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import OwlCarousel from "react-owl-carousel";
-import { Col, Row, Input, Select, Slider, Pagination, Tooltip, Button } from "antd";
+import {
+  Col,
+  Row,
+  Input,
+  Select,
+  Slider,
+  Pagination,
+  Tooltip,
+  Button,
+} from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import {one,two,tree,four,five,six,seven,eight,nine,ten,eleven,} from "../../assets/img/product"
+import {
+  one,
+  two,
+  tree,
+  four,
+  five,
+  six,
+  seven,
+  eight,
+  nine,
+  ten,
+  eleven,
+} from "../../assets/img/product";
 import Navbar from "../../components/navbar/Navbar";
 import "./ProductList.scss";
 import ProductItem from "../../components/productItem/ProductItem";
 import AddProduct from "../../components/modal/addProduct/AddProduct";
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 import API from "../../utils/services/API";
+import ProductItemNew from "../../components/productItemNew/ProductItemNew";
 
 // const { Search } = Input;
-const imgs = [one,two,tree,four,five,six,seven,eight,nine,ten,eleven,five];
+const imgs = [
+  one,
+  two,
+  tree,
+  four,
+  five,
+  six,
+  seven,
+  eight,
+  nine,
+  ten,
+  eleven,
+  five,
+];
 
 const products = [
   {
@@ -51,13 +86,13 @@ const category = ["Cactus", "Exotic", "Greens", "Popular", "Various", "Winter"];
 
 function ProductList() {
   const { Option } = Select;
-  
-  const [openForm, setOpenForm] = useState(false) 
+
+  const [openForm, setOpenForm] = useState(false);
   const [maxPrice, setMaxPrice] = useState(350);
   const [minPrice, setMinPrice] = useState(150);
   // const [searchVal, setSearchVal] = useState("");
   // const [hideSearch, setHideSearch] = useState(false);
-  const [productList, setProductList] = useState([])
+  const [productList, setProductList] = useState([]);
 
   // const onSearch = (data) => {
   //   console.log(data);
@@ -80,7 +115,7 @@ function ProductList() {
   };
 
   let history = useHistory();
-  
+
   const toProduct = (e, id) => {
     console.log("sds");
     history.push(`/product/${id}`);
@@ -90,41 +125,49 @@ function ProductList() {
   //   setHideSearch(false);
   // }
 
-  const handleOpenForm =() => {
-    setOpenForm(!openForm)
+  const handleOpenForm = () => {
+    setOpenForm(!openForm);
     console.log("handle form");
-  }
+  };
 
-  const getProductList =()=>{
+  const getProductList = () => {
     API.get(`/api/products?all=true`)
-    .then(res => {
-      setProductList(res.data.items)
-
-    })
-    .catch(err => setProductList(imgs))
-
-  }
-  useEffect(()=>{
-    getProductList()
-  },[])
+      .then((res) => {
+        setProductList(res.data.items);
+      })
+      .catch((err) => setProductList(imgs));
+  };
+  useEffect(() => {
+    getProductList();
+  }, []);
 
   return (
     <>
       <div className="page-wrapper">
         <div className="add-button">
           <Tooltip title="ატვირთვა">
-            <Button onClick={()=> handleOpenForm()} shape="circle" size="large" icon={<UploadOutlined />} />
+            <Button
+              onClick={() => handleOpenForm()}
+              shape="circle"
+              size="large"
+              icon={<UploadOutlined />}
+            />
           </Tooltip>
         </div>
-        <Row justify={"center"} style={{width: "100%"}}>
+        <Row justify={"center"} style={{ width: "100%" }}>
           <Col xs={18}>
             <Navbar />
           </Col>
         </Row>
-        <Row className="section-header" justify={"center"} align={"middle"} style={{width: "100%"}}>
+        <Row
+          className="section-header"
+          justify={"center"}
+          align={"middle"}
+          style={{ width: "100%" }}
+        >
           <Col xs={24} className={"page-header"}>
             <h2>Shop</h2>
-            <Row justify="center" style={{width: "100%"}}>
+            <Row justify="center" style={{ width: "100%" }}>
               <Col xs={12}>
                 <div className="featured-slider">
                   <OwlCarousel
@@ -139,12 +182,11 @@ function ProductList() {
                       return (
                         <div className="slider-item" key={ind}>
                           <div className="img-wrapper">
-                            <img 
-                              width={50}
-                              height={50}
-                              src={product.image} />
+                            <img width={50} height={50} src={product.image} />
                           </div>
-                          <div className="title"><span>{product.name}</span></div>
+                          <div className="title">
+                            <span>{product.name}</span>
+                          </div>
                         </div>
                         // <ProductItem
                         //   product={product}
@@ -254,22 +296,40 @@ function ProductList() {
                         placeholder={"პოპულარობის მიხედვთ"}
                         className="select-input"
                       >
-                        <Option value={"option"}>{"პოპულარობის მიხედვთ"}</Option>
+                        <Option value={"option"}>
+                          {"პოპულარობის მიხედვთ"}
+                        </Option>
                         <Option value={"b"}>{"შეფასების მიხედვით"}</Option>
                       </Select>
                     </Col>
-                    {productList.length && productList.map((product, ind) => {
+                    {/* {productList.length && productList.map((product, ind) => {
                       return (
                         <ProductItem
-                          xsSize={12}
-                          smSize={8}
-                          mdSize={6}
+                          xsSize={24}
+                          smSize={12}
+                          lgSize={8}
+                          mdSize={8}
                           key={ind}
                           imgSrc={imgs[ind]}
                           product={product}
                         />
                       );
-                    })}
+                    })} */}
+
+                    {productList.length &&
+                      productList.map((product, ind) => {
+                        return (
+                          <ProductItemNew
+                            xsSize={24}
+                            smSize={12}
+                            lgSize={8}
+                            mdSize={8}
+                            key={ind}
+                            imgSrc={imgs[ind]}
+                            product={product}
+                          />
+                        );
+                      })}
                     <Col xs={24} className={"pagination-wrapper"}>
                       <Pagination size="small" total={50} />
                     </Col>
@@ -280,7 +340,11 @@ function ProductList() {
           </Row>
         </div>
       </div>
-      <AddProduct open={openForm} setOpen={(status)=> setOpenForm(status)} refresh={()=> getProductList()} />
+      <AddProduct
+        open={openForm}
+        setOpen={(status) => setOpenForm(status)}
+        refresh={() => getProductList()}
+      />
     </>
   );
 }

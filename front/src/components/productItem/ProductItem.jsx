@@ -19,7 +19,7 @@ function ProductItem({product, imgSrc, xsSize, smSize, mdSize, lgSize}) {
     }, [])
 
   return (
-    <Col xs={xsSize} sm={smSize} md={mdSize} lgsize={lgSize} className="category-item item" >
+    <Col xs={xsSize} sm={smSize} md={mdSize} lg={lgSize} className="category-item item" >
       <div className="item-container">
         <div className="sale-sign">
           <div>
