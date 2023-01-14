@@ -2,17 +2,21 @@ import { Router, Request, Response, NextFunction } from 'express';
 import * as librariesDao from './libraries.dao';
 import * as librariesParser  from './libraries.parser';
 import * as auth from '../../auth';
-import { next } from 'cheerio/lib/api/traversing';
 
 
 const librariesRouter = Router();
 
 librariesRouter.get('/', librariesParser.parseGetByQuery, getByQuery);
-librariesRouter.post('/', librariesParser.parseCreate, create);
+librariesRouter.post('/',test, librariesParser.parseCreate, create);
 
-librariesRouter.put('/:id',  librariesParser.parseUpdate, update);
+librariesRouter.put('/:category',  librariesParser.parseUpdate, update);
 librariesRouter.delete('/:id',  destroy);
 
+function test(req: Request, res: Response, next: NextFunction) {
+  console.log("test",req.body);
+  next()
+  
+}
 export default librariesRouter;
 
 // =============== GET ===============
@@ -31,7 +35,7 @@ async function getByQuery(req: Request, res: Response, next: NextFunction) {
 // =============== POST ===============
 
 async function create(req: Request, res: Response, next: NextFunction) {
-  // console.log("libraries", req.body);
+  console.log("libraries", req.body);
   try {
     const payload = req.body;
     // console.log(req.body);
@@ -48,10 +52,11 @@ async function create(req: Request, res: Response, next: NextFunction) {
 }
 
 async function update(req: Request, res: Response, next: NextFunction) {
+  
   try {
-    const { id } = req.params;
+    const { category } = req.params;
     const payload = req.body;
-    await librariesDao.update(id, payload);
+    await librariesDao.update(category, payload);
     res.sendStatus(200);
   } catch (e) {
     next(e);

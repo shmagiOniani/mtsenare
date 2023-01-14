@@ -33,7 +33,7 @@ import "antd/dist/antd.css";
 import API from "../../utils/services/API";
 import ProductItemNew from "../../components/productItemNew/ProductItemNew";
 
-// const { Search } = Input;
+const { Search } = Input;
 const imgs = [
   one,
   two,
@@ -90,25 +90,25 @@ function ProductList() {
   const [openForm, setOpenForm] = useState(false);
   const [maxPrice, setMaxPrice] = useState(350);
   const [minPrice, setMinPrice] = useState(150);
-  // const [searchVal, setSearchVal] = useState("");
-  // const [hideSearch, setHideSearch] = useState(false);
+  const [searchVal, setSearchVal] = useState("");
+  const [hideSearch, setHideSearch] = useState(false);
   const [productList, setProductList] = useState([]);
 
-  // const onSearch = (data) => {
-  //   console.log(data);
-  // };
+  const onSearch = (data) => {
+    console.log(data);
+  };
 
-  // const handleChange = (e) => {
-  //   setSearchVal(e.target.value);
-  //   setHideSearch(true);
-  //   setTimeout(() => {
-  //     if (e.target.value.length) {
-  //     } else {
-  //       setHideSearch(false);
-  //     }
-  //   }, 1000);
-  //   console.log(e.target.value.length);
-  // };
+  const handleChange = (e) => {
+    setSearchVal(e.target.value);
+    setHideSearch(true);
+    setTimeout(() => {
+      if (e.target.value.length) {
+      } else {
+        setHideSearch(false);
+      }
+    }, 1000);
+    console.log(e.target.value.length);
+  };
   const onPriceChange = (val) => {
     setMaxPrice(val[1]);
     setMinPrice(val[0]);
@@ -121,9 +121,9 @@ function ProductList() {
     history.push(`/product/${id}`);
   };
 
-  // const handleClose =(e) => {
-  //   setHideSearch(false);
-  // }
+  const handleClose =(e) => {
+    setHideSearch(false);
+  }
 
   const handleOpenForm = () => {
     setOpenForm(!openForm);
@@ -249,7 +249,7 @@ function ProductList() {
                   style={{ paddingLeft: "25px", paddingRight: "25px" }}
                 >
                   <Row>
-                    {/* <Col xs={24} className="search-wrapper">
+                     <Col xs={24} className="search-wrapper">
                       <Search
                         className="search-input"
                         placeholder="ძებნა..."
@@ -283,7 +283,7 @@ function ProductList() {
                           })}
                         </div>
                       </div>
-                    </Col> */}
+                    </Col> 
                   </Row>
                   <Row
                     gutter={[30, 30]}
@@ -302,21 +302,21 @@ function ProductList() {
                         <Option value={"b"}>{"შეფასების მიხედვით"}</Option>
                       </Select>
                     </Col>
-                    {/* {productList.length && productList.map((product, ind) => {
+                    {productList.length && productList.map((product, ind) => {
                       return (
                         <ProductItem
                           xsSize={24}
                           smSize={12}
-                          lgSize={8}
                           mdSize={8}
+                          lgSize={6}
                           key={ind}
                           imgSrc={imgs[ind]}
                           product={product}
                         />
                       );
-                    })} */}
+                    })}
 
-                    {productList.length &&
+                    {/* {productList.length &&
                       productList.map((product, ind) => {
                         return (
                           <ProductItemNew
@@ -329,7 +329,7 @@ function ProductList() {
                             product={product}
                           />
                         );
-                      })}
+                      })} */}
                     <Col xs={24} className={"pagination-wrapper"}>
                       <Pagination size="small" total={50} />
                     </Col>

@@ -6,6 +6,8 @@ import { parseOffsetAndLimit } from '../../helpers/parser-utils';
 
 export function parseGetByQuery(req: Request, res: Response, next: NextFunction) {
   const { query } = req;
+  console.log("query", query);
+  
   req.query = {
     ...parseOffsetAndLimit(query),
     find: {
@@ -67,14 +69,9 @@ export function parseUpdate(req: Request, res: Response, next: NextFunction) {
 }
 
 function parseBaseProps(body: any) {
+  console.log("parseBaseProps",body);
+  
   return _.pick(body, [
     'name',
-    'description',
-    'price',
-    'deliveryTime',
-    'deliveryType',
-    'quantity',
-    'images',
-    'isActive',
   ]);
 }
