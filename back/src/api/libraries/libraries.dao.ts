@@ -28,9 +28,9 @@ export function insertMany(data: any) {
   return Model.insertMany(data);
 }
 
-export function update(category: any, data: any) {
-  return Model.findOneAndUpdate({category: category}, {$set: data})
-    .then(assertFound(`Could not update libraries (category ${category})`));
+export function update(id: any, payload: any) {
+  return Model.findOneAndUpdate({_id: id}, {$set: payload})
+    .then(assertFound(`Could not update libraries (category ${id})`));
 }
 
 export function destroy(id: any) {

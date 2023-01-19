@@ -35,12 +35,12 @@ import ProductItemNew from "../../components/productItemNew/ProductItemNew";
 
 const { Search } = Input;
 const imgs = [
-  one,
+  eleven,
   two,
-  tree,
-  four,
+  nine,
+  eight,
   five,
-  six,
+  ten,
   seven,
   eight,
   nine,
@@ -53,7 +53,7 @@ const products = [
   {
     name: "Ceramic Pots",
     image:
-      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
+      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-4.jpg",
   },
   {
     name: "Indoor Plants",
@@ -63,7 +63,7 @@ const products = [
   {
     name: "Low Maintenance",
     image:
-      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-3.jpg",
+      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-5.jpg",
   },
   {
     name: "Plant Bundle",
@@ -82,7 +82,7 @@ const products = [
   },
 ];
 
-const category = ["Cactus", "Exotic", "Greens", "Popular", "Various", "Winter"];
+const category = ["მცენარე", "თესლი / ნერგი", "სასუქი", "ბაღის ნაკრები", "ქოთანი"];
 
 function ProductList() {
   const { Option } = Select;
@@ -206,7 +206,7 @@ function ProductList() {
           <Row>
             <Col xs={24}>
               <Row gutter={[20, 20]} className="list">
-                <Col className="product-list-sidebar" sm={5}>
+                <Col className="product-list-sidebar" sm={7}>
                   <div className="product-sidebar-wrapper">
                     <ul className="product-sidebar-category ">
                       <h5 className="category-header">კატეგორიები</h5>
@@ -237,15 +237,28 @@ function ProductList() {
                           trackStyle={{ backgroundColor: "black" }}
                         />
                       </li>
-                      <li>
-                        შუალედი: ${minPrice} - ${maxPrice}
+                      <li className="range-view">
+                        შუალედი: <span>${minPrice} - ${maxPrice}</span>
+                      </li>
+                    </ul>
+                    <ul className="product-sidebar-category ">
+                      <h5 className="category-header">მაღაზიები</h5>
+                      <li className="shop-item">
+                        <div className="img-wrapper">
+                          <img src={two} alt="" />
+                        </div>
+                        <div className="body">
+                          <div className="rate"></div>
+                          <div className="name"></div>
+                          <div className="price"></div>
+                        </div>
                       </li>
                     </ul>
                   </div>
                 </Col>
                 <Col
                   xs={24}
-                  sm={19}
+                  sm={17}
                   style={{ paddingLeft: "25px", paddingRight: "25px" }}
                 >
                   <Row>
@@ -307,8 +320,8 @@ function ProductList() {
                         <ProductItem
                           xsSize={24}
                           smSize={12}
-                          mdSize={8}
-                          lgSize={6}
+                          mdSize={12}
+                          lgSize={8}
                           key={ind}
                           imgSrc={imgs[ind]}
                           product={product}

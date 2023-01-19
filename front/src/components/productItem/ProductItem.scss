@@ -22,7 +22,7 @@
     }
     .item-container {
       position: relative;
-      border-radius: 20px;
+      // border-radius: 20px;
       overflow: hidden;
       box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
       .sale-sign {
@@ -59,7 +59,7 @@
         justify-content: center;
         align-items: center;
         width: 100%;
-        height: 234px;
+        height: 330px;
         overflow: hidden;
         margin-bottom: 15px;
         &:hover {
@@ -81,34 +81,44 @@
         align-items: center;
         justify-content: center;
         h6 {
-          color: #1b1b1b;
+          color: #313232;
           font-family: Montserrat;
-          font-size: 12px;
-          line-height: 2em;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 0.1em;
+          line-height: 2em;
           text-transform: uppercase;
         }
-        div {
+        .price-cart {
+          margin-bottom: 20px;
           transition: all .5s ease-in-out;
-          transform: translateX(26px);
-          span:first-child {
+          transform: translateX(60px);
+          .price {
             opacity: 1;
+            font-size: 14px;
+            color: #224229;
+            font-family: 'mrgvlovani';
+            font-weight: 400;
           }
-          span:last-child {
+          .cart {
             transition: all .2s ease-in-out;
             opacity: 0;
+            color: #073a20;
+            font-family: Montserrat;
+            font-size: 14px;
+            font-weight: 500;
             &:hover {
               color: $base;
               cursor: pointer;
+              
             }
           }
-          span {
+          &>span {
             transition: all .3s ease-in-out;
             // text-transform: lowercase;
             font-size: 12px;
             font-weight: 400;
-            color: #afafaf;
+            color: #111111;
           }
         }
       }

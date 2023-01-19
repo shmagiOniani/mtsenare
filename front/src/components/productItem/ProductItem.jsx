@@ -31,9 +31,9 @@ function ProductItem({product, imgSrc, xsSize, smSize, mdSize, lgSize}) {
         </div>
         <div className="category-desc">
           <h6>{productData.name || "სახელი"}</h6>
-          <div>
-            <span>100$</span>
-            <span onClick={() => console.log(productData)}>კალათაში</span>
+          <div className="price-cart">
+            <span className="price">100$</span>
+            <span className="cart" onClick={() => console.log(productData)}>კალათაში დამატება</span>
           </div>
         </div>
       </div>

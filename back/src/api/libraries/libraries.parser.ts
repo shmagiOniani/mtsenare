@@ -69,9 +69,8 @@ export function parseUpdate(req: Request, res: Response, next: NextFunction) {
 }
 
 function parseBaseProps(body: any) {
-  console.log("parseBaseProps",body);
-  
   return _.pick(body, [
+    'subCategory',
     'name',
   ]);
 }

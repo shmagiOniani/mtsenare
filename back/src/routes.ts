@@ -9,7 +9,6 @@ import { AppError } from './errors';
 
 import fileRouter from './api/files';
 import userRouter from './api/users';
-import blogsRouter from './api/blogs';
 import metaRouter from './api/metas';
 import appLogsRouter from './api/appLogs';
 
@@ -36,7 +35,6 @@ export function initRoutes(app: Express) {
   router.use('/api-docs', swaggerUi.serve);
   router.get('/api-docs', swaggerUi.setup(swaggerDocument));
   console.log("in route");
-  app.use('/api/blogs', blogsRouter);
   app.use('/api/users', userRouter);
   app.use('/api/files', fileRouter);
 

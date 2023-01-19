@@ -9,7 +9,9 @@ const librariesRouter = Router();
 librariesRouter.get('/', librariesParser.parseGetByQuery, getByQuery);
 librariesRouter.post('/',test, librariesParser.parseCreate, create);
 
-librariesRouter.put('/:category',  librariesParser.parseUpdate, update);
+librariesRouter.put('/:id/add-sublibrary',  librariesParser.parseUpdate, addSubLibrary);
+librariesRouter.delete('/:id/sublibrary/:subId',  librariesParser.parseUpdate, destroySubLibrary);
+librariesRouter.put('/:id',  librariesParser.parseUpdate, update);
 librariesRouter.delete('/:id',  destroy);
 
 function test(req: Request, res: Response, next: NextFunction) {
@@ -51,22 +53,59 @@ async function create(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-async function update(req: Request, res: Response, next: NextFunction) {
-  
+// =============== PUT ===============
+
+async function addSubLibrary(req: Request, res: Response, next: NextFunction) {
   try {
-    const { category } = req.params;
+    const { id } = req.params;
     const payload = req.body;
-    await librariesDao.update(category, payload);
+    const libraryInst  = await librariesDao.getById(id);
+    
+    let exists = libraryInst.library.find((i)=> i.name === payload.name);
+    if(!exists) {
+      libraryInst.library.push(payload);
+      await librariesDao.update(id, libraryInst);
+      res.sendStatus(200);
+    }else {
+      res.status(400).json({errorMessage: "sublibrary with same name already exists!"});
+    }
+  } catch (e) {
+    next(e);
+  }
+}
+
+async function update(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { id } = req.params;
+    const payload = req.body;
+    await librariesDao.update(id, payload);
     res.sendStatus(200);
   } catch (e) {
     next(e);
   }
 }
 
+// =============== DELETE ===============
+
 async function destroy(req: Request, res: Response, next: NextFunction) {
   try {
     const { id } = req.params;
     await librariesDao.destroy(id);
+    res.sendStatus(200);
+  } catch (e) {
+    next(e);
+  }
+}
+
+async function destroySubLibrary(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { id, subId } = req.params;
+    let libraryInst  = await librariesDao.getById(id);
+    
+    libraryInst.library.filter((item: any) => item._id !== subId);
+    console.log("libraryInst",libraryInst);
+    
+    await librariesDao.update(id, libraryInst);
     res.sendStatus(200);
   } catch (e) {
     next(e);
