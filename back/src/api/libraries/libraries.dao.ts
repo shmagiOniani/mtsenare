@@ -38,6 +38,11 @@ export function destroy(id: any) {
     .then(assertFound(`Could not destroy libraries (id ${id})`));
 }
 
+export function destroySubLibrary(id: any, subId: any) {
+  return Model.update({_id: id}, {$pull : {"library" : {"_id": subId}}})
+    .then(assertFound(`Could not destroy libraries (id ${id})`));
+}
+
 export function destroyAll() {
   return Model.deleteMany({});
 }

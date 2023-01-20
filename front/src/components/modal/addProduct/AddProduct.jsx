@@ -6,6 +6,7 @@ import {
   Input,
   Row,
   Col,
+  Select,
   InputNumber,
 } from "antd";
 import "antd/dist/antd.css";
@@ -13,23 +14,37 @@ import "./styles.scss";
 import API from "../../../utils/services/API";
 import CustomButton from "../../elements/button/CustomButton";
 import ImageUpload from "../../imageUpload/ImageUpload";
-
+import { useEffect } from "react";
+import useTranslation from "../../../translation/useTranslation";
 
 function AddProduct({ open, setOpen, refresh }) {
+  const { trans } = useTranslation();
   const [form] = Form.useForm();
+  const { Option } = Select;
   const [confirmLoading, setConfirmLoading] = useState(false);
 
-  const [fileList, setFileList] = useState([])
- 
+  const [categoryList, setCategoryList] = useState([]);
+  const [typesList, setTypesList] = useState([]);
+  const [fileList, setFileList] = useState([]);
+
+  const getLibraryes = () => {
+    API.get(`/api/libraries?all=true`).then((res) => {
+      let categoryInst = res.data.items.find((item) => item.name === "Category")
+        .library;
+      let typesInst = res.data.items.find((item) => item.name === "Types")
+        .library;
+      setCategoryList(categoryInst);
+      setTypesList(typesInst);
+    });
+  };
+
   const handleCancel = () => {
-    console.log("Clicked cancel button");
     setOpen(false);
   };
 
   const onFinish = (values) => {
-    values.images = fileList.map(item => item.response.fileName);
+    values.images = fileList.map((item) => item.response.fileName);
     setConfirmLoading(true);
-    console.log("onFinish",values);
     API.post(`/api/products`, values)
       .then(() => {
         refresh();
@@ -37,7 +52,6 @@ function AddProduct({ open, setOpen, refresh }) {
         form.resetFields();
       })
       .finally(() => setConfirmLoading(false));
-
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -59,10 +73,19 @@ function AddProduct({ open, setOpen, refresh }) {
     },
     {
       name: "category",
-      type: "text",
+      type: "select",
       label: "კატეგორია",
       xs: 8,
+      options: categoryList,
     },
+    {
+      name: "type",
+      type: "select",
+      label: "ტიპი",
+      xs: 8,
+      options: typesList,
+    },
+    // typesList
     {
       name: "tags",
       type: "text",
@@ -71,7 +94,7 @@ function AddProduct({ open, setOpen, refresh }) {
     },
     {
       name: "price",
-      type: "text",
+      type: "number",
       label: "ფასი",
       xs: 8,
     },
@@ -83,17 +106,17 @@ function AddProduct({ open, setOpen, refresh }) {
     },
   ];
 
-  const handleFileListChange = (data)=> {
-    console.log("handleFileListChange", data);
-    if(data.length > 0){
+  const handleFileListChange = (data) => {
+    if (data.length > 0) {
       console.log();
       // let fileNames = data?.map((file)=> file?.response?.fileNames);
-      setFileList(data)
-      console.log("file", data);
+      setFileList(data);
     }
-  }
+  };
 
-
+  useEffect(() => {
+    getLibraryes();
+  }, []);
   return (
     <Modal
       title="პროდუქტის დამატება"
@@ -119,28 +142,51 @@ function AddProduct({ open, setOpen, refresh }) {
         layout="horizontal"
       >
         <Row gutter={[30, 16]}>
-          {inputArr.map((item, ind) => {
+          {inputArr.map((item, index) => {
             return (
-              <Col key={ind} xs={item.xs}>
+              <Col key={index} xs={24} sm={8}>
                 <Form.Item
-                  wrapperCol={{ span: 24 }}
                   name={item.name}
-                  rules={[
-                    { required: false, message: "ველის შევსება სავალდებულოა!" },
-                  ]}
                   label={item.label}
-                  className={`${item.type}`}
+                  type={item.type}
+                  rules={[
+                    {
+                      message: trans("empty_input_warning"),
+                    },
+                  ]}
                 >
-                  {item.type === "number" ? <InputNumber min={1} /> : <Input />}
+                  {item.type === "select" ? (
+                    <Select
+                      mode={item.mode}
+                      placeholder={item.placeholder}
+                      getPopupContainer={(trigger) => trigger.parentNode}
+                      dropdownClassName="new-user-select"
+                    >
+                      {item.options.length &&
+                        item.options.map((option) => {
+                          return (
+                            <Option key={option._id} value={option._id}>
+                              {option.name}
+                            </Option>
+                          );
+                        })}
+                    </Select>
+                  ) : item.type === "text" ? (
+                    <Input />
+                  ) : item.type === "password" ? (
+                    <Input.Password autoComplete="new-password" />
+                  ) : (
+                    <InputNumber />
+                  )}
                 </Form.Item>
               </Col>
             );
           })}
 
           <Col xs={24}>
-            <ImageUpload setList={(data)=> handleFileListChange(data)}/>
+            <ImageUpload setList={(data) => handleFileListChange(data)} />
           </Col>
-       
+
           <Divider />
           <div className="modal-footer">
             <CustomButton
@@ -166,33 +212,31 @@ function AddProduct({ open, setOpen, refresh }) {
 
 export default AddProduct;
 
+// const [file, setFile] = useState();
 
+// const saveFile = (e) => {
+//   setFile(e.target.files[0]);
+// };
 
-  // const [file, setFile] = useState();
+// const uploadFile = async (e) => {
+//   const formData = new FormData();
+//   formData.append("filesToAdd", file);
 
-  // const saveFile = (e) => {
-  //   setFile(e.target.files[0]);
-  // };
+//   console.log("formData",formData);
 
-  // const uploadFile = async (e) => {
-  //   const formData = new FormData();
-  //   formData.append("filesToAdd", file);
+//   axios.post("http://localhost:4002/api/files",formData, {
+//     headers:{
+//       "Content-Type": "multipart/form-data",
+//     }
+//   })
+//     .then((res) => console.log("res",res))
+//     .catch((err) => console.log(err))
 
-  //   console.log("formData",formData);
-
-  //   axios.post("http://localhost:4002/api/files",formData, {
-  //     headers:{
-  //       "Content-Type": "multipart/form-data",
-  //     }
-  //   })
-  //     .then((res) => console.log("res",res))
-  //     .catch((err) => console.log(err))
-
-  // };
+// };
 
 // -------------
 
-  //  <Col xs={24}>
-  //   <input type={'file'} onChange={saveFile} accept="image/png, image/gif, image/jpeg"  />
-  //   <button onClick={uploadFile}>Upload</button>
-  // </Col> 
+//  <Col xs={24}>
+//   <input type={'file'} onChange={saveFile} accept="image/png, image/gif, image/jpeg"  />
+//   <button onClick={uploadFile}>Upload</button>
+// </Col>

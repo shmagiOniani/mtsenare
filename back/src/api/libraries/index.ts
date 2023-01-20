@@ -1,7 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import * as librariesDao from './libraries.dao';
 import * as librariesParser  from './libraries.parser';
-import * as auth from '../../auth';
 
 
 const librariesRouter = Router();
@@ -100,12 +99,12 @@ async function destroy(req: Request, res: Response, next: NextFunction) {
 async function destroySubLibrary(req: Request, res: Response, next: NextFunction) {
   try {
     const { id, subId } = req.params;
-    let libraryInst  = await librariesDao.getById(id);
+    // let libraryInst  = await librariesDao.getById(id);
+
+    // let objInst = {...libraryInst}
+    // let filtered = objInst.library.filter((item: any) => item._id !== subId);
     
-    libraryInst.library.filter((item: any) => item._id !== subId);
-    console.log("libraryInst",libraryInst);
-    
-    await librariesDao.update(id, libraryInst);
+    await librariesDao.destroySubLibrary(id, subId);
     res.sendStatus(200);
   } catch (e) {
     next(e);

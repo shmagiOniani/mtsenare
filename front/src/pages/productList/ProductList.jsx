@@ -13,12 +13,8 @@ import {
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import {
-  one,
   two,
-  tree,
-  four,
   five,
-  six,
   seven,
   eight,
   nine,
@@ -31,7 +27,7 @@ import ProductItem from "../../components/productItem/ProductItem";
 import AddProduct from "../../components/modal/addProduct/AddProduct";
 import "antd/dist/antd.css";
 import API from "../../utils/services/API";
-import ProductItemNew from "../../components/productItemNew/ProductItemNew";
+// import ProductItemNew from "../../components/productItemNew/ProductItemNew";
 
 const { Search } = Input;
 const imgs = [
@@ -82,11 +78,18 @@ const products = [
   },
 ];
 
-const category = ["მცენარე", "თესლი / ნერგი", "სასუქი", "ბაღის ნაკრები", "ქოთანი"];
+const category = [
+  "მცენარე",
+  "თესლი / ნერგი",
+  "სასუქი",
+  "ბაღის ნაკრები",
+  "ქოთანი",
+];
 
 function ProductList() {
   const { Option } = Select;
 
+  const [categoryList, setCategoryList] = useState([])
   const [openForm, setOpenForm] = useState(false);
   const [maxPrice, setMaxPrice] = useState(350);
   const [minPrice, setMinPrice] = useState(150);
@@ -96,6 +99,14 @@ function ProductList() {
 
   const onSearch = (data) => {
     console.log(data);
+  };
+
+  const getLibraryes = () => {
+    API.get(`/api/libraries?all=true`)
+      .then((res) => {
+        let categoryInst = res.data.items.find((item)=> item.name === "Category").library
+        setCategoryList(categoryInst)
+      })
   };
 
   const handleChange = (e) => {
@@ -121,13 +132,12 @@ function ProductList() {
     history.push(`/product/${id}`);
   };
 
-  const handleClose =(e) => {
+  const handleClose = (e) => {
     setHideSearch(false);
-  }
+  };
 
   const handleOpenForm = () => {
     setOpenForm(!openForm);
-    console.log("handle form");
   };
 
   const getProductList = () => {
@@ -139,6 +149,7 @@ function ProductList() {
   };
   useEffect(() => {
     getProductList();
+    getLibraryes()
   }, []);
 
   return (
@@ -210,12 +221,12 @@ function ProductList() {
                   <div className="product-sidebar-wrapper">
                     <ul className="product-sidebar-category ">
                       <h5 className="category-header">კატეგორიები</h5>
-                      {category.map((item, ind) => {
+                      {categoryList.map((item) => {
                         return (
-                          <li key={ind}>
-                            <Link to={item}>
-                              <span>{item}</span>
-                              <span>{ind}</span>
+                          <li>  
+                            <Link to={item.name}>
+                              <span>{item.name}</span>
+                              <span>3</span>
                             </Link>
                           </li>
                         );
@@ -238,7 +249,10 @@ function ProductList() {
                         />
                       </li>
                       <li className="range-view">
-                        შუალედი: <span>${minPrice} - ${maxPrice}</span>
+                        შუალედი:{" "}
+                        <span>
+                          ${minPrice} - ${maxPrice}
+                        </span>
                       </li>
                     </ul>
                     <ul className="product-sidebar-category ">
@@ -262,24 +276,30 @@ function ProductList() {
                   style={{ paddingLeft: "25px", paddingRight: "25px" }}
                 >
                   <Row>
-                     <Col xs={24} className="search-wrapper">
+                    <Col xs={24} className="search-wrapper">
                       <Search
                         className="search-input"
                         placeholder="ძებნა..."
                         onSearch={onSearch}
                         onChange={handleChange}
                         enterButton
-                        
                       />
                       <div
                         className={`${
                           searchVal.length ? "start-show" : "start-hide"
                         } ${hideSearch ? "show" : "hide"} search-container`}
                       >
-                        <div onBlur={(e) => handleClose(e)} className="search-list">
+                        <div
+                          onBlur={(e) => handleClose(e)}
+                          className="search-list"
+                        >
                           {imgs.map((category, ind) => {
                             return (
-                              <div onClick={(e)=> toProduct(e, ind)} key={ind} className="search-item">
+                              <div
+                                onClick={(e) => toProduct(e, ind)}
+                                key={ind}
+                                className="search-item"
+                              >
                                 <div className="img-wrapper">
                                   <img src={category} alt="" />
                                 </div>
@@ -296,7 +316,7 @@ function ProductList() {
                           })}
                         </div>
                       </div>
-                    </Col> 
+                    </Col>
                   </Row>
                   <Row
                     gutter={[30, 30]}
@@ -315,19 +335,20 @@ function ProductList() {
                         <Option value={"b"}>{"შეფასების მიხედვით"}</Option>
                       </Select>
                     </Col>
-                    {productList.length && productList.map((product, ind) => {
-                      return (
-                        <ProductItem
-                          xsSize={24}
-                          smSize={12}
-                          mdSize={12}
-                          lgSize={8}
-                          key={ind}
-                          imgSrc={imgs[ind]}
-                          product={product}
-                        />
-                      );
-                    })}
+                    {productList.length &&
+                      productList.map((product, ind) => {
+                        return (
+                          <ProductItem
+                            xsSize={24}
+                            smSize={12}
+                            mdSize={12}
+                            lgSize={8}
+                            key={ind}
+                            imgSrc={imgs[ind]}
+                            product={product}
+                          />
+                        );
+                      })}
 
                     {/* {productList.length &&
                       productList.map((product, ind) => {
