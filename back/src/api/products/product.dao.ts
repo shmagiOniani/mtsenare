@@ -34,7 +34,7 @@ export function update(id: any, data: any) {
 }
 
 export function destroy(id: any) {
-  return Model.findOneAndRemove({_id: id})
+  return Model.findOneAndDelete({_id: id})
     .then(assertFound(`Could not destroy product (id ${id})`));
 }
 

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Col } from "antd";
 import {  useHistory } from "react-router-dom";
-// import useCart from "../../hooks/useCart"
 
 import "./ProductItem.scss"
+import CloseButton from "../elements/button/CloseButton";
+import API from "../../utils/services/API";
 
 function ProductItem({product, imgSrc, xsSize, smSize, mdSize, lgSize}) {
     let history = useHistory();
@@ -18,8 +19,17 @@ function ProductItem({product, imgSrc, xsSize, smSize, mdSize, lgSize}) {
       setProductData(product)
     }, [])
 
+    const handleDelete = (id)=> {
+      API.delete(`/api/products/${id}`)
+      .then((res) => console.log(res))
+    }
+
   return (
     <Col xs={xsSize} sm={smSize} md={mdSize} lg={lgSize} className="category-item item" >
+        {/* delete later */}
+        <div onClick={()=> handleDelete(productData._id)} style={{position: "absolute", zIndex: "1111"}}>
+          <CloseButton />
+        </div>
       <div className="item-container">
         <div className="sale-sign">
           <div>
@@ -27,7 +37,10 @@ function ProductItem({product, imgSrc, xsSize, smSize, mdSize, lgSize}) {
           </div>
         </div>
         <div className="img-container" onClick={() => toProduct('product?.name')}>
+          {/* <img src={'../../../../../.plant-data/uploads/1674275019601.jpg'} alt="sasas" /> */}
+          {/* <img src={process.env.REACT_APP_FILE_PATH + product.images[0]} alt="sasas" /> */}
           <img src={imgSrc} alt="sasas" />
+        {/* ../../.plant-data/uploads/1674275019601.jpg */}
         </div>
         <div className="category-desc">
           <h6>{productData.name || "სახელი"}</h6>

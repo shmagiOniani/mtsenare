@@ -22,14 +22,16 @@ fileRouter.post('/editor', upload.single('upload'), returnEditorFile);
 export default fileRouter;
 
 function destroy(req: Request, res: Response, next: NextFunction) {
+  console.log("config.paths.uploads",config.paths.uploads);
   try {
     const {fileNamesToDestroy} = req.body;
-    console.log('fileNamesToDestroy', req.files[0].filename);
+    // console.log('fileNamesToDestroy', req.files[0].filename);
     
-    // for (const filename of fileNamesToDestroy) {
-    //   const filepath = path.join(config.paths.uploads, filename || '');
-    //   fs.unlink(filepath, () => {});
-    // }
+    for (const filename of fileNamesToDestroy) {
+      
+      const filepath = path.join(config.paths.uploads, filename || '');
+      fs.unlink(filepath, () => {});
+    }
     res.json({
       fileName: req.files[0].filename
     })

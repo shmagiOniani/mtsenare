@@ -3,7 +3,7 @@ import * as path from 'path';
 import devConfig from './development';
 import prodConfig from './production';
 
-const dataRoot = path.join(process.env.HOME, 'Shmagi/doc/.plant-data');
+const dataRoot = path.join(process.env.HOME, 'Shmagi/doc/mtsenare/.plant-data');
 
 const date = new Date();
 console.log("date", moment(date).format( "DD-MM-YYYY"));

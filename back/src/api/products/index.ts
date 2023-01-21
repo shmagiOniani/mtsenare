@@ -65,6 +65,8 @@ async function update(req: Request, res: Response, next: NextFunction) {
 async function destroy(req: Request, res: Response, next: NextFunction) {
   try {
     const { id } = req.params;
+    console.log("delete", id);
+    
     await productDao.destroy(id);
     res.sendStatus(200);
   } catch (e) {

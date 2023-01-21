@@ -20,6 +20,7 @@ import {
   nine,
   ten,
   eleven,
+  one,
 } from "../../assets/img/product";
 import Navbar from "../../components/navbar/Navbar";
 import "./ProductList.scss";
@@ -27,6 +28,7 @@ import ProductItem from "../../components/productItem/ProductItem";
 import AddProduct from "../../components/modal/addProduct/AddProduct";
 import "antd/dist/antd.css";
 import API from "../../utils/services/API";
+import ShopItem from "./ShopItem";
 // import ProductItemNew from "../../components/productItemNew/ProductItemNew";
 
 const { Search } = Input;
@@ -78,13 +80,32 @@ const products = [
   },
 ];
 
-const category = [
-  "მცენარე",
-  "თესლი / ნერგი",
-  "სასუქი",
-  "ბაღის ნაკრები",
-  "ქოთანი",
-];
+const SHOPS_LIST = [
+  {
+    imgSrc: one,
+    name: "ZZ Plant",
+    oldPrice: "80",
+    newPrice: "50",
+    rate: 3,
+    id: "tg34gfrv43grve",
+  },
+  {
+    imgSrc: one,
+    name: "Jade Succulent",
+    oldPrice: "150",
+    newPrice: "100",
+    rate: 5,
+    id: "dfes54676i5h4gerw",
+  },
+  {
+    imgSrc: one,
+    name: "Palm",
+    oldPrice: "79",
+    newPrice: "50",
+    rate: 0,
+    id: "dfvgtryh5y34ref",
+  }
+]
 
 function ProductList() {
   const { Option } = Select;
@@ -147,6 +168,7 @@ function ProductList() {
       })
       .catch((err) => setProductList(imgs));
   };
+  
   useEffect(() => {
     getProductList();
     getLibraryes()
@@ -257,19 +279,18 @@ function ProductList() {
                     </ul>
                     <ul className="product-sidebar-category ">
                       <h5 className="category-header">მაღაზიები</h5>
-                      <li className="shop-item">
-                        <div className="img-wrapper">
-                          <img src={two} alt="" />
-                        </div>
-                        <div className="body">
-                          <div className="rate"></div>
-                          <div className="name"></div>
-                          <div className="price"></div>
-                        </div>
-                      </li>
+                      {SHOPS_LIST.map((shop, index)=> {
+                        return (
+                          <ShopItem key={index} data={shop}/>
+                          )
+                      })}
                     </ul>
                   </div>
                 </Col>
+                <div className="img-decorations">
+                <img src={two} alt="" />
+                <img src={five} alt="" />
+                </div>
                 <Col
                   xs={24}
                   sm={17}
@@ -343,7 +364,7 @@ function ProductList() {
                             smSize={12}
                             mdSize={12}
                             lgSize={8}
-                            key={ind}
+                            key={product._id}
                             imgSrc={imgs[ind]}
                             product={product}
                           />

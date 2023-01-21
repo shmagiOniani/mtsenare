@@ -89,7 +89,7 @@ function Shop() {
                 <TabPane tab="აღწერა" key="1">
                   <Row gutter={[30,30]} className="product-list">
                     {imgs.map((product, ind) => {
-                      return <ProductItem product={product}  xsSize={24} smSize={8} mdSize={4} key={ind} id={ind} imgSrc={product.image} />;
+                      return <ProductItem product={product}  xsSize={24} smSize={8} key={ind} id={ind} imgSrc={product.image} />;
                     })}
                   </Row>
                 </TabPane>

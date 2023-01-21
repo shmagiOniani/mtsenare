@@ -268,7 +268,7 @@ $container-padding: 0 100px;
   }
   .product-list-sidebar {
     padding: 61px 30px 0 0!important;
-
+    z-index: 1;
     .product-sidebar-wrapper {
       .product-sidebar-category {
         list-style: none;
@@ -282,13 +282,14 @@ $container-padding: 0 100px;
           letter-spacing: 0.1em;
           text-transform: uppercase;
         }
+
         &>li {
           line-height: 24px;
-          font-size: 12px;
+          font-size: 16px;
           color: #8b8b8b;
           margin-bottom: 5px;
           a {
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 800;
             color: #8b8b8b;
             display: flex;
@@ -298,6 +299,7 @@ $container-padding: 0 100px;
             }
           }
         }
+
         .range-input {
           // max-width: 130px;
           .ant-slider-track, .ant-slider-rail {
@@ -323,7 +325,56 @@ $container-padding: 0 100px;
             font-size: 14px;        
           }
         }
+        .shop-item {
+          border-bottom: 1px solid $dark-gray-border;
+          padding: 15px 0;
+          display: flex;
+          .img-wrapper {
+            border: 1px solid $dark-gray-border;
+            height: 90px;
+            width: 80px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              max-height: 100%;
+              width: auto;
+            }
+          }
+          .body {
+            margin-left: 15px;
+            .rate {
+            }
+            .name {
+              margin-bottom: 10px;
+              color: black;
+            }
+            .price {
+              font-family: initial;
+              font-size: 22px;
+              span:last-child {
+                color: red;
+                // font-weight: 800;
+              }
+            }
+          }
+        }
       }
+    }
+  }
+  .img-decorations {
+    img {
+      position: absolute;
+      filter: blur(4px);
+    }  
+    img:first-child {
+      top: 10%;
+      left: 10%;
+    }
+    img:last-child {
+      top: 50%;
+      right: 0%;
     }
   }
 }

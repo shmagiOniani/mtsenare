@@ -19,6 +19,9 @@ $close-width: ($button-size / 10);
   height: $button-size;
   position: relative;
   overflow: hidden;
+  &:hover {
+    cursor: pointer;
+  }
   > div {
     position: relative;
   }
