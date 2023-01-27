@@ -22,6 +22,7 @@ import {
   eleven,
   one,
 } from "../../assets/img/product";
+
 import Navbar from "../../components/navbar/Navbar";
 import "./ProductList.scss";
 import ProductItem from "../../components/productItem/ProductItem";
@@ -365,12 +366,13 @@ function ProductList() {
                             mdSize={12}
                             lgSize={8}
                             key={product._id}
-                            imgSrc={imgs[ind]}
+                            // imgSrc={`../../assets/img/plant-data/uploads/${product.images[1]}`}
                             product={product}
+                            refresh={getProductList}
                           />
                         );
                       })}
-
+                     
                     {/* {productList.length &&
                       productList.map((product, ind) => {
                         return (

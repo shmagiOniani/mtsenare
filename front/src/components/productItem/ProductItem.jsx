@@ -6,7 +6,7 @@ import "./ProductItem.scss"
 import CloseButton from "../elements/button/CloseButton";
 import API from "../../utils/services/API";
 
-function ProductItem({product, imgSrc, xsSize, smSize, mdSize, lgSize, lxSize}) {
+function ProductItem({product, imgSrc, xsSize, smSize, mdSize, lgSize, lxSize, refresh}) {
     let history = useHistory();
     const [productData, setProductData] = useState({})
     // const { addToCart } = useCart(product._id);
@@ -21,8 +21,9 @@ function ProductItem({product, imgSrc, xsSize, smSize, mdSize, lgSize, lxSize}) 
 
     const handleDelete = (id)=> {
       API.delete(`/api/products/${id}`)
-      .then((res) => console.log(res))
+      .then((res) => refresh())
     }
+    
 
   return (
     <Col xs={xsSize} sm={smSize} md={mdSize} lg={lgSize} xl={lxSize} className="category-item item" >
@@ -37,10 +38,8 @@ function ProductItem({product, imgSrc, xsSize, smSize, mdSize, lgSize, lxSize}) 
           </div>
         </div>
         <div className="img-container"  onClick={() => toProduct('product?.name')}>
-          {/* <img src={'../../../../../.plant-data/uploads/1674275019601.jpg'} alt="sasas" /> */}
           {/* <img src={process.env.REACT_APP_FILE_PATH + product.images[0]} alt="sasas" /> */}
-          <img src={imgSrc} alt="sasas" />
-        {/* ../../.plant-data/uploads/1674275019601.jpg */}
+          <img src={require(`../../assets/img/plant-data/uploads/${product.images[0]}`)} alt="sasas" />
         </div>
         <div className="category-desc">
           <h6>{productData.name || "სახელი"}</h6>

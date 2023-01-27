@@ -106,8 +106,6 @@ function AddProduct({ open, setOpen, refresh }) {
 
   const handleFileListChange = (data) => {
     if (data.length > 0) {
-      console.log();
-      // let fileNames = data?.map((file)=> file?.response?.fileNames);
       setFileList(data);
     }
   };
