@@ -4,52 +4,64 @@
 @import "../../style/buttons.scss";
 @import "../../style/forms.scss";
 
-    .comment-iinput {
-        textarea {
-            @include textArea;
-            margin: 15px 0;
+.comment-iinput {
+  textarea {
+    @include textArea;
+    margin: 15px 0;
+  }
+}
+.product-imgs {
+    // .img-container {
+    //     height: 260px;
+    //     @include md {
+    //     }
+    // }
+    .thumbs-wrapper {
+        margin: 20px 0;
+        ul {
+            transform: none!important;
         }
     }
-    .comment-button {
+}
+.comment-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    @include filledButton;
+  }
+}
+.reviews-tab-container {
+  .review-container {
+    border: 1px solid $light-gray-border;
+    border-top: none;
+    border-bottom: none;
+    padding: 25px;
+    margin-bottom: 20px;
+    .review-item {
+      display: flex;
+      margin-bottom: 30px;
+      &:hover {
+        cursor: context-menu;
+      }
+      .icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 1px solid $light-gray-border;
         display: flex;
         justify-content: center;
         align-items: center;
-        button {
-            @include filledButton;
-        }
+        font-size: 23px;
+        font-weight: 900;
+        margin-right: 20px;
+      }
+      .content {
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        width: 100%;
+        padding: 15px;
+        border-radius: 15px;
+      }
     }
-    .reviews-tab-container {
-        .review-container {
-            border: 1px solid $light-gray-border;
-            border-top: none;
-            border-bottom: none;
-            padding: 25px;
-            margin-bottom: 20px;
-            .review-item {
-                display: flex;
-                margin-bottom: 30px;
-                &:hover {
-                    cursor: context-menu;
-                }
-                .icon {
-                    width: 60px;
-                    height: 60px;
-                    border-radius: 50%;
-                    border: 1px solid $light-gray-border;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    font-size: 23px;
-                    font-weight: 900;
-                    margin-right: 20px;
-                    
-                }
-                .content {
-                    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-                    width: 100%;
-                    padding: 15px;
-                    border-radius: 15px;
-                }
-            }
-        }
-    }
+  }
+}

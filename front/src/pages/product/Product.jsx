@@ -36,10 +36,10 @@ const imgs = [
     name: "DSd",
     image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-5.jpg",
   },
-  {
-    name: "DSd",
-    image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-6.jpg",
-  },
+  // {
+  //   name: "DSd",
+  //   image: "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-6.jpg",
+  // },
 ];
 
 
@@ -196,14 +196,14 @@ function Product() {
                 <OwlCarousel
                   className="owl-theme"
                   dots={true}
-                  items={width > 1000 ? "6" : "4"}
+                  items={width > 1000 ? "3" : width > 700 ? "2" : "2"}
                   loop
                   margin={10}
                   nav
                 >
               {related.map((product, ind) => {
                 return (
-                  <ProductItem  product={product} key={ind} id={ind} imgSrc={product.image} />
+                  <ProductItem product={product} key={ind} id={ind} imgSrc={product.image} />
                 );
               })}
               </OwlCarousel>

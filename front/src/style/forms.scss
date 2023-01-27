@@ -176,18 +176,25 @@
   background-color: transparent !important;
 }
 .ant-select-item-option-active:hover {
-  background-color: #eac7cc5d !important;
+  background-color: #99a7991f !important;
   opacity: 0.9;
   color: rgb(102, 101, 101) !important;
   border-radius: 5px;
 }
 .ant-select-item-option-selected {
   background-color: $base-light !important;
-  color: rgb(102, 101, 101) !important;
+  color: rgb(255, 255, 255) !important;
   border-radius: 5px;
+  &:hover {
+    color: rgb(255, 255, 255) !important;
+    background-color: $base-light !important;
+    border-radius: 5px;
+  } 
 }
-.ant-select-item-option-selected:hover {
-  background-color: $base-light !important;
-  color: rgb(102, 101, 101) !important;
-  border-radius: 5px;
+
+.ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+  border-color: $base!important;
+}
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  box-shadow: none!important;
 }

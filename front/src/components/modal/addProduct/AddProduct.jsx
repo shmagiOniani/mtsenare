@@ -42,6 +42,7 @@ function AddProduct({ open, setOpen, refresh }) {
 
   const onFinish = (values) => {
     values.images = fileList.map((item) => item.response.fileName);
+    values.description = editorRef.current.getContent();
     setConfirmLoading(true);
     API.post(`/api/products`, values)
       .then(() => {
@@ -63,12 +64,12 @@ function AddProduct({ open, setOpen, refresh }) {
       label: "დასახელება",
       xs: 8,
     },
-    {
-      name: "description",
-      type: "text",
-      label: "აღწერა",
-      xs: 8,
-    },
+    // {
+    //   name: "description",
+    //   type: "text",
+    //   label: "აღწერა",
+    //   xs: 8,
+    // },
     {
       name: "category",
       type: "select",
@@ -111,11 +112,11 @@ function AddProduct({ open, setOpen, refresh }) {
     }
   };
 
-  const log = () => {
-    if (editorRef.current) {
-      console.log(editorRef.current.getContent());
-    }
-  };
+  // const log = () => {
+  //   if (editorRef.current) {
+  //     console.log(editorRef.current.getContent());
+  //   }
+  // };
 
   useEffect(() => {
     getLibraryes();
@@ -174,7 +175,7 @@ function AddProduct({ open, setOpen, refresh }) {
                 paste_as_text: true,
                 }}
             />
-            <button type="button" onClick={log}>Log editor content</button>
+            {/* <button type="button" onClick={log}>Log editor content</button> */}
           </Col>
 
           <Divider />

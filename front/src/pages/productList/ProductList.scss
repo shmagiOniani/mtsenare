@@ -228,14 +228,10 @@ $container-padding: 0 100px;
     margin-bottom: 30px;
     // .category-item {
     //   @include productItem;
-    //   .img-container {
-    //     width: 136px;
-    //     height: 136px;
-    //     max-height: 230px;
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //   }
+    //  .img-container {
+    //    @include md {
+    //       height: 260px;
+    //     }
     // }
     .product-list-sort {
       display: flex;
