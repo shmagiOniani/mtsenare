@@ -167,7 +167,6 @@ function ProductList() {
       .then((res) => {
         setProductList(res.data.items);
       })
-      .catch((err) => setProductList(imgs));
   };
   
   useEffect(() => {
@@ -357,8 +356,7 @@ function ProductList() {
                         <Option value={"b"}>{"შეფასების მიხედვით"}</Option>
                       </Select>
                     </Col>
-                    {productList.length &&
-                      productList.map((product, ind) => {
+                    {productList.map((product, ind) => {
                         return (
                           <ProductItem
                             xsSize={24}

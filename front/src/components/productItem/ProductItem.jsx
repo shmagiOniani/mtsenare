@@ -39,7 +39,7 @@ function ProductItem({product, imgSrc, xsSize, smSize, mdSize, lgSize, lxSize, r
         </div>
         <div className="img-container"  onClick={() => toProduct('product?.name')}>
           {/* <img src={process.env.REACT_APP_FILE_PATH + product.images[0]} alt="sasas" /> */}
-          <img src={require(`../../assets/img/plant-data/uploads/${product.images[0]}`)} alt="sasas" />
+          {product.images && <img src={require(`../../assets/img/plant-data/uploads/${product.images[0]}`)} alt="sasas" />}
         </div>
         <div className="category-desc">
           <h6>{productData.name || "სახელი"}</h6>

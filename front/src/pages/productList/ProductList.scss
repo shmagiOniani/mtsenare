@@ -29,6 +29,15 @@ $container-padding: 0 100px;
     height: 450px;
     background-position-y: center;
     margin-bottom: 30px;
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
     .page-header {
       background-color: transparent;
       h2 {

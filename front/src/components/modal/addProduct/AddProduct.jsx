@@ -110,15 +110,10 @@ function AddProduct({ open, setOpen, refresh }) {
     }
   };
 
-  // const log = () => {
-  //   if (editorRef.current) {
-  //     console.log(editorRef.current.getContent());
-  //   }
-  // };
-
   useEffect(() => {
     getLibraryes();
   }, []);
+  
   return (
     <Modal
       title="პროდუქტის დამატება"
