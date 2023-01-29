@@ -14,7 +14,7 @@ $container-padding: 0 100px;
   background-color: white;
   .submit-section {
     &.ant-btn {
-      height: inherit;
+      // height: inherit;
       &:active {
         color: inherit !important;
         border-color: $base !important;
@@ -28,8 +28,8 @@ $container-padding: 0 100px;
     z-index: 200;
     right: 0;
     bottom: 0;
-    padding: 30px;
-    margin: 30px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     background-color: $base !important;
     &:hover {
@@ -39,7 +39,9 @@ $container-padding: 0 100px;
     }
     span {
       color: white;
-      font-size: 25px;
+      svg {
+        font-size: 25px; 
+      }
     }
   }
   .page-container {

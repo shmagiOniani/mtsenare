@@ -55,9 +55,9 @@ function AddProduct() {
   const handleSubmit = (values) => {
     // values.images = fileList.map((item) => item.fileName);
     let description = descRef.current.getContent();
-    let details = detailsRef.current.getContent();
+    // let details = detailsRef.current.getContent();
 
-    console.log("values", { ...values, description, details});
+    console.log("values", { ...values, description,  });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -82,12 +82,20 @@ function AddProduct() {
         autoComplete="off"
         layout="vertical"
       >
-        <div className="submit-section">
+        {/* <div className="submit-section">
           <CustomButton
             icon={<UploadOutlined />}
             htmlType="submit"
           ></CustomButton>
-        </div>
+        </div> */}
+
+        <Button
+          className={"submit-section"}
+          htmlType={"submit"}
+          icon={<UploadOutlined />}
+        >
+          {/* {children} */}
+        </Button>
 
         <Row className="page-container">
           <Col xs={24}>
@@ -152,7 +160,7 @@ function AddProduct() {
                 <TabPane tab="აღწერა" key="1">
                   <div className="desc-tab-container">
                     <Editor
-                      onInit={(evt, editor) => descRef.current = editor}
+                      onInit={(evt, editor) => (descRef.current = editor)}
                       initialValue="<p>აღწერილობა.</p>"
                       apiKey={
                         "3jj25gmpb6zfipiawbqt3h8msc7mas3ivlstqz84e53f6s0v"
@@ -173,7 +181,7 @@ function AddProduct() {
                 <TabPane tab="დამატებითი ინფორმაცია" key="2">
                   <div className="info-tab-container">
                     <Editor
-                      onInit={(evt, editor) => detailsRef.current = editor}
+                      onInit={(evt, editor) => (detailsRef.current = editor)}
                       initialValue="<p>დეტალები.</p>"
                       apiKey={
                         "3jj25gmpb6zfipiawbqt3h8msc7mas3ivlstqz84e53f6s0v"
