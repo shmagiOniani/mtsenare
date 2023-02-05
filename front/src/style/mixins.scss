@@ -1,5 +1,5 @@
-
 @import "./fonts.scss";
+@import "./variables.scss";
 
 @mixin pageHeader {
   position: relative;
@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:flex-start;
+  align-items: flex-start;
   &::after {
     content: "";
     position: absolute;
@@ -28,10 +28,9 @@
     width: 500px;
     height: 100%;
   }
-
 }
 
-@mixin productItem { 
+@mixin productItem {
   .category-item {
     width: 100%;
     &:hover {
@@ -41,7 +40,7 @@
       width: 100%;
       overflow: hidden;
       margin-bottom: 15px;
-     
+
       &:hover {
         cursor: pointer;
         img {
@@ -70,13 +69,13 @@
         text-transform: uppercase;
       }
       div {
-        transition: all .5s ease-in-out;
+        transition: all 0.5s ease-in-out;
         transform: translateX(26px);
         span:first-child {
           opacity: 1;
         }
         span:last-child {
-          transition: all .2s ease-in-out;
+          transition: all 0.2s ease-in-out;
           opacity: 0;
           &:hover {
             color: $base;
@@ -84,7 +83,7 @@
           }
         }
         span {
-          transition: all .3s ease-in-out;
+          transition: all 0.3s ease-in-out;
           // text-transform: lowercase;
           font-size: 12px;
           font-weight: 400;
@@ -97,14 +96,41 @@
         div {
           transform: translateX(-15px);
           span:first-child {
-            opacity: 0!important;
-  
+            opacity: 0 !important;
           }
           span:last-child {
-            opacity: 1!important;
+            opacity: 1 !important;
           }
         }
       }
     }
+  }
+}
+
+// Small devices
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
   }
 }

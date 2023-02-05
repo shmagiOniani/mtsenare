@@ -21,6 +21,10 @@ export default function Library() {
 
   const [libraryDialog, setLibraryDialog] = useState(false);
 
+  const handleCloseLibrary =()=> {
+    setLibraryDialog(false)
+  }
+
   return (
     <>
       <Page title="Library">
@@ -40,13 +44,13 @@ export default function Library() {
           <Card>
             <Scrollbar>
               <TableContainer sx={{ minWidth: 800 }}>
-                <LibraryCollapsibleTable/>
+                <LibraryCollapsibleTable refresh={libraryDialog}/>
               </TableContainer>
             </Scrollbar>
           </Card>
         </Container>
       </Page>
-      <AddLibrary open={libraryDialog} handleClose={() => setLibraryDialog(false)} />
+      <AddLibrary open={libraryDialog} handleClose={handleCloseLibrary} target={"Library"} id={""} />
     </>
   );
 }

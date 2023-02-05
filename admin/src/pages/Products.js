@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // material
 import { Container, Stack, Typography } from '@mui/material';
 // components
@@ -6,11 +6,13 @@ import Page from '../components/Page';
 import { ProductSort, ProductList, ProductCartWidget, ProductFilterSidebar } from '../sections/@dashboard/products';
 // mock
 import PRODUCTS from '../_mock/products';
+import API from 'src/utils/services/API';
 
 // ----------------------------------------------------------------------
 
 export default function EcommerceShop() {
   const [openFilter, setOpenFilter] = useState(false);
+  const [productList, setProductList] = useState([]);
 
   const handleOpenFilter = () => {
     setOpenFilter(true);
@@ -19,6 +21,18 @@ export default function EcommerceShop() {
   const handleCloseFilter = () => {
     setOpenFilter(false);
   };
+
+  const getProductList = () => {
+    API.get(`/api/products?all=true`)
+      .then((res) => {
+        setProductList(res.data.items);
+      })
+      .catch(() => setProductList(PRODUCTS));
+  };
+
+  useEffect(()=> {
+    getProductList()
+  },[])
 
   return (
     <Page title="Dashboard: Products">
@@ -38,7 +52,7 @@ export default function EcommerceShop() {
           </Stack>
         </Stack>
 
-        <ProductList products={PRODUCTS} />
+        <ProductList products={productList} />
         <ProductCartWidget />
       </Container>
     </Page>

@@ -4,7 +4,7 @@ import "./style.scss"
 
 function CloseButton() {
   return (
-    <a href="#" className="close-button">
+    <div className="close-button">
     <div className="in">
       <div className="close-button-block"></div>
       <div className="close-button-block"></div>
@@ -13,7 +13,7 @@ function CloseButton() {
       <div className="close-button-block"></div>
       <div className="close-button-block"></div>
     </div>
-  </a>
+  </div>
   )
 }
 

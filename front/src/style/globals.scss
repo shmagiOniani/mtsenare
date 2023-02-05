@@ -7,11 +7,20 @@
 //   color: $base-dark;
 // }
 
-
 .ant-modal-content {
-    border-radius: 15px!important;
-    overflow: hidden;
-    .ant-modal-title {
-        font-size: 25px;
+  border-radius: 15px !important;
+  overflow: hidden;
+  .ant-modal-title {
+    font-size: 25px;
+  }
+}
+
+.ant-rate-star-full {
+  .anticon-star {
+    color: #fcad02!important;
+    svg {
+      width: 15px;
+      height: 15px;
     }
+  }
 }

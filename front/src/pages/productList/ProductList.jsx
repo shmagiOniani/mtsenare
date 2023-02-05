@@ -13,34 +13,33 @@ import {
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import {
-  one,
   two,
-  tree,
-  four,
   five,
-  six,
   seven,
   eight,
   nine,
   ten,
   eleven,
+  one,
 } from "../../assets/img/product";
+
 import Navbar from "../../components/navbar/Navbar";
 import "./ProductList.scss";
 import ProductItem from "../../components/productItem/ProductItem";
 import AddProduct from "../../components/modal/addProduct/AddProduct";
 import "antd/dist/antd.css";
 import API from "../../utils/services/API";
-import ProductItemNew from "../../components/productItemNew/ProductItemNew";
+import ShopItem from "./ShopItem";
+// import ProductItemNew from "../../components/productItemNew/ProductItemNew";
 
-// const { Search } = Input;
+const { Search } = Input;
 const imgs = [
-  one,
+  eleven,
   two,
-  tree,
-  four,
+  nine,
+  eight,
   five,
-  six,
+  ten,
   seven,
   eight,
   nine,
@@ -53,7 +52,7 @@ const products = [
   {
     name: "Ceramic Pots",
     image:
-      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
+      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-4.jpg",
   },
   {
     name: "Indoor Plants",
@@ -63,7 +62,7 @@ const products = [
   {
     name: "Low Maintenance",
     image:
-      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-3.jpg",
+      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-5.jpg",
   },
   {
     name: "Plant Bundle",
@@ -82,33 +81,67 @@ const products = [
   },
 ];
 
-const category = ["Cactus", "Exotic", "Greens", "Popular", "Various", "Winter"];
+const SHOPS_LIST = [
+  {
+    imgSrc: one,
+    name: "ZZ Plant",
+    oldPrice: "80",
+    newPrice: "50",
+    rate: 3,
+    id: "tg34gfrv43grve",
+  },
+  {
+    imgSrc: one,
+    name: "Jade Succulent",
+    oldPrice: "150",
+    newPrice: "100",
+    rate: 5,
+    id: "dfes54676i5h4gerw",
+  },
+  {
+    imgSrc: one,
+    name: "Palm",
+    oldPrice: "79",
+    newPrice: "50",
+    rate: 0,
+    id: "dfvgtryh5y34ref",
+  }
+]
 
 function ProductList() {
   const { Option } = Select;
 
+  const [categoryList, setCategoryList] = useState([])
   const [openForm, setOpenForm] = useState(false);
   const [maxPrice, setMaxPrice] = useState(350);
   const [minPrice, setMinPrice] = useState(150);
-  // const [searchVal, setSearchVal] = useState("");
-  // const [hideSearch, setHideSearch] = useState(false);
+  const [searchVal, setSearchVal] = useState("");
+  const [hideSearch, setHideSearch] = useState(false);
   const [productList, setProductList] = useState([]);
 
-  // const onSearch = (data) => {
-  //   console.log(data);
-  // };
+  const onSearch = (data) => {
+    console.log(data);
+  };
 
-  // const handleChange = (e) => {
-  //   setSearchVal(e.target.value);
-  //   setHideSearch(true);
-  //   setTimeout(() => {
-  //     if (e.target.value.length) {
-  //     } else {
-  //       setHideSearch(false);
-  //     }
-  //   }, 1000);
-  //   console.log(e.target.value.length);
-  // };
+  const getLibraryes = () => {
+    API.get(`/api/libraries?all=true`)
+      .then((res) => {
+        let categoryInst = res.data.items.find((item)=> item.name === "Category").library
+        setCategoryList(categoryInst)
+      })
+  };
+
+  const handleChange = (e) => {
+    setSearchVal(e.target.value);
+    setHideSearch(true);
+    setTimeout(() => {
+      if (e.target.value.length) {
+      } else {
+        setHideSearch(false);
+      }
+    }, 1000);
+    console.log(e.target.value.length);
+  };
   const onPriceChange = (val) => {
     setMaxPrice(val[1]);
     setMinPrice(val[0]);
@@ -121,13 +154,12 @@ function ProductList() {
     history.push(`/product/${id}`);
   };
 
-  // const handleClose =(e) => {
-  //   setHideSearch(false);
-  // }
+  const handleClose = (e) => {
+    setHideSearch(false);
+  };
 
   const handleOpenForm = () => {
     setOpenForm(!openForm);
-    console.log("handle form");
   };
 
   const getProductList = () => {
@@ -135,10 +167,11 @@ function ProductList() {
       .then((res) => {
         setProductList(res.data.items);
       })
-      .catch((err) => setProductList(imgs));
   };
+  
   useEffect(() => {
     getProductList();
+    getLibraryes()
   }, []);
 
   return (
@@ -206,16 +239,16 @@ function ProductList() {
           <Row>
             <Col xs={24}>
               <Row gutter={[20, 20]} className="list">
-                <Col className="product-list-sidebar" sm={5}>
+                <Col className="product-list-sidebar" sm={7}>
                   <div className="product-sidebar-wrapper">
                     <ul className="product-sidebar-category ">
                       <h5 className="category-header">კატეგორიები</h5>
-                      {category.map((item, ind) => {
+                      {categoryList.map((item) => {
                         return (
-                          <li key={ind}>
-                            <Link to={item}>
-                              <span>{item}</span>
-                              <span>{ind}</span>
+                          <li>  
+                            <Link to={item.name}>
+                              <span>{item.name}</span>
+                              <span>3</span>
                             </Link>
                           </li>
                         );
@@ -237,36 +270,57 @@ function ProductList() {
                           trackStyle={{ backgroundColor: "black" }}
                         />
                       </li>
-                      <li>
-                        შუალედი: ${minPrice} - ${maxPrice}
+                      <li className="range-view">
+                        შუალედი:{" "}
+                        <span>
+                          ${minPrice} - ${maxPrice}
+                        </span>
                       </li>
+                    </ul>
+                    <ul className="product-sidebar-category ">
+                      <h5 className="category-header">მაღაზიები</h5>
+                      {SHOPS_LIST.map((shop, index)=> {
+                        return (
+                          <ShopItem key={index} data={shop}/>
+                          )
+                      })}
                     </ul>
                   </div>
                 </Col>
+                <div className="img-decorations">
+                <img src={two} alt="" />
+                <img src={five} alt="" />
+                </div>
                 <Col
                   xs={24}
-                  sm={19}
+                  sm={17}
                   style={{ paddingLeft: "25px", paddingRight: "25px" }}
                 >
                   <Row>
-                    {/* <Col xs={24} className="search-wrapper">
+                    <Col xs={24} className="search-wrapper">
                       <Search
                         className="search-input"
                         placeholder="ძებნა..."
                         onSearch={onSearch}
                         onChange={handleChange}
                         enterButton
-                        
                       />
                       <div
                         className={`${
                           searchVal.length ? "start-show" : "start-hide"
                         } ${hideSearch ? "show" : "hide"} search-container`}
                       >
-                        <div onBlur={(e) => handleClose(e)} className="search-list">
+                        <div
+                          onBlur={(e) => handleClose(e)}
+                          className="search-list"
+                        >
                           {imgs.map((category, ind) => {
                             return (
-                              <div onClick={(e)=> toProduct(e, ind)} key={ind} className="search-item">
+                              <div
+                                onClick={(e) => toProduct(e, ind)}
+                                key={ind}
+                                className="search-item"
+                              >
                                 <div className="img-wrapper">
                                   <img src={category} alt="" />
                                 </div>
@@ -283,7 +337,7 @@ function ProductList() {
                           })}
                         </div>
                       </div>
-                    </Col> */}
+                    </Col>
                   </Row>
                   <Row
                     gutter={[30, 30]}
@@ -302,21 +356,22 @@ function ProductList() {
                         <Option value={"b"}>{"შეფასების მიხედვით"}</Option>
                       </Select>
                     </Col>
-                    {/* {productList.length && productList.map((product, ind) => {
-                      return (
-                        <ProductItem
-                          xsSize={24}
-                          smSize={12}
-                          lgSize={8}
-                          mdSize={8}
-                          key={ind}
-                          imgSrc={imgs[ind]}
-                          product={product}
-                        />
-                      );
-                    })} */}
-
-                    {productList.length &&
+                    {productList.map((product, ind) => {
+                        return (
+                          <ProductItem
+                            xsSize={24}
+                            smSize={12}
+                            mdSize={12}
+                            lgSize={8}
+                            key={product._id}
+                            // imgSrc={`../../assets/img/plant-data/uploads/${product.images[1]}`}
+                            product={product}
+                            refresh={getProductList}
+                          />
+                        );
+                      })}
+                     
+                    {/* {productList.length &&
                       productList.map((product, ind) => {
                         return (
                           <ProductItemNew
@@ -329,7 +384,7 @@ function ProductList() {
                             product={product}
                           />
                         );
-                      })}
+                      })} */}
                     <Col xs={24} className={"pagination-wrapper"}>
                       <Pagination size="small" total={50} />
                     </Col>

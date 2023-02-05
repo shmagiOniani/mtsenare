@@ -28,13 +28,18 @@ export function insertMany(data: any) {
   return Model.insertMany(data);
 }
 
-export function update(id: any, data: any) {
-  return Model.findOneAndUpdate({_id: id}, {$set: data})
-    .then(assertFound(`Could not update libraries (id ${id})`));
+export function update(id: any, payload: any) {
+  return Model.findOneAndUpdate({_id: id}, {$set: payload})
+    .then(assertFound(`Could not update libraries (category ${id})`));
 }
 
 export function destroy(id: any) {
   return Model.findOneAndRemove({_id: id})
+    .then(assertFound(`Could not destroy libraries (id ${id})`));
+}
+
+export function destroySubLibrary(id: any, subId: any) {
+  return Model.update({_id: id}, {$pull : {"library" : {"_id": subId}}})
     .then(assertFound(`Could not destroy libraries (id ${id})`));
 }
 

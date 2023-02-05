@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -10,24 +10,40 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { LoadingButton } from '@mui/lab';
 import API from '../../utils/services/API';
 
-export default function AddLibrary({ open, handleClose }) {
+export default function AddLibrary({ open, handleClose, target ,id}) {
 
-  const [btnLoading, setBtnLoading]= React.useState(false)
+  const [btnLoading, setBtnLoading]= useState(false)
+  const [name, setName]= useState("")
 
-  const addLibrary = () => {
+  const close=()=> {
+    handleClose()
+    setName("")
+  }
+
+  const handleSubmit = () => {
     setBtnLoading(true);
-
-    API.get(`/api/libraries?all=true`)
+    if(target === "Library") {
+      API.post(`/api/libraries`, {name})
       .then((res) => console.log(res))
       .finally(() => {
         setBtnLoading(false);
-        handleClose()
+        close()
+        setName("")
       });
+    }else if(target === "Sublibrary"){
+      API.put(`/api/libraries/${id}/add-sublibrary`, {name})
+      .then((res) => console.log(res))
+      .finally(() => {
+        setBtnLoading(false);
+        close()
+        setName("")
+      });
+    }
   };
 
   return (
-    <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Add Library</DialogTitle>
+    <Dialog open={open} onClose={close}>
+      <DialogTitle>{target}</DialogTitle>
       <DialogContent>
         <DialogContentText>
           To subscribe to this website, please enter your email address here. We will send updates occasionally.
@@ -35,15 +51,17 @@ export default function AddLibrary({ open, handleClose }) {
         <TextField 
           autoFocus 
           margin="dense" 
-          id="name" 
           label="Name" 
-          type="email" fullWidth 
-          variant="standard" />
+          fullWidth 
+          variant="standard"
+          value={name}
+          onChange={(e)=> setName(e.target.value)}
+          />
 
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <LoadingButton loading={btnLoading} onClick={addLibrary}>Save</LoadingButton>
+        <Button onClick={close}>Cancel</Button>
+        <LoadingButton loading={btnLoading} onClick={handleSubmit}>Save</LoadingButton>
       </DialogActions>
     </Dialog>
   );
@@ -52,4 +70,6 @@ export default function AddLibrary({ open, handleClose }) {
 AddLibrary.propTypes = {
   open: PropTypes.bool,
   handleClose: PropTypes.func,
+  target: PropTypes.string,
+  id: PropTypes.string
 };
