@@ -126,8 +126,8 @@ function ProductList() {
   const getLibraryes = () => {
     API.get(`/api/libraries?all=true`)
       .then((res) => {
-        let categoryInst = res.data.items.find((item)=> item.name === "Category").library
-        setCategoryList(categoryInst)
+        // let categoryInst = res.data.items.find((item)=> item.name === "Category").library
+        // setCategoryList(categoryInst)
       })
   };
 

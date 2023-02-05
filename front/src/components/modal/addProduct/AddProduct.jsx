@@ -27,12 +27,12 @@ function AddProduct({ open, setOpen, refresh }) {
 
   const getLibraryes = () => {
     API.get(`/api/libraries?all=true`).then((res) => {
-      let categoryInst = res.data.items.find((item) => item.name === "Category")
-        .library;
-      let typesInst = res.data.items.find((item) => item.name === "Types")
-        .library;
-      setCategoryList(categoryInst);
-      setTypesList(typesInst);
+      // let categoryInst = res.data.items.find((item) => item.name === "Category")
+      //   .library;
+      // let typesInst = res.data.items.find((item) => item.name === "Types")
+      //   .library;
+      // setCategoryList(categoryInst);
+      // setTypesList(typesInst);
     });
   };
 

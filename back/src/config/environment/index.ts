@@ -15,8 +15,6 @@ const config: any = {
 
   root: path.normalize(path.join(__dirname, '/../')),
 
-
-
   paths: {
     root: dataRoot,
     log: path.join(dataRoot, 'logs'),
