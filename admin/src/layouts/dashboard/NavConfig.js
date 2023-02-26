@@ -17,6 +17,11 @@ const navConfig = [
     icon: getIcon('ic:baseline-library-books'),
   },
   {
+    title: 'shop',
+    path: '/dashboard/shop',
+    icon: getIcon('mdi:shop'),
+  },
+  {
     title: 'user',
     path: '/dashboard/user',
     icon: getIcon('eva:people-fill'),
@@ -26,11 +31,11 @@ const navConfig = [
     path: '/dashboard/products',
     icon: getIcon('eva:shopping-bag-fill'),
   },
-  {
-    title: 'blog',
-    path: '/dashboard/blog',
-    icon: getIcon('eva:file-text-fill'),
-  },
+  // {
+  //   title: 'blog',
+  //   path: '/dashboard/blog',
+  //   icon: getIcon('eva:file-text-fill'),
+  // },
   {
     title: 'login',
     path: '/login',
