@@ -1,0 +1,42 @@
+
+@import "../../styles/globals.scss";
+@import "../../styles/mixins.scss";
+
+.brakes-table {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0.25rem;
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  .ant-table-wrapper {
+    border-top: 1px solid rgba(0,0,0,.125);
+    width: 100%;
+    overflow-y: auto;
+    .ant-spin-nested-loading {
+      width: 100%;
+    }
+    &.half-width {
+      width: 50%;
+    }
+    @include custom-table;
+    .ant-pagination {
+      margin-right: 20px
+    }
+  }
+  .filter {
+    button {
+      @include button-general;
+      margin-right: 10px;
+    }
+  }
+}

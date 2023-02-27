@@ -1,0 +1,25 @@
+@keyframes bounce {
+  0% {transform: translateY(0px);}
+  50%  {transform: translateY(-2px);}
+  100% {transform: translateY(0px);}
+}
+
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes scale-disappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}

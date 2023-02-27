@@ -1,0 +1,198 @@
+@import "../../styles//mixins.scss";
+@import "../../styles//globals.scss";
+
+.user-card {
+    width: 50%;
+    min-width: 300px;
+    height: fit-content;
+    margin: 5% auto;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.25rem!important;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    .fail-dot, .success-dot {
+      
+        margin-right: 18px!important;
+    }
+    .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem;
+        div:first-child {
+            display: flex;
+            align-items: center;
+        }
+        div {
+            cursor: context-menu;
+            span {
+                font-size: 42px;
+                color: #212529a2;
+                transition: .3s;
+            }
+            h3 {
+                margin-left:25%;
+                margin-bottom: 0;
+            }
+        }
+        .close-btn {
+            justify-self: flex-end;
+            font-weight: lighter;
+            font-size: 32px;
+            cursor: pointer!important;
+            z-index: 4;
+            transition: .3s;
+            a {
+                text-decoration: none;
+                color: #212529a2;
+            }
+            &:hover {
+                transform: rotate(-90deg);
+            }
+        }
+        background-color: transparent;
+        border: none;
+    }
+    .card-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        .user-status {
+            display: flex;
+            align-items: center;
+            margin-top: 0!important;
+            margin-bottom: 0!important;
+        }
+        &>div {
+            flex-direction: column;
+        }
+        .form-check {
+            flex-direction: row;
+            padding-left: 0;
+            input {
+                margin-right: 15px;
+                @include check-input ;
+            }
+        }
+        div {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-left: 3%;
+            margin: 20px 0;
+            z-index: 4;
+            span {
+                color: $base-color;
+                font-size: 14px;
+                // padding-bottom: 10px;
+                // cursor: context-menu;
+                svg {
+                    fill: #212529a2;
+                    
+                }
+            }
+            p {
+                font-size: 16px;
+                color: #000000;
+                margin: 0;
+            }
+        }
+    }
+    .card-body::after {
+        content: '';
+        position: absolute;
+        width: 2000px;
+        height: 2000px;
+        transform: translate(25%, -20%) rotate(44deg);
+        background-color: #369bff27;
+        transition: .25s;
+        border: none;
+        box-shadow: 0px 0px 5px 20px rgba(54, 155, 255, 0.123);
+    }
+    transition: .1s ease-in-out;
+    &:hover {
+
+        background-color: #369bff17;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px!important;
+        .card-body::after {
+            transform: translate(0%, -10%) rotate(44deg);
+            background-color: transparent;
+            box-shadow: none;
+        }
+        .card-header {
+            div {
+                i {
+                    color: #212529;
+                }
+            }
+        }
+    }
+}
+
+// responsive
+@media (max-width: 1199.9px) {
+    .user-card {
+        .card-body {
+            grid-template-columns: 1fr;
+        }
+        .card-body::after {
+          transform: translate(10%, -21%) rotate(
+                          40deg);
+        }
+        &:hover {
+            background-color: #fff;
+            transform: none;
+            .card-body::after {
+                transform: translate(25%, -10%) rotate(40deg);
+                background-color: #369bff27;
+            }
+        }
+    }
+}
+@media (max-width: 767.9px) {
+    .user-card {
+        width: 95%;
+        .card-header {
+            div {
+                i {
+                    font-size: 28px;
+                    color: #212529a2;
+                    transition: .3s;
+                }
+                h3 {
+                    margin-left:25%;
+                    margin-bottom: 0;
+                    font-size: 20px;
+                }
+            }
+            .close-btn {
+                font-size: 20px;
+            }
+        }
+        .card-body {
+            div {
+                justify-content: center;
+                padding-left: 3%;
+                margin: 15px 0;
+                span {
+                    font-size: 13px;
+                    padding-bottom: 5px;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 374.9px) {
+    .user-card {
+        width: 99%;
+        .card-body {
+            padding-top: 0!important;
+            div {
+                margin: 10px 0;
+                p {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

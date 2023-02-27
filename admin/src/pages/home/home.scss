@@ -1,0 +1,22 @@
+
+.home-wrapper {
+  .ant-row {
+    padding: 0;
+  }
+  .pti-list{
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+  }
+}
+
+@media screen and (max-width:1200px){
+  #a{order:2;}
+  #b{order:1;}
+  #c{order:3;}
+}
+

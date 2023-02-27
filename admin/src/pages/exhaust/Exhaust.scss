@@ -1,0 +1,107 @@
+@import "../../styles//fonts.scss";
+@import "../../styles//colors.scss";
+@import "../../styles//mixins.scss";
+
+
+.exhaust-table {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0.25rem;
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  .ant-table-wrapper {
+    border-top: 1px solid rgba(0,0,0,.125);
+    width: 100%;
+    overflow-y: auto;
+    .ant-spin-nested-loading {
+      width: 100%;
+    }
+    &.half-width {
+      width: 50%;
+    }
+    @include custom-table;
+  }
+  .filter {
+    button {
+      @include button-general;
+      margin-right: 10px;
+    }
+  }
+}
+
+  .co-result {
+    .ant-col {
+      border-bottom: none!important;
+    }
+    & > .ant-row {
+      padding: 1rem;
+      .fuel-type {
+        text-align: end;
+        @include h5;
+        color: $header-color;
+        text-decoration: underline;
+        margin-bottom: 20px;
+      }
+      .data {
+        .ant-row {
+          .ant-col {
+            .data-wrapper {
+              border: 1px solid #c3c2c2;
+              padding: 10px;
+              border-radius: 10px;
+            }
+            .data-header {
+              @include h4;
+              color: $header-color;
+            }
+            .data-container {
+              @include key-value-pair;
+              border: none;
+              .data-item {
+                margin-bottom: 10px;
+                div:last-child {
+                  margin-left: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .result-item {
+        .ant-row {
+          padding: 1rem 1rem 1rem;
+          border-bottom: 1px solid #dddddd;
+          .ant-col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+      }
+      .chart-item {
+        padding-top: 40px;
+        .recharts-wrapper {
+          @media screen and (max-width: 1000px) {
+            width: 100% !important;
+          }
+          margin: auto;
+          .recharts-surface {
+            width: 100%;
+          }
+          .recharts-legend-wrapper {
+            display: none;
+          }
+        }
+      }
+    }
+  }

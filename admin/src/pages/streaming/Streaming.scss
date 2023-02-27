@@ -1,0 +1,34 @@
+
+
+.streaming-wrapper {
+  .streaming-container {
+    padding: 0;
+    .card-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .streaming {
+        width: 100%;
+        &>div {
+          width: auto!important;
+          height: 100%!important;
+        }
+      }
+      .card-body {
+        padding: 5px 0;
+        font-size: 10px;
+        & > div {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+  .pagination {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}

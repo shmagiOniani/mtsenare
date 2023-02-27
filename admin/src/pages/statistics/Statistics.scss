@@ -1,0 +1,222 @@
+@import "../../styles/colors.scss";
+
+.statistics-wrapper {
+  .statistics {
+    background-color: white;
+    border-radius: 10px;
+    min-height: 70vh;
+    .header {
+      padding: 10px;
+      font-size: clamp(18px, 4vw, 22px) !important;
+      border-bottom: 1px solid #dddddd;
+      color: #212529a2;
+    }
+    .statistics-body {
+      padding: 1rem;
+    }
+  }
+  .general {
+    .header {
+    }
+    .statistics-folder {
+      background-color: #525e75;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        cursor: pointer;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        transform: translateY(-2px);
+      }
+      .icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        div:first-child {
+          span {
+            font-size: 26px;
+          }
+        }
+      }
+      .name {
+        div:first-child {
+          font-size: 14px;
+        }
+        div:last-child {
+          font-size: 10px;
+        }
+      }
+    }
+    .reports {
+      &:hover {
+        cursor: unset;
+        box-shadow: none;
+        transform: translateY(0px);
+      }
+      .ant-form-item {
+        width: 86%;
+      }
+      .input-form {
+        .ant-form {
+          display: flex;
+          justify-content: space-between;
+          .ant-form-item {
+            margin: 0 10px;
+            .ant-picker-range {
+              height: 50px;
+              border-radius: 5px;
+            }
+            .ant-picker {
+              width: 75%;
+            }
+          }
+          .ant-btn {
+            min-height: 50px;
+          }
+        }
+      }
+    }
+  }
+  .result {
+    .header {
+      .ant-col {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .back-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 10px;
+          padding: 10px;
+          transition: all 0.3s ease;
+          border-radius: 50%;
+          &:hover {
+            cursor: pointer;
+            background-color: rgba(128, 128, 128, 0.185);
+          }
+        }
+      }
+    }
+  }
+}
+.filter-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  &:hover {
+    cursor: pointer;
+    // background-color: rgba(128, 128, 128, 0.185);
+  }
+}
+.statistics-filter {
+  max-height: 0px;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+  .filter-container {
+    padding: 1rem;
+    background-color: #6c757d;
+    border-bottom: 1px solid white;
+    .filter-save-form {
+      .ant-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .filter-types-container {
+        .ant-radio-group {
+          display: flex;
+          label {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          label:first-child {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+          }
+          label:last-child {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+          }
+        }
+      }
+    }
+    & > .ant-col:first-child {
+      justify-content: flex-start !important;
+    }
+    .ant-col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .ant-form-item {
+        margin: 0 !important;
+        min-height: 101px;
+        .ant-form-item-label {
+          justify-content: flex-start;
+          label {
+            color: #f4f6f9 !important;
+          }
+        }
+        .date-picker-button {
+          width: 270px;
+        }
+      }
+    }
+    .filter-action-buttons {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+}
+.statistics-active-filter {
+  opacity: 1;
+  max-height: 700px !important;
+}
+.income-details-modal{
+  .total-container {
+    .filter-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .total-item {
+      display: flex;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: $total;
+      margin-bottom: 15px;
+      h3 {
+        margin: 0;
+        span {
+          font-size: 17px;
+        }
+      }
+    }
+    .total-item:nth-child(3) {
+      background-color: $rejected;
+      h3 {
+        color: white;
+      }
+    }
+    .total-item:last-child {
+      background-color: $secondary;
+      h3 {
+        color: white;
+      }
+    }
+  }
+}

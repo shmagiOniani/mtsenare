@@ -1,0 +1,125 @@
+@import "../../styles/globals.scss";
+@import "../../styles/colors.scss";
+@import "../../styles/mixins.scss";
+
+.notifications-wrapper {
+  
+  .notifications-table {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+    .ant-table-wrapper {
+      border-top: 1px solid rgba(0,0,0,.125);
+      width: 100%;
+      overflow-y: auto;
+      .ant-spin-nested-loading {
+        width: 100%;
+      }
+      &.half-width {
+        width: 50%;
+      }
+      @include custom-table;
+      .ant-table-cell {
+        text-align: start!important;
+        .avatar {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          font-weight: 700;
+          color: black;
+          .ant-avatar {
+            margin-right: 15px;
+          }
+        }
+        .actions-container {
+          div {
+            font-size: 12px;
+          }
+          .ant-btn {
+            margin-left: 10px;
+            span {
+              svg {
+                fill: black;
+                width: 22px;
+                height: 22px;
+              }
+            }
+          }
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    .ant-pagination {
+      margin-right: 20px;
+    }
+  }
+  .add-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+    transition: all .2s ease-in-out;
+    transform: scale(0.8);
+    &:hover {
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      cursor: pointer;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      border-radius: 20px;
+      bottom: calc(50% - 2px);
+      left: 25px;
+      width: 50px;
+      height: 4px;
+      background-color: $base-color;
+    }
+    &::after {
+      content:"";
+      position: absolute;
+      border-radius: 20px;
+      top: 25px;
+      left: calc(50% - 2px);
+      width: 4px;
+      height: 50px;
+      background-color: $base-color;
+    }
+    
+  }
+}
+.notification-modal {
+  .ant-form-item-control-input-content {
+    display: flex;
+    justify-content: flex-end!important;
+  }
+  .custom-staff {
+    position: relative;
+    height: 50px;
+    .emoji-mart {
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      right: 0;
+    }
+  }
+  textarea {
+    height: auto!important;
+  }
+}
