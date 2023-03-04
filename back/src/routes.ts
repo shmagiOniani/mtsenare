@@ -35,8 +35,7 @@ export function initRoutes(app: Express) {
   router.use('/api-docs', swaggerUi.serve);
   router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
-  app.use('/api-docs', swaggerUi.server, swaggerUi.setup(swaggerDocument))
-  console.log("in route");
+  // app.use('/api-docs', swaggerUi.server, swaggerUi.setup(swaggerDocument))
   app.use('/api/users', userRouter);
   app.use('/api/files', fileRouter);
 

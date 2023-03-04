@@ -3,7 +3,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import { Modal, Divider, Form, Row, Col, Typography, Button } from "antd";
 import "antd/dist/antd.css";
 // import "./styles.scss";
-import {  CheckOutlined} from "@ant-design/icons";
+import { CheckOutlined } from "@ant-design/icons";
 import CustomInput from "../inputs/CustomInput";
 import ImageUpload from "../imageUpload/ImageUpload";
 import API from "../../utils/API";
@@ -23,12 +23,14 @@ function AddProduct({ open, setOpen, refresh }) {
 
   const getLibraryes = () => {
     API.get(`/api/libraries?all=true`).then((res) => {
-      // let categoryInst = res.data.items.find((item) => item.name === "Category")
-      //   .library;
-      // let typesInst = res.data.items.find((item) => item.name === "Types")
-      //   .library;
-      // setCategoryList(categoryInst);
-      // setTypesList(typesInst);
+      let categoryInst = res.data.items.find(
+        (item) => item.name === "Category"
+      ).library;
+      let typesInst = res.data.items.find(
+        (item) => item.name === "Types"
+      ).library;
+      setCategoryList(categoryInst);
+      setTypesList(typesInst);
     });
   };
 
@@ -58,45 +60,69 @@ function AddProduct({ open, setOpen, refresh }) {
       name: "name",
       type: "text",
       label: "დასახელება",
-      xs: 8,
+      required: true,
+      xs: 24,
+      sm: 12,
+      md: 8,
+      // lg: 8,
+      // xxl: 8,
     },
-    // {
-    //   name: "description",
-    //   type: "text",
-    //   label: "აღწერა",
-    //   xs: 8,
-    // },
     {
       name: "category",
       type: "select",
       label: "კატეგორია",
-      xs: 8,
+      required: true,
       options: categoryList,
+      xs: 24,
+      sm: 12,
+      md: 8,
+      // lg: 8,
+      // xxl: 8,
     },
     {
       name: "type",
       type: "select",
       label: "ტიპი",
-      xs: 8,
+      required: true,
       options: typesList,
+      xs: 24,
+      sm: 12,
+      md: 8,
+      // lg: 8,
+      // xxl: 8,
     },
-    // {
-    //   name: "tags",
-    //   type: "text",
-    //   label: "თაგი",
-    //   xs: 8,
-    // },
+    {
+      name: "tags",
+      type: "text",
+      label: "თაგი",
+      required: true,
+      xs: 24,
+      sm: 12,
+      md: 8,
+      // lg: 8,
+      // xxl: 8,
+    },
     {
       name: "price",
-      type: "text",
+      type: "number",
       label: "ფასი",
-      xs: 8,
+      required: true,
+      xs: 24,
+      sm: 12,
+      md: 8,
+      // lg: 8,
+      // xxl: 8,
     },
     {
       name: "quantity",
-      type: "text",
+      type: "number",
       label: "რაოდენობა",
-      xs: 8,
+      required: true,
+      xs: 24,
+      sm: 12,
+      md: 8,
+      // lg: 8,
+      // xxl: 8,
     },
   ];
 
@@ -155,7 +181,7 @@ function AddProduct({ open, setOpen, refresh }) {
               apiKey={"3jj25gmpb6zfipiawbqt3h8msc7mas3ivlstqz84e53f6s0v"}
               init={{
                 selector: ".mytextarea",
-                
+
                 theme: "silver",
                 // plugins: [ "image code table link media codesample"],
                 // toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | media | table',
@@ -190,7 +216,7 @@ function AddProduct({ open, setOpen, refresh }) {
                   </Button>
                 </Form.Item>
               </Col> */}
-              <Col xs={12} >
+              <Col xs={12}>
                 <Form.Item shouldUpdate className="action-buttons">
                   <Button
                     htmlType="submit"

@@ -6,16 +6,9 @@ import {
   Menu,
   Input,
   Button,
-  Space,
-  Spin,
   Pagination,
   Col,
   Row,
-  message,
-  notification,
-  Card,
-  Switch,
-  Carousel,
 } from "antd";
 import {
   FileAddOutlined,
@@ -27,7 +20,7 @@ import {
   IdcardOutlined,
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
-// import API from "../../utils/API";
+import API from "../../utils/API";
 import AddProduct from "../../components/modals/AddProduct";
 import useTranslation from "../../components/translation/useTranslation";
 // import Pagination from "../../components/Pagination"
@@ -36,7 +29,7 @@ import { marks } from "../../images/marks";
 import "./products.scss";
 import CarsFilter from "../../components/modals/CarsFilter";
 import { UserContext } from "../../components/contexts/UserContext";
-import moment from "moment";
+import ProductCard from "./ProductCard";
 
 export default function Products() {
   const { Search } = Input;
@@ -52,9 +45,10 @@ export default function Products() {
   const [currentpage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [total, setTotal] = useState("");
+  const [productsList, setProductsList] = useState(null);
 
   const [newData, setNewData] = useState([]);
-  // key error needs key map error
+  
   const transformData = (data) => {
     setNewData([]);
     const sorted = data.sort(
@@ -95,26 +89,10 @@ export default function Products() {
 
   const getData = (page, filter) => {
     setCurrentPage(page ? page : 1);
-    // setLoading(true);
-    // API.get(`/get-requests-handler`, {
-    //   params: {
-    //     url: `/VehicleApplication`,
-    //     params: { States: [0, 1], Page: page ? page : 1, Count: 10, ...filter },
-    //   },
-    // })
-    //   .then((res) => {
-    //     setLoading(false);
-    //     setTotal(res.data.totalCount);
-    //     transformData(res.data.data.reverse());
-    //     setTotalPages(res.data.totalCount);
-    //   })
-    //   .catch((err) => {
-    //     setLoading(false);
-    //     notification.error({
-    //       message: trans(err?.response?.data) || trans("connection_problem"),
-    //       placement: "bottomLeft",
-    //     });
-    //   });
+    API.get(`/api/products?all=true`).then((res) => {
+      setProductsList(res.data.items);
+      setTotal(res.data.numTotal);
+    });
   };
 
   useEffect(() => {
@@ -298,384 +276,6 @@ export default function Products() {
     },
   ];
 
-  const [arrangements, setArrangements] = useState(null);
-  useEffect(() => {
-    setArrangements({
-      content: [
-        {
-          id: 15,
-          status: "ACTIVE",
-          title: "სატესტო ახალი",
-          description: "სატესტო ახალი",
-          periodical: "DAY",
-          distributionTime: "02:02:00",
-          startDate: "2023-03-02",
-          endDate: "2999-01-01",
-          nextExecutionDate: "2023-03-03T02:02:00",
-          sampling: {
-            perEvaluator: 1,
-            total: null,
-          },
-          selectCriteria: [
-            {
-              serviceDurationFrom: 60,
-            },
-          ],
-          distributionRules: [
-            {
-              operators: [0],
-              evaluators: [2],
-            },
-          ],
-        },
-        {
-          id: 14,
-          status: "ACTIVE",
-          title: "satesto",
-          description: "asdada",
-          periodical: "DAY",
-          distributionTime: "18:19:06",
-          startDate: "2023-03-01",
-          endDate: "2999-01-01",
-          nextExecutionDate: "2023-03-02T18:19:06",
-          sampling: {
-            perEvaluator: 1,
-            total: null,
-          },
-          selectCriteria: [
-            {
-              serviceDurationFrom: 120,
-            },
-          ],
-          distributionRules: [
-            {
-              operators: [2],
-              evaluators: [0],
-            },
-          ],
-        },
-        {
-          id: 13,
-          status: "ACTIVE",
-          title: "sdsfs",
-          description: "FDSFSDF",
-          periodical: "DAY",
-          distributionTime: "17:23:26",
-          startDate: "2023-03-01",
-          endDate: "2999-01-01",
-          nextExecutionDate: "2023-03-02T17:23:26",
-          sampling: {
-            perEvaluator: 1,
-            total: null,
-          },
-          selectCriteria: [
-            {
-              serviceDurationFrom: 93312000000,
-            },
-          ],
-          distributionRules: [
-            {
-              operators: [0],
-              evaluators: [2],
-            },
-          ],
-        },
-        {
-          id: 12,
-          status: "ACTIVE",
-          title: "ტესტ",
-          description: "test",
-          periodical: "DAY",
-          distributionTime: "17:12:01",
-          startDate: "2022-12-16",
-          endDate: "2999-01-01",
-          nextExecutionDate: "2022-12-17T17:12:01",
-          sampling: {
-            perEvaluator: null,
-            total: 5,
-          },
-          selectCriteria: [
-            {
-              serviceDurationFrom: 0,
-            },
-          ],
-          distributionRules: [
-            {
-              operators: [0],
-              evaluators: [2],
-            },
-          ],
-        },
-        {
-          id: 11,
-          status: "ACTIVE",
-          title: "rame",
-          description: "rame",
-          periodical: "MONTH",
-          distributionTime: "17:02:26",
-          startDate: "2022-12-16",
-          endDate: "2999-01-01",
-          nextExecutionDate: "2023-01-16T17:02:26",
-          sampling: {
-            perEvaluator: 11,
-            total: null,
-          },
-          selectCriteria: [
-            {
-              serviceId: [1],
-            },
-            {
-              serviceReceiver: 3,
-            },
-          ],
-          distributionRules: [
-            {
-              operators: [0],
-              evaluators: [2],
-            },
-          ],
-        },
-        {
-          id: 10,
-          status: "ACTIVE",
-          title: "sateto",
-          description: "sateto",
-          periodical: "MONTH",
-          distributionTime: "16:59:31",
-          startDate: "2022-12-16",
-          endDate: "2999-01-01",
-          nextExecutionDate: "2023-01-16T16:59:31",
-          sampling: {
-            perEvaluator: 1,
-            total: null,
-          },
-          selectCriteria: [
-            {
-              serviceDurationFrom: 660,
-            },
-          ],
-          distributionRules: [
-            {
-              operators: [0],
-              evaluators: [2],
-            },
-          ],
-        },
-        {
-          id: 9,
-          status: "ACTIVE",
-          title: "ტესტ",
-          description: "as",
-          periodical: "DAY",
-          distributionTime: "16:38:57",
-          startDate: "2022-12-16",
-          endDate: "2999-01-01",
-          nextExecutionDate: "2022-12-17T16:38:57",
-          sampling: {
-            perEvaluator: null,
-            total: 1,
-          },
-          selectCriteria: [
-            {
-              serviceDurationFrom: 0,
-            },
-          ],
-          distributionRules: [
-            {
-              operators: [0],
-              evaluators: [2],
-            },
-          ],
-        },
-        {
-          id: 8,
-          status: "ACTIVE",
-          title: "nmkl",
-          description: "dfghjk",
-          periodical: "WEEK",
-          distributionTime: "23:07:31",
-          startDate: "2022-11-15",
-          endDate: "2999-01-01",
-          nextExecutionDate: "2022-11-22T23:07:31",
-          sampling: {
-            perEvaluator: 77,
-            total: null,
-          },
-          selectCriteria: [
-            {
-              serviceDurationFrom: 540,
-            },
-          ],
-          distributionRules: [
-            {
-              operators: [0],
-              evaluators: [2],
-            },
-            {
-              operators: [0],
-              evaluators: [2],
-            },
-          ],
-        },
-        {
-          id: 7,
-          status: "ACTIVE",
-          title: "jhbkml",
-          description: "ubhinjokml",
-          periodical: "QUARTER",
-          distributionTime: "23:03:25",
-          startDate: "2022-11-15",
-          endDate: "2999-01-01",
-          nextExecutionDate: "2023-02-15T23:03:25",
-          sampling: {
-            perEvaluator: 2,
-            total: null,
-          },
-          selectCriteria: [
-            {
-              waitDurationFrom: 129600000,
-            },
-          ],
-          distributionRules: [
-            {
-              operators: [0],
-              evaluators: [2],
-            },
-            {
-              operators: [0],
-              evaluators: [2],
-            },
-            {
-              operators: [0],
-              evaluators: [2],
-            },
-          ],
-        },
-        {
-          id: 6,
-          status: "ACTIVE",
-          title: "jhbkml",
-          description: "ubhinjokml",
-          periodical: "QUARTER",
-          distributionTime: "23:03:25",
-          startDate: "2022-11-15",
-          endDate: "2999-01-01",
-          nextExecutionDate: "2023-02-15T23:03:25",
-          sampling: {
-            perEvaluator: 2,
-            total: null,
-          },
-          selectCriteria: [
-            {
-              waitDurationFrom: 2160000,
-            },
-          ],
-          distributionRules: [
-            {
-              operators: [0],
-              evaluators: [2],
-            },
-            {
-              operators: [0],
-              evaluators: [2],
-            },
-            {
-              operators: [0],
-              evaluators: [2],
-            },
-          ],
-        },
-        {
-          id: 5,
-          status: "ACTIVE",
-          title: "jhbkml",
-          description: "ubhinjokml",
-          periodical: "QUARTER",
-          distributionTime: "23:03:25",
-          startDate: "2022-11-15",
-          endDate: "2999-01-01",
-          nextExecutionDate: "2023-02-15T23:03:25",
-          sampling: {
-            perEvaluator: 2,
-            total: null,
-          },
-          selectCriteria: [
-            {
-              waitDurationFrom: 36000,
-            },
-          ],
-          distributionRules: [
-            {
-              operators: [0],
-              evaluators: [0],
-            },
-          ],
-        },
-        {
-          id: 4,
-          status: "ACTIVE",
-          title: "jhbkml",
-          description: "ubhinjokml",
-          periodical: "QUARTER",
-          distributionTime: "23:03:25",
-          startDate: "2022-11-15",
-          endDate: "2999-01-01",
-          nextExecutionDate: "2023-02-15T23:03:25",
-          sampling: {
-            perEvaluator: 2,
-            total: null,
-          },
-          selectCriteria: [
-            {
-              waitDurationFrom: 600,
-            },
-          ],
-          distributionRules: [
-            {
-              operators: [0],
-              evaluators: [0],
-            },
-          ],
-        },
-      ],
-      pageable: {
-        sort: {
-          empty: false,
-          sorted: true,
-          unsorted: false,
-        },
-        offset: 0,
-        pageNumber: 0,
-        pageSize: 12,
-        paged: true,
-        unpaged: false,
-      },
-      totalPages: 2,
-      totalElements: 15,
-      last: false,
-      size: 12,
-      number: 0,
-      sort: {
-        empty: false,
-        sorted: true,
-        unsorted: false,
-      },
-      numberOfElements: 12,
-      first: true,
-      empty: false,
-    });
-  }, []);
-
-  function onChange(a) {
-    return a;
-  }
-
-  const photosInst = [
-    "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-    "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-    "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
-  ];
-
   return (
     <div className="content-wrapper">
       <div className="table-wrapper">
@@ -729,82 +329,78 @@ export default function Products() {
           </Col>
         </Row>
         <div className="table-pagination">
-          {tableView ? <div className="cards-wrapper">
-            <Row gutter={[20, 24]} wrap={true}>
-              {arrangements?.content?.map((item, index) => (
-                  
+          {tableView ? (
+            <div className="cards-wrapper">
+              <Row gutter={[20, 24]} wrap={true}>
+                {productsList?.map((item, index) => (
                   <Col
-                  xs={{ span: 24 }}
-                  md={{ span: 24 }}
-                  lg={{ span: 12 }}
-                  xl={{ span: 8 }}
-                  xxl={{ span: 6 }}
-                  key={index}
-                >
-                  <Card
-                    title={
-                      <div className="card-title">
-                        <p>{item?.title}</p>
-                      </div>
-                    }
+                    xs={{ span: 24 }}
+                    md={{ span: 24 }}
+                    lg={{ span: 12 }}
+                    xl={{ span: 8 }}
+                    xxl={{ span: 6 }}
+                    key={index}
                   >
-                    <div className="card-content">
-                      {/* <p>{item?.description}</p> */}
-                      <Carousel afterChange={onChange}>
-                        {photosInst?.map((photo, ind) => {
-                          return (
-                            <div key={ind} className="car-img">
-                              <img alt="pti-img" width={150} src={photo} />
-                            </div>
-                          );
-                        })}
-                      </Carousel>
-                    </div>
-                    <div className="card-footer">
-                      <div>
-                        {/* <span>ატვირთულია:</span> */}
-                        <p>
-                          {moment(item?.nextExecutionDate).format("L, H:mm")}
-                        </p>
+                    <ProductCard item={item} />
+                    {/* <Card
+                      title={
+                        <div className="card-title">
+                          <p>{item?.title}</p>
+                        </div>
+                      }
+                    >
+                      <div className="card-content">
+                        <Carousel afterChange={onChange}>
+                          {photosInst?.map((photo, ind) => {
+                            return (
+                              <div key={ind} className="car-img">
+                                <img alt="pti-img" width={150} src={photo} />
+                              </div>
+                            );
+                          })}
+                        </Carousel>
                       </div>
-                      <div>
-                        <span>ვარგისია</span>
-                        <p>{item.id}</p>
+                      <div className="card-footer">
+                        <div>
+                          <p>
+                            {moment(item?.nextExecutionDate).format("L, H:mm")}
+                          </p>
+                        </div>
+                        <div>
+                          <span>ვარგისია</span>
+                          <p>{item.id}</p>
+                        </div>
+                        <div onClick={(e) => e.stopPropagation()}>
+                          <Switch
+                            onClick={(v) => {
+                            }}
+                            checked={item?.status == "ACTIVE" ? true : false}
+                          />
+                        </div>
                       </div>
-                      <div onClick={(e) => e.stopPropagation()}>
-                        <Switch
-                          onClick={(v) => {
-                            // changeStatus(v, item?.id);
-                          }}
-                          // eslint-disable-next-line eqeqeq
-                          checked={item?.status == "ACTIVE" ? true : false}
-                        />
-                      </div>
-                    </div>
-                  </Card>
-                </Col>
-
-              ))}
-            </Row>
-          </div>
-          :
-          <div className="products-table">
+                    </Card> */}
+                  </Col>
+                ))}
+              </Row>
+            </div>
+          ) : (
+            <div className="products-table">
               {/* <FadeIn className="fade-instance" > */}
 
-            <Table
-              columns={columns}
-              dataSource={newData}
-              pagination={false}
-              className={"users-table"}
-            />
-            {/* </FadeIn> */}
-          </div>
-            }
+              <Table
+                columns={columns}
+                dataSource={newData}
+                pagination={false}
+                className={"users-table"}
+              />
+              {/* </FadeIn> */}
+            </div>
+          )}
           <Row className="currents-pagination" justify={"end"}>
-            <Col >
+            <Col>
               {hasPermissions("Permissions.VehicleApplication.Count") && (
-                <div >
-                  {trans("total")}: <span>{arrangements?.content.length}</span>
+                <div>
+                  {trans("total")}: <span>{total}</span>
                 </div>
               )}
               <Pagination

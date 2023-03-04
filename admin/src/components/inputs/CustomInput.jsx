@@ -10,13 +10,14 @@ function CustomInput({inputArr}) {
     <>
         {inputArr.map((item, index) => {
             return (
-              <Col key={index} xs={item.xs} sm={item.sm}>
+              <Col key={index} xs={item.xs} sm={item.sm} md={item.md} lg={item.lg} xl={item.xl} xxl={item.xxl}>
                 <Form.Item
                   name={item.name}
                   label={item.label}
-                  type={item.type}
+                  // type={item.type}
                   rules={[
                     {
+                      required: item.required,
                       message: trans("empty_input_warning"),
                     },
                   ]}
