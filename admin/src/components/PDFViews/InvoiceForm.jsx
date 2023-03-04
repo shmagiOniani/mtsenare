@@ -20,14 +20,14 @@ function InvoiceForm({ isOpen, handleClose, organizationName, cars }) {
   const getBranch = (id) => {
     if(context.hasPermissions("Permissions.Branch")){
 
-      API.get(`/get-requests-handler`, { params: { url: `/Company/branches/${id}`, params: {} } })
-        .then(
-          (res) => {
-            if(res.data.name === "Error"){
-              message.error(res.data.message);
-            }else {
-            setBranch(res.data)}})
-        .catch((err) => notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"}))
+      // API.get(`/get-requests-handler`, { params: { url: `/Company/branches/${id}`, params: {} } })
+      //   .then(
+      //     (res) => {
+      //       if(res.data.name === "Error"){
+      //         message.error(res.data.message);
+      //       }else {
+      //       setBranch(res.data)}})
+      //   .catch((err) => notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"}))
     }
   }
 

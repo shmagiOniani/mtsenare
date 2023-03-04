@@ -21,23 +21,23 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
     }
 
     const getBranches = () => {
-        if (context.hasPermissions("Permissions.Branch")) {
-            API.get(`/get-requests-handler`, { params: { url: `/Company/branches`, params: {} } })
-                .then(res => {
-                    setBranches(res.data)
-                })
-                .catch(err => notification.error({ message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft" }))
-        }
+        // if (context.hasPermissions("Permissions.Branch")) {
+        //     API.get(`/get-requests-handler`, { params: { url: `/Company/branches`, params: {} } })
+        //         .then(res => {
+        //             setBranches(res.data)
+        //         })
+        //         .catch(err => notification.error({ message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft" }))
+        // }
     }
 
     const getCompanies = () => {
         if (context.hasPermissions("Permissions.Branch")) {
 
-            API.get(`/get-requests-handler`, { params: { url: `/Company`, params: {} } })
-                .then(res => {
-                    setCompanies(res.data)
-                })
-                .catch(err => notification.error({ message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft" }))
+            // API.get(`/get-requests-handler`, { params: { url: `/Company`, params: {} } })
+            //     .then(res => {
+            //         setCompanies(res.data)
+            //     })
+            //     .catch(err => notification.error({ message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft" }))
         }
     }
 
@@ -112,11 +112,11 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
         <header>
             <nav className={`navbar ${sidebarOpen === true ? 'paddingleft' : ''}`}
             >
-                {context.hasPermissions("Permissions.Exhaust") && <Button className="circle-btn" type="primary" icon={<AlignLeftOutlined />} onClick={() => {
+                {/* {context.hasPermissions("Permissions.Exhaust") && <Button className="circle-btn" type="primary" icon={<AlignLeftOutlined />} onClick={() => {
                     sidebarOpen === true ?
                         setSidebarOpen(false) :
                         setSidebarOpen(true)
-                }} />}
+                }} />} */}
                 <div onClick={() => console.log(context?.user)}>.</div>
 
                 <ul className="navbar-nav">

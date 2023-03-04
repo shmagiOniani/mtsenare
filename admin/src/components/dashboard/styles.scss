@@ -1,18 +1,19 @@
 @import "../../styles/globals.scss";
 @import "../../styles/colors.scss";
+@import "../../styles/mixins.scss";
 
 nav.sidebar {
-  height: 100%;
-  width: 280px;
   position: fixed;
   z-index: 501;
-  top: 0;
-  left: 0;
-  background-color: white;
-  // padding: 15px 0px 50px;
+  top: 1vh;
+  left: 1vh;
+  height: 98vh;
+  width: 350px;
+  padding: 0 25px;
   overflow-y: scroll;
   overflow-x: hidden;
   transition: width 0.3s ease-in-out;
+  @include glass-bg;
   //scrollbar
   &::-webkit-scrollbar {
     width: 5px;
@@ -27,16 +28,16 @@ nav.sidebar {
     width: 13px;
     box-shadow: inset 0 0 5px #d0d0d0a1;
   }
-  &::after {
-    content: "";
-    position: fixed;
-    z-index: 22222222222222;
-    left: 280px;
-    top: 0;
-    width: 20px;
-    height: 77px;
-    background-color: white;
-  }
+  // &::after {
+  //   content: "";
+  //   position: fixed;
+  //   z-index: 22222222222222;
+  //   left: 280px;
+  //   top: 0;
+  //   width: 20px;
+  //   height: 77px;
+  //   background-color: white;
+  // }
 
   .logo_content {
     position: relative;
@@ -114,11 +115,12 @@ nav.sidebar {
         position: relative;
         width: 260px;
         &:hover {
-          width: 265px!important;
-          color: #645bcd;
-          background: rgba(128, 128, 128, 0.05);
-          border-radius: 0 60px 60px 0;
-          box-shadow: 0 7px 12px 0 rgba(101, 91, 207, 0.2);
+          width: 265px !important;
+          color: white;
+          // background: rgba(128, 128, 128, 0.05);
+          border-radius: 60px ;
+          // box-shadow: 0 7px 12px 0 #e6510073;
+          background: #fd754d54;
         }
         .anticon,
         i {
@@ -144,15 +146,19 @@ nav.sidebar {
           left: 7px;
         }
       }
-      &> .active {
+      & > .active {
         // background-color: transparent;
-        background: linear-gradient(to bottom right, #6259ca 0%, rgba(102, 93, 207, 0.6) 100%);
-        border-radius: 0 60px 60px 0;
+        // background: linear-gradient(to bottom right, #6259ca 0%, rgba(102, 93, 207, 0.6) 100%);
+        background-color: $active-btn-bg;
+        border-radius: 60px;
         box-shadow: 0 7px 12px 0 rgba(101, 91, 207, 0.2);
-        color: white!important;
+        color: white !important;
+
         &:hover {
-          color: white!important;
-          background: linear-gradient(to bottom right, #6259ca 0%, rgba(102, 93, 207, 0.6) 100%);
+          color: white !important;
+          background-color: $active-btn-bg;
+
+          // background: linear-gradient(to bottom right, #6259ca 0%, rgba(102, 93, 207, 0.6) 100%);
         }
         .check-icon {
           margin-left: 7px;
@@ -160,6 +166,9 @@ nav.sidebar {
       }
       .child-wrapper {
         .nav-link {
+          &:focus {
+            color: inherit!important;
+          }
           span {
             margin-left: 30px;
           }
@@ -168,8 +177,11 @@ nav.sidebar {
     }
   }
 }
-
-
+.nav-link {
+  &:focus {
+    color:white!important;
+  }
+}
 .chat-icon {
   position: fixed !important;
   z-index: 9999;
@@ -181,10 +193,10 @@ nav.sidebar {
   background-color: transparent !important;
   transition: all 1s ease;
   &:hover {
-    animation: bounce .5s infinite ease-in;
+    animation: bounce 0.5s infinite ease-in;
     cursor: pointer;
     &::after {
-      opacity: .5;  
+      opacity: 0.5;
     }
     span {
       box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -192,17 +204,19 @@ nav.sidebar {
   }
   &::after {
     content: " ";
-    transition: all .5s ease;
+    transition: all 0.5s ease;
     position: fixed;
     z-index: 9999;
     right: 20px;
     bottom: 20px;
     width: 70px;
     border-radius: 50%;
-    opacity: .0;
+    opacity: 0;
     height: 5px;
     background-color: $base-color;
-    box-shadow: $base-color 0px 54px 55px, $base-color 0px -12px 30px, $base-color 0px 4px 6px, $base-color 0px 12px 13px, $base-color 0px -3px 5px;
+    box-shadow: $base-color 0px 54px 55px, $base-color 0px -12px 30px,
+      $base-color 0px 4px 6px, $base-color 0px 12px 13px,
+      $base-color 0px -3px 5px;
   }
   span {
     font-size: 55px;
@@ -230,7 +244,7 @@ nav.sidebar {
 .nav {
   .nav-item {
     .active {
-      background-color: rgba(255, 255, 255, 0.301) !important;
+      // background-color: rgba(255, 255, 255, 0.301) !important;
     }
   }
   .child-wrapper {
@@ -345,6 +359,7 @@ nav.sidebar {
 @media (max-width: 767.988px) {
   nav.sidebar,
   nav.sidebar.open {
+    padding: 0;
     width: 0;
     // padding: 15px 0 50px;
     transition: width 0.3s ease-in-out, padding 0.3s ease-in-out;

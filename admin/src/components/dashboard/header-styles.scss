@@ -2,6 +2,7 @@
 @import "../../styles/globals.scss";
 @import "../../styles/colors.scss";
 @import "../../styles/buttons.scss";
+@import "../../styles/mixins.scss";
 @import "../../styles/animation.scss";
 
 @mixin color-with-hover {
@@ -13,19 +14,21 @@
 
 header {
   position: fixed;
+  top: 1vh;
   width: 100%;
   z-index: 444;
   .navbar {
     display: flex;
     justify-content: space-between;
-    width: 100%;
     margin: 0;
-    background-color: white;
     padding: 1rem;
     padding-left: 310px !important;
     transition: padding 350ms;
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
-    
+    @include glass-bg;
+    background: rgba(255, 255, 255, 0.199);
+    width: calc(100vw - 384px);
+    margin-left: 366px;
     .badge {
       padding: 0px!important;
         &::after {
@@ -56,6 +59,8 @@ header {
     } 
     .circle-btn {
       @include circle-btn;
+      background: #dfdfdf00;
+      color: #ffffff !important;
     }
     .animate-rotation {
         span {

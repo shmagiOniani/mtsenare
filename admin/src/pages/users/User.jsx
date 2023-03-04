@@ -26,18 +26,18 @@ export default function User() {
     const [updateModalOpen, setUpdateModalOpen] = useState(false)
 
     const getBranch = (id) => {
-        if (hasPermissions("Permissions.Branch")) {
-            setLoading(true)
-        API.get(`/get-requests-handler`, { params: { url: `/Company/branches/${id}` } })
-            .then((res) => {
-                setLoading(false)
-                setBranch(res.data);
-            })
-            .catch((err) => {
-                setLoading(false);
-                notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"});
-            })
-        }
+        // if (hasPermissions("Permissions.Branch")) {
+            // setLoading(true)
+        // API.get(`/get-requests-handler`, { params: { url: `/Company/branches/${id}` } })
+        //     .then((res) => {
+        //         setLoading(false)
+        //         setBranch(res.data);
+        //     })
+        //     .catch((err) => {
+        //         setLoading(false);
+        //         notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"});
+        //     })
+        // }
     }
 
     const getUser = () => {

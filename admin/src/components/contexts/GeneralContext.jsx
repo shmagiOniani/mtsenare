@@ -114,62 +114,58 @@ export const GeneralContextProvider = (props) => {
 
 
     // useEffect(() => {
-    //     // console.log("location",location);
-    // }, [location])
+    //     for (const value in values) {
+    //         if(values[value] === null){
+    //             switch (value) {
+    //                 case "inspectionLines":
+    //                     getLines();
+    //                     break;
+    //                 case "paymentChannels":
+    //                     getLines();
+    //                     break;
+    //                 case "specialVehicleTypes": 
+    //                     getSpecialVehicleTypes();
+    //                     break;
+    //                 case "testTypes":
+    //                     getTestTypes();
+    //                     break;
+    //                 case "rejectedDetails":
+    //                     getRejectedDetails();
+    //                     break;
+    //                 case "ownerTypes":
+    //                     getOwnerTypes();
+    //                     break;
+    //                 case "testResults":
+    //                     getSetTestResults();
+    //                     break;
+    //                 case "fuelTypes":
+    //                     getFuelTypes();
+    //                     break;
+    //                 case "users":
+    //                     getUsers();
+    //                     break;
+    //                 case "branches":
+    //                     getBranches();
+    //                     break;
+    //                 case "categories":
+    //                     getCategories();
+    //                     break;
+    //                 case "bodyTypes":
+    //                     getBodyTypes();
+    //                     break;
+    //                 case "applicationStates":
+    //                     getApplicationStates();
+    //                     break;
+    //                 case "positions":
+    //                     getPositions();
+    //                     break;
+    //                 default:
+    //                     break;
+    //             }
+    //         }
+    //     }
 
-    useEffect(() => {
-        for (const value in values) {
-            if(values[value] === null){
-                switch (value) {
-                    case "inspectionLines":
-                        getLines();
-                        break;
-                    case "paymentChannels":
-                        getLines();
-                        break;
-                    case "specialVehicleTypes": 
-                        getSpecialVehicleTypes();
-                        break;
-                    case "testTypes":
-                        getTestTypes();
-                        break;
-                    case "rejectedDetails":
-                        getRejectedDetails();
-                        break;
-                    case "ownerTypes":
-                        getOwnerTypes();
-                        break;
-                    case "testResults":
-                        getSetTestResults();
-                        break;
-                    case "fuelTypes":
-                        getFuelTypes();
-                        break;
-                    case "users":
-                        getUsers();
-                        break;
-                    case "branches":
-                        getBranches();
-                        break;
-                    case "categories":
-                        getCategories();
-                        break;
-                    case "bodyTypes":
-                        getBodyTypes();
-                        break;
-                    case "applicationStates":
-                        getApplicationStates();
-                        break;
-                    case "positions":
-                        getPositions();
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
-    }, [])
+    // }, [])
 
     const values = { 
         inspectionLines,

@@ -46,11 +46,11 @@ function AddUser({ modalIsOpen, setModalIsOpen, refresh, positionsArr}) {
 
   const getBranches = () => {
     if (context.hasPermissions("Permissions.Branch")) {
-      API.get(`/get-requests-handler`, { params: { url: `/Company/branches`, params: {} }  })
-        .then(res => {
-          setBranches(res.data)
-        })
-        .catch(err => notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"}))
+      // API.get(`/get-requests-handler`, { params: { url: `/Company/branches`, params: {} }  })
+      //   .then(res => {
+      //     setBranches(res.data)
+      //   })
+      //   .catch(err => notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"}))
       }
   }
 

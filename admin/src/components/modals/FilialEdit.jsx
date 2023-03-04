@@ -45,38 +45,38 @@ function FilialRegistration({
   const [inputArr, setInputArr] = useState([]);
 
   const onFinish = (fullData) => {
-    const newData = {
-      address: fullData.address,
-      companyId: fullData.companyId,
-      // id: fullData.id,
-      identificationNumber: fullData.identificationNumber,
-      logo: fullData?.logo?.file?.name,
-      mobileNumber: fullData.mobileNumber,
-      name: fullData.name,
-      streamingUrls: fullData.streamingUrls,
-      supportsForeign: fullData.supportsForeign ,     
-      supportsMilitary: fullData.supportsMilitary  ,    
-      unitId: fullData.unitId,
-      workLineCount: fullData.workLineCount,
-    }
-    setData(fullData);
+    // const newData = {
+    //   address: fullData.address,
+    //   companyId: fullData.companyId,
+    //   // id: fullData.id,
+    //   identificationNumber: fullData.identificationNumber,
+    //   logo: fullData?.logo?.file?.name,
+    //   mobileNumber: fullData.mobileNumber,
+    //   name: fullData.name,
+    //   streamingUrls: fullData.streamingUrls,
+    //   supportsForeign: fullData.supportsForeign ,     
+    //   supportsMilitary: fullData.supportsMilitary  ,    
+    //   unitId: fullData.unitId,
+    //   workLineCount: fullData.workLineCount,
+    // }
+    // setData(fullData);
 
-    API.put(`/put-requests-handler`, { url: `/Company/branches/${defaultValue.id}`, params: {}, data: newData })
-    .then(
-      (res) => {
-        message.success(res);
-      }
-    )
-    .catch((err) => {
-      notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"});
-    })
-    if (reset) {
-      onReset();
-      setReset(false);
-    } else {
-      setModalIsOpen(false);
-      onReset();
-    }
+    // API.put(`/put-requests-handler`, { url: `/Company/branches/${defaultValue.id}`, params: {}, data: newData })
+    // .then(
+    //   (res) => {
+    //     message.success(res);
+    //   }
+    // )
+    // .catch((err) => {
+    //   notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"});
+    // })
+    // if (reset) {
+    //   onReset();
+    //   setReset(false);
+    // } else {
+    //   setModalIsOpen(false);
+    //   onReset();
+    // }
   };
 
   const onReset = () => {

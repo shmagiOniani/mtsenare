@@ -32,35 +32,35 @@ function Filial() {
   const getData = () => {
     setLoading(true)
     if (hasPermissions("Permissions.Branch")) {
-      API.get(`/get-requests-handler`, { params: { url: `/Company/branches`, params: {} } })
-        .then(
-          (res) => {
-            setLoading(false)
-            setConstData(res.data)
-            setEditableData(res.data)
-          }
-        )
-        .catch((err) => {
-          setLoading(false)
-          notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"});
-        })
+      // API.get(`/get-requests-handler`, { params: { url: `/Company/branches`, params: {} } })
+      //   .then(
+      //     (res) => {
+      //       setLoading(false)
+      //       setConstData(res.data)
+      //       setEditableData(res.data)
+      //     }
+      //   )
+      //   .catch((err) => {
+      //     setLoading(false)
+      //     notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"});
+      //   })
     }
   }
 
   const handleDelete = () => {
     setDelLoading(true);
-    API.delete(`/delete-requests-handler`, { params: { url: `/Company/branches/${selectedId}`, params: {} } })
-      .then((res) => {
-        setDelModalOpen(false);
-        setDelLoading(false);
-        getData()
-      })
-      .catch((err) => {
-        setDelModalOpen(false);
-        setDelLoading(false);
-        getData();
-        notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"});
-      })
+    // API.delete(`/delete-requests-handler`, { params: { url: `/Company/branches/${selectedId}`, params: {} } })
+    //   .then((res) => {
+    //     setDelModalOpen(false);
+    //     setDelLoading(false);
+    //     getData()
+    //   })
+    //   .catch((err) => {
+    //     setDelModalOpen(false);
+    //     setDelLoading(false);
+    //     getData();
+    //     notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"});
+    //   })
   }
 
   const handleCancel = () => {

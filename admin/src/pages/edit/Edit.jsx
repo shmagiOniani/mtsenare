@@ -10,7 +10,7 @@ import ApplicationForm from "../../components/PDFViews/ApplicationForm";
 import { UserContext } from "../../components/contexts/UserContext";
 import { setValues, sendValues } from "./assets"
 import "./Edit.scss";
-import AddTransport from "../../components/modals/AddTransport";
+import AddProduct from "../../components/modals/AddProduct";
 import CarLastInspection from "./CarLastInspection";
 
 const validateMessages = {
@@ -75,12 +75,12 @@ function Edit() {
           setPtiResult(res?.data?.testResult)
           setFullData(form.getFieldValue())
         } else {
-          history.push("/current")
+          history.push("/products")
           notification.error({ message: trans("data_not_found"), placement: "bottomLeft" })
         }
         if(res?.data.state === 3){
 
-          history.push("/current")
+          history.push("/products")
         }
       })
       .catch((err) => {
@@ -168,7 +168,7 @@ function Edit() {
     API.post(`/post-requests-handler`, { url: `/VehicleApplication/${id}/cancel`, params: { id } })
       .then((res) => {
         setCancelSubModal(false)
-        history.push("/current")
+        history.push("/products")
       })
       .catch((err) => notification.error({ message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft" }))
   }
@@ -476,7 +476,7 @@ return (
         <Spin size="large" />
       </Space>
     }
-    {addTransportIsOpen && <AddTransport modalIsOpen={addTransportIsOpen} setModalIsOpen={setAddTransportIsOpen} rerender={()=> console.log("successfully add")} />
+    {addTransportIsOpen && <AddProduct modalIsOpen={addTransportIsOpen} setModalIsOpen={setAddTransportIsOpen} rerender={()=> console.log("successfully add")} />
      }
   </>
 );

@@ -8,7 +8,7 @@ import {
   Hardware,
   Users,
   User,
-  Cars,
+  Products,
   PtiRegistry,
   Edit,
   CarDetails,
@@ -92,8 +92,8 @@ export const privateRoute = [
     permission:"Permissions.User"
   },
   {
-    component: Cars,
-    path: "/current",
+    component: Products,
+    path: "/products",
     layout: "",
     exact: true,
     permission:"Permissions.VehicleApplication"

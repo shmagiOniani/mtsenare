@@ -77,7 +77,6 @@ function FilialRegistration({
     const newData = {
       address: fullData.address,
       companyId: userObj.branchId,
-      // id: fullData.id,
       identificationNumber: fullData.identificationNumber,
       logo: fullData?.logo?.file?.name,
       mobileNumber: fullData.mobileNumber,
@@ -89,16 +88,16 @@ function FilialRegistration({
       workLineCount: fullData.workLineCount,
     }
     setData(fullData);
-    API.post(`/post-requests-handler`, { url: `/Company/branches`, params: {}, data: newData })
-      .then(
-        (res) => {
-          message.success(res);
-          setModalIsOpen(false);
-          resetPage()
-          onReset();
-      }
-      )
-      .catch((err) => notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"}))
+    // API.post(`/post-requests-handler`, { url: `/Company/branches`, params: {}, data: newData })
+    //   .then(
+    //     (res) => {
+    //       message.success(res);
+    //       setModalIsOpen(false);
+    //       resetPage()
+    //       onReset();
+    //   }
+    //   )
+    //   .catch((err) => notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"}))
    
   };
 

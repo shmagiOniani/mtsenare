@@ -4,7 +4,7 @@ import Tree from './Tree';
 import { Button, notification, Space, Spin } from "antd"
 import { UserContext } from '../contexts/UserContext'
 import useTranslation from '../translation/useTranslation'
-import AddTransport from "../modals/AddTransport"
+import AddProduct from "../modals/AddProduct"
 import Chat from "../chat/Chat"
 import {
     ClusterOutlined,
@@ -73,7 +73,7 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
             key: 1,
         },
         {
-            label: trans('add'),
+            label: trans('add_product'),
             permission: "Permissions.VehicleApplication.Add",
             icon: <FormOutlined />,
             action: setAddTransportIsOpen,
@@ -81,8 +81,8 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
             key: 2
         },
         {
-            label: trans('current'),
-            link: "/current",
+            label:'პროდუქტის სია',
+            link: "/products",
             permission: "Permissions.VehicleApplication",
             icon: <FileDoneOutlined />,
             key: 3
@@ -94,93 +94,93 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
             icon: <BarsOutlined />,
             key: 4
         },
-        {
-            label: trans('invoices'),
-            link: "/invoices",
-            permission: "Permissions.Invoice",
-            icon: <SnippetsOutlined />,
-            key: 5
-        },
-        {
-            label: trans('equipment_datas'),
-            permission: "Permissions.Machine",
-            icon: <DatabaseOutlined />,
-            type: "multi",
-            key: 6,
-            children: [
-                {
-                    label: trans('brakes'),
-                    link: "/brakes",
-                    key: 7
-                },
-                {
-                    label: trans('exhaust'),
-                    link: "/exhaust",
-                    key: 8
-                },
-            ]
-        },
-        {
-            label: trans('cameras'),
-            link: "/streaming",
-            permission: "Permissions.Branch",
-            icon: <VideoCameraOutlined />,
-            key: 9
-        },
-        {
-            label: trans('booking'),
-            link: "/booking",
-            permission: "Permissions.Booking",
-            icon: <CarryOutOutlined />,
-            key: 10
-        },
-        {
-            label: trans('statistics'),
-            link: "/statistics/general",
-            permission: "Permissions.Report",
-            icon: <AreaChartOutlined />,
-            key: 11
-        },
-        {
-            label: trans('hardware'),
-            link: "/hardware",
-            permission: "Permissions.Machine",
-            icon: <SettingOutlined />,
-            key: 12
-        },
-        {
-            label: trans('organizations'),
-            link: "/organization",
-            permission: "Permissions.Company",
-            icon: <BankOutlined />,
-            key: 13
-        },
-        {
-            label: trans("administer"),
-            permission: "Permissions.User",
-            icon: <DatabaseOutlined />,
-            type: "multi",
-            key: 15,
-            children: [
-                {
-                    label: trans('users'),
-                    link: "/users",
-                    key: 16
+        // {
+        //     label: trans('invoices'),
+        //     link: "/invoices",
+        //     permission: "Permissions.Invoice",
+        //     icon: <SnippetsOutlined />,
+        //     key: 5
+        // },
+        // {
+        //     label: trans('equipment_datas'),
+        //     permission: "Permissions.Machine",
+        //     icon: <DatabaseOutlined />,
+        //     type: "multi",
+        //     key: 6,
+        //     children: [
+        //         {
+        //             label: trans('brakes'),
+        //             link: "/brakes",
+        //             key: 7
+        //         },
+        //         {
+        //             label: trans('exhaust'),
+        //             link: "/exhaust",
+        //             key: 8
+        //         },
+        //     ]
+        // },
+        // {
+        //     label: trans('cameras'),
+        //     link: "/streaming",
+        //     permission: "Permissions.Branch",
+        //     icon: <VideoCameraOutlined />,
+        //     key: 9
+        // },
+        // {
+        //     label: trans('booking'),
+        //     link: "/booking",
+        //     permission: "Permissions.Booking",
+        //     icon: <CarryOutOutlined />,
+        //     key: 10
+        // },
+        // {
+        //     label: trans('statistics'),
+        //     link: "/statistics/general",
+        //     permission: "Permissions.Report",
+        //     icon: <AreaChartOutlined />,
+        //     key: 11
+        // },
+        // {
+        //     label: trans('hardware'),
+        //     link: "/hardware",
+        //     permission: "Permissions.Machine",
+        //     icon: <SettingOutlined />,
+        //     key: 12
+        // },
+        // {
+        //     label: trans('organizations'),
+        //     link: "/organization",
+        //     permission: "Permissions.Company",
+        //     icon: <BankOutlined />,
+        //     key: 13
+        // },
+        // {
+        //     label: trans("administer"),
+        //     permission: "Permissions.User",
+        //     icon: <DatabaseOutlined />,
+        //     type: "multi",
+        //     key: 15,
+        //     children: [
+        //         {
+        //             label: trans('users'),
+        //             link: "/users",
+        //             key: 16
 
-                },
-                {
-                    label: trans('roles'),
-                    link: "/roles",
-                    key: 17
+        //         },
+        //         {
+        //             label: trans('roles'),
+        //             link: "/roles",
+        //             key: 17
 
-                },
-                {
-                    label: trans('branch'),
-                    link: "/branch",
-                    key: 18
-                },
-            ]
-        },
+        //         },
+        //         {
+        //             label: trans('branch'),
+        //             link: "/branch",
+        //             key: 18
+        //         },
+        //     ]
+        // },
     ]
 
     return (
@@ -248,7 +248,7 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
                 </ul>
             </nav>
             {/* <Button className='chat-icon' onClick={() => setChatOpen(true)} icon={<MessageOutlined />}/> */}
-            <AddTransport modalIsOpen={addTransportIsOpen} setModalIsOpen={setAddTransportIsOpen} rerender={()=> console.log("successfully add")} />
+            <AddProduct modalIsOpen={addTransportIsOpen} setModalIsOpen={setAddTransportIsOpen} rerender={()=> console.log("successfully add")} />
             {chatOpen ? <Chat handleClose={()=> setChatOpen(false)}>
                 <Button onClick={() => setChatOpen(false)} shape="circle" icon={<CloseOutlined />} size={"large"} />
             </Chat> : ""}

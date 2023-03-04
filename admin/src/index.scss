@@ -137,10 +137,11 @@ p {
 }
 
 .content-wrapper {
-  min-height: 90vh;
-  padding: 115px 30px 90px 310px;
+  min-height: 100vh;
+  padding: 115px 30px 90px 380px;
   width: 100%;
-  background-color: #f4f6f9;
+  background-color: #1c1631;
+  // background: linear-gradient(to bottom right, #6259ca 0%, rgba(102, 93, 207, 0.6) 100%);
   .ant-row {
     // padding: 3rem
   }

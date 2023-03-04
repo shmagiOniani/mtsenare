@@ -12,7 +12,7 @@ import InvoiceForm from '../../components/PDFViews/InvoiceForm';
 import flagGeorgia from "../../images/flag_georgia.svg"
 import PtiRegistryFilter from "../../components/modals/PtiRegistryFilter"
 import CarEditReason from '../../components/modals/CarEditReason';
-import AddTransport from '../../components/modals/AddTransport';
+import AddProduct from '../../components/modals/AddProduct';
 import SliderModal from '../../components/modals/SliderModal';
 import CarDetailsView from '../../components/modals/CarDetailsView';
 import { UserContext } from '../../components/contexts/UserContext';
@@ -459,7 +459,7 @@ function PtiRegistry() {
             </div>
             <PtiRegistryFilter modalIsOpen={filterOpen} setModalIsOpen={setFilterOpen} onSubmite={(data) => transformData(data)} newTotal={(amount) => setTotalPages(amount)} /> 
             {pdfOn && <ApplicationForm data={pdfData} handleClose={() => setPdfOn(false)} language={pdfLan} />}
-            <AddTransport modalIsOpen={addCarModalIsOpen} setModalIsOpen={setAddCarModalIsOpen} rerender={getData}/>
+            <AddProduct modalIsOpen={addCarModalIsOpen} setModalIsOpen={setAddCarModalIsOpen} rerender={getData}/>
             <InvoiceForm
                 isOpen={invoiceModalOpen}
                 handleClose={setInvoiceModalOpen}

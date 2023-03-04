@@ -20,19 +20,19 @@ function Streaming() {
   const getFilials = () => {
     if (hasPermissions("Permissions.Branch")) {
       setLoading(true)
-      API.get(`/get-requests-handler`, { params: { url: `/Company/branches`, params: {} } })
-      .then(
-        (res) => {
-          const filter = res.data.filter(item => item.streamingUrls?.length > 0)
-          setFilials(filter)
-          paginationLogic(filter)
-          setLoading(false)
-        }
-      )
-      .catch((err) => {
-        setLoading(false);
-        notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"});
-      })
+      // API.get(`/get-requests-handler`, { params: { url: `/Company/branches`, params: {} } })
+      // .then(
+      //   (res) => {
+      //     const filter = res.data.filter(item => item.streamingUrls?.length > 0)
+      //     setFilials(filter)
+      //     paginationLogic(filter)
+      //     setLoading(false)
+      //   }
+      // )
+      // .catch((err) => {
+      //   setLoading(false);
+      //   notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"});
+      // })
     }
   }
 
