@@ -60,31 +60,31 @@
 }
 
 // buttons
-.ant-btn:hover {
-  border-color: $base-color;
-  color: $base-color;
-}
+// .ant-btn:hover {
+//   border-color: $base-color;
+//   color: $base-color;
+// }
 
-.ant-btn:active {
-  border-color: $base-color;
-}
+// .ant-btn:active {
+//   border-color: $base-color;
+// }
 
-.ant-btn:focus {
-  border-color: $base-color;
-  color: $base-color;
-}
+// .ant-btn:focus {
+//   border-color: $base-color;
+//   color: $base-color;
+// }
 
-.default-outlined-btn {
-  &:hover {
-    color: $base-color;
-  }
-  &:active {
-    color: $base-color;
-  }
-  &:focus {
-    color: $base-color;
-  }
-}
+// .default-outlined-btn {
+//   &:hover {
+//     color: $base-color;
+//   }
+//   &:active {
+//     color: $base-color;
+//   }
+//   &:focus {
+//     color: $base-color;
+//   }
+// }
 
 .filter-icon {
   width: 45px !important;

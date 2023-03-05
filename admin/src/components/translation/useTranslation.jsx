@@ -6,7 +6,7 @@ function useTranslation() {
     const {currentLanguage} = useContext(TranslationContext);
 
     const trans = (text) => {
-        return translations[currentLanguage][text];
+        return translations[currentLanguage][text] || text;
     };
 
     return {trans, currentLanguage};

@@ -75,6 +75,7 @@ function parseBaseProps(body: any) {
     'deliveryType',
     'quantity',
     'images',
-    'isActive',
+    'isPublished',
+    'category',
   ]);
 }

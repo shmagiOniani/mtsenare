@@ -44,6 +44,7 @@ async function create(req: Request, res: Response, next: NextFunction) {
       ...payload,
       // author: req.user._id,
       createdAt: new Date(),
+      isPublished: false,
     });
     res.sendStatus(201);
   } catch (e) {

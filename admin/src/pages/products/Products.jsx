@@ -1,41 +1,39 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
 import {
   Table,
-  Dropdown,
-  Menu,
   Input,
   Button,
   Pagination,
   Col,
   Row,
+  Switch,
+  message,
+  notification,
+  Tooltip,
 } from "antd";
 import {
   FileAddOutlined,
-  CaretRightOutlined,
-  BorderOutlined,
-  MoreOutlined,
   FilterOutlined,
   DatabaseOutlined,
   IdcardOutlined,
+  DeleteOutlined,
+  EditOutlined,
 } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import API from "../../utils/API";
 import AddProduct from "../../components/modals/AddProduct";
 import useTranslation from "../../components/translation/useTranslation";
 // import Pagination from "../../components/Pagination"
-import flagGeorgia from "../../images/flag_georgia.svg";
-import { marks } from "../../images/marks";
 import "./products.scss";
 import CarsFilter from "../../components/modals/CarsFilter";
 import { UserContext } from "../../components/contexts/UserContext";
-import ProductCard from "./ProductCard";
+import ProductCard from "../../components/productCard/ProductCard";
+import moment from "moment";
 
 export default function Products() {
   const { Search } = Input;
   const { hasPermissions } = useContext(UserContext);
   const { trans } = useTranslation();
-  let history = useHistory();
 
   const [loading, setLoading] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -48,39 +46,42 @@ export default function Products() {
   const [productsList, setProductsList] = useState(null);
 
   const [newData, setNewData] = useState([]);
-  
+
+  const [categoryList, setCategoryList] = useState([]);
+  const [typesList, setTypesList] = useState([]);
+
+  const getLibraryes = () => {
+    API.get(`/api/libraries?all=true`).then((res) => {
+      let categoryInst = res.data.items.find(
+        (item) => item.name === "Category"
+      ).library;
+      let typesInst = res.data.items.find(
+        (item) => item.name === "Types"
+      ).library;
+      setCategoryList(categoryInst);
+      setTypesList(typesInst);
+    });
+  };
+
+const transformDate = (date)=> {
+  return moment(date).format("YY.MM.DD, H:mm")
+}
+
   const transformData = (data) => {
     setNewData([]);
-    const sorted = data.sort(
-      (a, b) => new Date(a.inspectionDate) - new Date(b.inspectionDate)
-    );
-    sorted?.map((item, index) =>
+
+    data?.map((item, index) =>
       setNewData((prev) => [
         {
-          key: index,
-          carNumber: [
-            item.testResult,
-            item.plateNumber.slice(0, 7),
-            item.id,
-            item,
-          ],
-          testType: item?.testTypeName,
-          branch: item?.branch,
-          stateName: item.stateName,
-          owner: item.owner,
-          mark: item.mark,
-          date: [
-            item.timestamp.slice(0, 10),
-            " ",
-            item.timestamp.slice(11, 16),
-          ],
-          uploadedBy: item.uploadedBy,
-          model: item.model,
-          category: item.category,
-          ptiResult: item.testResultName,
-          validityPeriod: item.nextInspectionDate,
-          confirmedBy: item.confirmedBy,
-          carMenu: "item",
+          key: item._id,
+          name: item.name,
+          date: transformDate(item.createdAt),
+          shop: "მაღაზია",
+          price: item.price,
+          category: categoryList.find((i) => item.category === i._id)?.name,
+          status: item,
+          productMenu: item,
+          quantity: item.quantity
         },
         ...prev,
       ])
@@ -92,15 +93,24 @@ export default function Products() {
     API.get(`/api/products?all=true`).then((res) => {
       setProductsList(res.data.items);
       setTotal(res.data.numTotal);
+      transformData(res.data.items);
     });
+  };
+
+  const deleteData = (id) => {
+    API.delete(`/api/products/${id}`)
+      .then((res) => message.success(res))
+      .finally(() => getData());
   };
 
   useEffect(() => {
     setLoading(true);
+    getLibraryes();
     getData(1, {});
   }, []);
 
-  const getItemFullData = (id) => {
+  const openEditModal = (id) => {
+    setModalIsOpen(true)
     // API.get(`/get-requests-handler`, {
     //   params: { url: `/VehicleApplication/${id}` },
     // })
@@ -115,115 +125,73 @@ export default function Products() {
     //   );
   };
 
-  const toggleStatus = ({ id, data }) => {
-    data.state = 3;
-    // API.put(`/put-requests-handler`, {
-    //   url: `/VehicleApplication/${id}`,
-    //   data: data,
-    // })
-    //   .then((res) => message.success(res))
-    //   .catch((err) =>
-    //     notification.error({
-    //       message: trans(err?.response?.data) || trans("connection_problem"),
-    //       placement: "bottomLeft",
-    //     })
-    //   );
+  const toggleStatus = ({ status, id }) => {
+    API.put(`/api/products/status`, { status })
+      .then((res) => message.success(res))
+      .catch((err) => {
+        notification.error({
+          message: trans(err?.response?.data) || trans("connection_problem"),
+          placement: "bottomLeft",
+        });
+      })
+      .finally(() => getData());
   };
-
-  const menu = (obj) => (
-    <Menu>
-      <Menu.Item>
-        <Button
-          onClick={() => history.push(`/car-edit/${obj.key}/general`)}
-          icon={<CaretRightOutlined />}
-        >
-          {trans("edit")}
-        </Button>
-      </Menu.Item>
-      <Menu.Item>
-        <Button
-          onClick={() => getItemFullData(obj.key)}
-          icon={<BorderOutlined />}
-        >
-          {trans("data")}
-        </Button>
-      </Menu.Item>
-    </Menu>
-  );
 
   const columns = [
     {
-      key: "user-mobile",
-      title: trans("user"),
-      render: (car) => (
-        <div className="user-column">
-          <div className="carNum_td">
-            <Link
-              to={`/car-edit/${car.carNumber[2]}/general`}
-              className={"carNum"}
-            >
-              <div className={"carNum_flag"}>
-                <img src={flagGeorgia} alt={"flag"} />
-                <span>GE</span>
-              </div>
-              <p className={"carNum_paragraph"}>{car.carNumber[1]}</p>
-              <div></div>
-            </Link>
-          </div>
-          <div>
-            {trans("date")}: <br /> {car.date}
-          </div>
-          {car.mark ? <div>{`${trans("mark")}: ${car.mark}`}</div> : ""}
-          {car.model ? <div>{`${trans("model")}: ${car.model}`}</div> : ""}
+      key: "xsColumn",
+      title: "ინფორმაცია",
+      render: (product) => (
+        <div className="xs-column">
+          <div>{`${trans("name")}: ${product.name}`}</div>
+          <div>{`${trans("price")}: ${product.price}`}</div>
         </div>
       ),
       responsive: ["xs"],
     },
     {
-      key: "car_Menu",
+      key: "xsMenu",
       title: trans("actions"),
-      render: (car) => (
-        <div className="actions-container">
-          <Dropdown
-            overlay={() => menu(car)}
-            trigger={["click"]}
-            placement="bottomLeft"
-            arrow
-          >
-            <Button shape="circle" icon={<MoreOutlined />} />
-          </Dropdown>
+      render: (product) => (
+        <div className="product-actions-container">
+          <Button
+            onClick={() => openEditModal(product.id)}
+            icon={<EditOutlined />}
+            shape={"circle"}
+            type={"text"}
+            size={"large"}
+
+            // className={"menu-btn"}
+          />
+          <Button
+            onClick={() => deleteData(product.id)}
+            icon={<DeleteOutlined />}
+            shape={"circle"}
+            type={"text"}
+            size={"large"}
+            // className={"menu-btn"}
+          />
         </div>
       ),
       responsive: ["xs"],
     },
     {
-      title: trans("registration_number"),
-      dataIndex: "carNumber",
-      key: "carNumber",
-      render: (car) => (
-        <div className="carNum_td">
-          <Link to={`/car-edit/${car[2]}/general`} className={"carNum"}>
-            <div className={"carNum_flag"}>
-              <img src={flagGeorgia} alt={"flag"} />
-              <span>GE</span>
-            </div>
-            <p className={"carNum_paragraph"}>{car[1]}</p>
-            <div></div>
-          </Link>
-        </div>
-      ),
+      title: trans("name"),
+      dataIndex: "name",
+      key: "name",
       responsive: ["sm"],
     },
     {
-      title: trans("branch"),
-      dataIndex: "branch",
-      key: "branch",
+      title: "მაღაზია",
+      dataIndex: "shop",
+      key: "shop",
       responsive: ["sm"],
     },
+
     {
-      title: trans("status"),
-      dataIndex: "stateName",
-      key: "stateName",
+      title: trans("category"),
+      dataIndex: "category",
+      key: "category",
       responsive: ["sm"],
     },
     {
@@ -233,45 +201,61 @@ export default function Products() {
       responsive: ["sm"],
     },
     {
-      title: trans("test_type"),
-      dataIndex: "testType",
-      key: "testType",
+      title: trans("price"),
+      dataIndex: "price",
+      key: "price",
       responsive: ["sm"],
     },
     {
-      title: trans("mark"),
-      dataIndex: "mark",
-      key: "mark",
-      render: (car) => (
-        <div className={"car-mark"}>
-          {/* {marks.find((icon) => icon.name === car)?.path} */}
-          {car ? (
-            <div>
-              <img
-                src={
-                  marks.find((icon) => icon.name.toUpperCase() === car)?.path
-                }
-                alt={`logo`}
-              />
-              <p>{car}</p>
-            </div>
-          ) : (
-            ""
-          )}
-        </div>
+      title: trans("quantity"),
+      dataIndex: "quantity",
+      key: "quantity",
+      responsive: ["sm"],
+    },
+    
+    {
+      title: trans("is_published"),
+      dataIndex: "status",
+      key: "status",
+      render: (product) => (
+        <Switch
+          onClick={(v) => {
+            toggleStatus(v, product?._id);
+          }}
+          checked={product?.isPublished}
+        />
       ),
       responsive: ["sm"],
     },
     {
-      title: trans("model"),
-      dataIndex: "model",
-      key: "model",
-      responsive: ["sm"],
-    },
-    {
-      title: trans("category"),
-      dataIndex: "category",
-      key: "category",
+      key: "productMenu",
+      dataIndex: "",
+      title: trans("menu"),
+      render: (product) => (
+        <div className="product-actions-container">
+          <Tooltip title={trans("edit")}>
+            <Button
+              onClick={() => openEditModal(product.key)}
+              icon={<EditOutlined />}
+              shape={"circle"}
+              type={"text"}
+              size={"large"}
+
+              // className={"menu-btn"}
+            />
+          </Tooltip>
+          <Tooltip title={trans("delete")}>
+            <Button
+              onClick={() => deleteData(product.key)}
+              icon={<DeleteOutlined />}
+              shape={"circle"}
+              type={"text"}
+              size={"large"}
+              // className={"menu-btn"}
+            />
+          </Tooltip>
+        </div>
+      ),
       responsive: ["sm"],
     },
   ];
@@ -281,7 +265,7 @@ export default function Products() {
       <div className="table-wrapper">
         <Row className="cars-card-header">
           <Col>
-            <h3>{trans("current_application")}</h3>
+            <h3>{trans("product_list")}</h3>
           </Col>
           <Col className="cars-filter-wrapper">
             {/*<div className="input-group">*/}
@@ -339,9 +323,9 @@ export default function Products() {
                     lg={{ span: 12 }}
                     xl={{ span: 8 }}
                     xxl={{ span: 6 }}
-                    key={index}
+                    key={item._id}
                   >
-                    <ProductCard item={item} />
+                    <ProductCard item={item} refresh={getData} openEditModal={openEditModal} />
                     {/* <Card
                       title={
                         <div className="card-title">
@@ -353,7 +337,7 @@ export default function Products() {
                         <Carousel afterChange={onChange}>
                           {photosInst?.map((photo, ind) => {
                             return (
-                              <div key={ind} className="car-img">
+                              <div key={ind} className="card-img ">
                                 <img alt="pti-img" width={150} src={photo} />
                               </div>
                             );

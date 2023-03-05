@@ -17,6 +17,7 @@ function AddProduct({ open, setOpen, refresh }) {
 
   const [confirmLoading, setConfirmLoading] = useState(false);
 
+  const [shopList, setShopList] = useState([]);
   const [categoryList, setCategoryList] = useState([]);
   const [typesList, setTypesList] = useState([]);
   const [fileList, setFileList] = useState([]);
@@ -32,6 +33,10 @@ function AddProduct({ open, setOpen, refresh }) {
       setCategoryList(categoryInst);
       setTypesList(typesInst);
     });
+  };
+
+  const getshops = () => {
+    API.get(`/api/shops`).then((res) => setShopList(res.data));
   };
 
   const handleCancel = () => {
@@ -68,11 +73,25 @@ function AddProduct({ open, setOpen, refresh }) {
       // xxl: 8,
     },
     {
+      name: "shop",
+      type: "select",
+      label: "მაღაზია",
+      required: true,
+      options: shopList,
+      mode:"multiple",
+      xs: 24,
+      sm: 12,
+      md: 8,
+      // lg: 8,
+      // xxl: 8,
+    },
+    {
       name: "category",
       type: "select",
       label: "კატეგორია",
       required: true,
       options: categoryList,
+      mode:"",
       xs: 24,
       sm: 12,
       md: 8,
@@ -85,6 +104,7 @@ function AddProduct({ open, setOpen, refresh }) {
       label: "ტიპი",
       required: true,
       options: typesList,
+      mode:"",
       xs: 24,
       sm: 12,
       md: 8,
@@ -133,7 +153,11 @@ function AddProduct({ open, setOpen, refresh }) {
   };
 
   useEffect(() => {
-    getLibraryes();
+    if(open){
+
+      getLibraryes();
+      getshops();
+    }
   }, []);
 
   return (

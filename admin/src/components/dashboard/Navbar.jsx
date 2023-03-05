@@ -81,7 +81,7 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
             key: 2
         },
         {
-            label:'პროდუქტის სია',
+            label:trans('product_list'),
             link: "/products",
             permission: "Permissions.VehicleApplication",
             icon: <FileDoneOutlined />,
@@ -155,32 +155,32 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }) {
         //     icon: <BankOutlined />,
         //     key: 13
         // },
-        // {
-        //     label: trans("administer"),
-        //     permission: "Permissions.User",
-        //     icon: <DatabaseOutlined />,
-        //     type: "multi",
-        //     key: 15,
-        //     children: [
-        //         {
-        //             label: trans('users'),
-        //             link: "/users",
-        //             key: 16
+        {
+            label: trans("administer"),
+            permission: "Permissions.User",
+            icon: <DatabaseOutlined />,
+            type: "multi",
+            key: 15,
+            children: [
+                {
+                    label: trans('users'),
+                    link: "/users",
+                    key: 16
 
-        //         },
-        //         {
-        //             label: trans('roles'),
-        //             link: "/roles",
-        //             key: 17
+                },
+                // {
+                //     label: trans('roles'),
+                //     link: "/roles",
+                //     key: 17
 
-        //         },
-        //         {
-        //             label: trans('branch'),
-        //             link: "/branch",
-        //             key: 18
-        //         },
-        //     ]
-        // },
+                // },
+                // {
+                //     label: trans('branch'),
+                //     link: "/branch",
+                //     key: 18
+                // },
+            ]
+        },
     ]
 
     return (

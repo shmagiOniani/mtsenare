@@ -41,28 +41,28 @@ export default function User() {
     }
 
     const getUser = () => {
-        if(hasPermissions("Permissions.User")){
-            setLoading(true)
-            API.get(`/get-requests-handler`, { params: { url: `/Security/users/${id}` } })
-            .then((res) => {
-                setLoading(false)
-                setUserData(res?.data);
-                getBranch(res?.data?.branchId)
-                API.get(`/get-requests-handler`, { params: { url: `/Security/roles` } })
-                .then((result) => {
-                //   setRoles(result?.data);
-                  let instData = res?.data?.roles?.map((roleId)=> result?.data?.filter(role =>role?.id === roleId))
-                  setRoles(instData)
-                  setRolesFullData(result.data)
-                })
-                .catch((err) => notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"}))
+        // if(hasPermissions("Permissions.User")){
+        //     setLoading(true)
+        //     API.get(`/get-requests-handler`, { params: { url: `/Security/users/${id}` } })
+        //     .then((res) => {
+        //         setLoading(false)
+        //         setUserData(res?.data);
+        //         getBranch(res?.data?.branchId)
+        //         API.get(`/get-requests-handler`, { params: { url: `/Security/roles` } })
+        //         .then((result) => {
+        //         //   setRoles(result?.data);
+        //           let instData = res?.data?.roles?.map((roleId)=> result?.data?.filter(role =>role?.id === roleId))
+        //           setRoles(instData)
+        //           setRolesFullData(result.data)
+        //         })
+        //         .catch((err) => notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"}))
             
-            })
-            .catch((err) => {
-                setLoading(false);
-                notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"})
-            })
-        }
+        //     })
+        //     .catch((err) => {
+        //         setLoading(false);
+        //         notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"})
+        //     })
+        // }
     }
 
     useEffect(() => {

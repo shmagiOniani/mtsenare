@@ -38,7 +38,7 @@ function SliderModal({ modalIsOpen, handleClose, photos }) {
         <Carousel afterChange={onChange}>
           {photosInst?.map((photo, ind) => {
             return (
-              <div key={ind} className="car-img">
+              <div key={ind} className="card-img ">
                 <img alt="pti-img" width={150} src={photo} />
               </div>
             );

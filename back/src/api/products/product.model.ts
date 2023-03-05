@@ -12,9 +12,9 @@ const ProductSchema = new Schema({
   tags: String,
   images: [ String],
   author: {type: Schema.Types.ObjectId, ref: 'User'},
-  category: {type: Schema.Types.ObjectId, ref: 'Category'},
-  isActive: Boolean,
+  category: String,
   createdAt: Date,
+  isPublished: Boolean
 });
 
 export default model('Product', ProductSchema);
