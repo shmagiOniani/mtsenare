@@ -39,37 +39,37 @@ export default function App() {
         <>
           <UserContextProvider>
             <GeneralContextProvider>
-              {/* {token !== null && ( */}
+               {token !== null && ( 
                 <Header
                   setSidebarOpen={setSidebarOpen}
                   sidebarOpen={sidebarOpen}
                 />
-              {/* )} */}
-              {/* {token !== null && ( */}
+               )} 
+               {token !== null && ( 
                 <Navbar
                   setSidebarOpen={setSidebarOpen}
                   sidebarOpen={sidebarOpen}
                 />
-              {/* )} */}
+               )} 
               <Switch>
                 <Route path="/pdf" component={ApplicationForm} />
-                {/* <Route exact path="/">
+                 <Route exact path="/">
                   {token ? (
                     <Redirect to="/home" component={Home} />
                   ) : (
                     <Redirect to="/login" component={Login} />
                   )}
-                </Route> */}
+                </Route> 
                 <Route path="/login">
                   {token !== null ? <Redirect to="/home" /> : <Login />}
                 </Route>
-                {/* {token === null ? (
+                 {token === null ? (
                   <Route path="/" component={Login}>
                     <Redirect to="/login" component={Login} />
                   </Route>
                 ) : (
                   ""
-                )} */}
+                )} 
                 <Route path="/logout" component={Logout} />
                 {privateRoute?.map((route, index) => {
                   return (

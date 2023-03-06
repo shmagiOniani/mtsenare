@@ -5,6 +5,8 @@ import { roles } from '../../constants/user';
 
 export function parseGetByQuery(req: Request, res: Response, next: NextFunction) {
   const { query } = req;
+  console.log("req.query", query);
+
   // @ts-ignore
   req.query = {
     // @ts-ignore
@@ -26,7 +28,7 @@ export function parseSignIn(req: Request, res: Response, next: NextFunction) {
 }
 
 export function parseSignUp(req: Request, res: Response, next: NextFunction) {
-  console.log("parseSignUp", req.body);
+  console.log("parseSignUp", req.body.password);
   
   req.body = {
     ...parseBaseProps(req.body),

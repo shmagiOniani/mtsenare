@@ -68,7 +68,8 @@ const user = {
 }
 
 export const UserContextProvider = (props) => {
-    const [ setUser] = useState({})
+    const [setUser] = useState({})
+    // const [user, setUser] = useState({})
 
 
     const hasPermissions = (permissionInst)=> {
