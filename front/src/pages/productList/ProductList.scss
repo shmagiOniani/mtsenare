@@ -1,5 +1,5 @@
 @import "../../style/color.scss";
-@import "../../style/fonts.scss";
+// @import "../../style/fonts-mixins.scss";
 @import "../../style/mixins.scss";
 @import "../../style/buttons.scss";
 @import "../../style/forms.scss";
@@ -49,7 +49,7 @@ $container-padding: 0 100px;
         color: #313232;
       }
       .featured-slider {
-        @include productItem;
+        // @include productItem;
         .owl-carousel {
           position: relative;
           margin-top: 20px;
@@ -221,12 +221,12 @@ $container-padding: 0 100px;
           }
           .item-body {
             max-width: 80%;
-            h4 {
-              @include h4;
-            }
-            p {
-              @include p;
-            }
+            // h4 {
+            //   @include h4;
+            // }
+            // p {
+            //   @include p;
+            // }
           }
         }
       }

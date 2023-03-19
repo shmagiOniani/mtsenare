@@ -1,6 +1,6 @@
 @import "../../style/color.scss";
 @import "../../style/buttons.scss";
-@import "../../style/fonts.scss";
+// @import "../../style/fonts-mixins.scss";
 
 .navbar-wrapper {
   .logo-container {
@@ -414,7 +414,7 @@
   animation: not-checked-anim 0.2s both;
   transition: 0.2s;
   li {
-    @include h4;
+    // @include h4;
     margin: 75px 0 -55px 0;
     color: $base-dark;
     font-weight: 700;

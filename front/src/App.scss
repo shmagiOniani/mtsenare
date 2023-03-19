@@ -1,35 +1,19 @@
 @import "./style/color.scss";
-@import "./style/fonts.scss";
+@import "./style/fonts-mixins.scss";
 
-@font-face {
-  font-family: "dejavu";
-  src: url("./assets/fonts/BPG\ 2017\ DejaVuSans-ExtraLight.ttf");
-}
-@font-face {
-  font-family: "mrgvlovani";
-  src: url("./assets/fonts/bpg_mrgvlovani_caps_2010.ttf");
-}
-
-
-body {
-  // background-color: var(--app-primaryBGColor);
-  // color: var(--app-primaryFontColor);
-}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: "dejavu";
+  // font-family: "dejavu";
 }
 .app {
   overflow: hidden;
-  // background-image: url("./assets/img/page-background.jpg");
   display: flex;
   justify-content: center;
   .app-container {
     width: 100%;
     min-height: 100vh;
-    // align-items: center;
   }
 
   ::-moz-selection {

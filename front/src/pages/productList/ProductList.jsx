@@ -218,7 +218,7 @@ function ProductList() {
                             <img width={50} height={50} src={product.image} />
                           </div>
                           <div className="title">
-                            <span>{product.name}</span>
+                            <h5>{product.name}</h5>
                           </div>
                         </div>
                         // <ProductItem
@@ -243,9 +243,9 @@ function ProductList() {
                   <div className="product-sidebar-wrapper">
                     <ul className="product-sidebar-category ">
                       <h5 className="category-header">კატეგორიები</h5>
-                      {categoryList.map((item) => {
+                      {categoryList.map((item, ind) => {
                         return (
-                          <li>  
+                          <li key={ind}>  
                             <Link to={item.name}>
                               <span>{item.name}</span>
                               <span>3</span>
@@ -287,10 +287,10 @@ function ProductList() {
                     </ul>
                   </div>
                 </Col>
-                <div className="img-decorations">
+                {/* <div className="img-decorations">
                 <img src={two} alt="" />
                 <img src={five} alt="" />
-                </div>
+                </div> */}
                 <Col
                   xs={24}
                   sm={17}
@@ -356,15 +356,16 @@ function ProductList() {
                         <Option value={"b"}>{"შეფასების მიხედვით"}</Option>
                       </Select>
                     </Col>
-                    {productList.map((product, ind) => {
+                    {products.map((product, ind) => {
                         return (
                           <ProductItem
                             xsSize={24}
                             smSize={12}
                             mdSize={12}
                             lgSize={8}
-                            key={product._id}
+                            key={product._id || ind}
                             // imgSrc={`../../assets/img/plant-data/uploads/${product.images[1]}`}
+                            imgSrc={product.image}
                             product={product}
                             refresh={getProductList}
                           />

@@ -1,5 +1,5 @@
 @import "../../style/color.scss";
-@import "../../style/fonts.scss";
+// @import "../../style/fonts-mixins.scss";
 @import "../../style/mixins.scss";
 
 
@@ -39,7 +39,7 @@ $container-padding: 0 100px;
       & > .ant-col {
         max-width: 640px;
         h1 {
-          @include h2;
+          // @include h2;
         }
         p {
           line-height: 29px;

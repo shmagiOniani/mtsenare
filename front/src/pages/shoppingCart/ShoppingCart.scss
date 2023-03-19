@@ -1,6 +1,6 @@
 @import "../../style/buttons.scss";
 @import "../../style/color.scss";
-@import "../../style/fonts.scss";
+// @import "../../style/fonts-mixins.scss";
 @import "../../style/globals.scss";
 @import "../../style/mixins.scss";
 
@@ -100,9 +100,7 @@ $container-padding: 0 100px;
               letter-spacing: 0.05em;
               color: #afafaf;
             }
-            p {
-              @include p;
-            }
+         
           }
           .close-icon {
             font-size: 10px;

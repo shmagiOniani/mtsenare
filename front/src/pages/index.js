@@ -1,3 +1,4 @@
+export { default as Test } from "./test/Test";
 export { default as AboutUs } from "./aboutUs/AboutUs";
 export { default as Faq } from "./faq/Faq";
 export { default as Home } from "./home/Home";

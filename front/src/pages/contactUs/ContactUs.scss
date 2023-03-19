@@ -1,5 +1,5 @@
 @import "../../style/color.scss";
-@import "../../style/fonts.scss";
+// @import "../../style/fonts-mixins.scss";
 @import "../../style/mixins.scss";
 
 $container-padding: 0 100px;
@@ -51,7 +51,7 @@ $container-padding: 0 100px;
         align-items: center;
       }
       h1 {
-        @include h3;
+        // @include h3;
         text-align: center;
         span {
           color: $base;

@@ -20,17 +20,17 @@ import CloseButton from "../../components/elements/button/CloseButton";
 
 const products = [
   {
-    name: "DSd",
+    name: "Pine Tree",
     image:
       "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
   },
   {
-    name: "DSd",
+    name: "Echeveria Succulent",
     image:
       "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-2.jpg",
   },
   {
-    name: "DSd",
+    name: "Jade Succulent",
     image:
       "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-3.jpg",
   },
@@ -93,7 +93,7 @@ function Home() {
               <img src={wappPaper} alt={"wall paper"} />
             </div>
           </Col>
-          <Col xs={12}></Col>
+          {/* <Col xs={12}></Col> */}
         </Row>
         <Row className="category-list">
           {imgs.map((category, ind) => {
@@ -109,7 +109,7 @@ function Home() {
                         height={178}
                       />
                     </div>
-                    <div className="name">{category.name}</div>
+                    <h5 className="name">{category.name}</h5>
                   </div>
                 </Link>
               </Col>
@@ -133,7 +133,7 @@ function Home() {
               <OwlCarousel
                 className="owl-theme"
                 dots={false}
-                items={"4"}
+                items={"3"}
                 loop
                 margin={40}
                 nav
@@ -230,7 +230,7 @@ function Home() {
               <OwlCarousel
                 className="owl-theme"
                 dots={false}
-                items={"4"}
+                items={"3"}
                 loop
                 margin={40}
                 nav

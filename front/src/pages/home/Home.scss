@@ -1,5 +1,4 @@
 @import "../../style/color.scss";
-@import "../../style/fonts.scss";
 @import "../../style/buttons.scss";
 @import "../../style/mixins.scss";
 @import "../../style/animations.scss";
@@ -21,7 +20,7 @@ $container-padding: 0 100px;
       margin-bottom: 30px;
       .img-container {
         height: 100%;
-        padding: 5% 20%;
+        padding: 5% 13%;
         margin: auto;
         .img-wrapper {
           img {
@@ -55,8 +54,6 @@ $container-padding: 0 100px;
           margin-top: 25px;
           text-align: center;
           color: #313232;
-          font-family: fantasy;
-          font-size: 22px;
         }
       }
     }
@@ -101,7 +98,7 @@ $container-padding: 0 100px;
         }
       }
       .featured-slider {
-        @include productItem;
+        // @include productItem;
         .owl-carousel {
           position: relative;
           margin-top: 20px;
@@ -298,7 +295,7 @@ $container-padding: 0 100px;
           margin-top: 10%;
           .featured-slider {
             width: 100%;
-            @include productItem;
+            // @include productItem;
             .owl-carousel {
               position: relative;
               margin-top: 20px;

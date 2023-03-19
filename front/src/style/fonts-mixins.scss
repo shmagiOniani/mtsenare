@@ -1,0 +1,51 @@
+@import "./color";
+@import "./fonts.scss";
+
+@mixin h1 {
+  font-size: clamp(18px, 4vw, 38px) !important;
+  color: $header;
+  font-family: "Poppins-Medium";
+  &:lang(ka) {
+    font-size: clamp(20px, 4vw, 29px) !important;
+  }
+}
+@mixin h2 {
+  font-size: clamp(22px, 4vw, 32px) !important;
+  color: $header;
+  font-family: "Poppins-Medium";
+  &:lang(ka) {
+    font-size: clamp(22px, 4vw, 25px) !important;
+  }
+}
+@mixin h3 {
+  font-size: clamp(20px, 4vw, 26px) !important;
+  font-family: "Poppins-Medium";
+  color: $header;
+  &:lang(ka) {
+    font-size: clamp(20px, 4vw, 23px) !important;
+  }
+}
+@mixin h4 {
+  font-size: clamp(18px, 4vw, 22px) !important;
+  font-family: "Poppins-Medium";
+  color: $header;
+  &:lang(ka) {
+    font-size: clamp(18px, 4vw, 19px) !important;
+  }
+}
+@mixin h5 {
+  font-size: clamp(14px, 4vw, 15px) !important;
+  font-family: "Poppins-Medium";
+  color: $header;
+  &:lang(ka) {
+    font-size: clamp(13px, 4vw, 15px) !important;
+  }
+}
+@mixin p {
+  font-size: clamp(7px, 2.5vw, 12px) !important;
+  font-family: "Poppins-Medium";
+  color: $paragraph;
+  &:lang(ka) {
+    font-size: clamp(10px, 2.5vw, 13px) !important;
+  }
+}

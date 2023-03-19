@@ -40,12 +40,13 @@ function ProductItem({product, imgSrc, xsSize, smSize, mdSize, lgSize, lxSize, r
         <div className="img-container"  onClick={() => toProduct('product?.name')}>
           {/* <img src={process.env.REACT_APP_FILE_PATH + product.images[0]} alt="sasas" /> */}
           {/* {product.images && <img src={require(`../../assets/img/plant-data/uploads/${product.images[0]}`)} alt="sasas" />} */}
+          <img src={imgSrc} alt="sasas" />
         </div>
         <div className="category-desc">
-          <h6>{productData.name || "სახელი"}</h6>
+          <h4>{productData.name || "სახელი"}</h4>
           <div className="price-cart">
-            <span className="price">100$</span>
-            <span className="cart" onClick={() => console.log(productData)}>კალათაში დამატება</span>
+            <h5 className="price">100$</h5>
+            {/* <span className="cart" onClick={() => console.log(productData)}>კალათაში დამატება</span> */}
           </div>
         </div>
       </div>

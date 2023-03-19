@@ -8,12 +8,18 @@ import {
     ShopList,
     Shop,
     ShoppingCart,
-    Login
+    Login,
+    Test
   } from "../pages";
 import Auth from "../pages/auth/Auth";
 import ContactUs from "../pages/contactUs/ContactUs";
   
   export const PUBLIC_ROUTES = [
+    {
+      path: "/test",
+      component: Test,
+      layout: "",
+    },
     {
       path: "/about-us",
       component: AboutUs,
