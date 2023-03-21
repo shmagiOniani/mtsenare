@@ -1,0 +1,29 @@
+.auth-modal {
+    .img-wrapper {
+      width: max-content;
+      img {
+        height: auto;
+      }
+    }
+    .modal-header {
+      padding: 5px;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+    }
+    .modal-body {
+
+// 
+
+    }
+    .ant-modal-body {
+      padding: 0;
+    }
+    .ant-modal-close {
+      display: none;
+    }
+    .ant-modal-header,
+    .ant-modal-footer {
+      display: none !important;
+    }
+  }

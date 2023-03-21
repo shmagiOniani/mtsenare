@@ -1,51 +1,62 @@
-import React from "react";
-import { Row, Col, Badge } from "antd";
+import React, { useState } from "react";
+import { Row, Col, Badge, Form, Input } from "antd";
 import {
   ShoppingOutlined,
   CloseOutlined,
   UserOutlined,
+  SearchOutlined,
 } from "@ant-design/icons";
 import { Link, useLocation, useHistory } from "react-router-dom";
 
 import logo from "../../assets/img/logo.png";
 import "./Navbar.scss";
+import AuthModal from "../modal/authModal/AuthModal";
 
 function Navbar() {
   const location = useLocation();
 
   let history = useHistory();
 
+  const [authModal, setAuthModal]= useState(false)
+
   const toHome = () => {
     history.push("/home");
   };
 
   const handleNavigate = (e, target) => {
-    if(target === "remove") {
+    if (target === "remove") {
       console.log("remove");
-      return true
-    }else if(target === "relocate") {
+      return true;
+    } else if (target === "relocate") {
       console.log("relocate");
     }
   };
-  
+
   const shopDropdown = <div>shop</div>;
   const cartItem = (
-    <div className="cart-item" >
+    <div className="cart-item">
       <div onClick={(e) => handleNavigate(e, "relocate")} className="cart-img">
         <img
           alt="cart icon"
           src="https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-12-img-300x400.jpg"
         />
       </div>
-      <div onClick={(e) => handleNavigate(e, "relocate")} className="cart-name-price">
+      <div
+        onClick={(e) => handleNavigate(e, "relocate")}
+        className="cart-name-price"
+      >
         <div>SCARLET SAGE</div>
         <div>1 X $ 159</div>
       </div>
-      <div className="close-icon" >
-        <CloseOutlined  onClick={(e) => handleNavigate(e, "remove")} />
+      <div className="close-icon">
+        <CloseOutlined onClick={(e) => handleNavigate(e, "remove")} />
       </div>
     </div>
   );
+
+  const onSearch = (data) => {
+    console.log(data);
+  }
 
   const navArr = [
     {
@@ -91,12 +102,12 @@ function Navbar() {
         )}
         <Col sm={24}>
           <Row justify={"space-around"} align={"middle"} gutter={[30, 30]}>
-            <Col xs={5}>
-              {location.pathname !== "/home" ? (
+            <Col xs={4}>
+              {true ? (
                 <div className="search-container">
-                  {/* <Form
+                  <Form
                     layout={"horizontal"}
-                    form={form}
+                    // form={form}
                     initialValues={{
                       layout: "horizontal",
                     }}
@@ -107,7 +118,7 @@ function Navbar() {
                       <Input placeholder="Search" />
                     </Form.Item>
 
-                  </Form> */}
+                  </Form>
                 </div>
               ) : (
                 <div className="small-logo" onClick={toHome}>
@@ -117,20 +128,37 @@ function Navbar() {
                 </div>
               )}
             </Col>
-            <Col xs={14}>
+            <Col xs={16}>
               <div className="navigation-container">
                 <ul>
-                  {navArr.map((item, index) => {
+                  {/* {navArr.map((item, index) => {
                     return (
                       <li key={index}>
                         <Link to={item.link}>{item.name}</Link>
                       </li>
                     );
-                  })}
+                  })} */}
+                  <li >
+                    <Link to={navArr[0].link}>{navArr[0].name}</Link>
+                  </li>
+                  <li >
+                    <Link to={navArr[1].link}>{navArr[1].name}</Link>
+                  </li>
+                  <div className="small-logo" onClick={toHome}>
+                    <div className="logo">
+                      <img src={logo} alt={"logo"} />
+                    </div>
+                  </div>
+                  <li >
+                    <Link to={navArr[2].link}>{navArr[2].name}</Link>
+                  </li>
+                  <li >
+                    <Link to={navArr[3].link}>{navArr[3].name}</Link>
+                  </li>
                 </ul>
               </div>
             </Col>
-            <Col xs={5}>
+            <Col xs={4}>
               <Row justify={"end"}>
                 <Col className={"cartside-search"}>
                   {location.pathname !== "/home" ? (
@@ -194,9 +222,12 @@ function Navbar() {
                   <div className="profile-wrapper">
                     <Badge size={"small"}>
                       {/* <Avatar shape="square" size="large" /> */}
-                      <Link to="/auth">
+                      {/* <Link to="/auth"> */}
+                      <div onClick={()=> setAuthModal(true)}>
+
                         <UserOutlined />
-                      </Link>
+                      </div>
+                      {/* </Link> */}
                     </Badge>
                   </div>
                 </Col>
@@ -228,6 +259,8 @@ function Navbar() {
       </ul>
 
       <div id="fixed-bar"></div>
+
+      <AuthModal open={authModal} setOpen={(data)=> setAuthModal(data)} />
     </>
   );
 }

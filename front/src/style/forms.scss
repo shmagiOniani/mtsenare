@@ -168,7 +168,7 @@
 .ant-select-dropdown {
   border: 1px solid $base;
   padding: 10px 5px !important;
-  border-radius: 10px !important;
+  // border-radius: 10px !important;
 }
 
 .ant-select-item-option {
@@ -179,12 +179,12 @@
   background-color: #99a7991f !important;
   opacity: 0.9;
   color: rgb(102, 101, 101) !important;
-  border-radius: 5px;
+  // border-radius: 5px;
 }
 .ant-select-item-option-selected {
   background-color: $base-light !important;
   color: rgb(255, 255, 255) !important;
-  border-radius: 5px;
+  // border-radius: 5px;
   &:hover {
     color: rgb(255, 255, 255) !important;
     background-color: $base-light !important;

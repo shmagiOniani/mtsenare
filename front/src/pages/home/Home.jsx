@@ -15,8 +15,8 @@ import recall from "../../assets/img/icon/recall.png";
 import support from "../../assets/img/icon/support.png";
 import instagram from "../../assets/img/icon/instagram.svg";
 import wappPaper from "../../assets/img/product/cut_bg_01.png";
-import "./Home.scss";
 import CloseButton from "../../components/elements/button/CloseButton";
+import "./Home.scss";
 
 const products = [
   {
