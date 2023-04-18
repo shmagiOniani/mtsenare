@@ -104,9 +104,16 @@
 }
 
 @mixin textInput {
-  display: flex;
-  flex-direction: column;
   border-radius: 5px;
+  font-size: 15px;
+  height: 50px;
+  &:hover {
+    border-color: $base;
+  }
+  &:focus {
+    border-color: $base;
+    box-shadow: none;
+  }
   .ant-form-item-label {
     text-align: start;
     font-size: 16px;
@@ -116,18 +123,6 @@
       font-size: 16px;
       font-weight: 800;
       color: #808080c7;
-    }
-  }
-  input {
-    border-radius: 5px;
-    font-size: 15px;
-    height: 50px;
-    &:hover {
-      border-color: $base;
-    }
-    &:focus {
-      border-color: $base;
-      box-shadow: none;
     }
   }
 }
@@ -147,7 +142,6 @@
   .ant-input-number-focused {
     box-shadow: none;
     border-color: $base;
-
   }
   .ant-input-number {
     border-radius: 5px;
@@ -189,12 +183,13 @@
     color: rgb(255, 255, 255) !important;
     background-color: $base-light !important;
     border-radius: 5px;
-  } 
+  }
 }
 
 .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
-  border-color: $base!important;
+  border-color: $base !important;
 }
-.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
-  box-shadow: none!important;
+.ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
+  .ant-select-selector {
+  box-shadow: none !important;
 }

@@ -219,20 +219,7 @@ $container-padding: 0 100px;
           }
         }
       }
-      .add-button {
-        @include outlined;
-        margin-left: 15px;
-        margin-top: 15px;
-      }
-      @media only screen and (max-width: 400px) {
-        justify-content: flex-end;
-        .add-button {
-          margin: 0px 0 0 10px;
-        }
-        .ant-input-number {
-          margin-left: 0;
-        }
-      }
+      
     }
   }
   .details-wrapper {

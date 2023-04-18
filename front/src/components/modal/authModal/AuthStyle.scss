@@ -1,10 +1,7 @@
 .auth-modal {
-    .img-wrapper {
-      width: max-content;
-      img {
-        height: auto;
-      }
-    }
+  max-width: 510px;
+  padding: 10px;
+  // display: none;
     .modal-header {
       padding: 5px;
       display: flex;
@@ -12,12 +9,12 @@
       align-items: center;
     }
     .modal-body {
-
+      // border: 1px solid gray;
 // 
 
     }
     .ant-modal-body {
-      padding: 0;
+      padding: 20px;
     }
     .ant-modal-close {
       display: none;

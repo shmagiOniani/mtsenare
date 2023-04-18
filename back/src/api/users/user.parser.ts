@@ -67,11 +67,12 @@ export function parseUpdatePositions(req: Request, res: Response, next: NextFunc
 function parseBaseProps(body: any) {
   return _.pick(body, [
     'email',
-    'name',
-    'role',
-    'userName',
+    'firstName',
+    'lastName',
     'phoneNumber',
-    'isActive',
-    'address',
+    // 'userName',
+    // 'role',
+    // 'isActive',
+    // 'address',
   ]);
 }

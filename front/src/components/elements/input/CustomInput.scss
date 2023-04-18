@@ -1,0 +1,16 @@
+@import "../../../style/forms.scss";
+
+
+.text-input {
+    display: none;
+    @include textInput;
+}
+.number {
+    @include numberInput;
+}
+.text {
+    @include textInput;
+}
+.select {
+    @include selectInput;
+}

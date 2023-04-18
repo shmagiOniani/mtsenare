@@ -1,82 +1,57 @@
-import React from 'react'
-import { DatePicker, Input, InputNumber, Select } from 'antd'
-import PropTypes from "prop-types"
+import React from "react";
+import { Col, Form, Input, InputNumber, Select } from "antd";
+import useTranslation from "../../../translation/useTranslation";
+import "./CustomInput.scss";
 
-function CustomInput({type, value, placeholder, range, mode, options, rows}) {
-
+function CustomInput({ inputArr }) {
+  const { trans } = useTranslation();
   const { Option } = Select;
-  const { TextArea } = Input;
 
-  const number = (
-    <InputNumber 
-      value={value}
-      placeholder={placeholder}
-      min={range.min}
-      max={range.max}
-      
-    />
-  )
-
-  const text = (
-    <Input 
-      value={value}
-      placeholder={placeholder}
-    />
-  )
-
-  const textArea = (
-    <TextArea
-      value={value} 
-      rows={rows}
-    />
-  )
-
-  const date = (
-    <DatePicker 
-      value={value}
-      placeholder={placeholder}
-      format="YYYY-MM-DD"
-    />
-  )
-  
-  const select = (
-    <Select 
-      value={value}
-      mode={mode}
-      placeholder={placeholder}
-    >
-      {options?.map((option, optIndex) => {
+  return (
+    <>
+      {inputArr.map((item, index) => {
         return (
-          <Option key={optIndex} value={option.id}>
-            {option.name}
-          </Option>
+          <Col key={index} xs={item.xs} sm={item.sm}>
+            <Form.Item
+              name={item.name}
+              label={item.label}
+              type={item.type}
+              rules={[
+                {
+                  message: trans("empty_input_warning"),
+                },
+              ]}
+            >
+              {item.type === "select" ? (
+                <Select
+                  mode={item.mode}
+                  placeholder={item.placeholder}
+                  getPopupContainer={(trigger) => trigger.parentNode}
+                >
+                  {item.options.map((option) => {
+                    return (
+                      <Option key={option._id} value={option._id}>
+                        {option.name}
+                      </Option>
+                    );
+                  })}
+                </Select>
+              ) : item.type === "text" ? (
+                <Input required={false} className="text-input" />
+              ) : item.type === "password" ? (
+                <Input.Password
+                  autoComplete="new-password"
+                  className="text-input"
+                />
+              ) : (
+                <InputNumber />
+              )}
+            </Form.Item>
+          </Col>
         );
       })}
-    </Select>
-  )
-
-  const renderInput = ()=> {
-    switch (type) {
-      case "number": number 
-        break;
-      case "text": text 
-       break;
-      case "textArea": textArea 
-       break;
-      case "date": date 
-       break;
-      case "select": select 
-       break;
-      default:
-        break;
-    }
-  }
-
-  return renderInput
+    </>
+  );
 }
 
-export default CustomInput
-
-CustomInput.propTypes = {
-  type: PropTypes.oneOf(["text", "textArea", "select", "date", "number"]),
-}
+export default CustomInput;

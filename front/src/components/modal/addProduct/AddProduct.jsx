@@ -13,7 +13,7 @@ import "./styles.scss";
 import API from "../../../utils/services/API";
 import CustomButton from "../../elements/button/CustomButton";
 import ImageUpload from "../../imageUpload/ImageUpload";
-import CustomInput from "../../input/CustomInput";
+import CustomInput from "../../elements/input/CustomInput";
 
 function AddProduct({ open, setOpen, refresh }) {
   const [form] = Form.useForm();
