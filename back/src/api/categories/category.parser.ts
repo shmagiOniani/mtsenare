@@ -43,7 +43,7 @@ export function parseUpdate(req: Request, res: Response, next: NextFunction) {
 function parseBaseProps(body: any) {
   return _.pick(body, [
     'name',
-    'position',
-    'isActive',
+    'code',
+    'parentId',
   ]);
 }

@@ -3,8 +3,6 @@ import { useHistory, Link } from "react-router-dom";
 import { Col, Row } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import useTranslation from "../../hooks/useTranslation";
-
-import Navbar from "../../components/navbar/Navbar";
 import Footer from "../footer/Footer";
 import "./ShoppingCart.scss";
 
@@ -21,9 +19,6 @@ function ShoppingCart() {
   return (
     <div className="page-wrapper">
       <Row className="page-container">
-        <Col xs={24}>
-          <Navbar />
-        </Col>
         <Col xs={24} className={"page-header"}>
           <h1>Shopping Cart</h1>
           <p>Filter Selected Staff</p>

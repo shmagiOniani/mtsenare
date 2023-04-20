@@ -26,16 +26,15 @@
 }
 
 @mixin selectInput {
-  .ant-select-focused {
-    .ant-select-selector {
-      border-color: $base !important;
-    }
+  .ant-select-selection-placeholder, .ant-select-selection-item {
+    display: flex !important;
+    justify-content: flex-start;
+    align-items: center !important;
   }
-  .ant-select-selector {
-    box-shadow: none !important;
-  }
+
   .ant-select-selector {
     border-radius: 5px;
+    height: 50px !important;
   }
   &:hover {
     .ant-select-selector {
@@ -44,11 +43,8 @@
   }
   input {
     border-radius: 10px;
-    // height: 40px;
     &:hover {
       border-color: $base-dark;
-    }
-    &:active {
     }
     &:focus {
       box-shadow: none !important;
@@ -61,10 +57,10 @@
   border-radius: 5px;
   height: 40px;
   &:hover {
-    border-color: $base;
+    border-color: $base!important;
   }
   &:focus {
-    border-color: $base;
+    border-color: $base!important;
     box-shadow: none;
   }
 }
@@ -108,11 +104,11 @@
   font-size: 15px;
   height: 50px;
   &:hover {
-    border-color: $base;
+    border-color: $base-dark !important;
   }
   &:focus {
-    border-color: $base;
-    box-shadow: none;
+    box-shadow: none !important;
+    border-color: $base!important;
   }
   .ant-form-item-label {
     text-align: start;
@@ -128,33 +124,55 @@
 }
 
 @mixin numberInput {
-  display: flex;
-  flex-direction: column;
   border-radius: 5px;
+  font-size: 15px;
+  width: 100% !important;
+  height: 50px;
+  display: flex !important;
+  align-items: center !important;
+  &:hover {
+    border-color: $base-dark !important;
+  }
+  &:focus {
+    box-shadow: none !important;
+    border-color: $base;
+  }
   .ant-form-item-label {
     text-align: start;
+    font-size: 16px;
+    font-weight: 800;
+    color: #808080c7;
     label {
       font-size: 16px;
       font-weight: 800;
       color: #808080c7;
     }
   }
-  .ant-input-number-focused {
-    box-shadow: none;
+}
+
+@mixin dateInput {
+  border-radius: 5px;
+  font-size: 15px;
+  width: 100% !important;
+  height: 50px;
+  display: flex !important;
+  align-items: center !important;
+  &:hover {
+    border-color: $base-dark !important;
+  }
+  &:focus {
+    box-shadow: none !important;
     border-color: $base;
   }
-  .ant-input-number {
-    border-radius: 5px;
-    &:hover {
-      border-color: $base;
-    }
-    &:focus {
-      border-color: $base;
-      box-shadow: none;
-    }
-    input {
-      font-size: 15px;
-      height: 50px;
+  .ant-form-item-label {
+    text-align: start;
+    font-size: 16px;
+    font-weight: 800;
+    color: #808080c7;
+    label {
+      font-size: 16px;
+      font-weight: 800;
+      color: #808080c7;
     }
   }
 }

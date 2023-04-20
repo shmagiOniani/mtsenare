@@ -1,7 +1,6 @@
 import React, {  useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Col, Row } from 'antd'
-import Navbar from '../../components/navbar/Navbar'
 import Footer from '../footer/Footer';
 import "./Faq.scss"
 
@@ -17,9 +16,7 @@ function Faq() {
     <div className='faq-wrapper'>
 
       <Row className='page-container'>
-        <Col xs={24}>
-          <Navbar />
-        </Col>
+     
         <Col xs={24} className={"page-header"}>
           <h1>Page Header</h1>
           <p>Page Description</p>

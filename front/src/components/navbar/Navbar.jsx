@@ -89,7 +89,7 @@ function Navbar() {
   return (
     <>
       <Row className="navbar-wrapper" justify={"center"}>
-        {location.pathname === "/home" ? (
+        {/* {location.pathname === "/home" ? (
           <Col sm={24}>
             <div className="logo-container">
               <div className="logo">
@@ -99,10 +99,10 @@ function Navbar() {
           </Col>
         ) : (
           ""
-        )}
+        )} */}
         <Col sm={24}>
           <Row justify={"space-around"} align={"middle"} gutter={[30, 30]}>
-            <Col xs={4}>
+            <Col xs={6}>
               {true ? (
                 <div className="search-container">
                   <Form
@@ -128,7 +128,7 @@ function Navbar() {
                 </div>
               )}
             </Col>
-            <Col xs={16}>
+            <Col xs={12}>
               <div className="navigation-container">
                 <ul>
                   {/* {navArr.map((item, index) => {
@@ -158,7 +158,7 @@ function Navbar() {
                 </ul>
               </div>
             </Col>
-            <Col xs={4}>
+            <Col xs={6}>
               <Row justify={"end"}>
                 <Col className={"cartside-search"}>
                   {location.pathname !== "/home" ? (

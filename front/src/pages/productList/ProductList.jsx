@@ -23,7 +23,6 @@ import {
   one,
 } from "../../assets/img/product";
 
-import Navbar from "../../components/navbar/Navbar";
 import "./ProductList.scss";
 import ProductItem from "../../components/productItem/ProductItem";
 import AddProduct from "../../components/modal/addProduct/AddProduct";
@@ -124,10 +123,10 @@ function ProductList() {
   };
 
   const getLibraryes = () => {
-    API.get(`/api/libraries?all=true`)
+    API.get(`/api/categories?all=true`)
       .then((res) => {
         // let categoryInst = res.data.items.find((item)=> item.name === "Category").library
-        // setCategoryList(categoryInst)
+        setCategoryList(res.data.items)
       })
   };
 
@@ -187,11 +186,6 @@ function ProductList() {
             />
           </Tooltip>
         </div>
-        <Row justify={"center"} style={{ width: "100%" }}>
-          <Col xs={18}>
-            <Navbar />
-          </Col>
-        </Row>
         <Row
           className="section-header"
           justify={"center"}
@@ -238,11 +232,12 @@ function ProductList() {
         <div className=" page-container">
           <Row>
             <Col xs={24}>
-              <Row gutter={[20, 20]} className="list">
+              <Row gutter={[30, 30]} className="list">
                 <Col className="product-list-sidebar" sm={7}>
                   <div className="product-sidebar-wrapper">
                     <ul className="product-sidebar-category ">
-                      <h5 className="category-header">კატეგორიები</h5>
+                      <h4 className="category-header">ფილტრები</h4>
+
                       {categoryList.map((item, ind) => {
                         return (
                           <li key={ind}>  
@@ -255,7 +250,7 @@ function ProductList() {
                       })}
                     </ul>
                     <ul className="product-sidebar-category ">
-                      <h5 className="category-header">ფასი</h5>
+                      <h4 className="category-header">ფასი</h4>
                       <li className="range-input">
                         <Slider
                           range
@@ -278,7 +273,7 @@ function ProductList() {
                       </li>
                     </ul>
                     <ul className="product-sidebar-category ">
-                      <h5 className="category-header">მაღაზიები</h5>
+                      <h4 className="category-header">მაღაზიები</h4>
                       {SHOPS_LIST.map((shop, index)=> {
                         return (
                           <ShopItem key={index} data={shop}/>
@@ -292,9 +287,9 @@ function ProductList() {
                 <img src={five} alt="" />
                 </div> */}
                 <Col
+                className="product-list-sidebar"
                   xs={24}
                   sm={17}
-                  style={{ paddingLeft: "25px", paddingRight: "25px" }}
                 >
                   <Row>
                     <Col xs={24} className="search-wrapper">

@@ -99,17 +99,11 @@ function Brakes() {
     setLoading(true)
     API.get(`/get-requests-handler`, { params: { url: `/Brake`, params: { Page: 1, Count: 20 } } })
       .then((res) => {
-        if(res.data.name === "Error"){
-          message.error(res.data.message);
-        }else {
-          setLoading(false)
-          transformTableData(res.data.data)
-        }
+        transformTableData(res.data.data)
+        setLoading(false)
       })
-      .catch((err) => {
-        setLoading(false);
-        notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"})
-      })
+      .catch((err) => notification.error({message: trans(err?.response?.data) || trans("connection_problem"), placement: "bottomLeft"}))
+      .finally(()=>  setLoading(false))
   }
 
   const transformTableData = (data) => {

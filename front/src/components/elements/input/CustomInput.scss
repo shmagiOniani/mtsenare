@@ -1,16 +1,30 @@
 @import "../../../style/forms.scss";
 
+.ant-form-item {
+  flex-direction: column !important;
+  .ant-form-item-label {
+    text-align: start;
+  }
+}
 
+.num-input {
+  @include numberInput;
+}
+.date-input {
+    @include dateInput;
+  }
 .text-input {
-    display: none;
-    @include textInput;
+  @include textInput;
 }
-.number {
-    @include numberInput;
+.select-input {
+  @include selectInput;
 }
-.text {
-    @include textInput;
-}
-.select {
-    @include selectInput;
+
+
+.ant-select-focused, .ant-input-number-focused, .ant-input-affix-wrapper-focused, .ant-picker-focused {
+  border-color: $base !important;
+  box-shadow: none!important;
+  .ant-select-selector {
+    border-color: $base !important;
+  }
 }

@@ -3,7 +3,6 @@
 // @import "../../style/fonts-mixins.scss";
 
 .navbar-wrapper {
-  border-bottom: 1px solid gray;
   .logo-container {
     padding: 20px 0 0;
     &:hover {
@@ -79,7 +78,7 @@
           text-decoration: none;
           color: $text;
           position: relative;
-          font-size: 20px;
+          font-size: 15px;
           &::after {
             content: " ";
             position: absolute;

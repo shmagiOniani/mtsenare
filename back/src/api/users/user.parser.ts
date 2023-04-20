@@ -28,7 +28,7 @@ export function parseSignIn(req: Request, res: Response, next: NextFunction) {
 }
 
 export function parseSignUp(req: Request, res: Response, next: NextFunction) {
-  console.log("parseSignUp", req.body.password);
+  console.log("parseSignUp", req.body);
   
   req.body = {
     ...parseBaseProps(req.body),

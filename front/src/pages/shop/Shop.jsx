@@ -8,7 +8,6 @@ import {
   SmileOutlined,
   BellOutlined,
 } from "@ant-design/icons";
-import Navbar from "../../components/navbar/Navbar";
 import useTranslation from "../../hooks/useTranslation";
 import ProductItem from "../../components/productItem/ProductItem";
 import avatar from "../../assets/img/avatar.png";
@@ -64,9 +63,6 @@ function Shop() {
   return (
     <div className="page-wrapper">
       <Row className="page-container">
-        <Col xs={24}>
-          <Navbar />
-        </Col>
         <Col xs={24} className="shop-wrapper">
           <Row justify={"center"} align="middle" className="shop-header">
             <Col>

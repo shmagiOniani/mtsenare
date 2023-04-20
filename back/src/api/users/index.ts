@@ -63,20 +63,21 @@ async function setSignedUser(req: Request, res: Response, next: NextFunction) {
 
 function signIn(req: Request, res: Response, next: NextFunction) {
   const user = req.user;
-  if (!user.isActive) {
-    res.json({authError: 'UserDeactivated'});
-  } else if (user.isBlocked) {
-    res.json({authError: 'UserBlocked'});
-  } else {
+  // if (!user.isActive) {
+  //   res.json({authError: 'UserDeactivated'});
+  // } else if (user.isBlocked) {
+  //   res.json({authError: 'UserBlocked'});
+  // } else {
     const token = auth.signToken(user);
     res.cookie('token', token, config.cookie);
     res.json({user, token});
-  }
+  // }
 }
 
 async function signUp(req: Request, res: Response, next: NextFunction) {
   try {
     const payload = req.body;
+    
     await User.create({
       ...payload,
       role: payload.role || roles.USER,

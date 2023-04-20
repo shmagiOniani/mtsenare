@@ -1,6 +1,6 @@
 import axios from "axios";
-// const token = localStorage.getItem("token");
-// const user = localStorage.getItem("user");
+const token = localStorage.getItem("token");
+const user = localStorage.getItem("user");
 
 const API = axios.create({
   baseURL: process.env.REACT_APP_BASE_API,
@@ -11,8 +11,8 @@ API.defaults.timeout = 5000;
 API.withCredentials = true;
 
 API.interceptors.request.use(function (config) {
-  config.headers.token = "token";
-  config.headers.user = "user";
+  config.headers.token = token;
+  config.headers.user = user;
   return config;
 }, null, {});
 

@@ -14,6 +14,7 @@ import "antd/dist/antd.min.css";
 import "./App.scss";
 import ScrollToTop from "./utils/ScrollToTop";
 import Spinner from "./components/spinner/Spinner";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   const [bgColor, setBgColor] = useState("");
@@ -75,6 +76,7 @@ function App() {
           <label htmlFor="bg-color">bg color</label>
         </div> */}
         <div className="app-container">
+          <Navbar/>
           <Switch>
             {PUBLIC_ROUTES.map((route, index) => {
               return (

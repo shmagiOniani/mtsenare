@@ -10,8 +10,6 @@ import {
   User,
   Products,
   PtiRegistry,
-  Edit,
-  CarDetails,
   Invoices,
   Streaming,
   Brakes,
@@ -111,27 +109,6 @@ export const privateRoute = [
     layout: "",
     exact: true,
     permission:"Permissions.Branch"
-  },
-  {
-    component: Edit,
-    path: "/car-edit",
-    layout: "/:id",
-    exact: true,
-    permission:"Permissions.VehicleApplication.Edit"
-  },
-  {
-    component: Edit,
-    path: "/car-edit",
-    layout: "/:id/:tab",
-    exact: true,
-    permission:"Permissions.VehicleApplication.Edit"
-  },
-  {
-    component: CarDetails,
-    path: "/car-details",
-    layout: "/:id",
-    exact: true,
-    permission:"Permissions.VehicleApplication.Edit"
   },
   {
     component: Invoices,

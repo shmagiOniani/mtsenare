@@ -7,7 +7,8 @@ import * as auth from '../../auth';
 const categoryRouter = Router();
 
 categoryRouter.get('/', categoryParser.parseGetByQuery, getByQuery);
-categoryRouter.post('/', auth.isAdmin, categoryParser.parseCreate, create);
+categoryRouter.post('/', categoryParser.parseCreate, create);
+// categoryRouter.post('/', auth.isAdmin, categoryParser.parseCreate, create);
 categoryRouter.put('/:id', auth.isAdmin, categoryParser.parseUpdate, update);
 categoryRouter.delete('/:id', auth.isAdmin, destroy);
 
@@ -29,6 +30,7 @@ async function getByQuery(req: Request, res: Response, next: NextFunction) {
 
 async function create(req: Request, res: Response, next: NextFunction) {
   try {
+    
     const payload = req.body;
     await categoryDao.create(payload);
     res.sendStatus(201);

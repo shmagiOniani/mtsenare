@@ -14,7 +14,7 @@ $container-padding: 0 100px;
   align-items: center;
   flex-direction: column;
   .page-container {
-    width: 70vw;
+    // width: 70vw;
     & > .ant-col {
       max-width: 100%;
       padding: $container-padding;

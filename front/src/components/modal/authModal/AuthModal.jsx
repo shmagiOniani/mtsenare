@@ -44,11 +44,17 @@ function AuthModal({ open, setOpen, refresh }) {
   };
 
   const onAuthorization = (values) => {
-    API.post(`/api/users/sign-in`, values).then((res) => {});
+    API.post(`/api/users/sign-in`, values).then((res) => {
+      localStorage.setItem('token', res.data.token)
+      localStorage.setItem('user', JSON.stringify(res.data.user))
+      setOpen(false)
+    });
   };
 
   const onRegistration = (values) => {
-    API.post(`/api/users/sign-up`, {}).then((res) => {});
+    API.post(`/api/users/sign-up`, values).then((res) => {
+      setValue(0)
+    });
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -113,7 +119,7 @@ function AuthModal({ open, setOpen, refresh }) {
       cancelButtonProps={{ style: { display: "none" } }}
       okButtonProps={{ style: { display: "none" } }}
       title={"sds"}
-      visible={true}
+      visible={open}
       onCancel={() => setOpen(false)}
       width={600}
     >

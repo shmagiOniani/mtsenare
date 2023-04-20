@@ -14,7 +14,6 @@ import PtiRegistryFilter from "../../components/modals/PtiRegistryFilter"
 import CarEditReason from '../../components/modals/CarEditReason';
 import AddProduct from '../../components/modals/AddProduct';
 import SliderModal from '../../components/modals/SliderModal';
-import CarDetailsView from '../../components/modals/CarDetailsView';
 import { UserContext } from '../../components/contexts/UserContext';
 import "./PtiRegistry.scss"
 
@@ -47,8 +46,6 @@ function PtiRegistry() {
     const [invoiceModalOpen, setInvoiceModalOpen] = useState(false)
 
     const [sliderModalOpen, setSliderModalOpen] = useState(false)
-
-    const [detailsModalOpen, setDetailsModalOpen] = useState(false)
 
     const [currentpage, setCurrentPage] = useState(1)
     const [totalPages, setTotalPages] = useState(1)
@@ -465,7 +462,6 @@ function PtiRegistry() {
                 handleClose={setInvoiceModalOpen}
                 organizationName={organizationName}
                 cars={selectedObjs} />
-            <CarDetailsView id={selectedId} modalIsOpen={detailsModalOpen} handleClose={() => setDetailsModalOpen(false)} />
             <SliderModal modalIsOpen={sliderModalOpen} handleClose={() => setSliderModalOpen(false)} photos={photos} />
             {loading &&
                 <Space size="middle" className='loading'>

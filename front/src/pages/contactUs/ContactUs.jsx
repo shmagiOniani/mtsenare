@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { Col, Row, Form, Input } from 'antd'
 import TextArea from 'antd/lib/input/TextArea';
 import useTranslation from '../../hooks/useTranslation';
-import Navbar from '../../components/navbar/Navbar'
 import Footer from '../footer/Footer';
 import avatar from "../../assets/img/avatar.png";
 import "./ContactUs.scss"
@@ -28,9 +27,6 @@ function ContactUs() {
     <div className='contact-us-wrapper'>
 
       <Row className='page-container'>
-        <Col xs={24}>
-          <Navbar />
-        </Col>
         <Col xs={24} className={"page-header"}>
 
         </Col>

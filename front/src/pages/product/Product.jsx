@@ -5,7 +5,6 @@ import OwlCarousel from "react-owl-carousel";
 import { Col, Row, Tabs, InputNumber, Button } from 'antd';
 import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
 import TextArea from 'antd/lib/input/TextArea';
-import Navbar from '../../components/navbar/Navbar'
 import Footer from '../footer/Footer';
 import ProductItem from '../../components/productItem/ProductItem';
 import useTranslation from '../../hooks/useTranslation';
@@ -95,9 +94,6 @@ function Product() {
     <div className='product-page-wrapper'>
       <Row className="page-container">
 
-        <Col xs={24}>
-          <Navbar />
-        </Col>
         {/* <Col xs={24} className={"page-header"}>
           <h1>Product Description</h1>
           <p>Where flowers are our inspiration</p>

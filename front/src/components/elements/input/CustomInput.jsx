@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Form, Input, InputNumber, Select } from "antd";
+import { Col, DatePicker, Form, Input, InputNumber, Select } from "antd";
 import useTranslation from "../../../translation/useTranslation";
 import "./CustomInput.scss";
 
@@ -27,6 +27,7 @@ function CustomInput({ inputArr }) {
                   mode={item.mode}
                   placeholder={item.placeholder}
                   getPopupContainer={(trigger) => trigger.parentNode}
+                  className="select-input"
                 >
                   {item.options.map((option) => {
                     return (
@@ -37,15 +38,28 @@ function CustomInput({ inputArr }) {
                   })}
                 </Select>
               ) : item.type === "text" ? (
-                <Input required={false} className="text-input" />
+                <Input
+                  required={false}
+                  className="text-input"
+                  placeholder={item.placeholder}
+                />
               ) : item.type === "password" ? (
                 <Input.Password
+                  placeholder={item.placeholder}
                   autoComplete="new-password"
                   className="text-input"
                 />
-              ) : (
-                <InputNumber />
-              )}
+              )  : item.type === "number" ? (
+                <InputNumber
+                  className="num-input"
+                  placeholder={item.placeholder}
+                />
+              ): item.type === "date" ? (
+                <DatePicker
+                  className="date-input"
+                  placeholder={item.placeholder}
+                />
+              ): ""}
             </Form.Item>
           </Col>
         );

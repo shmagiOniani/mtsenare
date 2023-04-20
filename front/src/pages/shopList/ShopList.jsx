@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Col, Row, Select } from "antd";
 import { GlobalOutlined, UnorderedListOutlined } from "@ant-design/icons";
-import Navbar from "../../components/navbar/Navbar";
 import MapInst from "../../components/mapInst/MapInst";
 import Footer from "../footer/Footer";
 import avatar from "../../assets/img/avatar.png";
@@ -114,9 +113,6 @@ function ShopList() {
 
   return (
     <>
-      <Col xs={24}>
-        <Navbar />
-      </Col>
       <div className="page-wrapper">
         <Row className="page-container">
           <Col xs={24} className={"page-header"}>

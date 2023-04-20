@@ -6,7 +6,6 @@ import { Col, Row, Form, Upload, Tabs, InputNumber, Input, Button } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import TextArea from "antd/lib/input/TextArea";
 import ImgCrop from "antd-img-crop";
-import Navbar from "../../components/navbar/Navbar";
 import Footer from "../footer/Footer";
 import useTranslation from "../../hooks/useTranslation";
 import ImageUpload from "../../components/imageUpload/ImageUpload";
@@ -98,9 +97,6 @@ function AddProduct() {
         </Button>
 
         <Row className="page-container">
-          <Col xs={24}>
-            <Navbar />
-          </Col>
           <Col xs={24} className={"page-header"}>
             <h2>{trans("add_poduct")}</h2>
           </Col>

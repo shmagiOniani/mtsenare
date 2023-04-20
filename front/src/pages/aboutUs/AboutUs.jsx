@@ -1,6 +1,5 @@
 import React from 'react'
 import { Col, Row, Carousel } from 'antd'
-import Navbar from '../../components/navbar/Navbar'
 import aboutImg from "../../assets/img/home-about.jpg";
 import avatar from "../../assets/img/avatar.png";
 import Footer from '../footer/Footer';
@@ -24,9 +23,6 @@ function AboutUs() {
   return (
     <div className='about-us-wrapper'>
     <Row className='page-container'>
-      <Col xs={24}>
-        <Navbar />
-      </Col>
       <Col xs={24} className={"page-header"}>
         <h1>Add Product</h1>
         <p>Where flowers are our inspiration</p>
