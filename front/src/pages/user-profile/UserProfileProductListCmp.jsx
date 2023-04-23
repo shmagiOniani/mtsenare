@@ -8,7 +8,7 @@ function UserProfileProductListCmp({title}) {
     <div id="user-profile-product-list">
         <h3>{title}</h3>
         <Divider/>
-      <Row>
+      <Row gutter={[20,20]}>
         {products.map((product, ind) => {
           return (
             <ProductItem
