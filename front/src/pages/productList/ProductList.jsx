@@ -31,6 +31,8 @@ import "antd/dist/antd.css";
 import API from "../../utils/services/API";
 import ShopItem from "./ShopItem";
 import CustomButton from "../../components/elements/button/CustomButton";
+import PageHeader from "../../components/pageHeader/PageHeader";
+import { products } from "../../assets/fakeData/fakeData";
 // import ProductItemNew from "../../components/productItemNew/ProductItemNew";
 
 const { Search } = Input;
@@ -47,39 +49,6 @@ const imgs = [
   ten,
   eleven,
   five,
-];
-
-const products = [
-  {
-    name: "Ceramic Pots",
-    image:
-      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-4.jpg",
-  },
-  {
-    name: "Indoor Plants",
-    image:
-      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-2.jpg",
-  },
-  {
-    name: "Low Maintenance",
-    image:
-      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-5.jpg",
-  },
-  {
-    name: "Plant Bundle",
-    image:
-      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-4.jpg",
-  },
-  {
-    name: "Air Purifying",
-    image:
-      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-5.jpg",
-  },
-  {
-    name: "Ceramic Pots",
-    image:
-      "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-6.jpg",
-  },
 ];
 
 const SHOPS_LIST = [
@@ -193,7 +162,43 @@ function ProductList() {
             /> */}
           </Tooltip>
         </div>
-        <Row
+        <PageHeader>
+        <h2>Shop</h2>
+            <Row justify="center" style={{ width: "100%" }}>
+              <Col xs={12}>
+                <div className="featured-slider">
+                  <OwlCarousel
+                    className="owl-theme"
+                    dots={false}
+                    items={"4"}
+                    loop
+                    margin={40}
+                    nav
+                  >
+                    {products.map((product, ind) => {
+                      return (
+                        <div className="slider-item" key={ind}>
+                          <div className="img-wrapper">
+                            <img width={50} height={50} src={product.image} />
+                          </div>
+                          <div className="title">
+                            <h5>{product.name}</h5>
+                          </div>
+                        </div>
+                        // <ProductItem
+                        //   product={product}
+                        //   key={ind}
+                        //   id={ind}
+                        //   imgSrc={product.image}
+                        // />
+                      );
+                    })}
+                  </OwlCarousel>
+                </div>
+              </Col>
+            </Row>
+        </PageHeader>
+        {/* <Row
           className="section-header"
           justify={"center"}
           align={"middle"}
@@ -235,7 +240,7 @@ function ProductList() {
               </Col>
             </Row>
           </Col>
-        </Row>
+        </Row> */}
         <div className=" page-container">
           <Row>
             <Col xs={24}>

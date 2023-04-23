@@ -190,6 +190,38 @@ $sm-button-height: 30px;
   }
 }
 
+@mixin tabHeaderBtn {
+  position: relative;
+  &::before {
+    content: "";
+    transition: width 0.2s;
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    width: 0%;
+    height: 2px;
+    background-color: black;
+  }
+  &::after {
+    content: "";
+    transition: width 0.2s;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    background-color: black;
+  }
+  &:hover {
+    &::before {
+      width: 50%;
+    }
+    &::after {
+      width: 50%;
+    }
+  }
+}
+
 .ant-btn {
   height: $md-button-height !important;
 }

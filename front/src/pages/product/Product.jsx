@@ -11,6 +11,7 @@ import {
   Tooltip,
   Divider,
   Breadcrumb,
+  Rate,
 } from "antd";
 import {
   CaretLeftOutlined,
@@ -139,7 +140,7 @@ function Product() {
             </Col>
             <Col xs={24} sm={9}>
               <div className="product-details">
-                <div style={{ "margin-bottom": "7px" }}>
+                <div style={{ marginBottom: "7px" }}>
                   <Breadcrumb separator=">">
                     <Breadcrumb.Item href="sdsd">{`Home`}</Breadcrumb.Item>
                     <Breadcrumb.Item href="sdsd">{`Application Center`}</Breadcrumb.Item>
@@ -156,7 +157,7 @@ function Product() {
                   მიახლოებული შაბლონი წარუდგინონ შემფასებელს. ხშირადაა
                   შემთხვევა, როდესაც დიზაინის შესრულებისას საჩვენებელია, თუ
                   როგორი იქნება ტექსტის ბლოკი. სწორედ ასეთ დროს არის
-                  მოსახერხებელი 
+                  მოსახერხებელი
                 </p>
                 <div className="add-product-cart">
                   {/* <InputNumber value={quantity} min={1} max={20} onChange={handleChange} /> */}
@@ -206,13 +207,16 @@ function Product() {
                 <Divider />
                 <div className="product-ident">
                   <div>
-                   <span> SKU:</span> D2300-2
+                    <span> SKU:</span> D2300-2
                   </div>
                   <div>
-                   <span> Category:</span> <CustomButton type={"link"}>Air Purifying</CustomButton>
+                    <span> Category:</span>{" "}
+                    <CustomButton type={"link"}>Air Purifying</CustomButton>
                   </div>
                   <div>
-                   <span> Tags:</span> <CustomButton type={"link"}>Hot</CustomButton>,<CustomButton type={"link"}>Trend</CustomButton> 
+                    <span> Tags:</span>{" "}
+                    <CustomButton type={"link"}>Hot</CustomButton>,
+                    <CustomButton type={"link"}>Trend</CustomButton>
                   </div>
                 </div>
               </div>
@@ -237,17 +241,15 @@ function Product() {
                   </p>
                 </div>
               </TabPane>
-              <TabPane tab="დამატებითი მახასიათებლები" key="2">
-                <div className="info-tab-container">
-                  <div className="key"></div>
-                  <div className="value"></div>
-                </div>
-              </TabPane>
-              <TabPane tab="შეფასებები და კომენტარები (22)" key="3">
+
+              <TabPane tab="შეფასებები (2)" key="3">
                 <div className="reviews-tab-container">
                   <div className="review-container">
                     <div className="review-item">
-                      <div className="icon">R</div>
+                      <div className="rewiev-item-header">
+                        <div className="icon">R</div>
+                        <Rate value={3} disabled={true} />
+                      </div>
                       <div className="content">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Porro minus saepe explicabo ullam maxime nisi corrupti
@@ -255,7 +257,10 @@ function Product() {
                       </div>
                     </div>
                     <div className="review-item">
-                      <div className="icon">R</div>
+                      <div className="rewiev-item-header">
+                        <div className="icon">R</div>
+                        <Rate value={5} disabled={true} />
+                      </div>
                       <div className="content">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Porro minus saepe explicabo ullam maxime nisi corrupti
@@ -265,14 +270,23 @@ function Product() {
                   </div>
                   <Row>
                     <Col xs={24}>
-                      <div className="comment-iinput">
+                      <div className="comment-input">
                         <TextArea
                           placeholder={trans("product_desc")}
                           rows={5}
                         />
                       </div>
+                      <div className="rate-container">
+                        <span>
+
+                        <h5 style={{maxWidth: "fit-content"}}><b>შეფასება</b></h5>
+                        </span>
+                        <Rate value={0} />
+                      </div>
                       <div className="comment-button">
-                        <Button>კომენტარის დამატება</Button>
+                        <CustomButton type={"default"}>
+                          კომენტარის დამატება
+                        </CustomButton>
                       </div>
                     </Col>
                   </Row>
@@ -284,7 +298,7 @@ function Product() {
         {/* relative products */}
         <Col xs={24}>
           <div className="related-product">
-            <h5>მსგავსი პროდუქტი</h5>
+            <h4>მსგავსი პროდუქტი</h4>
             <div className="featured-slider">
               <OwlCarousel
                 className="owl-theme"

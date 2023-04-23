@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, Badge, Form, Input } from "antd";
+import { Row, Col, Badge, Form, Input, Dropdown, Menu } from "antd";
 import {
   ShoppingOutlined,
   CloseOutlined,
@@ -12,12 +12,14 @@ import logo from "../../assets/img/logo.png";
 import "./Navbar.scss";
 import AuthModal from "../modal/authModal/AuthModal";
 
+const token = localStorage.getItem("token");
+
 function Navbar() {
   const location = useLocation();
 
   let history = useHistory();
 
-  const [authModal, setAuthModal]= useState(false)
+  const [authModal, setAuthModal] = useState(false);
 
   const toHome = () => {
     history.push("/home");
@@ -33,6 +35,7 @@ function Navbar() {
   };
 
   const shopDropdown = <div>shop</div>;
+
   const cartItem = (
     <div className="cart-item">
       <div onClick={(e) => handleNavigate(e, "relocate")} className="cart-img">
@@ -56,7 +59,7 @@ function Navbar() {
 
   const onSearch = (data) => {
     console.log(data);
-  }
+  };
 
   const navArr = [
     {
@@ -86,6 +89,16 @@ function Navbar() {
       multy: false,
     },
   ];
+
+  const userMenu = (
+    <Menu >
+      <Menu.Item key="Order Tracking">Order Tracking</Menu.Item>
+      <Menu.Item key="My Acount"><Link to={"my-acount"}>My Acount</Link></Menu.Item>
+      <Menu.Item key="Checkout">Checkout</Menu.Item>
+      <Menu.Item key="Whishlist">Whishlist</Menu.Item>
+    </Menu>
+  );
+
   return (
     <>
       <Row className="navbar-wrapper" justify={"center"}>
@@ -117,7 +130,6 @@ function Navbar() {
                     <Form.Item name={"search"}>
                       <Input placeholder="ძებნა" />
                     </Form.Item>
-
                   </Form>
                 </div>
               ) : (
@@ -138,10 +150,10 @@ function Navbar() {
                       </li>
                     );
                   })} */}
-                  <li >
+                  <li>
                     <Link to={navArr[0].link}>{navArr[0].name}</Link>
                   </li>
-                  <li >
+                  <li>
                     <Link to={navArr[1].link}>{navArr[1].name}</Link>
                   </li>
                   <div className="small-logo" onClick={toHome}>
@@ -149,10 +161,10 @@ function Navbar() {
                       <img src={logo} alt={"logo"} />
                     </div>
                   </div>
-                  <li >
+                  <li>
                     <Link to={navArr[2].link}>{navArr[2].name}</Link>
                   </li>
-                  <li >
+                  <li>
                     <Link to={navArr[3].link}>{navArr[3].name}</Link>
                   </li>
                 </ul>
@@ -220,15 +232,15 @@ function Navbar() {
                     </div>
                   </div>
                   <div className="profile-wrapper">
-                    <Badge size={"small"}>
-                      {/* <Avatar shape="square" size="large" /> */}
-                      {/* <Link to="/auth"> */}
-                      <div onClick={()=> setAuthModal(true)}>
-
+                    <div
+                      className="profile-container"
+                      onClick={() => !token && setAuthModal(true)}
+                    >
+                      <Dropdown overlay={userMenu} placement="bottomLeft">
                         <UserOutlined />
-                      </div>
-                      {/* </Link> */}
-                    </Badge>
+                        {/* <Button>bottomLeft</Button> */}
+                      </Dropdown>
+                    </div>
                   </div>
                 </Col>
               </Row>
@@ -260,7 +272,7 @@ function Navbar() {
 
       <div id="fixed-bar"></div>
 
-      <AuthModal open={authModal} setOpen={(data)=> setAuthModal(data)} />
+      <AuthModal open={authModal} setOpen={(data) => setAuthModal(data)} />
     </>
   );
 }

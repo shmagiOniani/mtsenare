@@ -1,37 +1,75 @@
-import React, { createRef, useState } from "react";
-import { useHistory, Link, useLocation } from "react-router-dom";
-import { Col, Row, Select, Form, Slider, Pagination } from "antd";
-import useTranslation from "../../hooks/useTranslation";
+import React, { useState } from "react";
+import { Col, Row } from "antd";
+import { Helmet } from "react-helmet";
 import Footer from "../footer/Footer";
+import PageHeader from "../../components/pageHeader/PageHeader";
+import UserProfileSidebarCmp from "./UserProfileSidebarCmp";
 import "./UserProfile.scss";
+import UserProfileProductListCmp from "./UserProfileProductListCmp";
+import UserProfileAddressesCmp from "./UserProfileAddressesCmp";
+import UserProfilEditCmp from "./UserProfilEditCmp";
 
 function UserProfile() {
-  const { trans } = useTranslation();
-  const { Option } = Select;
+  const [activeTab, setActiveTab] = useState("my-products");
 
-  let history = useHistory();
-  const location = useLocation();
+  const renderActiveTab = () => {
+    switch (activeTab) {
+      case "my-products":
+        return (
+          <UserProfileProductListCmp title={"ჩემი ატვირთული განცხადებები"} />
+        );
+      case "orders":
+        return <UserProfileProductListCmp title={"შეკვეთები"} />;
+      case "adresses":
+        return <UserProfileAddressesCmp />;
+      case "use-edit":
+        return <UserProfilEditCmp />;
+      // case "logout":
+      //   paramInst = { ...parameters, PhoneNumber: searchValue };
 
-  // history.push('/home');
-  // location.pathname
+      default:
+        break;
+    }
+  };
 
   return (
     <>
-    <div className="page-wrapper">
-      <Row className="page-container">
-        <Col xs={24} className={"page-header"}>
-          <h1>Page Header</h1>
-          <p>Page Description</p>
-        </Col>
-        <Col xs={24} className="user-profile-container">
-
-        
-        </Col>
-        <Col xs={24}>
-          <Footer />
-        </Col>
-      </Row>
-    </div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>პროფილი</title>
+        <link rel="canonical" href="http://mysite.com/product-list" />
+      </Helmet>
+      <div className="page-wrapper" id="user-profile">
+        <PageHeader>
+          <h2>პირადი კაბინეტი</h2>
+        </PageHeader>
+        <Row className="page-container">
+          <Col xs={8}>
+            <UserProfileSidebarCmp
+              activeTab={activeTab}
+              setActiveTab={(value) => setActiveTab(value)}
+            />
+          </Col>
+          <Col xs={16}>
+            <div className="action-value">
+              {renderActiveTab()}
+              {/* {switch (activeTab) 
+                case "my-products":
+                  <UserProfileProductListCmp/>
+                  break;
+              
+                default:
+                  break;
+              } */}
+            </div>
+          </Col>
+        </Row>
+        {/* <Row className="page-container">
+          <Col xs={24}>
+            <Footer />
+          </Col>
+        </Row> */}
+      </div>
     </>
   );
 }

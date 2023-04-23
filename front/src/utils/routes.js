@@ -9,7 +9,8 @@ import {
     Shop,
     ShoppingCart,
     Login,
-    Test
+    Test,
+    UserProfile
   } from "../pages";
 import Auth from "../pages/auth/Auth";
 import ContactUs from "../pages/contactUs/ContactUs";
@@ -28,6 +29,11 @@ import ContactUs from "../pages/contactUs/ContactUs";
     {
       path: "/auth",
       component: Auth,
+      layout: "",
+    },
+    {
+      path: "/my-acount",
+      component: UserProfile,
       layout: "",
     },
     {
