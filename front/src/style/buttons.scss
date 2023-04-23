@@ -1,41 +1,60 @@
 @import "./color.scss";
 
-@mixin filledButton {
-  padding: 10px 40px;
-  height:auto;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 15px;
-  text-align: center;
-  // border-radius: 10px;
-  border-color: transparent;
-  outline: none;
-  display: flex;
+$lg-button-height: 50px;
+$md-button-height: 40px;
+$sm-button-height: 30px;
+
+@mixin filledBtn {
+  background-color: $button-bg !important;
+  border-color: transparent !important;
   color: white;
-  background: $base;
   &:hover {
-    background-color: $base-light;
+    background-color: $base !important;
     color: white;
     cursor: pointer;
-    transition: background-color .3s ease-out;
-    border-color: transparent;
+    transition: background-color 0.3s ease-out;
+    border-color: transparent !important;
   }
   &:active {
-    background-color: $base;
-    // background-color: $base-light!important;
+    background-color: $base !important;
   }
   &:focus {
-    background-color: $base-light!important;
+    background-color: $base-light !important;
   }
   svg {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@mixin defaultOutlinedBtn {
+  border-color: $base !important;
+  color: $base !important;
+
+  &:active {
+    background-color: $base !important;
+    color: white !important;
+  }
+  &:focus {
+    background-color: white !important;
+    color: $base !important;
+  }
+  &:hover {
+    cursor: pointer;
+    transition: background-color 0.3s ease-out;
+    border-color: $base-light !important;
+    background-color: $base !important;
+    color: white !important;
+  }
+  svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
 @mixin outlined {
   padding: 10px 40px;
-  height:auto;
+  height: auto;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 15px;
@@ -46,89 +65,69 @@
   display: flex;
   border: 1px solid #d9d9d9;
   color: $base;
-  transition: all .1s ease-in;
+  transition: all 0.1s ease-in;
+
+  &:active {
+    border-color: white;
+  }
+  &:focus {
+    // color: white;
+    border-color: white;
+  }
   &:hover {
     cursor: pointer;
     color: white;
     background-color: $base;
     border-color: white;
   }
-  &:active {
-    border-color: white;
-  }
-  &:focus {
-    // color: white;
-    border-color: white;
-  }
   svg {
     width: 25px;
     height: 25px;
   }
-}
-
-@mixin cancelOutlined {
-  padding: 10px 40px;
-  height:auto;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 15px;
-  text-align: center;
-  // border-radius: 10px;
-  margin: auto;
-  outline: none;
-  display: block;
-  border: 1px solid #d9d9d9;
-  color: rgb(87, 87, 87);
-  transition: all .1s ease-in;
-  &:hover {
-    cursor: pointer;
-    color: rgb(211, 65, 65);
-    background-color: white;
-    border-color: rgb(211, 65, 65);
-  }
-  &:active {
-    border-color: white;
-  }
-  &:focus {
-    // color: white;
-    border-color: white;
+  svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
-@mixin ghostOutlined {
-  padding: 10px 40px;
-  height:auto;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 15px;
-  text-align: center;
-  // border-radius: 10px;
-  margin: auto;
-  outline: none;
-  display: block;
-  border: 1px solid #d9d9d9;
-  color: rgb(87, 87, 87);
-  transition: all .1s ease-in;
-  &:hover {
-    cursor: pointer;
-    color: rgb(67, 66, 66);
-    background-color: white;
-    border: 1px solid #d9d9d9;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  }
+@mixin ghostOutlinedBtn {
+  border-color: $base !important;
+
   &:active {
-    border-color: white;
+    background-color: $base !important;
   }
   &:focus {
-    // color: white;
-    border-color: white;
+    background-color: $base-light !important;
+  }
+  &:hover {
+    cursor: pointer;
+    transition: background-color 0.3s ease-out;
+    border-color: $base-light !important;
+    color: $base-light !important;
+  }
+}
+
+@mixin dashedOutlinedBtn {
+  border-color: $base !important;
+  &:active {
+    background-color: $base !important;
+  }
+  &:focus {
+    background-color: $base-light !important;
+  }
+  &:hover {
+    cursor: pointer;
+    transition: background-color 0.3s ease-out;
+    border-color: $base-light !important;
+    color: $base-light !important;
   }
 }
 
 @mixin rateSmile {
   color: $base;
-  .ant-rate-star-full, .ant-rate-star-zero {
-    &>div {
+  .ant-rate-star-full,
+  .ant-rate-star-zero {
+    & > div {
       div {
         span {
           svg {
@@ -139,4 +138,66 @@
       }
     }
   }
+}
+
+@mixin cancelOutlined {
+  padding: 10px 40px;
+  height: auto;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 15px;
+  text-align: center;
+  // border-radius: 10px;
+  margin: auto;
+  outline: none;
+  display: block;
+  border: 1px solid #d9d9d9;
+  color: rgb(87, 87, 87);
+  transition: all 0.1s ease-in;
+  &:active {
+    border-color: white;
+  }
+  &:focus {
+    // color: white;
+    border-color: white;
+  }
+  &:hover {
+    cursor: pointer;
+    color: rgb(211, 65, 65);
+    background-color: white;
+    border-color: rgb(211, 65, 65);
+  }
+}
+
+@mixin navigationCircleBtn {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  color: gray;
+  background: #fff;
+  box-shadow: 0 4px 45px 0 rgba(0, 0, 0, 0.09);
+  border-radius: 50%;
+  &:hover {
+    background-color: $base;
+    color: #ffffff;
+  }
+  span {
+    font-size: 41px;
+    margin-bottom: 8px;
+  }
+}
+
+.ant-btn {
+  height: $md-button-height !important;
+}
+
+.ant-btn-lg {
+  height: $lg-button-height !important;
+}
+
+.ant-btn-sm {
+  height: $sm-button-height !important;
 }

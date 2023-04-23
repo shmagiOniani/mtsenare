@@ -12,10 +12,10 @@
         margin: 0 5px!important;
     }
     button:first-child {
-        @include ghostOutlined;
+        @include ghostOutlinedBtn;
     }
     button:last-child {
-        @include filledButton;
+        @include filledBtn;
     }
 
 }

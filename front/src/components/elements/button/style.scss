@@ -1,14 +1,26 @@
+
+@import "../../../style/color.scss";
 @import "../../../style/buttons.scss";
 
 
-
-.ghost{
-  @include ghostOutlined;
-}
-.success {
-  @include filledButton;
+.ant-btn-primary {
+  @include filledBtn;
 }
 
+.ant-btn-ghost {
+  @include ghostOutlinedBtn;
+}
+
+.ant-btn-dashed {
+  @include dashedOutlinedBtn;
+}
+
+.ant-btn-default {
+  @include defaultOutlinedBtn;
+}
+
+
+// CLOSE BUTTON
 
 $button-size: 40px;
 $close-width: ($button-size / 10);
@@ -95,3 +107,4 @@ $close-width: ($button-size / 10);
     }
   }
 }
+

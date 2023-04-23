@@ -175,7 +175,7 @@ $serif: "Lora", serif;
 
   
   .button, button {
-    @include filledButton;
+    @include filledBtn;
     margin: auto;
     margin-top: 3%;
     // background: $white;

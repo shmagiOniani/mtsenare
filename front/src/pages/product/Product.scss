@@ -28,7 +28,7 @@
   justify-content: center;
   align-items: center;
   button {
-    @include filledButton;
+    @include filledBtn;
   }
 }
 .reviews-tab-container {

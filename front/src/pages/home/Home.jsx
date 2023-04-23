@@ -16,7 +16,9 @@ import support from "../../assets/img/icon/support.png";
 import instagram from "../../assets/img/icon/instagram.svg";
 import wappPaper from "../../assets/img/product/cut_bg_01.png";
 import CloseButton from "../../components/elements/button/CloseButton";
+import useCurrentWidth from "../../hooks/useCurrentWidth";
 import "./Home.scss";
+import CustomButton from "../../components/elements/button/CustomButton";
 
 const products = [
   {
@@ -78,7 +80,10 @@ const imgs = [
 ];
 
 function Home() {
+  const { width } = useCurrentWidth();
+
   const [modalOpen, setModalOpen] = useState(true);
+  
   const subscribeRef = useRef(null);
   const handleSubscribe = (data) => {
     console.log(data);
@@ -123,9 +128,9 @@ function Home() {
                 Most <span>Popular</span>
               </div>
               <p>Meet our most lovable plants.</p>
-              <Link to={"/product-list"} className="custom-button">
+              <CustomButton className="custom-button" type={'default'}>
                 <span>shop best sellers</span>
-              </Link>
+              </CustomButton>
             </div>
           </Col>
           <Col xs={18}>
@@ -133,7 +138,17 @@ function Home() {
               <OwlCarousel
                 className="owl-theme"
                 dots={false}
-                items={"3"}
+                items={
+                  width > 1700
+                    ? "4"
+                    : width > 1300
+                    ? "4"
+                    : width > 1000
+                    ? "3"
+                    : width > 700
+                    ? "2"
+                    : "2"
+                }
                 loop
                 margin={40}
                 nav
@@ -220,9 +235,12 @@ function Home() {
                 Best <span>Sellers</span>
               </div>
               <p>Meet our most lovable plants.</p>
-              <Link to={"/product-list"} className="custom-button">
+              {/* <Link to={"/product-list"} className="custom-button">
                 <span>shop best sellers</span>
-              </Link>
+              </Link> */}
+               <CustomButton className="custom-button" type={'default'}>
+                <span>shop best sellers</span>
+              </CustomButton>
             </div>
           </Col>
           <Col xs={18}>

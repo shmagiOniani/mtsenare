@@ -42,7 +42,7 @@
   }
 }
 @mixin p {
-  font-size: clamp(7px, 2.5vw, 12px) !important;
+  font-size: clamp(7px, 2.5vw, 14px) !important;
   font-family: "Poppins-Medium";
   color: $paragraph;
   &:lang(ka) {

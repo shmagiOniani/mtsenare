@@ -1,5 +1,7 @@
 @import "./color.scss";
 
+$input-height: 50px;
+
 @mixin searchInput {
   input {
     border-radius: 5px;
@@ -32,10 +34,7 @@
     align-items: center !important;
   }
 
-  .ant-select-selector {
-    border-radius: 5px;
-    height: 50px !important;
-  }
+
   &:hover {
     .ant-select-selector {
       border-color: $base;
@@ -102,7 +101,7 @@
 @mixin textInput {
   border-radius: 5px;
   font-size: 15px;
-  height: 50px;
+  height: $input-height;
   &:hover {
     border-color: $base-dark !important;
   }
@@ -127,7 +126,7 @@
   border-radius: 5px;
   font-size: 15px;
   width: 100% !important;
-  height: 50px;
+  height: $input-height;
   display: flex !important;
   align-items: center !important;
   &:hover {
@@ -154,7 +153,7 @@
   border-radius: 5px;
   font-size: 15px;
   width: 100% !important;
-  height: 50px;
+  height: $input-height;
   display: flex !important;
   align-items: center !important;
   &:hover {
@@ -182,7 +181,9 @@
   padding: 10px 5px !important;
   // border-radius: 10px !important;
 }
-
+.ant-select-selector {
+  height: $input-height !important;
+}
 .ant-select-item-option {
   margin-bottom: 5px;
   background-color: transparent !important;

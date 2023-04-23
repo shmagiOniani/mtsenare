@@ -115,7 +115,7 @@ function Navbar() {
                   >
                     <SearchOutlined />
                     <Form.Item name={"search"}>
-                      <Input placeholder="Search" />
+                      <Input placeholder="ძებნა" />
                     </Form.Item>
 
                   </Form>

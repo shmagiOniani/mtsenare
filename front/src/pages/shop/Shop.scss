@@ -51,7 +51,7 @@ $container-padding: 0 100px;
             justify-content: flex-end;
             align-items: flex-end;
             button {
-              @include filledButton;
+              @include filledBtn;
             }
             .notification-bell {
               width: 60px;
