@@ -236,7 +236,7 @@ function Navbar() {
                       className="profile-container"
                       onClick={() => !token && setAuthModal(true)}
                     >
-                      <Dropdown overlay={userMenu} placement="bottomLeft">
+                      <Dropdown overlay={token ? userMenu :""} placement="bottomLeft">
                         <UserOutlined />
                         {/* <Button>bottomLeft</Button> */}
                       </Dropdown>

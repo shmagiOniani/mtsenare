@@ -9,12 +9,7 @@ $container-padding: 0 100px;
 
 .page-wrapper {
   background-color: white;
-  .add-button {
-    position: fixed;
-    z-index: 9999;
-    bottom: 20px;
-    right: 20px;
-  }
+ 
   .page-container {
     max-width: 80vw;
   }

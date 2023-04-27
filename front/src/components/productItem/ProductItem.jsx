@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Col } from "antd";
 import {  useHistory } from "react-router-dom";
 
-import "./ProductItem.scss"
 import CloseButton from "../elements/button/CloseButton";
 import API from "../../utils/services/API";
+import "./ProductItem.scss"
 
 function ProductItem({product, imgSrc, xsSize, smSize, mdSize, lgSize, lxSize, refresh}) {
     let history = useHistory();

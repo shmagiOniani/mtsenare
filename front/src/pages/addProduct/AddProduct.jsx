@@ -2,7 +2,17 @@ import React, { useState, useRef } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { Editor } from "@tinymce/tinymce-react";
-import { Col, Row, Form, Upload, Tabs, InputNumber, Input, Button } from "antd";
+import {
+  Col,
+  Row,
+  Form,
+  Upload,
+  Tabs,
+  InputNumber,
+  Input,
+  Button,
+  Tooltip,
+} from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import TextArea from "antd/lib/input/TextArea";
 import ImgCrop from "antd-img-crop";
@@ -12,6 +22,7 @@ import ImageUpload from "../../components/imageUpload/ImageUpload";
 
 import "./AddProduct.scss";
 import CustomButton from "../../components/elements/button/CustomButton";
+import PageHeader from "../../components/pageHeader/PageHeader";
 
 const imgs = [
   "https://fiorello.qodeinteractive.com/wp-content/uploads/2018/04/shop-category-img-1.jpg",
@@ -56,7 +67,7 @@ function AddProduct() {
     let description = descRef.current.getContent();
     // let details = detailsRef.current.getContent();
 
-    console.log("values", { ...values, description,  });
+    console.log("values", { ...values, description });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -71,6 +82,9 @@ function AddProduct() {
 
   return (
     <div className="product-page-wrapper add-product-page">
+      <PageHeader>
+        <h2 style={{ textAlign: "center" }}>{trans("add_poduct")}</h2>
+      </PageHeader>
       <Form
         form={form}
         name="basic"
@@ -81,25 +95,14 @@ function AddProduct() {
         autoComplete="off"
         layout="vertical"
       >
-        {/* <div className="submit-section">
-          <CustomButton
-            icon={<UploadOutlined />}
-            htmlType="submit"
-          ></CustomButton>
-        </div> */}
-
-        <Button
-          className={"submit-section"}
-          htmlType={"submit"}
-          icon={<UploadOutlined />}
-        >
-          {/* {children} */}
-        </Button>
-
+        <Tooltip title="ატვირთვა">
+          <div className="add-button">
+            <CustomButton htmlType={"submit"} size={"large"} type={"default"}>
+              <UploadOutlined />
+            </CustomButton>
+          </div>
+        </Tooltip>
         <Row className="page-container">
-          <Col xs={24} className={"page-header"}>
-            <h2>{trans("add_poduct")}</h2>
-          </Col>
           <Col xs={24}>
             <Row justify={"space-between"}>
               <Col xs={24} sm={12}>

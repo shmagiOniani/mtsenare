@@ -48,6 +48,12 @@ $container-padding: 0 20px !important;
   }
   .action-value {
     #user-profile-product-list {
+      .add-button {
+        position: fixed;
+        z-index: 9999;
+        bottom: 20px;
+        right: 20px;
+      }
     }
     #user-profile-addresses {
       .address-card-container {
@@ -71,3 +77,4 @@ $container-padding: 0 20px !important;
     #user-profile-edit {}
   }
 }
+

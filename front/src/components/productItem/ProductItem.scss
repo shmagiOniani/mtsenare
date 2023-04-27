@@ -3,6 +3,10 @@
 @import "../../style/mixins.scss";
 @import "../../style/variables.scss";
 
+.product-list-page {
+ 
+
+
 .category-item {
   width: 100%;
   &:hover {
@@ -20,6 +24,8 @@
     }
   }
   .item-container {
+    max-width: 280px;
+    margin: auto;
     position: relative;
     // border-radius: 20px;
     overflow: hidden;
@@ -94,4 +100,8 @@
       }
     }
   }
+}
+// .section-header {
+//   height: 325px!important;
+// }
 }

@@ -12,7 +12,6 @@ import {
   Tooltip,
   Button,
 } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
 import {
   two,
   five,
@@ -83,7 +82,7 @@ function ProductList() {
   let history = useHistory();
 
   const [categoryList, setCategoryList] = useState([]);
-  const [openForm, setOpenForm] = useState(false);
+
   const [maxPrice, setMaxPrice] = useState(350);
   const [minPrice, setMinPrice] = useState(150);
   const [searchVal, setSearchVal] = useState("");
@@ -126,9 +125,7 @@ function ProductList() {
     setHideSearch(false);
   };
 
-  const handleOpenAddForm = () => {
-    setOpenForm(!openForm);
-  };
+
 
   const getProductList = () => {
     API.get(`/api/products?all=true`).then((res) => {
@@ -148,20 +145,8 @@ function ProductList() {
         <title>Product list</title>
         <link rel="canonical" href="http://mysite.com/product-list" />
       </Helmet>
-      <div className="page-wrapper">
-        <div className="add-button">
-          <Tooltip title="ატვირთვა">
-            <CustomButton size={"large"} type={'default'} onClick={() => handleOpenAddForm()}>
-              <UploadOutlined />
-            </CustomButton>
-            {/* <Button
-              onClick={() => handleOpenAddForm()}
-              shape="circle"
-              size="large"
-              icon={<UploadOutlined />}
-            /> */}
-          </Tooltip>
-        </div>
+      <div className="page-wrapper product-list-page">
+       
         <PageHeader>
         <h2>Shop</h2>
             <Row justify="center" style={{ width: "100%" }}>
@@ -398,11 +383,7 @@ function ProductList() {
           </Row>
         </div>
       </div>
-      <AddProduct
-        open={openForm}
-        setOpen={(status) => setOpenForm(status)}
-        refresh={() => getProductList()}
-      />
+     
     </>
   );
 }

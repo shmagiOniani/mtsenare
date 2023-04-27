@@ -8,8 +8,11 @@ import "./UserProfile.scss";
 import UserProfileProductListCmp from "./UserProfileProductListCmp";
 import UserProfileAddressesCmp from "./UserProfileAddressesCmp";
 import UserProfilEditCmp from "./UserProfilEditCmp";
+import { useHistory } from "react-router-dom";
 
 function UserProfile() {
+  let history = useHistory();
+
   const [activeTab, setActiveTab] = useState("my-products");
 
   const renderActiveTab = () => {
@@ -24,13 +27,15 @@ function UserProfile() {
         return <UserProfileAddressesCmp />;
       case "use-edit":
         return <UserProfilEditCmp />;
-      // case "logout":
-      //   paramInst = { ...parameters, PhoneNumber: searchValue };
-
-      default:
-        break;
+      case "logout":
+        logout()
     }
   };
+
+  const logout = () => {
+    localStorage.removeItem("token")
+    history.push('/home');
+  } 
 
   return (
     <>
@@ -53,14 +58,7 @@ function UserProfile() {
           <Col xs={16}>
             <div className="action-value">
               {renderActiveTab()}
-              {/* {switch (activeTab) 
-                case "my-products":
-                  <UserProfileProductListCmp/>
-                  break;
-              
-                default:
-                  break;
-              } */}
+             
             </div>
           </Col>
         </Row>
