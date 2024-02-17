@@ -156,6 +156,8 @@ function Home() {
                 {products.map((product, ind) => {
                   return (
                     <ProductItem
+                    hasSlider={false}
+
                       product={product}
                       key={ind}
                       id={ind}
@@ -248,7 +250,17 @@ function Home() {
               <OwlCarousel
                 className="owl-theme"
                 dots={false}
-                items={"3"}
+                items={
+                  width > 1700
+                    ? "4"
+                    : width > 1300
+                    ? "4"
+                    : width > 1000
+                    ? "3"
+                    : width > 700
+                    ? "2"
+                    : "2"
+                }
                 loop
                 margin={40}
                 nav
@@ -256,6 +268,7 @@ function Home() {
                 {products.map((product, ind) => {
                   return (
                     <ProductItem
+                    hasSlider={false}
                       product={product}
                       key={ind}
                       id={ind}

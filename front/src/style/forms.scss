@@ -123,12 +123,12 @@ $input-height: 50px;
 }
 
 @mixin numberInput {
-  border-radius: 5px;
   font-size: 15px;
   width: 100% !important;
   height: $input-height;
   display: flex !important;
   align-items: center !important;
+  overflow: hidden;
   &:hover {
     border-color: $base-dark !important;
   }
@@ -177,9 +177,9 @@ $input-height: 50px;
 }
 
 .ant-select-dropdown {
-  border: 1px solid $base;
+  // border: 1px solid $base;
   padding: 10px 5px !important;
-  // border-radius: 10px !important;
+  border-radius: 10px !important;
 }
 .ant-select-selector {
   height: $input-height !important;

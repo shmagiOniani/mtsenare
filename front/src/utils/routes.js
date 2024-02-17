@@ -10,7 +10,7 @@ import {
     ShoppingCart,
     Login,
     Test,
-    UserProfile
+    UserProfile,
   } from "../pages";
 import Auth from "../pages/auth/Auth";
 import ContactUs from "../pages/contactUs/ContactUs";

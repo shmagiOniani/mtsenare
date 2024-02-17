@@ -348,8 +348,8 @@ function ProductList() {
                         <ProductItem
                           xsSize={24}
                           smSize={12}
-                          mdSize={12}
-                          lgSize={8}
+                          mdSize={8}
+                          lgSize={6}
                           key={product._id || ind}
                           // imgSrc={`../../assets/img/plant-data/uploads/${product.images[1]}`}
                           imgSrc={product.image}

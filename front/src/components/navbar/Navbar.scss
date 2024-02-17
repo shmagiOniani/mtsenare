@@ -1,6 +1,6 @@
 @import "../../style/color.scss";
 @import "../../style/buttons.scss";
-// @import "../../style/fonts-mixins.scss";
+@import "../../style/forms.scss";
 
 .navbar-wrapper {
   .logo-container {
@@ -20,31 +20,7 @@
       }
     }
   }
-  .search-container {
-    // width: 300px;
-    .ant-form {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      & > span {
-        margin-right: 15px;
-        font-size: 20px;
-        transform: scaleX(-1);
-      }
-      .ant-form-item {
-        margin: 0;
-        input {
-          border: none;
-          &:focus {
-            box-shadow: none;
-          }
-        }
-      }
-    }
-    .logo-container {
-      padding: 0;
-    }
-  }
+
   .small-logo {
     &:hover {
       cursor: pointer;
@@ -98,33 +74,7 @@
       }
     }
   }
-  .cartside-search {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .search-container {
-      position: relative;
-      span {
-        font-size: 22px;
-        margin-right: 17px;
-        margin-top: 10px;
-      }
-      .search-form {
-        position: absolute;
-        z-index: 222;
-        top: 75px;
-        right: 0;
-        width: 200px;
-        // border: 1px solid $light-gray-border;
-        height: 0px;
-        overflow: hidden;
-        transition: all 0.3s ease-in-out;
-      }
-      .active-form {
-        height: 100% !important;
-      }
-    }
-  }
+
   .cart-wrapper {
     position: relative;
     display: flex;

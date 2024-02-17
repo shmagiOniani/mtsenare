@@ -9,15 +9,22 @@
 
 .num-input {
   @include numberInput;
+  border-radius: 15px!important
 }
 .date-input {
-    @include dateInput;
+  @include dateInput;
+  border-radius: 15px!important
   }
 .text-input {
   @include textInput;
+  border-radius: 15px!important
 }
 .select-input {
   @include selectInput;
+}
+
+.ant-select-selector{ 
+  border-radius: 15px!important
 }
 
 

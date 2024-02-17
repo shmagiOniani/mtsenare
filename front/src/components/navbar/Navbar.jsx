@@ -12,6 +12,7 @@ import logo from "../../assets/img/logo.png";
 import "./Navbar.scss";
 import AuthModal from "../modal/authModal/AuthModal";
 
+const { Search } = Input;
 const token = localStorage.getItem("token");
 
 function Navbar() {
@@ -91,9 +92,11 @@ function Navbar() {
   ];
 
   const userMenu = (
-    <Menu >
+    <Menu>
       <Menu.Item key="Order Tracking">Order Tracking</Menu.Item>
-      <Menu.Item key="My Acount"><Link to={"my-acount"}>My Acount</Link></Menu.Item>
+      <Menu.Item key="My Acount">
+        <Link to={"my-acount"}>My Acount</Link>
+      </Menu.Item>
       <Menu.Item key="Checkout">Checkout</Menu.Item>
       <Menu.Item key="Whishlist">Whishlist</Menu.Item>
     </Menu>
@@ -116,9 +119,17 @@ function Navbar() {
         <Col sm={24}>
           <Row justify={"space-around"} align={"middle"} gutter={[30, 30]}>
             <Col xs={6}>
-              {true ? (
-                <div className="search-container">
-                  <Form
+              {/* {true ? (
+                <div className="search-container"> */}
+                  {/* <Search
+                    className="custom-search"
+                    placeholder="input search text"
+                    onSearch={onSearch}
+                    style={{
+                      width: 200,
+                    }}
+                  /> */}
+                  {/* <Form
                     layout={"horizontal"}
                     // form={form}
                     initialValues={{
@@ -130,15 +141,15 @@ function Navbar() {
                     <Form.Item name={"search"}>
                       <Input placeholder="ძებნა" />
                     </Form.Item>
-                  </Form>
-                </div>
+                  </Form> */}
+                {/* </div>
               ) : (
                 <div className="small-logo" onClick={toHome}>
                   <div className="logo">
                     <img src={logo} alt={"logo"} />
                   </div>
                 </div>
-              )}
+              )} */}
             </Col>
             <Col xs={12}>
               <div className="navigation-container">
@@ -172,30 +183,8 @@ function Navbar() {
             </Col>
             <Col xs={6}>
               <Row justify={"end"}>
-                <Col className={"cartside-search"}>
-                  {location.pathname !== "/home" ? (
-                    <div className="search-container">
-                      {/* <SearchOutlined onClick={() => setSearchOpen(!searchOpen)} /> */}
-
-                      {/* <Form
-                        className={`search-form ${
-                          searchOpen ? "active-form" : ""
-                        }`}
-                        layout={"horizontal"}
-                        form={form}
-                        initialValues={{
-                          layout: "horizontal",
-                        }}
-                        onFinish={onSearch}
-                      >
-                        <Form.Item name={"search"}>
-                          <Input placeholder="Search" />
-                        </Form.Item>
-                      </Form> */}
-                    </div>
-                  ) : (
-                    ""
-                  )}
+                <Col>
+             
                 </Col>
                 <Col xs={12} style={{ display: "flex" }}>
                   <div className="cart-wrapper">
@@ -236,7 +225,10 @@ function Navbar() {
                       className="profile-container"
                       onClick={() => !token && setAuthModal(true)}
                     >
-                      <Dropdown overlay={token ? userMenu :""} placement="bottomLeft">
+                      <Dropdown
+                        overlay={token ? userMenu : ""}
+                        placement="bottomLeft"
+                      >
                         <UserOutlined />
                         {/* <Button>bottomLeft</Button> */}
                       </Dropdown>

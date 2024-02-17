@@ -224,6 +224,7 @@ $sm-button-height: 30px;
 
 .ant-btn {
   height: $md-button-height !important;
+  border-radius: $md-button-height / 3;
 }
 
 .ant-btn-lg {

@@ -6,6 +6,8 @@ import Footer from "../footer/Footer";
 import "./Test.scss";
 import CustomInput from "../../components/elements/input/CustomInput";
 import CustomButton from "../../components/elements/button/CustomButton";
+import { products } from "../../assets/fakeData/fakeData";
+import ProductItem from "../../components/productItem/ProductItem";
 // import { Box } from "@mui/material";
 
 function Test() {
@@ -192,7 +194,28 @@ function Test() {
             </Col>
           </Row>
         </Col>
-        <Col></Col>
+        <Col xs={24} className="view-testing-container">
+          <h2>
+            <u>ქარდები</u>
+          </h2>
+
+          <Row gutter={[30, 0]}>
+            {products.filter((e, i)=> i<4).map((product, ind) => {
+              return (
+                <ProductItem
+                  xsSize={24}
+                  smSize={12}
+                  mdSize={12}
+                  lgSize={6}
+                  key={product._id || ind}
+                  // imgSrc={`../../assets/img/plant-data/uploads/${product.images[1]}`}
+                  imgSrc={product.image}
+                  product={product}
+                />
+              );
+            })}
+          </Row>
+        </Col>
         <Col xs={24}>
           <Footer />
         </Col>

@@ -321,6 +321,7 @@ function Product() {
                 {related.map((product, ind) => {
                   return (
                     <ProductItem
+                    hasSlider={false}
                       product={product}
                       key={ind}
                       id={ind}

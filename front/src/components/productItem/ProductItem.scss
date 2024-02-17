@@ -3,26 +3,11 @@
 @import "../../style/mixins.scss";
 @import "../../style/variables.scss";
 
-.product-list-page {
- 
-
+// .product-list-page {
 
 .category-item {
   width: 100%;
-  &:hover {
-    cursor: context-menu;
-    .category-desc {
-      div {
-        // transform: translateX(-20px) !important;
-        // span:first-child {
-        //   opacity: 0 !important;
-        // }
-        // span:last-child {
-        //   opacity: 1 !important;
-        // }
-      }
-    }
-  }
+ 
   .item-container {
     max-width: 280px;
     margin: auto;
@@ -31,12 +16,19 @@
     overflow: hidden;
     // box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     background-color: white;
+    // border-bottom-right-radius: 30px;
+    // border-bottom-left-radius: 30px;  
+    // border: 1px solid transparent;
+    border-radius: 30px;
+    &:hover  {
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
     .sale-sign {
       position: absolute;
-      top: 25px;
+      top: 60px;
       right: 0;
       background-color: red;
-      z-index: 1;
+      z-index: 3;
       color: wheat;
       font-weight: 800;
       div {
@@ -61,32 +53,102 @@
       }
     }
     .img-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 260px;
-      overflow: hidden;
-      margin-bottom: 15px;
-      @include md {
-        height: 275px;
-      }
+      
       &:hover {
         cursor: pointer;
         // img {
         //   transform: scale(1.2) !important;
         // }
       }
-      img {
-        transform: scale(1);
-        transition: all 0.3s ease-in-out;
-        width: auto;
-        height: 100%;
+      .owl-carousel {
+        position: relative;
+           
+        display: flex;
+        flex-direction: column-reverse;
+        &:hover {
+          button {
+            opacity: 1 !important;
+          }
+          .owl-dots {
+            opacity: 1 !important;
+          }
+        }
+        .owl-stage {
+          padding: 5px 0;
+        }
+        .owl-nav {
+          position: absolute;
+          top: 50%;
+          left: -42%;
+          transform: translateX(50%);
+          height: 0px;
+          width: 100%;
+          margin-left: -22px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          button {
+            opacity: 0;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease-in-out;
+            color: gray;
+            background: #fff;
+            box-shadow: 0 4px 45px 0 rgba(0, 0, 0, 0.09);
+            border-radius: 50%;
+            &:hover {
+              background-color: $base;
+              color: #ffffff;
+            }
+            span {
+              font-size: 41px;
+              margin-bottom: 8px;
+            }
+          }
+        }
+        .owl-dots {
+          opacity: 0;
+          position: absolute;
+          transform: translateX(-50%);
+          left: 50%;
+          bottom: 20px;
+        }
+      }
+      .img-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        border-top-right-radius: 30px;
+        border-top-left-radius: 30px;
+        @include md {
+          height: 200px;
+        }
+
+        img {
+          transform: scale(1);
+          transition: all 0.3s ease-in-out;
+          width: auto;
+          height: 100%;
+        }
       }
     }
     .category-desc {
       display: flex;
       flex-direction: column;
+      padding: 0 10px;
+      // border-bottom-right-radius: 30px;
+      // border-bottom-left-radius: 30px;  
+      // border: 1px solid transparent;
+      // border-top: none;
+      &:hover {
+        cursor: pointer;
+      }
       h5 {
         color: #313232;
       }
@@ -104,4 +166,4 @@
 // .section-header {
 //   height: 325px!important;
 // }
-}
+// }

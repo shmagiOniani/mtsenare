@@ -54,7 +54,46 @@ function App() {
     setFontColor(localStorage.getItem("fontcolor"));
   }, []);
 
+  // // const [touchPosition, setTouchPosition] = useState({ x: 0, y: 0 });
+  // const [startX, setStartX]= useState(0)
+  // const [endX, setEndX]= useState(0)
+
+  // const handleTouchStart = (e) => {
+  //   const touch = e.touches[0];
+  //   setStartX(touch.clientX );
+  //   console.log("handleTouchStart",touch.clientX);
+  // };
+  
+  // const handleTouchMove = (e) => {
+  //   const touch = e.touches[0];
+  //   setEndX(touch.clientX);
+  //   console.log("handleTouchMove",touch.clientX);
+  // };
+  
+  // const handleTouchEnd = () => {
+  //   // Touch end logic, if needed
+  //   console.log("touchPosition",startX,"---",
+  //   endX,);
+  // };
+  
+
   return (
+    <>
+
+    {/* <div
+      onTouchStartCapture={(e) => console.log(e)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onTouch
+      style={{
+        width: "200px",
+        height: "200px",
+        background: "lightblue",
+        position: "relative",
+      }}
+    ></div> */}
+
     <Router>
       <ScrollToTop />
       <div className={`app`}>
@@ -94,7 +133,7 @@ function App() {
           </Switch>
         </div>
       </div>
-    </Router>
+    </Router></>
   );
 }
 
