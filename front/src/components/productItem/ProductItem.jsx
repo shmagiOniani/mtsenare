@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Col } from "antd";
+import { Col, Tooltip } from "antd";
 import { useHistory } from "react-router-dom";
 
-import CloseButton from "../elements/button/CloseButton";
+import { HeartOutlined } from "@ant-design/icons";
 import API from "../../utils/services/API";
 import OwlCarousel from "react-owl-carousel";
 
-import "./ProductItem.scss";
 import useCurrentWidth from "../../hooks/useCurrentWidth";
+import CustomButton from "../elements/button/CustomButton";
+import "./ProductItem.scss";
 
 function ProductItem({
   product,
@@ -18,25 +19,32 @@ function ProductItem({
   lgSize,
   lxSize,
   refresh,
-  hasSlider= true,
+  hasSlider = true,
 }) {
   const { width } = useCurrentWidth();
   let history = useHistory();
   const [productData, setProductData] = useState({});
   // const { addToCart } = useCart(product._id);
 
-  const toProduct = (id) => {
-    history.push(`/product/{id}`);
+  const toProduct = (e, id) => {
+    e.preventDefault()
+
+    history.push(`/product/${id}`);
   };
 
-  useEffect(() => {
-    setProductData(product);
-  }, []);
-
+  
   const handleDelete = (id) => {
     API.delete(`/api/products/${id}`).then((res) => refresh());
   };
 
+  const handleAddFavorite= (e, product)=> {
+    e.stopPropagation();
+    console.log(product);
+  }
+  
+  useEffect(() => {
+    setProductData(product);
+  }, []);
   return (
     <Col
       xs={xsSize}
@@ -50,7 +58,7 @@ function ProductItem({
       {/* <div onClick={()=> handleDelete(productData._id)} style={{position: "absolute", zIndex: "900"}}>
           <CloseButton />
         </div> */}
-      <div className="item-container" >
+      <div className="item-container">
         <div className="sale-sign">
           <div>sale</div>
         </div>
@@ -80,10 +88,23 @@ function ProductItem({
             </div>
           )}
         </div>
-        <div className="category-desc" onClick={() => toProduct("product?.name")}>
+        <div
+          className="category-desc"
+          onClick={(e) => toProduct(e, product._id)}
+        >
           <h4>{productData.name || "სახელი"}</h4>
           <div className="price-cart">
             <h5 className="price">100$</h5>
+            <Tooltip title="ფავორიტებში დამატება">
+              <CustomButton
+                size={"large"}
+                type={"default"}
+                className={"favorite-btn"}
+                onClick={(e)=> handleAddFavorite(e, product)}
+              >
+                <HeartOutlined />
+              </CustomButton>
+            </Tooltip>
             {/* <span className="cart" onClick={() => console.log(productData)}>კალათაში დამატება</span> */}
           </div>
         </div>

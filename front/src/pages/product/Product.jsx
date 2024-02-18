@@ -178,14 +178,14 @@ function Product() {
                       <CaretRightOutlined />
                     </div>
                   </div>
-                  <CustomButton
+                  {/* <CustomButton
                     className="add-button"
                     htmlType={"submit"}
                     type={"primary"}
                     size={"large"}
                   >
                     კალათაში დამატება
-                  </CustomButton>
+                  </CustomButton> */}
                   <Tooltip title="ფავორიტებში დამატება">
                     <CustomButton
                       size={"large"}
