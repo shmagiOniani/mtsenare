@@ -14,6 +14,8 @@ import avatar from "../../assets/img/avatar.png";
 
 import Footer from "../footer/Footer";
 import "./Shop.scss";
+import CustomButton from "../../components/elements/button/CustomButton";
+import CustomInput from "../../components/elements/input/CustomInput";
 
 const imgs = [
   {
@@ -77,18 +79,24 @@ function Shop() {
                   <div className="action-container">
                     <Rate
                       defaultValue={3}
+                      size={""}
                       character={({ index }) => customIcons[index + 1]}
                     />
                   </div>
                 </Col>
                 <Col className="action-wrapper" xs={24} md={12}>
                   <div className="action-container">
-                    <Button icon={<MessageOutlined />} size={"large"}>
-                      კონტაქტი
-                    </Button>
                     <div className="notification-bell">
                       <BellOutlined />
                     </div>
+                    <CustomButton
+                      icon={<MessageOutlined />}
+                      type={"default"}
+                      htmlType="button"
+                      size={"large"}
+                    >
+                      კონტაქტი
+                    </CustomButton>
                   </div>
                 </Col>
               </Row>
@@ -139,9 +147,21 @@ function Shop() {
                   <Row>
                     <Col xs={24}>
                       <div className="comment-iinput">
-                        <TextArea
+                        {/* <TextArea
                           placeholder={trans("product_desc")}
                           rows={5}
+                        /> */}
+                        <CustomInput
+                          inputArr={[
+                            {
+                              name: "inputName",
+                              type: "text-area",
+                              rows: 5,
+                              label: "ლეიბლი",
+                              placeholder: "პლეისჰოლდერი",
+                              xs: 24,
+                            }
+                          ]}
                         />
                       </div>
                       <div className="comment-button">

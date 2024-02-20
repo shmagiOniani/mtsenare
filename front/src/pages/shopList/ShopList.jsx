@@ -7,6 +7,7 @@ import Footer from "../footer/Footer";
 import avatar from "../../assets/img/avatar.png";
 
 import "./ShopList.scss";
+import CustomButton from "../../components/elements/button/CustomButton";
 
 const shops = [
   {
@@ -124,20 +125,20 @@ function ShopList() {
               <Col xs={24}>
                 <div className="list-style">
                   <div className="buttons">
-                    <Button
-                      className={listStyle === "map" ? "active-btn" : ""}
+                    <CustomButton
+                      type={listStyle === "map" ? "primary" : "default"}
                       onClick={() => setListStyle("map")}
                       icon={<GlobalOutlined />}
                     >
                       რუკა
-                    </Button>
-                    <Button
-                      className={listStyle === "list" ? "active-btn" : ""}
+                    </CustomButton>
+                    <CustomButton
+                      type={listStyle === "list" ? "primary" : "default"}
                       onClick={() => setListStyle("list")}
                       icon={<UnorderedListOutlined />}
                     >
                       სია
-                    </Button>
+                    </CustomButton>
                   </div>
                   <div className="input-wrapper">
                     {/* <Select

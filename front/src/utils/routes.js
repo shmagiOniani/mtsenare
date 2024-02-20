@@ -8,7 +8,6 @@ import {
     ShopList,
     Shop,
     ShoppingCart,
-    Login,
     Test,
     UserProfile,
   } from "../pages";
@@ -32,15 +31,11 @@ import ContactUs from "../pages/contactUs/ContactUs";
       layout: "",
     },
     {
-      path: "/my-acount",
+      path: "/my-account",
       component: UserProfile,
       layout: "",
     },
-    {
-      path: "/login",
-      component: Login,
-      layout: "",
-    },
+ 
     {
       path: "/contact",
       component: ContactUs,

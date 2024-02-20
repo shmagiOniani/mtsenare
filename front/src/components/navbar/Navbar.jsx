@@ -95,7 +95,7 @@ function Navbar() {
     <Menu>
       <Menu.Item key="Order Tracking">Order Tracking</Menu.Item>
       <Menu.Item key="My Acount">
-        <Link to={"my-acount"}>My Acount</Link>
+        <Link to={"/my-account"}>My Acount</Link>
       </Menu.Item>
       <Menu.Item key="Checkout">Checkout</Menu.Item>
       <Menu.Item key="Whishlist">Whishlist</Menu.Item>

@@ -29,6 +29,14 @@ function Test() {
     },
     {
       name: "inputName",
+      type: "text-area",
+      rows: 5,
+      label: "ლეიბლი",
+      placeholder: "პლეისჰოლდერი",
+      xs: 24,
+    },
+    {
+      name: "inputName",
       type: "number",
       label: "ლეიბლი",
       placeholder: "პლეისჰოლდერი",

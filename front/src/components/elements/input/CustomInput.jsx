@@ -2,6 +2,7 @@ import React from "react";
 import { Col, DatePicker, Form, Input, InputNumber, Select } from "antd";
 import useTranslation from "../../../translation/useTranslation";
 import "./CustomInput.scss";
+import TextArea from "antd/lib/input/TextArea";
 
 function CustomInput({ inputArr }) {
   const { trans } = useTranslation();
@@ -40,6 +41,12 @@ function CustomInput({ inputArr }) {
               ) : item.type === "text" ? (
                 <Input
                   required={false}
+                  className="text-input"
+                  placeholder={item.placeholder}
+                />
+              ): item.type === "text-area" ? (
+                <TextArea
+                rows={item.rows || 5}
                   className="text-input"
                   placeholder={item.placeholder}
                 />

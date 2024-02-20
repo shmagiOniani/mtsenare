@@ -8,6 +8,5 @@ export { default as AddProduct } from "./addProduct/AddProduct";
 export { default as ShopList } from "./shopList/ShopList";
 export { default as Shop } from "./shop/Shop";
 export { default as Auth } from "./auth/Auth";
-export { default as Login } from "./login/Login";
 export {default as UserProfile} from "./user-profile/UserProfile"
 export { default as ShoppingCart } from "./shoppingCart/ShoppingCart";

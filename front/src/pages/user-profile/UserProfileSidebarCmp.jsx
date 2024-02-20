@@ -5,17 +5,18 @@ function UserProfileSidebarCmp({ activeTab, setActiveTab }) {
   return (
     <div id="user-profile-action-list">
       <Menu>
-        <Menu.Item onClick={() => setActiveTab("orders")} key={"orders"}>
-          <div className="nav-item">
-            <h5>შეკვეთები</h5>
-          </div>
-        </Menu.Item>
+        
         <Menu.Item
           onClick={() => setActiveTab("my-products")}
           key={"my-products"}
         >
           <div className="nav-item">
             <h5>განცხადებები</h5>
+          </div>
+        </Menu.Item>
+        <Menu.Item onClick={() => setActiveTab("orders")} key={"orders"}>
+          <div className="nav-item">
+            <h5>შეკვეთები</h5>
           </div>
         </Menu.Item>
         <Menu.Item onClick={() => setActiveTab("adresses")} key={"adresses"}>
