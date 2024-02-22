@@ -6,7 +6,7 @@ import { assertFound } from '../../helpers/db-result-handler';
 
 export function getByQuery({find = {}, or = [{}], sort = {_id: -1}, offset = 0, limit = 10}) {
   return Promise.all([
-    Model.find(find).lean().or(or).sort(sort).skip(offset).limit(limit),
+    Model.find(find).lean().or(or).sort(sort),
     Model.find(find).lean().or(or).countDocuments()
   ]).spread((items: any[], numTotal: number) => ({items, numTotal}));
 }

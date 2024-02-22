@@ -4,6 +4,9 @@ import * as librariesParser  from './libraries.parser';
 
 
 const librariesRouter = Router();
+// 
+librariesRouter.get('/:name', getByCode);
+
 
 librariesRouter.get('/', librariesParser.parseGetByQuery, getByQuery);
 librariesRouter.post('/',test, librariesParser.parseCreate, create);
@@ -21,6 +24,17 @@ function test(req: Request, res: Response, next: NextFunction) {
 export default librariesRouter;
 
 // =============== GET ===============
+
+async function getByCode(req: Request, res: Response, next: NextFunction) {
+  const { name } = req.params;
+  try {
+    const librariessData = await librariesDao.getByCode(name);
+    res.json(librariessData.library);
+  } catch (e) {
+    next(e);
+  }
+}
+
 
 async function getByQuery(req: Request, res: Response, next: NextFunction) {
   

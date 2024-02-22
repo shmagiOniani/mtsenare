@@ -14,7 +14,7 @@ function handleError(err: any) {
 
   if (config.env === 'production') {
     send({
-      email: 'lucymailertest@gmail.com',
+      email: 'onianishmagi@gmail.com',
       content,
       subject: `${config.url.host} - Uncaught Exception`,
     });

@@ -16,6 +16,11 @@ export function getById(id: any): any {
     .then(assertFound(`libraries (id ${id}) was not found`));
 }
 
+export function getByCode(code: string): any {
+  return Model.findOne({name: code}).lean()
+    .then(assertFound(`libraries (code ${code}) was not found`));
+}
+
 // =============== Setters ===============
 
 export function create(data: any) {
