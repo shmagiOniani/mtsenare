@@ -4,7 +4,7 @@ import * as User from './user.dao';
 import * as parser from './user.parser';
 import * as validator from './user.validator';
 import config from '../../config/environment';
-import { roles } from '../../constants/user';
+import { roles, userTypes } from '../../constants/user';
 import * as auth from '../../auth';
 import { dot } from 'dot-object';
 import * as _ from 'lodash';
@@ -81,6 +81,7 @@ async function signUp(req: Request, res: Response, next: NextFunction) {
     await User.create({
       ...payload,
       role: payload.role || roles.USER,
+      userType: payload.userType || userTypes.CUSTOMER,
       joinedAt: Date.now(),
     });
     res.json({});

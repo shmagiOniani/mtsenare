@@ -11,6 +11,7 @@ const UserSchema = new Schema({
   isActive: Boolean,
   role: String,
   joinedAt: Date,
+  userType: String,
 });
 
 UserSchema.index({email: 1}, {unique: true});

@@ -71,7 +71,7 @@ function parseBaseProps(body: any) {
     'lastName',
     'phoneNumber',
     // 'userName',
-    // 'role',
+    'role',
     // 'isActive',
     // 'address',
   ]);

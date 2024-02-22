@@ -4,9 +4,8 @@ import * as librariesParser  from './libraries.parser';
 
 
 const librariesRouter = Router();
-// 
-librariesRouter.get('/:name', getByCode);
 
+librariesRouter.get('/:name', getByCode);
 
 librariesRouter.get('/', librariesParser.parseGetByQuery, getByQuery);
 librariesRouter.post('/',test, librariesParser.parseCreate, create);

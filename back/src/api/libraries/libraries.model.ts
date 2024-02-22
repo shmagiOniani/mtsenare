@@ -1,9 +1,9 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from "mongoose";
 
 const LibrariesSchema = new Schema({
   name: String,
-  library: [{name: String}],
+  list: [{ name: String, code: String }],
   isActive: Boolean,
 });
 
-export default model('Libraries', LibrariesSchema);
+export default model("Libraries", LibrariesSchema);

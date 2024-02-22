@@ -4,6 +4,11 @@ export const roles = {
   ADMIN: 'admin',
 };
 
+export const userTypes = {
+  CUSTOMER: 'customer',
+  SELLER: 'seller',
+};
+
 export const genders = {
   MALE: 'male',
   FEMALE: 'female',
