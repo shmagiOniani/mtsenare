@@ -25,6 +25,7 @@ function CustomInput({ inputArr }) {
             >
               {item.type === "select" ? (
                 <Select
+                  multiple={item.multiple}
                   mode={item.mode}
                   placeholder={item.placeholder}
                   getPopupContainer={(trigger) => trigger.parentNode}

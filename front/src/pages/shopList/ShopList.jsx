@@ -4,103 +4,12 @@ import { Button, Col, Row, Select } from "antd";
 import { GlobalOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import MapInst from "../../components/mapInst/MapInst";
 import Footer from "../footer/Footer";
-import avatar from "../../assets/img/avatar.png";
 
 import "./ShopList.scss";
 import CustomButton from "../../components/elements/button/CustomButton";
+import { shops } from "./assets";
 
-const shops = [
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-  {
-    avatar: avatar,
-    name: "some name",
-    description: "Lorem ipsum dolor sit amet ",
-  },
-];
+
 
 function ShopList() {
   const { Option } = Select;

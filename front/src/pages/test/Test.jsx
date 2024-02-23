@@ -1,6 +1,5 @@
-import React, { createRef, useState } from "react";
-import { useHistory, Link, useLocation } from "react-router-dom";
-import { Col, Row, Select, Form, Slider, Pagination, Divider } from "antd";
+import React from "react";
+import { Col, Row,  Divider } from "antd";
 import useTranslation from "../../hooks/useTranslation";
 import Footer from "../footer/Footer";
 import "./Test.scss";
@@ -12,10 +11,10 @@ import ProductItem from "../../components/productItem/ProductItem";
 
 function Test() {
   const { trans } = useTranslation();
-  const { Option } = Select;
+  // const { Option } = Select;
 
-  let history = useHistory();
-  const location = useLocation();
+  // let history = useHistory();
+  // const location = useLocation();
 
   // history.push('/home');
   // location.pathname

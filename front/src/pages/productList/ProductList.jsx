@@ -2,16 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import OwlCarousel from "react-owl-carousel";
 import { Helmet } from "react-helmet";
-import {
-  Col,
-  Row,
-  Input,
-  Select,
-  Slider,
-  Pagination,
-  Tooltip,
-  Button,
-} from "antd";
+import { Col, Row, Input, Select, Slider, Pagination } from "antd";
 import {
   two,
   five,
@@ -25,11 +16,9 @@ import {
 
 import "./ProductList.scss";
 import ProductItem from "../../components/productItem/ProductItem";
-import AddProduct from "../../components/modal/addProduct/AddProduct";
 import "antd/dist/antd.css";
 import API from "../../utils/services/API";
-import ShopItem from "./ShopItem";
-import CustomButton from "../../components/elements/button/CustomButton";
+import ShopItem from "./components/ShopItem";
 import PageHeader from "../../components/pageHeader/PageHeader";
 import { products } from "../../assets/fakeData/fakeData";
 // import ProductItemNew from "../../components/productItemNew/ProductItemNew";
@@ -125,8 +114,6 @@ function ProductList() {
     setHideSearch(false);
   };
 
-
-
   const getProductList = () => {
     API.get(`/api/products?all=true`).then((res) => {
       setProductList(res.data.items);
@@ -146,42 +133,41 @@ function ProductList() {
         <link rel="canonical" href="http://mysite.com/product-list" />
       </Helmet>
       <div className="page-wrapper product-list-page">
-       
         <PageHeader>
-        <h2>Shop</h2>
-            <Row justify="center" style={{ width: "100%" }}>
-              <Col xs={12}>
-                <div className="featured-slider">
-                  <OwlCarousel
-                    className="owl-theme"
-                    dots={false}
-                    items={"4"}
-                    loop
-                    margin={40}
-                    nav
-                  >
-                    {products.map((product, ind) => {
-                      return (
-                        <div className="slider-item" key={ind}>
-                          <div className="img-wrapper">
-                            <img width={50} height={50} src={product.image} />
-                          </div>
-                          <div className="title">
-                            <h5>{product.name}</h5>
-                          </div>
+          <h2>Shop</h2>
+          <Row justify="center" style={{ width: "100%" }}>
+            <Col xs={12}>
+              <div className="featured-slider">
+                <OwlCarousel
+                  className="owl-theme"
+                  dots={false}
+                  items={"4"}
+                  loop
+                  margin={40}
+                  nav
+                >
+                  {products.map((product, ind) => {
+                    return (
+                      <div className="slider-item" key={ind}>
+                        <div className="img-wrapper">
+                          <img width={50} height={50} src={product.image} />
                         </div>
-                        // <ProductItem
-                        //   product={product}
-                        //   key={ind}
-                        //   id={ind}
-                        //   imgSrc={product.image}
-                        // />
-                      );
-                    })}
-                  </OwlCarousel>
-                </div>
-              </Col>
-            </Row>
+                        <div className="title">
+                          <h5>{product.name}</h5>
+                        </div>
+                      </div>
+                      // <ProductItem
+                      //   product={product}
+                      //   key={ind}
+                      //   id={ind}
+                      //   imgSrc={product.image}
+                      // />
+                    );
+                  })}
+                </OwlCarousel>
+              </div>
+            </Col>
+          </Row>
         </PageHeader>
         {/* <Row
           className="section-header"
@@ -332,7 +318,6 @@ function ProductList() {
                     className="product-list"
                   >
                     <Col className="product-list-sort" xs={24}>
-                      
                       <Select
                         placeholder={"პოპულარობის მიხედვთ"}
                         className="select-input"
@@ -383,7 +368,6 @@ function ProductList() {
           </Row>
         </div>
       </div>
-     
     </>
   );
 }
