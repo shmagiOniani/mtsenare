@@ -17,6 +17,7 @@ export async function initServer() {
   await seedDB();
   const app = Express();
   initExpress(app);
+  
   initRoutes(app);
   initJobs();
   startJobs();
